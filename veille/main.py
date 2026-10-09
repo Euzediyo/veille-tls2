@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import analyze, collect, notify, prefilter, site, store
+from . import analyze, collect, notify, podcast, prefilter, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 
@@ -64,8 +64,15 @@ def main() -> int:
         except Exception as exc:  # un e-mail raté ne doit pas bloquer la publication
             report.append(f"E-mail : échec ({exc.__class__.__name__}: {exc})")
 
-    site.build(profile, site_cfg, store.load_articles(), today)
+    articles = store.load_articles()
+    site.build(profile, site_cfg, articles, today)
     report.append("Site : régénéré")
+    try:
+        if not args.site:
+            podcast.make_episode(articles, profile, site_cfg, today, report)
+        podcast.publish(site_cfg, today, report)
+    except Exception as exc:  # le flash audio ne doit jamais bloquer la publication du journal
+        report.append(f"Podcast : échec ({exc.__class__.__name__}: {exc})")
     store.save_report(report, today)
     print("\n".join(report))
     return 0

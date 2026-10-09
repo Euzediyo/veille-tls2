@@ -14,5 +14,8 @@ modele: "claude-haiku-5-5"
 # Nombre maximum d'articles envoyés à l'IA par passage (plafond de dépense).
 max_articles_ia: 120
 
+# Voix du flash audio quotidien (autre voix possible : fr-FR-DeniseNeural).
+podcast_voix: "fr-FR-HenriNeural"
+
 # E-mail du matin : articles dont le score atteint ce seuil.
 seuil_email: 70
