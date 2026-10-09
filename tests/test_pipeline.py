@@ -88,3 +88,12 @@ def test_site_build(tmp_path, monkeypatch):
     assert "2026-10-08.html" in index                                # lien vers l'édition précédente
     assert len(json.loads((out / "articles.json").read_text(encoding="utf-8"))) == 2
     assert "<rss" in (out / "feed.xml").read_text(encoding="utf-8")
+
+
+def test_replace_articles(tmp_path, monkeypatch):
+    from veille import store
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    store.add_articles([{**SAMPLE[0], "score": 20, "analyse_par": "mots-clés"}], date(2026, 10, 9))
+    store.replace_articles([{**SAMPLE[0], "score": 92, "analyse_par": "claude-haiku-5-5"}])
+    arts = store.load_articles(days=3, today=date(2026, 10, 10))
+    assert len(arts) == 1 and arts[0]["score"] == 92 and arts[0]["edition"] == "2026-10-09"

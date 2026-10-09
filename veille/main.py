@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -47,6 +48,14 @@ def main() -> int:
         report.append(f"Collecte : {len(raw)} articles, {len(fresh)} nouveaux, {len(candidates)} envoyés à l'analyse")
 
         analysed = analyze.analyze(candidates, profile, site_cfg["modele"], report)
+
+        # Articles récents notés par mots-clés faute d'IA : ils sont analysés dès que l'IA est disponible.
+        if os.environ.get("ANTHROPIC_API_KEY"):
+            pending = [it for it in store.load_articles(days=3, today=today) if it.get("analyse_par") == "mots-clés"]
+            pending = [it for it in pending if it["id"] not in {a["id"] for a in analysed}][: site_cfg.get("max_articles_ia", 120)]
+            if pending:
+                report.append(f"Rattrapage : {len(pending)} articles récents notés par mots-clés")
+                store.replace_articles(analyze.analyze(pending, profile, site_cfg["modele"], report))
         store.add_articles(analysed, today)
         store.save_seen(seen, fresh, today)
 
