@@ -63,7 +63,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 
 def footer(site: dict) -> str:
     return f"""<footer class="foot">
-  <p>Résumés et scores rédigés automatiquement par une IA à partir du titre et de l'extrait public de chaque article. Lisez toujours la source avant d'agir.</p>
+  <p>Résumés et taux de pertinence rédigés automatiquement par une IA à partir du titre et de l'extrait public de chaque article. Lisez toujours la source avant d'agir.</p>
   <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="essentiel.html">L'essentiel (texte)</a> · <a href="mentions-legales.html">Mentions légales et méthode</a></p>
 </footer>"""
 
@@ -101,7 +101,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
         <input id="q" type="search" placeholder="Rechercher : R31, levée de doute, convention collective…" aria-label="Rechercher" autocomplete="off"></label>
       <select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Tout</option></select>
-      <select id="min" aria-label="Score minimum"><option value="30">Score ≥ 30</option><option value="50">Score ≥ 50</option><option value="70">Score ≥ 70</option><option value="90">Score ≥ 90</option></select>
+      <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select>
       <div class="seg" id="readf" role="group" aria-label="Afficher"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
       <button type="button" class="btn" id="ack-all">Tout marquer comme lu</button>
       <button type="button" class="btn ghost" id="unmask" hidden></button>
@@ -143,7 +143,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Le flash audio quotidien est rédigé par la même IA à partir de ces résumés, sous la forme d'un dialogue entre deux animateurs fictifs, lu par des voix de synthèse. Il ne reprend aucun texte d'article.</p>
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
-<p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un score de pertinence de 0 à 100 du point de vue d'un responsable de centre de télésurveillance, explique ce score, propose une action pour les articles importants et repère les échéances. Les articles notés sous {profile.get('seuil_publication', 30)} ou jugés hors sujet ne sont pas publiés.</p>
+<p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un taux de pertinence de 0 à 100 % du point de vue d'un responsable de centre de télésurveillance, explique ce taux, propose une action pour les articles importants et repère les échéances. Les articles sous {profile.get('seuil_publication', 30)} % ou jugés hors sujet ne sont pas publiés.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>
@@ -158,7 +158,7 @@ def _essential_item(it: dict, profile: dict) -> str:
     cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
     day = date.fromisoformat(it["edition"])
     lines = [f"<h3>{escape(it['titre'])}</h3>",
-             f"<p><b>{escape(cat)}</b> · score {it['score']} ({label(it['score'])}) · {escape(it['source'])} · {day.day} {MOIS[day.month - 1]} {day.year}"
+             f"<p><b>{escape(cat)}</b> · pertinence {it['score']} % ({label(it['score'])}) · {escape(it['source'])} · {day.day} {MOIS[day.month - 1]} {day.year}"
              + (" · réservé aux abonnés" if it.get("payant") else "") + "</p>"]
     if it.get("resume"):
         lines.append(f"<p>{escape(it['resume'])}</p>")
@@ -204,7 +204,7 @@ def feed_xml(items: list[dict], site: dict, profile: dict) -> str:
     rows = []
     for it in entries:
         cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
-        desc = f"[{it['score']} · {label(it['score'])} · {cat}] {it.get('resume', '')} Pourquoi : {it['pourquoi']}"
+        desc = f"[Pertinence {it['score']} % · {label(it['score'])} · {cat}] {it.get('resume', '')} Pourquoi : {it['pourquoi']}"
         if it.get("action"):
             desc += f" Action recommandée : {it['action']}"
         pub = format_datetime(datetime.fromisoformat(it["date"]))

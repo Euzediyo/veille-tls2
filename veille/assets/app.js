@@ -180,7 +180,7 @@
   function paperCard(it, une) {
     var p = prio(it.score), isRead = read.has(it.id), isFav = favs.has(it.id);
     return '<article class="ev pa ' + p[0] + (une ? " une" : "") + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ')" data-id="' + it.id + '">' +
-      '<div class="kick"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + p[2] + " · " + it.score + "/100</span>" +
+      '<div class="kick"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + p[2] + " · Pertinence : " + it.score + "\u00a0%</span>" +
       (isRead ? '<span class="state lu">Lu</span>' : "") +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
@@ -346,7 +346,7 @@
   // (un ticket GitHub pré-rempli, lu par le passage du matin).
   function avisUrl(it) {
     var body = "Article jugé non pertinent depuis le site Veille TLS.\n\nIdentifiant : " + it.id + "\nTitre : " + it.titre +
-      "\nSource : " + it.source + "\nCatégorie : " + catName(it.categorie) + "\nScore donné par l'IA : " + it.score + "\nLien : " + it.url +
+      "\nSource : " + it.source + "\nCatégorie : " + catName(it.categorie) + "\nPertinence donnée par l'IA : " + it.score + " %" + "\nLien : " + it.url +
       "\n\nPourquoi (facultatif, une phrase) : ";
     return CFG.avis + "?labels=non-pertinent&title=" + encodeURIComponent("Non pertinent : " + it.titre.slice(0, 120)) + "&body=" + encodeURIComponent(body);
   }
