@@ -1,0 +1,29 @@
+name: Essai voix (temporaire)
+on:
+  push:
+    branches: [podcast]
+jobs:
+  voix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Lire un bulletin d'essai
+        run: |
+          python - <<'PY'
+          from datetime import date
+          from pathlib import Path
+          from veille import podcast
+          items = [{"titre": "Le CNAPS publie un décret sur la carte professionnelle", "source": "Légifrance",
+                    "resume": "Le texte précise les conditions de renouvellement des cartes des agents de télésurveillance. " * 3,
+                    "action": "Vérifier la date de validité des cartes des opérateurs"}] * 4
+          text = podcast.fallback_script(items, date(2026, 10, 9))
+          out = Path("essai.mp3")
+          podcast.synthesize(text, out, "fr-FR-HenriNeural")
+          size = out.stat().st_size
+          print(len(text.split()), "mots,", size, "octets, environ", round(size * 8 / podcast.BITRATE), "secondes")
+          assert size > 100_000, "fichier audio trop petit"
+          PY
