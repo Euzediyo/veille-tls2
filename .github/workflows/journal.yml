@@ -14,6 +14,10 @@ on:
         description: "Relire et réanalyser les articles des 3 derniers jours"
         type: boolean
         default: false
+      semaine:
+        description: "Mettre à jour le résumé de la semaine"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -51,6 +55,7 @@ jobs:
         run: |
           OPTIONS=""
           if [ "${{ inputs.reanalyser }}" = "true" ]; then OPTIONS="--reanalyser 3"; fi
+          if [ "${{ inputs.semaine }}" = "true" ]; then OPTIONS="$OPTIONS --semaine"; fi
           if [ "${{ inputs.site_seulement }}" = "true" ]; then
             python -m veille.main --site $OPTIONS
           else

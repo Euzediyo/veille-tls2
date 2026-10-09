@@ -7,7 +7,7 @@ Chaque matin, GitHub lance automatiquement un programme qui :
 1. **collecte** les publications récentes (Google Actualités, flux RSS, pages surveillées) ;
 2. **dédoublonne** et **préfiltre** par mots-clés, sans coût ;
 3. **analyse** chaque article avec une IA qui le classe, le résume, lui donne un score de pertinence de 0 à 100, explique ce score, propose une action pour les articles importants et repère les échéances ;
-4. **publie** le journal sur un site public : canaux par catégorie, recherche, lu / non lu, favoris, archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
+4. **publie** le journal sur un site public : canaux par catégorie, recherche, lu / non lu, favoris, **résumé de la semaine** (synthèse rédigée par l'IA, 10 articles à retenir, échéances à venir ; mis à jour chaque matin, bilan figé le lundi suivant), archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
 5. **envoie** un e-mail avec les articles notés 70 et plus (si configuré).
 
 Le site est publié à l'adresse indiquée dans `config/site.yaml`.
