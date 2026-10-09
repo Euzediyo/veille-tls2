@@ -1,0 +1,31 @@
+name: Essai voix (temporaire)
+on:
+  push:
+    branches: [podcast-dialogue]
+jobs:
+  voix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Lire un dialogue d'essai avec les deux voix
+        run: |
+          python - <<'PY'
+          from datetime import date
+          from pathlib import Path
+          import yaml
+          from veille import podcast
+          voices = {**podcast.DEFAULT_VOICES, **yaml.safe_load(open("config/site.yaml"))["podcast_voix"]}
+          items = [{"titre": "Le CNAPS publie un décret sur la carte professionnelle", "source": "Légifrance",
+                    "resume": "Le texte précise les conditions de renouvellement des cartes des agents.",
+                    "action": "Vérifier la date de validité des cartes des opérateurs"}] * 3
+          text = podcast.fallback_script(items, date(2026, 10, 9))
+          out = Path("essai.mp3")
+          podcast.synthesize(text, out, voices)
+          size = out.stat().st_size
+          print(len(podcast.parse_dialogue(text)), "répliques,", size, "octets")
+          assert size > 50_000, "fichier audio trop petit"
+          PY
