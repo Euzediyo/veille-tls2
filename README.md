@@ -22,6 +22,15 @@ Tout se règle dans le dossier `config/`, sans toucher au code :
 | `config/sources.yaml` | Les recherches Google Actualités, les flux RSS et les pages surveillées |
 | `config/site.yaml` | Le titre du site, les mentions légales, le modèle d'IA, le plafond d'articles analysés |
 
+### Apprendre à l'IA ce qui ne vous intéresse pas
+
+Sous chaque article, le bouton **Non pertinent** masque l'article dans votre navigateur. Le lien
+**Apprendre à l'IA** qui apparaît alors ouvre un ticket GitHub pré-rempli : il suffit de le valider
+(en ajoutant une raison si vous le souhaitez). Le lendemain matin, le passage quotidien lit ces
+tickets, les referme, retire l'article du site et ajoute l'exemple aux consignes de l'IA
+(`data/avis.json`, 60 derniers avis). Seuls les tickets ouverts par le propriétaire du dépôt sont
+pris en compte : un visiteur peut masquer un article chez lui, sans effet sur le journal.
+
 ## Mise en service (une seule fois)
 
 1. **Activer le site** : *Settings* → *Pages* → *Build and deployment* → *Source* : **GitHub Actions**.

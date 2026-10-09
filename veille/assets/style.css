@@ -52,7 +52,8 @@ a{color:var(--accent)}
 .scan-btn svg{animation:sweep 3s linear infinite}
 
 .ticker{border-top:1px solid var(--line);background:rgba(14,22,34,.85);font:12px/30px var(--mono);white-space:nowrap;overflow:hidden;display:flex}
-.ticker b{flex:none;background:var(--p1);color:#fff;padding:0 12px;letter-spacing:.1em}
+.ticker b{flex:none;position:relative;z-index:1;background:var(--p1);color:#fff;padding:0 12px;letter-spacing:.1em;box-shadow:6px 0 10px rgba(7,11,18,.9)}
+.ticker .lane{flex:1;min-width:0;overflow:hidden}
 .ticker .track{display:inline-block;padding-left:100%;animation:tick 60s linear infinite}
 .ticker:hover .track{animation-play-state:paused}
 .ticker span{margin-right:48px;color:var(--fg)}
@@ -102,6 +103,12 @@ a{color:var(--accent)}
 .search svg{flex:none;color:var(--muted)}
 .search input{flex:1;min-width:0;background:none;border:0;padding:10px 0;outline:none}
 select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{background:none;border:0;border-right:1px solid var(--line);padding:6px 12px;font:12px var(--mono);color:var(--muted);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.seg button:last-child{border-right:0}
+.seg button em{font-style:normal;color:var(--fg)}
+.seg button[aria-pressed="true"]{background:var(--panel-2);color:var(--fg);box-shadow:inset 0 -2px 0 var(--accent)}
+.btn.ghost{border-style:dashed}
 .toggle{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);cursor:pointer;user-select:none}
 .toggle input{accent-color:var(--accent);width:16px;height:16px}
 .btn{background:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer;color:var(--muted)}
@@ -150,6 +157,16 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 @keyframes ack{0%{box-shadow:0 0 0 2px var(--ok),0 0 24px rgba(61,220,132,.5)}100%{box-shadow:none}}
 .empty{background:var(--panel);border:1px dashed var(--line);border-radius:6px;padding:28px;text-align:center;color:var(--muted)}
 .more{align-self:center}
+.act .np{margin-left:auto}
+.act .np:hover{border-color:var(--p1);color:var(--fg)}
+.ev.gone{animation:gone .35s ease-in forwards}
+@keyframes gone{to{opacity:0;transform:translateX(24px)}}
+.done-h{font:700 1.15rem var(--display);margin:6px 0 0;color:var(--fg)}
+.done-h small{display:block;font:400 .92rem var(--body);color:var(--muted);margin-top:4px}
+.empty.ok{border-style:solid;border-color:rgba(61,220,132,.45);color:var(--fg)}
+.empty.ok b{color:var(--ok)}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;max-width:min(560px,calc(100vw - 32px));background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--p1);border-radius:6px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:.92rem;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.toast a,.toast button{font:12px var(--mono);color:var(--accent);background:none;border:1px solid var(--line);border-radius:4px;padding:4px 10px;cursor:pointer;text-decoration:none}
 
 /* ---------- Échéances ---------- */
 .dl{display:grid;grid-template-columns:96px minmax(0,1fr);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--cc);border-radius:6px;overflow:hidden}

@@ -17,7 +17,8 @@ from .icons import write_icons
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 ASSETS = Path(__file__).resolve().parent / "assets"
-REPO_ACTIONS = "https://github.com/Euzediyo/veille-tls2/actions/workflows/journal.yml"
+REPO = "https://github.com/Euzediyo/veille-tls2"
+REPO_ACTIONS = REPO + "/actions/workflows/journal.yml"
 
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
@@ -71,6 +72,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         "updated": updated,
         "ics": ics_url,
         "podcast": site["url"].rstrip("/") + "/podcast.xml",
+        "avis": REPO + "/issues/new",
     }
     return head(site["titre"], site) + f"""
 <body>
@@ -86,7 +88,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L7 1" stroke="currentColor" stroke-width="1.5"/></svg><span>Scan immédiat</span></a>
     </div>
   </div>
-  <div class="ticker" id="ticker"><b>ALERTES</b><div class="track" id="ticker-track"></div></div>
+  <div class="ticker" id="ticker"><b>ALERTES</b><div class="lane"><div class="track" id="ticker-track"></div></div></div>
 </header>
 
 <nav class="tabs" role="tablist" aria-label="Vues">
@@ -111,8 +113,9 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         <input id="q" type="search" placeholder="Rechercher : R31, levée de doute, convention collective…" aria-label="Rechercher" autocomplete="off"></label>
       <select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Tout</option></select>
       <select id="min" aria-label="Score minimum"><option value="30">Score ≥ 30</option><option value="50">Score ≥ 50</option><option value="70">Score ≥ 70</option><option value="90">Score ≥ 90</option></select>
-      <label class="toggle"><input type="checkbox" id="hide-read"> Masquer les lus</label>
-      <button type="button" class="btn" id="ack-all">Tout acquitter</button>
+      <div class="seg" id="readf" role="group" aria-label="Afficher"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
+      <button type="button" class="btn" id="ack-all">Tout marquer comme lu</button>
+      <button type="button" class="btn ghost" id="unmask" hidden></button>
       <span class="daychip" id="daychip" hidden><span id="daychip-t"></span><button type="button" id="daychip-x" aria-label="Revenir à toutes les éditions">✕</button></span>
     </div>
     <div class="feed" id="v-journal"><div class="feed" id="feed"></div></div>
@@ -120,6 +123,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     <div id="v-archives" hidden></div>
   </main>
 </div>
+<div class="toast" id="toast" role="status" hidden></div>
 {footer(site)}
 <script>window.VEILLE = {json.dumps(config, ensure_ascii=False)};</script>
 <script src="app.js?v={site.get('_version', '')}"></script>
@@ -147,7 +151,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un score de pertinence de 0 à 100 du point de vue d'un responsable de centre de télésurveillance, explique ce score, propose une action pour les articles importants et repère les échéances. Les articles notés sous {profile.get('seuil_publication', 30)} ou jugés hors sujet ne sont pas publiés.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
-<p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus et les favoris sont mémorisés uniquement dans votre navigateur.</p>
+<p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>
 </main>
 {footer(site)}
 </body>
@@ -277,7 +281,7 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
 
     seuil = profile.get("seuil_publication", 30)
     public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles
-              if it["score"] >= seuil and it["categorie"] != "hors_sujet"]
+              if it["score"] >= seuil and it["categorie"] != "hors_sujet" and not it.get("non_pertinent")]
     public.sort(key=lambda it: (it["edition"], it["score"]), reverse=True)
 
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")

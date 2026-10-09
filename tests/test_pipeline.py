@@ -237,3 +237,43 @@ def test_text_not_stored_and_essential_page(tmp_path, monkeypatch):
     day, week = page.split("L'essentiel de la semaine</h2>")
     assert "carte professionnelle" in day and "Verisure" not in day.split("L'essentiel du jour</h2>")[1]
     assert "Verisure" in week and "réservé aux abonnés" in day and "Action recommandée : Former" in day
+
+
+def test_feedback_issues(tmp_path, monkeypatch):
+    from veille import avis, store
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    monkeypatch.setattr(avis, "AVIS", tmp_path / "avis.json")
+    art = {"id": "a1", "titre": "Cambriolage à Lyon", "source": "Le Progrès", "categorie": "telesurveillance",
+           "score": 55, "edition": "2026-10-09"}
+    store.add_articles([art], date(2026, 10, 9))
+    issues = [
+        {"number": 1, "title": "Non pertinent : Cambriolage à Lyon", "user": {"login": "Euzediyo"},
+         "body": "Identifiant : a1\nTitre : x\n\nPourquoi (facultatif, une phrase) : fait divers sans enjeu"},
+        {"number": 2, "title": "Non pertinent : spam", "user": {"login": "inconnu"}, "body": "Identifiant : a1"},
+    ]
+    calls = []
+
+    class Resp:
+        def __init__(self, data=None): self.data = data
+        def raise_for_status(self): pass
+        def json(self): return self.data
+
+    class Session:
+        headers = {}
+        def get(self, url, **kw): return Resp(issues)
+        def post(self, url, **kw): calls.append(("post", url)); return Resp()
+        def patch(self, url, **kw): calls.append(("patch", url, kw["json"]["state"])); return Resp()
+
+    monkeypatch.setattr(avis, "_session", lambda token: Session())
+    for k, v in {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "Euzediyo/veille-tls2", "GITHUB_REPOSITORY_OWNER": "Euzediyo"}.items():
+        monkeypatch.setenv(k, v)
+    report = []
+    avis.collect(report, "2026-10-10")
+    saved = avis.load()
+    assert [a["id"] for a in saved] == ["a1"] and saved[0]["raison"] == "fait divers sans enjeu"
+    assert store.load_articles()[0]["non_pertinent"] is True
+    assert ("patch", "https://api.github.com/repos/Euzediyo/veille-tls2/issues/1", "closed") in calls
+    assert not any("/issues/2" in c[1] for c in calls)  # ticket d'un autre compte ignoré
+    from veille.analyze import build_system_prompt
+    prompt = build_system_prompt(PROFILE, avis.prompt_block(saved, PROFILE))
+    assert "Cambriolage à Lyon" in prompt and "fait divers sans enjeu" in prompt

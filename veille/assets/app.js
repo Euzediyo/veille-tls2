@@ -1,4 +1,4 @@
-// Veille TLS : journal, favoris, échéances et archives, avec lu / non lu mémorisés dans le navigateur.
+// Veille TLS : journal, favoris, échéances et archives, avec lu / non lu, favoris et articles masqués mémorisés dans le navigateur.
 (function () {
   "use strict";
   var CFG = window.VEILLE || {};
@@ -11,8 +11,9 @@
   var PAGE = 40;
 
   var data = [], episodes = [], latest = "", today = isoLocal(new Date());
-  var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, hideRead: false, day: "", limit: PAGE };
-  var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris");
+  var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
+  var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
+  var toastTimer = 0;
 
   // ---------- utilitaires ----------
   function $(id) { return document.getElementById(id); }
@@ -43,6 +44,8 @@
     var hay = norm([it.titre, it.resume, it.pourquoi, it.action, it.source, catName(it.categorie)].join(" "));
     return terms.every(function (t) { return hay.indexOf(t) !== -1; });
   }
+  function shown(it) { return !masked.has(it.id); }
+  function byRead(it) { return st.readFilter === "all" || (st.readFilter === "read") === read.has(it.id); }
   function sortFeed(a, b) { return a.edition !== b.edition ? (a.edition < b.edition ? 1 : -1) : b.score - a.score; }
 
   // ---------- rendu ----------
@@ -63,7 +66,7 @@
   }
 
   function renderTabs() {
-    var unread = data.filter(function (it) { return !read.has(it.id); }).length;
+    var unread = data.filter(function (it) { return shown(it) && !read.has(it.id); }).length;
     var upcoming = data.filter(function (it) { return it.echeance && it.echeance.date >= today; }).length;
     $("t-journal-n").textContent = unread;
     $("t-favoris-n").textContent = data.filter(function (it) { return favs.has(it.id); }).length;
@@ -72,7 +75,7 @@
   }
 
   function renderChannels() {
-    var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : matches(it, true); });
+    var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it, true); });
     var html = '<p class="lbl">Canaux</p>' + channel("all", "Tous les canaux", "", pool);
     CATS.forEach(function (c) {
       html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return it.categorie === c.key; }));
@@ -88,7 +91,7 @@
   }
 
   function renderKpis() {
-    var unread = data.filter(function (it) { return !read.has(it.id); });
+    var unread = data.filter(function (it) { return shown(it) && !read.has(it.id); });
     var p1 = unread.filter(function (it) { return it.score >= 90; }).length;
     $("k-unread").textContent = unread.length;
     $("k-p1").textContent = p1;
@@ -99,14 +102,24 @@
 
   function renderFeed() {
     var fav = st.view === "favoris";
-    var items = data.filter(function (it) {
+    var pool = data.filter(function (it) {
       if (fav) return favs.has(it.id) && (st.cat === "all" || it.categorie === st.cat) && (!st.q || matches(Object.assign({}, it, { edition: latest, score: 100 })));
-      return matches(it) && !(st.hideRead && read.has(it.id));
-    }).sort(sortFeed);
+      return shown(it) && matches(it);
+    });
+    var items = (fav ? pool : pool.filter(byRead)).sort(sortFeed);
+    var nRead = pool.filter(function (it) { return read.has(it.id); }).length;
+    $("rf-unread").textContent = pool.length - nRead;
+    $("rf-read").textContent = nRead;
+    document.querySelectorAll("[data-rf]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.rf === st.readFilter); });
+    $("readf").hidden = fav;
+    $("unmask").hidden = fav || !masked.size;
+    $("unmask").textContent = masked.size > 1 ? "Réafficher les " + masked.size + " articles masqués" : "Réafficher l'article masqué";
     var feed = $("feed");
     if (!items.length) {
-      feed.innerHTML = '<div class="empty">' + (fav ? "Aucun favori pour l'instant. Utilise l'étoile d'un article pour le retrouver ici." :
-        st.hideRead ? "Tout est acquitté. Rien de nouveau à traiter sur ce canal." : "Aucun article ne correspond à ces critères.") + "</div>";
+      feed.innerHTML = fav ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
+        st.readFilter === "unread" && !st.q ? allRead(pool) :
+        st.readFilter === "read" ? '<div class="empty">Aucun article lu sur ce canal pour cette période.</div>' :
+        '<div class="empty">Aucun article ne correspond à ces critères.</div>';
       return;
     }
     var html = "", day = "", n = 0;
@@ -116,6 +129,18 @@
     });
     if (items.length > st.limit) html += '<button type="button" class="btn more" data-more>Afficher ' + Math.min(PAGE, items.length - st.limit) + " articles de plus</button>";
     feed.innerHTML = html;
+  }
+
+  // Plus rien à lire : on propose les favoris et les articles les plus importants de la période.
+  function allRead(pool) {
+    var html = '<div class="empty ok"><b>✓ Tout est lu.</b> Plus aucun article à lire ici. La prochaine édition arrive demain matin.</div>', n = 0;
+    var mine = data.filter(function (it) { return favs.has(it.id) && shown(it) && (st.cat === "all" || it.categorie === st.cat); }).sort(sortFeed).slice(0, 5);
+    if (mine.length) html += '<h2 class="done-h">Vos favoris</h2>' + mine.map(function (it) { return card(it, n++); }).join("");
+    var top = pool.filter(function (it) { return it.score >= 70 && !favs.has(it.id); })
+      .sort(function (a, b) { return b.score - a.score || (a.edition < b.edition ? 1 : -1); }).slice(0, 5);
+    if (top.length) html += '<h2 class="done-h">Relisez les plus importants<small>Les articles les mieux notés de la période, au cas où un détail vous aurait échappé.</small></h2>' +
+      top.map(function (it) { return card(it, n++); }).join("");
+    return html;
   }
 
   function card(it, n) {
@@ -130,8 +155,9 @@
       (it.resume ? "<p>" + esc(it.resume) + "</p>" : "") +
       '<p class="why">' + esc(it.pourquoi) + "</p>" +
       (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + due +
-      '<div class="act"><button type="button" data-read>' + (isRead ? "Marquer non lu" : "✓ Acquitter") + "</button>" +
-      '<button type="button" data-fav aria-pressed="' + isFav + '">' + (isFav ? "★ Favori" : "☆ Favori") + "</button></div></div></article>";
+      '<div class="act"><button type="button" data-read>' + (isRead ? "Marquer non lu" : "✓ Marquer comme lu") + "</button>" +
+      '<button type="button" data-fav aria-pressed="' + isFav + '">' + (isFav ? "★ Favori" : "☆ Favori") + "</button>" +
+      '<button type="button" class="np" data-np title="Masquer cet article et apprendre à l\'IA à éviter ce genre de sujet">✕ Non pertinent</button></div></div></article>';
   }
   function shortDate(iso) { var d = new Date(iso + "T12:00:00"); return d.getDate() + " " + MOIS_C[d.getMonth()] + " " + d.getFullYear(); }
 
@@ -222,11 +248,20 @@
       try { navigator.clipboard.writeText(copy.dataset.copy).then(done, function () {}); } catch (err) {}
       return;
     }
+    var rf = t.closest("[data-rf]"); if (rf) { st.readFilter = rf.dataset.rf; st.limit = PAGE; return render(); }
+    if (t.closest("[data-undo]")) { masked.delete(t.closest("[data-undo]").dataset.undo); saveSet("veilletls.masques", masked); hideToast(); return render(); }
     var ev = t.closest(".ev"); if (!ev) return;
     var id = ev.dataset.id;
     if (t.closest("[data-read]")) {
       if (read.has(id)) read.delete(id); else { read.add(id); ev.classList.add("flash"); }
-      saveSet("veilletls.lus", read); setTimeout(render, read.has(id) ? 450 : 0);
+      saveSet("veilletls.lus", read);
+      var leaves = st.view === "journal" && st.readFilter !== "all";
+      if (leaves) setTimeout(function () { ev.classList.add("gone"); }, read.has(id) ? 300 : 0);
+      setTimeout(render, leaves ? (read.has(id) ? 650 : 350) : 0);
+    } else if (t.closest("[data-np]")) {
+      masked.add(id); saveSet("veilletls.masques", masked);
+      ev.classList.add("gone"); setTimeout(render, 350);
+      showToast(data.filter(function (it) { return it.id === id; })[0]);
     } else if (t.closest("[data-fav]")) {
       if (favs.has(id)) favs.delete(id); else favs.add(id);
       saveSet("veilletls.favoris", favs); render();
@@ -237,12 +272,29 @@
   $("q").addEventListener("input", function (e) { st.q = e.target.value; st.limit = PAGE; render(); });
   $("period").addEventListener("change", function (e) { st.period = +e.target.value; st.day = ""; st.limit = PAGE; render(); });
   $("min").addEventListener("change", function (e) { st.min = +e.target.value; st.limit = PAGE; render(); });
-  $("hide-read").addEventListener("change", function (e) { st.hideRead = e.target.checked; render(); });
+  $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });
   $("daychip-x").addEventListener("click", function () { st.day = ""; render(); });
   $("ack-all").addEventListener("click", function () {
-    data.forEach(function (it) { if (st.view === "favoris" ? favs.has(it.id) : matches(it)) read.add(it.id); });
+    data.forEach(function (it) { if (st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it)) read.add(it.id); });
     saveSet("veilletls.lus", read); render();
   });
+
+  // « Non pertinent » : l'article est masqué ici, et l'administrateur peut transmettre l'avis à l'IA
+  // (un ticket GitHub pré-rempli, lu par le passage du matin).
+  function avisUrl(it) {
+    var body = "Article jugé non pertinent depuis le site Veille TLS.\n\nIdentifiant : " + it.id + "\nTitre : " + it.titre +
+      "\nSource : " + it.source + "\nCatégorie : " + catName(it.categorie) + "\nScore donné par l'IA : " + it.score + "\nLien : " + it.url +
+      "\n\nPourquoi (facultatif, une phrase) : ";
+    return CFG.avis + "?labels=non-pertinent&title=" + encodeURIComponent("Non pertinent : " + it.titre.slice(0, 120)) + "&body=" + encodeURIComponent(body);
+  }
+  function showToast(it) {
+    if (!it) return;
+    var el = $("toast");
+    el.innerHTML = "<span>Article masqué.</span>" + (CFG.avis ? '<a href="' + esc(avisUrl(it)) + '" target="_blank" rel="noopener" title="Réservé à l\'administrateur du site (compte GitHub)">Apprendre à l\'IA</a>' : "") +
+      '<button type="button" data-undo="' + esc(it.id) + '">Annuler</button>';
+    el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(hideToast, 15000);
+  }
+  function hideToast() { $("toast").hidden = true; }
 
   function tick() { $("clock").textContent = new Date().toLocaleTimeString("fr-FR"); }
 
