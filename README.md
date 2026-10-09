@@ -6,8 +6,8 @@ Chaque matin, GitHub lance automatiquement un programme qui :
 
 1. **collecte** les publications récentes (Google Actualités, flux RSS, pages surveillées) ;
 2. **dédoublonne** et **préfiltre** par mots-clés, sans coût ;
-3. **analyse** chaque article avec une IA qui le classe, le résume, lui donne un score de pertinence de 0 à 100 et explique ce score ;
-4. **publie** le journal sur un site public, avec un flux RSS ;
+3. **analyse** chaque article avec une IA qui le classe, le résume, lui donne un score de pertinence de 0 à 100, explique ce score, propose une action pour les articles importants et repère les échéances ;
+4. **publie** le journal sur un site public : canaux par catégorie, recherche, lu / non lu, favoris, archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
 5. **envoie** un e-mail avec les articles notés 70 et plus (si configuré).
 
 Le site est publié à l'adresse indiquée dans `config/site.yaml`.
@@ -27,7 +27,7 @@ Tout se règle dans le dossier `config/`, sans toucher au code :
 1. **Activer le site** : *Settings* → *Pages* → *Build and deployment* → *Source* : **GitHub Actions**.
 2. **Ajouter la clé de l'IA** : *Settings* → *Secrets and variables* → *Actions* → *New repository secret*, nom `ANTHROPIC_API_KEY`. Sans cette clé, le journal fonctionne quand même, avec une notation par mots-clés et sans résumé.
 3. **E-mail du matin (facultatif)** : ajouter de la même façon les secrets `SMTP_USER` (adresse Gmail d'envoi), `SMTP_PASSWORD` (mot de passe d'application Gmail) et `MAIL_TO` (adresse de réception).
-4. **Premier passage** : *Actions* → *Journal quotidien* → *Run workflow*.
+4. **Premier passage** : *Actions* → *Journal quotidien* → *Run workflow*. Le bouton « Scan immédiat » du site mène à cette même page.
 
 ## Coût
 

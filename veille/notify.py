@@ -5,9 +5,15 @@ from __future__ import annotations
 import os
 import smtplib
 from email.message import EmailMessage
+from datetime import date
 from html import escape
 
-from .site import fr_date, level
+from .site import MOIS, label
+
+
+def fr_date(iso: str) -> str:
+    d = date.fromisoformat(iso[:10])
+    return f"{d.day} {MOIS[d.month - 1]} {d.year}"
 
 
 def send_digest(items: list[dict], site: dict, profile: dict, day: str, report: list[str]) -> None:
@@ -23,14 +29,17 @@ def send_digest(items: list[dict], site: dict, profile: dict, day: str, report: 
 
     lines, blocks = [], []
     for it in top:
-        _, label = level(it["score"])
+        lvl = label(it["score"])
         cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
-        lines.append(f"[{it['score']} {label}] {it['titre']}\n{it.get('resume', '')}\nPourquoi : {it['pourquoi']}\n{it['url']}\n")
+        action = f"Action recommandée : {it['action']}\n" if it.get("action") else ""
+        lines.append(f"[{it['score']} {lvl}] {it['titre']}\n{it.get('resume', '')}\nPourquoi : {it['pourquoi']}\n{action}{it['url']}\n")
         blocks.append(
-            f"<p style='margin:0 0 4px;font:12px monospace;color:#56636f'>{it['score']} · {label} · {escape(cat)} · {escape(it['source'])}</p>"
+            f"<p style='margin:0 0 4px;font:12px monospace;color:#56636f'>{it['score']} · {lvl} · {escape(cat)} · {escape(it['source'])}</p>"
             f"<p style='margin:0 0 6px;font-size:16px'><a href='{escape(it['url'])}'><b>{escape(it['titre'])}</b></a></p>"
             f"<p style='margin:0 0 6px'>{escape(it.get('resume', ''))}</p>"
-            f"<p style='margin:0 0 20px;color:#56636f'><i>Pourquoi : {escape(it['pourquoi'])}</i></p>")
+            f"<p style='margin:0 0 6px;color:#56636f'><i>Pourquoi : {escape(it['pourquoi'])}</i></p>"
+            + (f"<p style='margin:0 0 6px'><b>Action recommandée :</b> {escape(it['action'])}</p>" if it.get("action") else "")
+            + "<div style='height:14px'></div>")
 
     msg = EmailMessage()
     msg["Subject"] = f"{site['titre']} · {len(top)} article(s) à lire · {fr_date(day)}"

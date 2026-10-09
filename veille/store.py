@@ -53,6 +53,15 @@ def add_articles(items: list[dict], today: date) -> None:
     _write(path, existing)
 
 
+def replace_articles(items: list[dict]) -> None:
+    """Remplace des articles déjà stockés (même identifiant), par exemple après une nouvelle analyse."""
+    by_id = {it["id"]: it for it in items}
+    for path in sorted((DATA / "articles").glob("*.json")):
+        existing = _read(path, [])
+        if any(it["id"] in by_id for it in existing):
+            _write(path, [{**by_id[it["id"]], "edition": it["edition"]} if it["id"] in by_id else it for it in existing])
+
+
 def load_articles(days: int | None = None, today: date | None = None) -> list[dict]:
     items = []
     for path in sorted((DATA / "articles").glob("*.json")):

@@ -1,47 +1,259 @@
-// Filtres par catégorie (pages d'édition) et recherche dans les archives.
+// Veille TLS : journal, favoris, échéances et archives, avec lu / non lu mémorisés dans le navigateur.
 (function () {
-  var chips = document.querySelectorAll(".chip");
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var f = chip.dataset.filter;
-      chips.forEach(function (c) { c.classList.toggle("on", c === chip); });
-      document.querySelectorAll(".card").forEach(function (card) {
-        card.hidden = f !== "all" && card.dataset.cat !== f;
-      });
-      document.querySelectorAll(".group").forEach(function (g) {
-        g.hidden = !g.querySelector(".card:not([hidden])");
-      });
-    });
-  });
+  "use strict";
+  var CFG = window.VEILLE || {};
+  var CATS = CFG.categories || [];
+  var CAT = {};
+  CATS.forEach(function (c) { CAT[c.key] = c; });
+  var MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  var MOIS_C = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+  var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+  var PAGE = 40;
 
-  var results = document.getElementById("results");
-  if (!results) return;
-  var cats = JSON.parse(results.dataset.cats || "{}");
-  var q = document.getElementById("q"), min = document.getElementById("min");
-  var levels = [[90, "crit", "Critique"], [70, "imp", "Important"], [50, "int", "Intéressant"], [30, "veil", "Veille"]];
-  var data = [];
+  var data = [], latest = "", today = isoLocal(new Date());
+  var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, hideRead: false, day: "", limit: PAGE };
+  var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris");
+
+  // ---------- utilitaires ----------
+  function $(id) { return document.getElementById(id); }
+  function loadSet(key) { try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); } catch (e) { return new Set(); } }
+  function saveSet(key, set) { try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch (e) {} }
   function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
-  function esc(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
-  function lvl(score) { for (var i = 0; i < levels.length; i++) if (score >= levels[i][0]) return levels[i]; return [0, "ign", "Ignoré"]; }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+  function isoLocal(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function days(a, b) { return Math.round((Date.parse(a + "T12:00:00") - Date.parse(b + "T12:00:00")) / 864e5); }
+  function prio(s) { return s >= 90 ? ["p1", "P1", "Critique"] : s >= 70 ? ["p2", "P2", "Important"] : s >= 50 ? ["p3", "P3", "Intéressant"] : ["p4", "P4", "Veille"]; }
+  function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
+  function longDay(iso) { var d = new Date(iso + "T12:00:00"); return JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
+  function dayLabel(iso) {
+    var diff = days(latest, iso), d = new Date(iso + "T12:00:00");
+    var txt = JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()];
+    return (diff === 0 ? "Dernière édition · " : diff === 1 ? "Veille · " : "") + txt;
+  }
+  function hour(iso) { var d = new Date(iso); return isNaN(d) ? "" : String(d.getHours()).padStart(2, "0") + "h" + String(d.getMinutes()).padStart(2, "0"); }
+
+  // ---------- filtres ----------
+  function matches(it, ignoreCat) {
+    if (it.score < st.min) return false;
+    if (st.day) { if (it.edition !== st.day) return false; }
+    else if (days(latest, it.edition) >= st.period) return false;
+    if (!ignoreCat && st.cat !== "all" && it.categorie !== st.cat) return false;
+    var terms = norm(st.q).split(/\s+/).filter(Boolean);
+    if (!terms.length) return true;
+    var hay = norm([it.titre, it.resume, it.pourquoi, it.action, it.source, catName(it.categorie)].join(" "));
+    return terms.every(function (t) { return hay.indexOf(t) !== -1; });
+  }
+  function sortFeed(a, b) { return a.edition !== b.edition ? (a.edition < b.edition ? 1 : -1) : b.score - a.score; }
+
+  // ---------- rendu ----------
   function render() {
-    var terms = norm(q.value).split(/\s+/).filter(Boolean), m = +min.value;
-    var hits = data.filter(function (it) {
-      if (it.score < m) return false;
-      var hay = norm(it.titre + " " + it.resume + " " + it.pourquoi + " " + it.source);
-      return terms.every(function (t) { return hay.indexOf(t) !== -1; });
-    }).sort(function (a, b) { return a.edition < b.edition ? 1 : a.edition > b.edition ? -1 : b.score - a.score; }).slice(0, 60);
-    if (!terms.length && m < 70) { hits = hits.slice(0, 30); }
-    results.innerHTML = '<p class="note">' + hits.length + (hits.length === 60 ? "+" : "") + " article(s)</p>" + hits.map(function (it) {
-      var l = lvl(it.score);
-      return '<article class="card lvl-' + l[1] + '"><div class="meta"><span class="pill">' + it.score + " · " + l[2] +
-        "</span><span>" + esc(cats[it.categorie] || "Autre") + "</span><span>" + esc(it.source) + "</span><span>" + esc(it.edition) +
-        '</span></div><h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.titre) + "</a></h3>" +
-        (it.resume ? '<p class="resume">' + esc(it.resume) + "</p>" : "") +
-        '<p class="why"><span>Pourquoi ce score</span> ' + esc(it.pourquoi) + "</p></article>";
+    renderTabs();
+    renderChannels();
+    renderKpis();
+    $("tools").hidden = st.view === "archives" || st.view === "echeances";
+    $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris";
+    $("v-echeances").hidden = st.view !== "echeances";
+    $("v-archives").hidden = st.view !== "archives";
+    $("daychip").hidden = !st.day;
+    if (st.day) $("daychip-t").textContent = "Édition du " + longDay(st.day);
+    if (st.view === "echeances") renderDeadlines();
+    else if (st.view === "archives") renderArchives();
+    else renderFeed();
+  }
+
+  function renderTabs() {
+    var unread = data.filter(function (it) { return !read.has(it.id); }).length;
+    var upcoming = data.filter(function (it) { return it.echeance && it.echeance.date >= today; }).length;
+    $("t-journal-n").textContent = unread;
+    $("t-favoris-n").textContent = data.filter(function (it) { return favs.has(it.id); }).length;
+    $("t-echeances-n").textContent = upcoming;
+    document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.view === st.view); });
+  }
+
+  function renderChannels() {
+    var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : matches(it, true); });
+    var html = '<p class="lbl">Canaux</p>' + channel("all", "Tous les canaux", "", pool);
+    CATS.forEach(function (c) {
+      html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return it.categorie === c.key; }));
+    });
+    $("rail").innerHTML = html;
+  }
+  function channel(key, name, sub, items) {
+    var unread = items.filter(function (it) { return !read.has(it.id); }).length;
+    var color = key === "all" ? "var(--accent)" : "var(--c-" + key + ")";
+    return '<button type="button" class="ch" data-cat="' + key + '" aria-pressed="' + (st.cat === key) + '" style="--cc:' + color + '"><i></i><span>' +
+      esc(name) + (sub ? "<small>" + esc(sub) + "</small>" : "") + '</span><em class="' + (unread ? "hot" : "") + '" title="' + unread +
+      ' non lu(s) sur ' + items.length + '">' + unread + "</em></button>";
+  }
+
+  function renderKpis() {
+    var unread = data.filter(function (it) { return !read.has(it.id); });
+    var p1 = unread.filter(function (it) { return it.score >= 90; }).length;
+    $("k-unread").textContent = unread.length;
+    $("k-p1").textContent = p1;
+    $("k-p1").parentNode.classList.toggle("alert", p1 > 0);
+    $("k-p2").textContent = unread.filter(function (it) { return it.score >= 70 && it.score < 90; }).length;
+    $("k-today").textContent = data.filter(function (it) { return it.edition === latest; }).length;
+  }
+
+  function renderFeed() {
+    var fav = st.view === "favoris";
+    var items = data.filter(function (it) {
+      if (fav) return favs.has(it.id) && (st.cat === "all" || it.categorie === st.cat) && (!st.q || matches(Object.assign({}, it, { edition: latest, score: 100 })));
+      return matches(it) && !(st.hideRead && read.has(it.id));
+    }).sort(sortFeed);
+    var feed = $("feed");
+    if (!items.length) {
+      feed.innerHTML = '<div class="empty">' + (fav ? "Aucun favori pour l'instant. Utilise l'étoile d'un article pour le retrouver ici." :
+        st.hideRead ? "Tout est acquitté. Rien de nouveau à traiter sur ce canal." : "Aucun article ne correspond à ces critères.") + "</div>";
+      return;
+    }
+    var html = "", day = "", n = 0;
+    items.slice(0, st.limit).forEach(function (it) {
+      if (it.edition !== day) { day = it.edition; html += '<div class="day">' + esc(dayLabel(day)) + "</div>"; }
+      html += card(it, n++);
+    });
+    if (items.length > st.limit) html += '<button type="button" class="btn more" data-more>Afficher ' + Math.min(PAGE, items.length - st.limit) + " articles de plus</button>";
+    feed.innerHTML = html;
+  }
+
+  function card(it, n) {
+    var p = prio(it.score), isRead = read.has(it.id), isFav = favs.has(it.id);
+    var due = it.echeance ? '<span class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</span>" : "";
+    return '<article class="ev ' + p[0] + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ");animation-delay:" + Math.min(n, 12) * 30 + 'ms" data-id="' + it.id + '">' +
+      '<div class="prio"><span class="led" aria-hidden="true"></span><b>' + it.score + "</b><small>" + p[1] + "<br>" + p[2].toUpperCase() + "</small></div>" +
+      '<div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + esc(it.source) + "</span><span>" + hour(it.date) + "</span>" +
+      (isRead ? '<span class="state lu">LU</span>' : '<span class="state new">NON LU</span>') + "</div>" +
+      '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
+      (it.resume ? "<p>" + esc(it.resume) + "</p>" : "") +
+      '<p class="why">' + esc(it.pourquoi) + "</p>" +
+      (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + due +
+      '<div class="act"><button type="button" data-read>' + (isRead ? "Marquer non lu" : "✓ Acquitter") + "</button>" +
+      '<button type="button" data-fav aria-pressed="' + isFav + '">' + (isFav ? "★ Favori" : "☆ Favori") + "</button></div></div></article>";
+  }
+  function shortDate(iso) { var d = new Date(iso + "T12:00:00"); return d.getDate() + " " + MOIS_C[d.getMonth()] + " " + d.getFullYear(); }
+
+  function renderDeadlines() {
+    var items = data.filter(function (it) { return it.echeance; }).sort(function (a, b) { return a.echeance.date < b.echeance.date ? -1 : 1; });
+    var up = items.filter(function (it) { return it.echeance.date >= today; });
+    var past = items.filter(function (it) { return it.echeance.date < today; }).reverse();
+    var html = '<div class="ics">S\'abonner au calendrier dans Google Agenda, Outlook ou sur téléphone : <code>' + esc(CFG.ics || "") +
+      '</code><button type="button" class="btn" data-copy="' + esc(CFG.ics || "") + '">Copier le lien</button></div>';
+    if (!items.length) html += '<div class="empty">Aucune échéance repérée pour l\'instant. L\'IA les ajoute dès qu\'un texte annonce une date d\'entrée en vigueur ou une date limite.</div>';
+    if (up.length) html += '<div class="day">À venir</div>' + up.map(deadline).join("");
+    if (past.length) html += '<div class="day">Passées</div>' + past.map(deadline).join("");
+    $("v-echeances").innerHTML = html;
+  }
+  function deadline(it) {
+    var d = new Date(it.echeance.date + "T12:00:00"), left = days(it.echeance.date, today);
+    var when = left > 0 ? "J-" + left : left === 0 ? "Aujourd'hui" : "Passée";
+    return '<article class="dl' + (left < 0 ? " past" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ')"><div class="date"><b>' + d.getDate() + "</b><span>" +
+      MOIS_C[d.getMonth()] + " " + d.getFullYear() + "</span><em>" + when + '</em></div><div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) +
+      "</span><span>" + esc(it.source) + "</span></div><h3>" + esc(it.echeance.libelle) + '</h3><p><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
+      esc(it.titre) + "</a></p>" + (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + "</div></article>";
+  }
+
+  function renderArchives() {
+    var byDay = {};
+    data.forEach(function (it) { (byDay[it.edition] = byDay[it.edition] || []).push(it); });
+    var keys = Object.keys(byDay).sort().reverse(), html = "", month = "";
+    keys.forEach(function (k) {
+      var m = k.slice(0, 7);
+      if (m !== month) {
+        if (month) html += "</ul>";
+        month = m; var d = new Date(k + "T12:00:00");
+        html += '<h2 class="month">' + MOIS[d.getMonth()].replace(/^./, function (c) { return c.toUpperCase(); }) + " " + d.getFullYear() + '</h2><ul class="arch">';
+      }
+      var counts = [0, 0, 0, 0], unread = 0;
+      byDay[k].forEach(function (it) { counts[["p1", "p2", "p3", "p4"].indexOf(prio(it.score)[0])]++; if (!read.has(it.id)) unread++; });
+      var parts = ["Critique", "Important", "Intéressant", "Veille"].map(function (l, i) {
+        return counts[i] ? '<span style="--pc:var(--p' + (i + 1) + ')"><i>●</i> ' + counts[i] + " " + l.toLowerCase() + "</span>" : "";
+      }).join("");
+      html += '<li><button type="button" data-day="' + k + '"><span class="d">' + esc(longDay(k)) + '</span><span class="n">' + parts +
+        "<span>" + unread + " non lu" + (unread > 1 ? "s" : "") + "</span></span></button></li>";
+    });
+    $("v-archives").innerHTML = keys.length ? html + "</ul>" : '<div class="empty">Les archives se rempliront au fil des éditions.</div>';
+  }
+
+  function renderTicker() {
+    var hot = data.filter(function (it) { return it.score >= 70; }).sort(sortFeed).slice(0, 8);
+    if (!hot.length) { $("ticker").hidden = true; return; }
+    $("ticker-track").innerHTML = hot.map(function (it) {
+      var p = prio(it.score);
+      return '<span style="--pc:var(--' + p[0] + ')"><i>■ ' + p[1] + " " + it.score + "</i>" + esc(it.titre) + "</span>";
     }).join("");
   }
-  document.getElementById("search-form").addEventListener("submit", function (e) { e.preventDefault(); });
-  q.addEventListener("input", render); min.addEventListener("change", render);
-  fetch("articles.json").then(function (r) { return r.json(); }).then(function (d) { data = d; render(); })
-    .catch(function () { results.innerHTML = '<p class="note">La recherche n\'a pas pu charger les articles.</p>'; });
+
+  // ---------- interactions ----------
+  function setView(v) { st.view = v; st.limit = PAGE; if (v !== "journal") st.day = ""; render(); window.scrollTo({ top: 0 }); }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var tab = t.closest(".tab"); if (tab) return setView(tab.dataset.view);
+    var ch = t.closest(".ch");
+    if (ch) { st.cat = ch.dataset.cat; st.limit = PAGE; if (st.view !== "journal" && st.view !== "favoris") st.view = "journal"; return render(); }
+    var dayBtn = t.closest("[data-day]"); if (dayBtn) { st.day = dayBtn.dataset.day; st.view = "journal"; st.limit = PAGE; render(); return window.scrollTo({ top: 0 }); }
+    if (t.closest("[data-more]")) { st.limit += PAGE; return render(); }
+    var copy = t.closest("[data-copy]");
+    if (copy) {
+      var done = function () { copy.textContent = "Lien copié"; };
+      try { navigator.clipboard.writeText(copy.dataset.copy).then(done, function () {}); } catch (err) {}
+      return;
+    }
+    var ev = t.closest(".ev"); if (!ev) return;
+    var id = ev.dataset.id;
+    if (t.closest("[data-read]")) {
+      if (read.has(id)) read.delete(id); else { read.add(id); ev.classList.add("flash"); }
+      saveSet("veilletls.lus", read); setTimeout(render, read.has(id) ? 450 : 0);
+    } else if (t.closest("[data-fav]")) {
+      if (favs.has(id)) favs.delete(id); else favs.add(id);
+      saveSet("veilletls.favoris", favs); render();
+    } else if (t.closest("[data-open]")) {
+      read.add(id); saveSet("veilletls.lus", read); setTimeout(render, 300);
+    }
+  });
+  $("q").addEventListener("input", function (e) { st.q = e.target.value; st.limit = PAGE; render(); });
+  $("period").addEventListener("change", function (e) { st.period = +e.target.value; st.day = ""; st.limit = PAGE; render(); });
+  $("min").addEventListener("change", function (e) { st.min = +e.target.value; st.limit = PAGE; render(); });
+  $("hide-read").addEventListener("change", function (e) { st.hideRead = e.target.checked; render(); });
+  $("daychip-x").addEventListener("click", function () { st.day = ""; render(); });
+  $("ack-all").addEventListener("click", function () {
+    data.forEach(function (it) { if (st.view === "favoris" ? favs.has(it.id) : matches(it)) read.add(it.id); });
+    saveSet("veilletls.lus", read); render();
+  });
+
+  function tick() { $("clock").textContent = new Date().toLocaleTimeString("fr-FR"); }
+
+  function boot() {
+    var el = $("boot");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var seen = false;
+    try { seen = sessionStorage.getItem("veilletls.boot") === "1"; sessionStorage.setItem("veilletls.boot", "1"); } catch (e) {}
+    if (reduce || seen || !el) { if (el) el.remove(); return; }
+    var lines = ["> Connexion au poste de supervision", "> Synchronisation des flux de veille", "> Chargement des événements", "> Poste opérationnel"];
+    var pre = el.querySelector("pre"), i = 0;
+    (function next() {
+      if (i < lines.length) {
+        pre.innerHTML += esc(lines[i]) + (i < lines.length - 1 ? ' <span class="ok">[OK]</span>' : "") + "\n";
+        i++; setTimeout(next, 170);
+      } else { el.classList.add("done"); setTimeout(function () { el.remove(); }, 450); }
+    })();
+  }
+
+  function start(articles) {
+    data = articles;
+    latest = data.reduce(function (m, it) { return it.edition > m ? it.edition : m; }, "") || today;
+    if (CFG.updated) $("last").textContent = CFG.updated;
+    renderTicker();
+    render();
+  }
+
+  boot();
+  tick(); setInterval(tick, 1000);
+  if (window.VEILLE_ARTICLES) start(window.VEILLE_ARTICLES);
+  else fetch("articles.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(start)
+    .catch(function () { $("feed").innerHTML = '<div class="empty">Impossible de charger les articles. Vérifie ta connexion puis recharge la page.</div>'; });
+
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
 })();
