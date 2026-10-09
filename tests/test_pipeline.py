@@ -53,8 +53,10 @@ def test_ai_response_parsing(monkeypatch):
     kept = prefilter.prefilter(prefilter.deduplicate(SAMPLE, {}), PROFILE, 10)
     payload = {"analyses": [
         {"id": "id1", "categorie": "reglementation", "score": 140, "titre": "Décret carte pro",
-         "resume": "Un décret modifie la carte.", "pourquoi": "Impact direct sur le centre."},
-        {"id": "inconnu", "categorie": "marche", "score": 50, "titre": "x", "resume": "", "pourquoi": ""},
+         "resume": "Un décret modifie la carte.", "pourquoi": "Impact direct sur le centre.",
+         "action": "Prévenir les opérateurs", "echeance_date": "2027-03-01", "echeance_libelle": "Entrée en vigueur"},
+        {"id": "inconnu", "categorie": "marche", "score": 50, "titre": "x", "resume": "", "pourquoi": "",
+         "action": "", "echeance_date": "", "echeance_libelle": ""},
     ]}
 
     class FakeMessages:
@@ -69,6 +71,8 @@ def test_ai_response_parsing(monkeypatch):
     monkeypatch.setattr(analyze.anthropic, "Anthropic", lambda: types.SimpleNamespace(messages=FakeMessages()))
     out = {it["id"]: it for it in analyze.analyze(kept, PROFILE, "claude-haiku-5-5", [])}
     assert out["id1"]["score"] == 100 and out["id1"]["analyse_par"] == "claude-haiku-5-5"
+    assert out["id1"]["action"] == "Prévenir les opérateurs"
+    assert out["id1"]["echeance"] == {"date": "2027-03-01", "libelle": "Entrée en vigueur"}
     assert "inconnu" not in out
     assert out["id4"]["analyse_par"] == "mots-clés"   # absent de la réponse : notation de secours
 
@@ -76,18 +80,31 @@ def test_ai_response_parsing(monkeypatch):
 def test_site_build(tmp_path, monkeypatch):
     monkeypatch.setattr(site, "OUT", tmp_path / "site")
     arts = [
-        {**SAMPLE[0], "edition": "2026-10-08", "categorie": "reglementation", "score": 94, "resume": "R<script>", "pourquoi": "P"},
+        {**SAMPLE[0], "edition": "2026-10-08", "categorie": "reglementation", "score": 94, "resume": "R<script>",
+         "pourquoi": "P", "action": "Former les opérateurs", "echeance": {"date": "2027-04-01", "libelle": "Entrée en vigueur"}},
         {**SAMPLE[3], "edition": "2026-10-09", "categorie": "marche", "score": 55, "resume": "R", "pourquoi": "P"},
         {**SAMPLE[2], "edition": "2026-10-09", "categorie": "reglementation", "score": 10, "resume": "", "pourquoi": "P"},
     ]
     site.build(PROFILE, SITE, arts, date(2026, 10, 9))
     out = tmp_path / "site"
+    public = json.loads((out / "articles.json").read_text(encoding="utf-8"))
+    assert [it["id"] for it in public] == ["id4", "id1"]          # score 10 non publié, plus récent d'abord
+    assert public[1]["resume"] == "R<script>"                       # échappé côté navigateur, pas dans le JSON
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert "Verisure" in index and "CNIL sanctionne" not in index   # score 10 non publié
-    assert "&lt;script&gt;" in (out / "editions" / "2026-10-08.html").read_text(encoding="utf-8")
-    assert "2026-10-08.html" in index                                # lien vers l'édition précédente
-    assert len(json.loads((out / "articles.json").read_text(encoding="utf-8"))) == 2
+    assert '"key": "reglementation"' in index and "app.js" in index
+    ics = (out / "echeances.ics").read_text(encoding="utf-8")
+    assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1
     assert "<rss" in (out / "feed.xml").read_text(encoding="utf-8")
+    assert json.loads((out / "manifest.webmanifest").read_text(encoding="utf-8"))["display"] == "standalone"
+    assert "__VERSION__" not in (out / "sw.js").read_text(encoding="utf-8")
+    for name in ("icon-192.png", "icon-512.png", "icon.svg", "style.css", "mentions-legales.html"):
+        assert (out / name).exists()
+
+
+def test_deadline_validation():
+    assert analyze._deadline({"echeance_date": "2027-01-01", "echeance_libelle": "X"}) == {"date": "2027-01-01", "libelle": "X"}
+    assert analyze._deadline({"echeance_date": "janvier", "echeance_libelle": "X"}) is None
+    assert analyze._deadline({"echeance_date": "", "echeance_libelle": ""}) is None
 
 
 def test_replace_articles(tmp_path, monkeypatch):

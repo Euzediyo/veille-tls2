@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+from datetime import date
 
 import anthropic
 
@@ -46,6 +47,13 @@ Pour chaque article reçu, renvoie :
   sobrement et n'invente aucun détail.
 - pourquoi : une ou deux phrases qui expliquent le score pour ce lecteur, en nommant
   l'impact concret (procédures, formation des opérateurs, obligations, planning, outils...).
+- action : si le score est d'au moins 70, une action concrète et courte que le responsable
+  du centre peut mener (ex. « Mettre à jour la procédure de levée de doute vidéo »,
+  « Informer les opérateurs lors du prochain briefing »). Sinon, chaîne vide.
+- echeance_date et echeance_libelle : si l'article mentionne une date future qui crée une
+  obligation ou un changement (entrée en vigueur, fin de consultation, date limite), la date
+  au format AAAA-MM-JJ et un libellé court (ex. « Entrée en vigueur du décret formation »).
+  Si le jour exact n'est pas connu, prends le premier jour du mois. Sinon, chaînes vides.
 
 Tu ne connais l'article que par son titre et son extrait : base-toi uniquement sur eux."""
 
@@ -66,8 +74,12 @@ SCHEMA = {
                     "titre": {"type": "string"},
                     "resume": {"type": "string"},
                     "pourquoi": {"type": "string"},
+                    "action": {"type": "string"},
+                    "echeance_date": {"type": "string"},
+                    "echeance_libelle": {"type": "string"},
                 },
-                "required": ["id", "categorie", "score", "titre", "resume", "pourquoi"],
+                "required": ["id", "categorie", "score", "titre", "resume", "pourquoi",
+                             "action", "echeance_date", "echeance_libelle"],
                 "additionalProperties": False,
             },
         }
@@ -100,8 +112,21 @@ def keyword_fallback(item: dict, profile: dict, reason: str) -> dict:
         "titre": item["titre"],
         "resume": "",
         "pourquoi": f"Score estimé par mots-clés ({reason}).",
+        "action": "",
+        "echeance": None,
         "analyse_par": "mots-clés",
     }
+
+
+def _deadline(a: dict) -> dict | None:
+    """Échéance proposée par l'IA, gardée seulement si la date est valide."""
+    raw = (a.get("echeance_date") or "").strip()
+    try:
+        day = date.fromisoformat(raw)
+    except ValueError:
+        return None
+    label = (a.get("echeance_libelle") or "").strip()
+    return {"date": day.isoformat(), "libelle": label} if label else None
 
 
 def analyze(items: list[dict], profile: dict, model: str, report: list[str]) -> list[dict]:
@@ -160,6 +185,8 @@ def analyze(items: list[dict], profile: dict, model: str, report: list[str]) -> 
                             "titre": a["titre"].strip() or item["titre"],
                             "resume": a["resume"].strip(),
                             "pourquoi": a["pourquoi"].strip(),
+                            "action": a["action"].strip() if a["score"] >= 70 else "",
+                            "echeance": _deadline(a),
                             "analyse_par": model})
         for item_id_, item in by_id.items():
             if item_id_ not in done:
