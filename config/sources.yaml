@@ -1,0 +1,42 @@
+# Sources collectées chaque jour.
+#
+# google_news : une recherche Google News par ligne (syntaxe Google : guillemets,
+#   OR, signe moins pour exclure). "when:2d" limite aux deux derniers jours.
+# rss : flux RSS ou Atom directs. "filtre: mots_cles" ne garde que les articles
+#   contenant au moins un mot-clé du profil (utile pour les flux généralistes).
+# pages : pages sans flux RSS. Le programme signale les nouveaux liens apparus.
+#
+# Le programme respecte le fichier robots.txt de chaque site : une source qui
+# interdit les robots est ignorée et signalée dans le rapport du passage.
+
+google_news:
+  - '"télésurveillance" when:2d'
+  - '"centre de télésurveillance" OR "téléopérateur" OR "levée de doute" when:2d'
+  - '"CNAPS" sécurité when:2d'
+  - '"sécurité privée" (décret OR arrêté OR loi OR réglementation OR réforme) when:2d'
+  - '"agents de sécurité" (salaires OR convention OR grève OR accord OR formation) when:2d'
+  - '"prévention et sécurité" ("convention collective" OR branche OR avenant) when:7d'
+  - '(APSAD OR CNPP) (certification OR référentiel OR règle OR norme) when:7d'
+  - '"vidéoprotection" OR "vidéosurveillance algorithmique" when:2d'
+  - '("PTI" OR "DATI") "travailleur isolé" when:7d'
+  - '"sécurité électronique" (marché OR rachat OR acquisition OR lancement) when:7d'
+  - '(Verisure OR Securitas OR Seris OR Prosegur OR Nexecur OR "EPS télésurveillance") when:2d'
+  - '"intelligence artificielle" (vidéosurveillance OR "analyse vidéo" OR alarmes) when:2d'
+  - '"sécurité privée" (recrutement OR pénurie OR formation OR attractivité) when:7d'
+  - '"GPMSE" OR "GES sécurité" OR "USP sécurité privée" when:7d'
+
+rss:
+  - nom: "CNIL"
+    url: "https://www.cnil.fr/fr/rss.xml"
+    filtre: mots_cles
+  - nom: "GPMSE"
+    url: "https://www.gpmse.com/feed/"
+    filtre: aucun
+
+pages:
+  - nom: "CNPP — Ressources et actualités"
+    url: "https://www.cnpp.com/blog"
+    lien_contient: "/blog/"
+  - nom: "CNPP — Certification APSAD"
+    url: "https://www.cnpp.com/tester-certifier/certifier-prestations-services-apsad"
+    lien_contient: ""

@@ -1,0 +1,99 @@
+# Profil de veille : c'est ce que l'IA lit avant de noter chaque article.
+# Modifiez librement les mots-clés et les descriptions, puis enregistrez :
+# le prochain passage quotidien en tiendra compte.
+
+lecteur: >
+  Responsable d'un centre de télésurveillance en France. Il encadre des
+  téléopérateurs et participe à l'exploitation du centre (traitement des
+  alarmes, levée de doute, procédures, qualité de service). Il doit suivre la
+  réglementation de la sécurité privée, les référentiels APSAD/CNPP, le droit
+  social de la branche prévention-sécurité, les évolutions technologiques et
+  le marché. Le journal est aussi lu par des opérateurs et des confrères.
+
+question_cle: >
+  Cette information concerne-t-elle, même indirectement, l'organisation,
+  les obligations, les équipes ou les outils d'un centre de télésurveillance ?
+
+categories:
+  reglementation:
+    nom: "Réglementation"
+    priorite: "très haute"
+    description: >
+      CNAPS, Code de la sécurité intérieure (livre VI), autorisations,
+      agréments, cartes professionnelles, obligations des entreprises et des
+      agents, contrôles et sanctions, législation et jurisprudence, vidéoprotection,
+      RGPD appliqué à la sécurité, textes européens à impact.
+    mots_cles: [CNAPS, "sécurité privée", "sécurité intérieure", "carte professionnelle",
+      agrément, autorisation d'exercer, décret, arrêté, "projet de loi", "proposition de loi",
+      jurisprudence, sanction, vidéoprotection, "vidéosurveillance algorithmique", RGPD, CNIL,
+      "activités privées de sécurité", "livre VI"]
+  apsad:
+    nom: "APSAD / CNPP"
+    priorite: "très haute"
+    description: >
+      APSAD, CNPP, règles et référentiels (R31, R30, N30, N31, R81, R82...),
+      certification des entreprises et des installations, télésurveillance,
+      alarmes, intrusion, transmission, levée de doute, maintenance, exigences
+      techniques. Une évolution d'un référentiel existant compte autant qu'une
+      nouvelle norme, souvent plus.
+    mots_cles: [APSAD, CNPP, R31, R30, N30, N31, R81, R82, référentiel, certification,
+      "règle APSAD", norme, "EN 50518", "EN 50136", "NF EN", intrusion, transmission, maintenance]
+  social:
+    nom: "Social / RH"
+    priorite: "haute"
+    description: >
+      Convention collective des entreprises de prévention et de sécurité
+      (IDCC 1351) : salaires minima, coefficients, classifications, temps de
+      travail, heures supplémentaires, nuit, dimanches et jours fériés, congés,
+      repos, pauses, planning, astreintes, absences, maladie, accidents du
+      travail, disciplinaire, licenciement, contrats, période d'essai, formation,
+      jurisprudence sociale concernant la sécurité privée.
+    mots_cles: ["convention collective", "prévention et sécurité", "prévention-sécurité", IDCC,
+      "1351", "salaires minima", coefficient, classification, "temps de travail", "travail de nuit",
+      "heures supplémentaires", astreinte, "accord de branche", avenant, "agents de sécurité",
+      licenciement, "Cour de cassation", prud'hommes, "accident du travail", grève]
+  telesurveillance:
+    nom: "Télésurveillance"
+    priorite: "très haute"
+    description: >
+      Télésurveillance, téléopérateurs, centres de télésurveillance, traitement
+      des alarmes, levée de doute (vidéo, audio), appels entrants et sortants,
+      procédures, intrusion, incendie, PTI/DATI, vidéoprotection, transmission,
+      détection, technologies, IA, automatisation, analyse vidéo, supervision,
+      logiciels de télésurveillance et de sécurité.
+    mots_cles: [télésurveillance, téléopérateur, "centre de télésurveillance", "levée de doute",
+      alarme, PTI, DATI, "travailleur isolé", téléassistance, vidéosurveillance, "analyse vidéo",
+      supervision, "sécurité électronique", hypervision, "fausses alarmes", détecteur]
+  marche:
+    nom: "Secteur / Marché"
+    priorite: "moyenne"
+    description: >
+      Acquisitions, rachats, fusions, nouveaux acteurs et services, innovations,
+      IA, logiciels, start-up, évolution du marché, concurrence, investissements,
+      nouveaux produits et équipements, stratégies des grands groupes du secteur.
+    mots_cles: [rachat, acquisition, fusion, "levée de fonds", "chiffre d'affaires", marché,
+      Verisure, Securitas, Seris, Prosegur, Onet, Nexecur, EPS, Ajax, Hikvision,
+      Axis, Genetec, Milestone, start-up, lancement, innovation]
+  management:
+    nom: "Management / Exploitation"
+    priorite: "moyenne"
+    description: >
+      Management et exploitation d'un centre : performance, qualité, formation,
+      recrutement, fidélisation, absentéisme, organisation des équipes,
+      expérience client, qualité de service, KPI, productivité, automatisation,
+      IA appliquée au management, formation des téléopérateurs, bonnes pratiques.
+    mots_cles: [management, recrutement, fidélisation, absentéisme, "qualité de service", KPI,
+      productivité, formation, "relation client", "centre d'appels", "expérience client",
+      turnover, "bonnes pratiques", "pénurie"]
+
+# Mots qui signalent presque toujours un article hors sujet.
+exclusions: ["horoscope", "recette", "football", "ligue 1", "people", "météo"]
+
+bareme:
+  - [90, 100, "CRITIQUE", "À lire en priorité : impact direct probable sur le centre (ex. modification réglementaire CNAPS touchant la télésurveillance)."]
+  - [70, 89, "IMPORTANT", "À lire prochainement (ex. évolution d'une exigence APSAD)."]
+  - [50, 69, "INTÉRESSANT", "Utile mais pas urgent (ex. nouvelle technologie de traitement vidéo)."]
+  - [30, 49, "VEILLE", "À garder en mémoire, lecture facultative."]
+  - [0, 29, "IGNORÉ", "Hors sujet ou sans intérêt pour un centre de télésurveillance ; n'apparaît pas dans le journal."]
+
+seuil_publication: 30
