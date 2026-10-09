@@ -27,7 +27,8 @@ LEVELS = [(90, "Critique"), (70, "Important"), (50, "Intéressant"), (30, "Veill
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
                  "resume", "pourquoi", "action", "echeance", "payant")
 FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
-         "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap")
+         "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600"
+         "&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap")
 
 
 def label(score: int) -> str:
@@ -47,6 +48,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description or site['sous_titre'])}">
 <meta name="theme-color" content="#070c14">
+<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");d.dataset.layout=localStorage.getItem("veilletls.affichage")||"supervision"}}catch(e){{}}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -77,17 +79,22 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     return head(site["titre"], site) + f"""
 <body>
 <div class="boot" id="boot" aria-hidden="true"><pre></pre></div>
-<header class="bar">
+<header class="bar home">
   <div class="bar-in">
     <a class="logo" href="index.html"><span class="radar" aria-hidden="true"></span>
       <span class="logo-t">VEILLE<b>//</b>TLS<small>POSTE DE VEILLE · TÉLÉSURVEILLANCE</small></span></a>
     <div class="status"><span class="on">Système en ligne</span><span>Dernière collecte : <span id="last">--</span></span></div>
     <div class="bar-r">
       <span class="clock" id="clock" aria-hidden="true">--:--:--</span>
+      <div class="prefs" role="group" aria-label="Affichage">
+        <button type="button" data-layout-set="supervision" aria-pressed="true">Supervision</button><button type="button" data-layout-set="journal" aria-pressed="false">Journal</button>
+      </div>
+      <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button>
       <a class="scan-btn" href="{REPO_ACTIONS}" target="_blank" rel="noopener" title="Lancer une collecte immédiate (réservé à l'administrateur, compte GitHub requis)">
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L7 1" stroke="currentColor" stroke-width="1.5"/></svg><span>Scan immédiat</span></a>
     </div>
   </div>
+  <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p>{escape(site['sous_titre'])}</p><p class="mast-d" id="mast-d"></p></div>
   <div class="ticker" id="ticker"><b>ALERTES</b><div class="lane"><div class="track" id="ticker-track"></div></div></div>
 </header>
 
@@ -100,9 +107,8 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 </nav>
 
 <div class="shell">
-  <nav class="rail" id="rail" aria-label="Catégories"></nav>
   <main class="main">
-    <section class="flash" id="flash" aria-label="Flash audio" hidden></section>
+    <nav class="rail" id="rail" aria-label="Catégories"></nav>
     <section class="kpis" aria-label="Synthèse">
       <div class="kpi un"><b id="k-unread">0</b><span>Non lus</span></div>
       <div class="kpi p1"><b id="k-p1">0</b><span>Critiques non lus</span></div>
@@ -124,6 +130,11 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     <div class="feed" id="v-echeances" hidden></div>
     <div id="v-archives" hidden></div>
   </main>
+  <aside class="side" id="side" aria-label="En complément">
+    <section class="flash" id="flash" aria-label="Flash audio" hidden></section>
+    <section class="box" id="side-due" hidden></section>
+    <section class="box" id="side-week" hidden></section>
+  </aside>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 {footer(site)}
