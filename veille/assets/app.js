@@ -10,7 +10,7 @@
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   var PAGE = 40;
 
-  var data = [], episodes = [], latest = "", today = isoLocal(new Date());
+  var data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date());
   var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
   var toastTimer = 0;
@@ -53,14 +53,16 @@
     renderTabs();
     renderChannels();
     renderKpis();
-    $("tools").hidden = st.view === "archives" || st.view === "echeances";
+    $("tools").hidden = st.view === "archives" || st.view === "echeances" || st.view === "semaine";
     $("flash").hidden = st.view !== "journal" || !episodes.length;
     $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris";
     $("v-echeances").hidden = st.view !== "echeances";
+    $("v-semaine").hidden = st.view !== "semaine";
     $("v-archives").hidden = st.view !== "archives";
     $("daychip").hidden = !st.day;
     if (st.day) $("daychip-t").textContent = "Édition du " + longDay(st.day);
-    if (st.view === "echeances") renderDeadlines();
+    if (st.view === "semaine") renderWeek();
+    else if (st.view === "echeances") renderDeadlines();
     else if (st.view === "archives") renderArchives();
     else renderFeed();
   }
@@ -179,6 +181,28 @@
       MOIS_C[d.getMonth()] + " " + d.getFullYear() + "</span><em>" + when + '</em></div><div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) +
       "</span><span>" + esc(it.source) + "</span></div><h3>" + esc(it.echeance.libelle) + '</h3><p><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
       esc(it.titre) + "</a></p>" + (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + "</div></article>";
+  }
+
+  // Résumé de la semaine : synthèse de l'IA, articles à retenir et échéances à venir.
+  function renderWeek() {
+    var box = $("v-semaine");
+    if (!weeks.length) { box.innerHTML = '<div class="empty">Le premier résumé de la semaine sera publié lors du prochain passage du matin.</div>'; return; }
+    var w = weeks[weekIdx], byId = {};
+    data.forEach(function (it) { byId[it.id] = it; });
+    var pick = weeks.length > 1 ? '<select id="week-pick" aria-label="Choisir une semaine">' + weeks.map(function (x, i) {
+      return '<option value="' + i + '"' + (i === weekIdx ? " selected" : "") + ">" + esc(x.titre) + (x.en_cours ? " (en cours)" : "") + "</option>"; }).join("") + "</select>" : "";
+    var html = '<section class="week"><div class="week-h"><span class="onair"><i></i>' + (w.en_cours ? "Semaine en cours" : "Bilan de la semaine") +
+      "</span><h2>" + esc(w.titre) + "</h2>" + pick + "</div>" +
+      (w.synthese ? '<div class="week-s">' + w.synthese.split(/\n\s*\n/).map(function (p) { return "<p>" + esc(p.trim()) + "</p>"; }).join("") + "</div>" : "") +
+      (w.en_cours ? '<p class="week-n">Mis à jour chaque matin jusqu\'à dimanche. Dernière mise à jour : ' + esc(longDay(w.maj)) + ".</p>" : "") + "</section>";
+    var items = w.articles.map(function (id) { return byId[id]; }).filter(Boolean);
+    html += '<div class="day">Les ' + items.length + " articles à retenir</div>";
+    html += items.length ? items.map(function (it, n) { return card(it, n); }).join("") : '<div class="empty">Aucun article important cette semaine.</div>';
+    var due = w.echeances.map(function (id) { return byId[id]; }).filter(Boolean);
+    if (due.length) html += '<div class="day">Échéances à venir</div>' + due.map(deadline).join("");
+    box.innerHTML = html;
+    var sel = $("week-pick");
+    if (sel) sel.addEventListener("change", function () { weekIdx = +sel.value; renderWeek(); });
   }
 
   function renderArchives() {
@@ -327,6 +351,9 @@
   if (window.VEILLE_ARTICLES) start(window.VEILLE_ARTICLES);
   else fetch("articles.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(start)
     .catch(function () { $("feed").innerHTML = '<div class="empty">Impossible de charger les articles. Vérifie ta connexion puis recharge la page.</div>'; });
+
+  if (!window.VEILLE_ARTICLES) fetch("semaines.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (list) { weeks = list || []; if (st.view === "semaine") render(); }).catch(function () {});
 
   if (!window.VEILLE_ARTICLES) fetch("podcast.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : []; })
     .then(function (list) { episodes = list || []; renderFlash(); render(); }).catch(function () {});

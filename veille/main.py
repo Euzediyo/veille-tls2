@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import analyze, avis, collect, enrich, notify, podcast, prefilter, site, store
+from . import analyze, avis, collect, enrich, notify, podcast, prefilter, semaine, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 
@@ -28,6 +28,7 @@ def load_yaml(name: str) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--site", action="store_true", help="régénérer seulement le site")
+    parser.add_argument("--semaine", action="store_true", help="mettre à jour le résumé de la semaine même sans collecte")
     parser.add_argument("--reanalyser", type=int, metavar="JOURS", default=0,
                         help="relire et réanalyser les articles des derniers jours (après un changement de consignes)")
     args = parser.parse_args()
@@ -77,6 +78,11 @@ def main() -> int:
             report.append(f"E-mail : échec ({exc.__class__.__name__}: {exc})")
 
     articles = store.load_articles()
+    if not args.site or args.semaine:
+        try:
+            semaine.update(articles, profile, site_cfg["modele"], today, report)
+        except Exception as exc:  # le résumé de la semaine ne doit pas bloquer la publication
+            report.append(f"Semaine : échec ({exc.__class__.__name__}: {exc})")
     site.build(profile, site_cfg, articles, today)
     report.append("Site : régénéré")
     try:

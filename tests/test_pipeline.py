@@ -277,3 +277,26 @@ def test_feedback_issues(tmp_path, monkeypatch):
     from veille.analyze import build_system_prompt
     prompt = build_system_prompt(PROFILE, avis.prompt_block(saved, PROFILE))
     assert "Cambriolage à Lyon" in prompt and "fait divers sans enjeu" in prompt
+
+
+def test_weekly_summary(tmp_path, monkeypatch):
+    from veille import semaine, store
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    monkeypatch.setattr(semaine, "WEEKS", tmp_path / "semaines.json")
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    arts = [
+        {"id": "a", "titre": "Décret CNAPS", "source": "Légifrance", "categorie": "reglementation", "score": 92, "edition": "2026-10-09",
+         "pourquoi": "p", "echeance": {"date": "2026-11-01", "libelle": "Entrée en vigueur"}},
+        {"id": "b", "titre": "Semaine d'avant", "source": "S", "categorie": "marche", "score": 80, "edition": "2026-10-04", "pourquoi": "p"},
+        {"id": "c", "titre": "Masqué", "source": "S", "categorie": "marche", "score": 85, "edition": "2026-10-08", "pourquoi": "p", "non_pertinent": True},
+        {"id": "d", "titre": "Faible", "source": "S", "categorie": "marche", "score": 40, "edition": "2026-10-08", "pourquoi": "p"},
+    ]
+    report = []
+    semaine.update(arts, PROFILE, "modele", date(2026, 10, 9), report)
+    w = semaine.load()[0]
+    assert w["lundi"] == "2026-10-05" and w["en_cours"] and w["articles"] == ["a"] and w["echeances"] == ["a"]
+    assert w["titre"] == "Semaine du 5 au 11 octobre 2026" and w["synthese"] == ""
+    semaine.update(arts, PROFILE, "modele", date(2026, 10, 12), report)  # lundi suivant : la semaine précédente est terminée
+    weeks = semaine.load()
+    assert [x["lundi"] for x in weeks] == ["2026-10-05", "2026-10-12"] and not weeks[0]["en_cours"]
+    assert semaine.label(date(2026, 9, 28)) == "Semaine du 28 septembre au 4 octobre 2026"

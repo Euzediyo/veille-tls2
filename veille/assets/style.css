@@ -168,6 +168,17 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;max-width:min(560px,calc(100vw - 32px));background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--p1);border-radius:6px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:.92rem;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .toast a,.toast button{font:12px var(--mono);color:var(--accent);background:none;border:1px solid var(--line);border-radius:4px;padding:4px 10px;cursor:pointer;text-decoration:none}
 
+/* ---------- La semaine ---------- */
+.week{background:linear-gradient(135deg,rgba(47,184,255,.08),rgba(22,103,255,.04));border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.week .onair{display:inline-flex;align-items:center;gap:7px;font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.week .onair i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 1.4s ease-in-out infinite}
+.week-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.week-h h2{font:700 1.2rem var(--display);margin:0;flex:1;min-width:200px}
+.week-h select{max-width:100%}
+.week-s{display:flex;flex-direction:column;gap:10px;font-size:1.02rem;line-height:1.6}
+.week-s p,.week-n{margin:0}
+.week-n{font:12px var(--mono);color:var(--muted)}
+
 /* ---------- Échéances ---------- */
 .dl{display:grid;grid-template-columns:96px minmax(0,1fr);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--cc);border-radius:6px;overflow:hidden}
 .dl .date{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--panel-2);padding:10px 4px;text-align:center}

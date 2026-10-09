@@ -93,6 +93,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 
 <nav class="tabs" role="tablist" aria-label="Vues">
   <button type="button" class="tab" role="tab" data-view="journal">Journal <em id="t-journal-n" title="non lus">0</em></button>
+  <button type="button" class="tab" role="tab" data-view="semaine">La semaine</button>
   <button type="button" class="tab" role="tab" data-view="favoris">Favoris <em id="t-favoris-n">0</em></button>
   <button type="button" class="tab" role="tab" data-view="echeances">Échéances <em id="t-echeances-n" title="à venir">0</em></button>
   <button type="button" class="tab" role="tab" data-view="archives">Archives</button>
@@ -119,6 +120,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <span class="daychip" id="daychip" hidden><span id="daychip-t"></span><button type="button" id="daychip-x" aria-label="Revenir à toutes les éditions">✕</button></span>
     </div>
     <div class="feed" id="v-journal"><div class="feed" id="feed"></div></div>
+    <div class="feed" id="v-semaine" hidden></div>
     <div class="feed" id="v-echeances" hidden></div>
     <div id="v-archives" hidden></div>
   </main>
@@ -265,6 +267,17 @@ def service_worker(version: str) -> str:
     return (ASSETS / "sw.js").read_text(encoding="utf-8").replace("__VERSION__", version)
 
 
+def weeks_public(public: list[dict]) -> list[dict]:
+    """Résumés de la semaine (data/semaines.json), du plus récent au plus ancien, limités aux articles publiés."""
+    path = ROOT / "data" / "semaines.json"
+    if not path.exists():
+        return []
+    ids = {it["id"] for it in public}
+    weeks = json.loads(path.read_text(encoding="utf-8"))
+    return [{**w, "articles": [i for i in w["articles"] if i in ids], "echeances": [i for i in w["echeances"] if i in ids]}
+            for w in sorted(weeks, key=lambda w: w["lundi"], reverse=True)]
+
+
 def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -287,6 +300,7 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")
     (OUT / "mentions-legales.html").write_text(legal_html(site, profile), encoding="utf-8")
     (OUT / "articles.json").write_text(json.dumps(public, ensure_ascii=False), encoding="utf-8")
+    (OUT / "semaines.json").write_text(json.dumps(weeks_public(public), ensure_ascii=False), encoding="utf-8")
     (OUT / "feed.xml").write_text(feed_xml(public, site, profile), encoding="utf-8")
     (OUT / "essentiel.html").write_text(essential_html(public, site, profile, today), encoding="utf-8")
     (OUT / "echeances.ics").write_text(ics(public, site), encoding="utf-8", newline="")
