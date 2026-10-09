@@ -42,9 +42,11 @@ Pour chaque article reçu, renvoie :
   télésurveillance méritent un score élevé. Les faits divers (un cambriolage, une
   agression) sont en général sous 30, sauf s'ils révèlent un enjeu pour les centres.
 - titre : un titre clair en français, sans le nom du site.
-- resume : deux ou trois phrases en français, écrites avec tes propres mots. Ne recopie
-  jamais de phrase de l'article (droit d'auteur). Si tu ne disposes que du titre, dis-le
-  sobrement et n'invente aucun détail.
+- resume : un résumé en français, écrit avec tes propres mots, qui permet de comprendre
+  l'essentiel sans ouvrir l'article : les faits, les acteurs, les chiffres et les dates utiles.
+  Quatre à six phrases (70 à 120 mots) quand l'extrait est assez riche ; plus court s'il est
+  maigre. Ne recopie jamais de phrase de l'article (droit d'auteur). Si tu ne disposes que du
+  titre, dis-le sobrement en une phrase et n'invente aucun détail.
 - pourquoi : une ou deux phrases qui expliquent le score pour ce lecteur, en nommant
   l'impact concret (procédures, formation des opérateurs, obligations, planning, outils...).
 - action : si le score est d'au moins 70, une action concrète et courte que le responsable
@@ -55,7 +57,8 @@ Pour chaque article reçu, renvoie :
   au format AAAA-MM-JJ et un libellé court (ex. « Entrée en vigueur du décret formation »).
   Si le jour exact n'est pas connu, prends le premier jour du mois. Sinon, chaînes vides.
 
-Tu ne connais l'article que par son titre et son extrait : base-toi uniquement sur eux."""
+Tu ne connais l'article que par son titre et son extrait (parfois le début du texte) : base-toi
+uniquement sur eux."""
 
 
 SCHEMA = {
@@ -93,7 +96,7 @@ def _article_block(item: dict) -> str:
     return (
         f"<article id=\"{item['id']}\">\n"
         f"Titre : {item['titre']}\nSource : {item['source']}\nDate : {item['date'][:10]}\n"
-        f"Extrait : {item['extrait'] or '(aucun extrait disponible)'}\n</article>"
+        f"Extrait : {item.get('texte') or item['extrait'] or '(aucun extrait disponible)'}\n</article>"
     )
 
 

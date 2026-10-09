@@ -43,13 +43,18 @@ def save_pages_state(state: dict) -> None:
     _write(DATA / "pages.json", state)
 
 
+def _storable(item: dict) -> dict:
+    """Le texte lu sur la page de l'article sert seulement à l'analyse : il n'est jamais enregistré."""
+    return {k: v for k, v in item.items() if k != "texte"}
+
+
 def add_articles(items: list[dict], today: date) -> None:
     path = DATA / "articles" / f"{today:%Y-%m}.json"
     existing = _read(path, [])
     known = {it["id"] for it in existing}
     for item in items:
         if item["id"] not in known:
-            existing.append({**item, "edition": today.isoformat()})
+            existing.append({**_storable(item), "edition": today.isoformat()})
     _write(path, existing)
 
 
@@ -59,7 +64,7 @@ def replace_articles(items: list[dict]) -> None:
     for path in sorted((DATA / "articles").glob("*.json")):
         existing = _read(path, [])
         if any(it["id"] in by_id for it in existing):
-            _write(path, [{**by_id[it["id"]], "edition": it["edition"]} if it["id"] in by_id else it for it in existing])
+            _write(path, [{**_storable(by_id[it["id"]]), "edition": it["edition"]} if it["id"] in by_id else it for it in existing])
 
 
 def load_articles(days: int | None = None, today: date | None = None) -> list[dict]:

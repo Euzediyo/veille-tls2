@@ -202,3 +202,38 @@ def test_dialogue(monkeypatch, tmp_path):
     monkeypatch.setitem(sys.modules, "edge_tts", types.SimpleNamespace(Communicate=FakeCommunicate))
     podcast.synthesize(text, tmp_path / "a.mp3", {"CLAIRE": "voix-f", "THOMAS": "voix-m"})
     assert spoken == ["voix-f", "voix-m"] and (tmp_path / "a.mp3").read_bytes() == b"abab"
+
+
+def test_read_page_and_paywall():
+    from veille import enrich
+    paid = """<html><head><script type="application/ld+json">{"@type":"NewsArticle","isAccessibleForFree":"False"}</script></head>
+    <body><nav>Menu Déjà abonné ?</nav><article><p>Le décret publié ce matin modifie les règles de formation des opérateurs de télésurveillance.</p>
+    <p>court</p></article></body></html>"""
+    text, payant = enrich.read_page(paid)
+    assert payant is True and text.startswith("Le décret publié") and "court" not in text and "Menu" not in text
+
+    marked = "<html><body><article><p>" + "Un long paragraphe sur la sécurité privée et ses évolutions. " * 3 + \
+             "</p><div class='paywall-box'>Abonnez-vous pour lire la suite</div></article></body></html>"
+    assert enrich.read_page(marked)[1] is True
+
+    free = """<html><head><meta name="description" content="Résumé de la page."></head><body><p>bref</p></body></html>"""
+    assert enrich.read_page(free) == ("Résumé de la page.", None)
+    gnews = {**SAMPLE[0], "url": "https://news.google.com/rss/articles/abc", "source": "AEF info"}
+    assert enrich.enrich_one(gnews, {"aef info"})["payant"] is True       # lien Google : pas de lecture, liste des sources
+
+
+def test_text_not_stored_and_essential_page(tmp_path, monkeypatch):
+    from veille import store
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    store.add_articles([{**SAMPLE[0], "texte": "texte complet de l'article", "payant": True}], date(2026, 10, 9))
+    saved = json.loads((tmp_path / "articles" / "2026-10.json").read_text(encoding="utf-8"))
+    assert "texte" not in saved[0] and saved[0]["payant"] is True
+
+    assert "texte complet" in analyze._article_block({**SAMPLE[0], "texte": "texte complet"})
+    arts = [{**SAMPLE[0], "edition": "2026-10-09", "categorie": "reglementation", "score": 92, "resume": "Résumé long.",
+             "pourquoi": "P", "action": "Former", "echeance": None, "payant": True},
+            {**SAMPLE[3], "edition": "2026-10-05", "categorie": "marche", "score": 75, "resume": "R", "pourquoi": "P", "action": "", "echeance": None}]
+    page = site.essential_html(arts, SITE, PROFILE, date(2026, 10, 9))
+    day, week = page.split("L'essentiel de la semaine</h2>")
+    assert "carte professionnelle" in day and "Verisure" not in day.split("L'essentiel du jour</h2>")[1]
+    assert "Verisure" in week and "réservé aux abonnés" in day and "Action recommandée : Former" in day

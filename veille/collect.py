@@ -112,7 +112,7 @@ def collect_rss(feeds: list[dict], report: list[str]) -> list[dict]:
             continue
         for entry in feed.entries:
             title = entry.get("title", "").strip()
-            items.append({
+            item = {
                 "id": item_id(entry.get("link", ""), title),
                 "titre": title,
                 "url": entry.get("link", ""),
@@ -121,7 +121,12 @@ def collect_rss(feeds: list[dict], report: list[str]) -> list[dict]:
                 "extrait": clean_text(entry.get("summary", "")),
                 "origine": "rss",
                 "filtre": feed_cfg.get("filtre", "aucun"),
-            })
+            }
+            # Certains flux donnent le début du texte : il sert à l'analyse, sans être enregistré.
+            content = clean_text((entry.get("content") or [{}])[0].get("value", ""), 2500)
+            if len(content) > len(item["extrait"]):
+                item["texte"] = content
+            items.append(item)
         report.append(f"{name} : {len(feed.entries)} articles")
     return items
 

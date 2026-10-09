@@ -32,6 +32,18 @@ rss:
   - nom: "GPMSE"
     url: "https://www.gpmse.com/feed/"
     filtre: aucun
+  - nom: "83-629.fr"
+    url: "https://www.83-629.fr/rss"
+    filtre: aucun
+  - nom: "GES sécurité privée"
+    url: "https://www.ges-securite-privee.org/feed/"
+    filtre: aucun
+  - nom: "Kohen Avocats"
+    url: "https://kohenavocats.fr/feed/"
+    filtre: mots_cles
+  - nom: "Opérationnels SLDS"
+    url: "https://operationnels.com/feed/"
+    filtre: mots_cles
 
 pages:
   - nom: "CNPP — Ressources et actualités"
@@ -40,3 +52,15 @@ pages:
   - nom: "CNPP — Certification APSAD"
     url: "https://www.cnpp.com/tester-certifier/certifier-prestations-services-apsad"
     lien_contient: ""
+
+# Médias dont les articles sont réservés aux abonnés (nom exact de la source, tel qu'affiché
+# sur le journal). Pour les autres sites, le programme le détecte en lisant la page quand il le peut.
+sources_payantes:
+  - "AEF info"
+  - "Les Echos"
+  - "L'Opinion"
+  - "Mediapart"
+  - "Contexte"
+  - "Le Moniteur"
+  - "Liaisons sociales"
+  - "Actuel RH"

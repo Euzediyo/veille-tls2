@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 import shutil
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import format_datetime
 from html import escape
 from pathlib import Path
@@ -24,7 +24,7 @@ MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août
 
 LEVELS = [(90, "Critique"), (70, "Important"), (50, "Intéressant"), (30, "Veille")]
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
-                 "resume", "pourquoi", "action", "echeance")
+                 "resume", "pourquoi", "action", "echeance", "payant")
 FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
          "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap")
 
@@ -61,7 +61,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 def footer(site: dict) -> str:
     return f"""<footer class="foot">
   <p>Résumés et scores rédigés automatiquement par une IA à partir du titre et de l'extrait public de chaque article. Lisez toujours la source avant d'agir.</p>
-  <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="mentions-legales.html">Mentions légales et méthode</a></p>
+  <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="essentiel.html">L'essentiel (texte)</a> · <a href="mentions-legales.html">Mentions légales et méthode</a></p>
 </footer>"""
 
 
@@ -140,6 +140,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>{escape(site['hebergeur'])}</p>
 <h2>Contenus et droits d'auteur</h2>
 <p>Ce journal ne reproduit aucun article. Pour chaque information, il publie un titre, un résumé court rédigé automatiquement par une intelligence artificielle avec ses propres mots, le nom de la source et un lien vers l'article original. Les textes officiels (lois, décrets, arrêtés, décisions de justice) peuvent être cités plus largement.</p>
+<p>Pour rédiger ces résumés, le programme lit le début des articles quand le site l'autorise (fichier robots.txt). Ce texte sert uniquement à l'analyse : il n'est ni conservé ni publié. Les articles réservés aux abonnés sont signalés comme tels.</p>
 <p>Le flash audio quotidien est rédigé par la même IA à partir de ces résumés, sous la forme d'un dialogue entre deux animateurs fictifs, lu par des voix de synthèse. Il ne reprend aucun texte d'article.</p>
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
@@ -147,6 +148,51 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus et les favoris sont mémorisés uniquement dans votre navigateur.</p>
+</main>
+{footer(site)}
+</body>
+</html>
+"""
+
+
+def _essential_item(it: dict, profile: dict) -> str:
+    cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
+    day = date.fromisoformat(it["edition"])
+    lines = [f"<h3>{escape(it['titre'])}</h3>",
+             f"<p><b>{escape(cat)}</b> · score {it['score']} ({label(it['score'])}) · {escape(it['source'])} · {day.day} {MOIS[day.month - 1]} {day.year}"
+             + (" · réservé aux abonnés" if it.get("payant") else "") + "</p>"]
+    if it.get("resume"):
+        lines.append(f"<p>{escape(it['resume'])}</p>")
+    lines.append(f"<p>Pourquoi c'est important : {escape(it['pourquoi'])}</p>")
+    if it.get("action"):
+        lines.append(f"<p>Action recommandée : {escape(it['action'])}</p>")
+    if it.get("echeance"):
+        due = date.fromisoformat(it["echeance"]["date"])
+        lines.append(f"<p>Échéance : {due.day} {MOIS[due.month - 1]} {due.year}, {escape(it['echeance']['libelle'])}</p>")
+    lines.append(f'<p>Source : <a href="{escape(it["url"])}">{escape(it["url"])}</a></p>')
+    return "\n".join(lines)
+
+
+def essential_html(items: list[dict], site: dict, profile: dict, today: date) -> str:
+    """Page en texte simple des articles importants, à donner à un outil comme NotebookLM."""
+    latest = max((it["edition"] for it in items), default=today.isoformat())
+    week_start = (date.fromisoformat(latest) - timedelta(days=6)).isoformat()
+    day_items = sorted([it for it in items if it["edition"] == latest and it["score"] >= 50], key=lambda it: -it["score"])
+    week = sorted([it for it in items if it["edition"] >= week_start], key=lambda it: -it["score"])
+    week_items = [it for it in week if it["score"] >= 70] or week[:10]
+    if len(week_items) < 5:
+        week_items = [it for it in week if it["score"] >= 50][:15]
+    d = date.fromisoformat(latest)
+    def section(title: str, rows: list[dict]) -> str:
+        body = "\n".join(_essential_item(it, profile) for it in rows) or "<p>Aucun article important sur cette période.</p>"
+        return f"<h2>{title}</h2>\n{body}"
+    return head(f"L'essentiel · {site['titre']}", site, "Les articles importants du jour et de la semaine, en texte simple") + f"""
+<body>
+<main class="prose">
+<h1>{escape(site['titre'])} : l'essentiel</h1>
+<p>Édition du {d.day} {MOIS[d.month - 1]} {d.year}. Sélection des articles les plus importants pour un centre de télésurveillance, résumés par une IA. Page prévue pour être lue par un outil comme NotebookLM ou imprimée.</p>
+{section("L'essentiel du jour", day_items)}
+{section("L'essentiel de la semaine", week_items)}
 </main>
 {footer(site)}
 </body>
@@ -238,6 +284,7 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     (OUT / "mentions-legales.html").write_text(legal_html(site, profile), encoding="utf-8")
     (OUT / "articles.json").write_text(json.dumps(public, ensure_ascii=False), encoding="utf-8")
     (OUT / "feed.xml").write_text(feed_xml(public, site, profile), encoding="utf-8")
+    (OUT / "essentiel.html").write_text(essential_html(public, site, profile, today), encoding="utf-8")
     (OUT / "echeances.ics").write_text(ics(public, site), encoding="utf-8", newline="")
     (OUT / "manifest.webmanifest").write_text(manifest(site), encoding="utf-8")
     (OUT / "sw.js").write_text(service_worker(now.strftime("%Y%m%d%H%M")), encoding="utf-8")

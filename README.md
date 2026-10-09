@@ -35,7 +35,7 @@ Hébergement et automatisation gratuits. L'analyse par l'IA (Claude Haiku 5.5) c
 
 ## Droits d'auteur
 
-Le journal ne reproduit aucun article : il publie un titre, un résumé court rédigé par l'IA, la source et un lien. Le programme respecte le fichier `robots.txt` de chaque site.
+Le journal ne reproduit aucun article : il publie un titre, un résumé rédigé par l'IA avec ses propres mots, la source et un lien. Pour mieux résumer, le programme lit le début des articles, sans jamais l'enregistrer ni le publier, et seulement quand le fichier `robots.txt` du site l'autorise. Les flux Google Actualités sont lus comme le ferait un lecteur de flux RSS, une fois par jour, mais leurs liens ne sont pas suivis automatiquement (le `robots.txt` de Google l'interdit aux robots).
 
 ## Pour les développeurs
 
