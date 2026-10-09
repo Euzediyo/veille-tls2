@@ -8,7 +8,7 @@ Chaque matin, GitHub lance automatiquement un programme qui :
 2. **dédoublonne** et **préfiltre** par mots-clés, sans coût ;
 3. **analyse** chaque article avec une IA qui le classe, le résume, lui donne un score de pertinence de 0 à 100, explique ce score, propose une action pour les articles importants et repère les échéances ;
 4. **publie** le journal sur un site public : canaux par catégorie, recherche, lu / non lu, favoris, archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
-5. **envoie** un e-mail avec les articles notés 70 et plus (si configuré).
+5. **envoie** un e-mail chaque matin avec les articles notés 70 et plus, et une **lettre de la semaine** le lundi avec les 10 articles à retenir et les échéances à venir (si configuré).
 
 Le site est publié à l'adresse indiquée dans `config/site.yaml`.
 
@@ -35,7 +35,7 @@ pris en compte : un visiteur peut masquer un article chez lui, sans effet sur le
 
 1. **Activer le site** : *Settings* → *Pages* → *Build and deployment* → *Source* : **GitHub Actions**.
 2. **Ajouter la clé de l'IA** : *Settings* → *Secrets and variables* → *Actions* → *New repository secret*, nom `ANTHROPIC_API_KEY`. Sans cette clé, le journal fonctionne quand même, avec une notation par mots-clés et sans résumé.
-3. **E-mail du matin (facultatif)** : ajouter de la même façon les secrets `SMTP_USER` (adresse Gmail d'envoi), `SMTP_PASSWORD` (mot de passe d'application Gmail) et `MAIL_TO` (adresse de réception).
+3. **E-mails (facultatif)** : ajouter de la même façon les secrets `SMTP_USER` (adresse Gmail d'envoi), `SMTP_PASSWORD` (mot de passe d'application Gmail), `MAIL_TO` (votre adresse : e-mail du matin et lettre de la semaine) et `LETTRE_TO` (les adresses des opérateurs, séparées par des virgules : lettre de la semaine seulement). Les adresses restent privées : elles ne sont pas dans le dépôt, et la lettre part en copie cachée. Pour essayer la lettre : *Run workflow* en cochant « Envoyer la lettre de la semaine maintenant ».
 4. **Premier passage** : *Actions* → *Journal quotidien* → *Run workflow*. Le bouton « Scan immédiat » du site mène à cette même page.
 
 ## Coût

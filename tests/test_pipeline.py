@@ -277,3 +277,27 @@ def test_feedback_issues(tmp_path, monkeypatch):
     from veille.analyze import build_system_prompt
     prompt = build_system_prompt(PROFILE, avis.prompt_block(saved, PROFILE))
     assert "Cambriolage à Lyon" in prompt and "fait divers sans enjeu" in prompt
+
+
+def test_weekly_letter(monkeypatch):
+    from veille import notify
+    today = date(2026, 10, 12)  # un lundi
+    arts = [
+        {"id": "a", "titre": "Décret CNAPS", "url": "https://x/a", "source": "Légifrance", "categorie": "reglementation", "score": 92,
+         "edition": "2026-10-09", "resume": "r", "pourquoi": "p", "action": "Informer", "echeance": {"date": "2026-11-01", "libelle": "Entrée en vigueur"}},
+        {"id": "b", "titre": "Vieux", "url": "https://x/b", "source": "S", "categorie": "marche", "score": 80, "edition": "2026-10-01", "pourquoi": "p"},
+        {"id": "c", "titre": "Masqué", "url": "https://x/c", "source": "S", "categorie": "marche", "score": 85, "edition": "2026-10-11", "pourquoi": "p", "non_pertinent": True},
+        {"id": "d", "titre": "Faible", "url": "https://x/d", "source": "S", "categorie": "marche", "score": 40, "edition": "2026-10-11", "pourquoi": "p"},
+    ]
+    top, due = notify.weekly_selection(arts, SITE, today)
+    assert [it["id"] for it in top] == ["a"] and [it["id"] for it in due] == ["a"]
+    assert notify.addresses("moi@x.fr; op1@x.fr,\nop2@x.fr, MOI@x.fr, pas-une-adresse") == ["moi@x.fr", "op1@x.fr", "op2@x.fr"]
+    sent = []
+    monkeypatch.setattr(notify, "_send", lambda subject, text, html, to: sent.append((subject, text, to)))
+    for k, v in {"SMTP_USER": "veille@x.fr", "SMTP_PASSWORD": "p", "MAIL_TO": "moi@x.fr", "LETTRE_TO": "op1@x.fr, op2@x.fr"}.items():
+        monkeypatch.setenv(k, v)
+    report = []
+    notify.send_weekly(arts, SITE, PROFILE, date(2026, 10, 13), report)  # mardi : rien
+    assert not sent
+    notify.send_weekly(arts, SITE, PROFILE, today, report)
+    assert sent[0][2] == ["moi@x.fr", "op1@x.fr", "op2@x.fr"] and "Décret CNAPS" in sent[0][1] and "Entrée en vigueur" in sent[0][1]

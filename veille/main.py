@@ -30,6 +30,7 @@ def main() -> int:
     parser.add_argument("--site", action="store_true", help="régénérer seulement le site")
     parser.add_argument("--reanalyser", type=int, metavar="JOURS", default=0,
                         help="relire et réanalyser les articles des derniers jours (après un changement de consignes)")
+    parser.add_argument("--lettre", action="store_true", help="envoyer la lettre de la semaine aujourd'hui, quel que soit le jour")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -79,6 +80,11 @@ def main() -> int:
     articles = store.load_articles()
     site.build(profile, site_cfg, articles, today)
     report.append("Site : régénéré")
+    if not args.site or args.lettre:
+        try:
+            notify.send_weekly(articles, site_cfg, profile, today, report, force=args.lettre)
+        except Exception as exc:  # un e-mail raté ne doit pas bloquer la publication
+            report.append(f"Lettre de la semaine : échec ({exc.__class__.__name__}: {exc})")
     try:
         if not args.site:
             podcast.make_episode(articles, profile, site_cfg, today, report)

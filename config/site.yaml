@@ -19,5 +19,11 @@ podcast_voix:
   CLAIRE: "fr-FR-VivienneMultilingualNeural"
   THOMAS: "fr-FR-RemyMultilingualNeural"
 
-# E-mail du matin : articles dont le score atteint ce seuil.
+# E-mail du matin, envoyé à l'adresse du secret MAIL_TO : articles du jour dont le score atteint ce seuil.
+email_quotidien: true
 seuil_email: 70
+
+# Lettre de la semaine, envoyée à MAIL_TO et aux adresses du secret LETTRE_TO (séparées par des virgules).
+lettre_jour: lundi        # lundi, mardi... dimanche
+lettre_articles: 10       # nombre maximum d'articles
+lettre_seuil: 50          # score minimum

@@ -14,6 +14,10 @@ on:
         description: "Relire et réanalyser les articles des 3 derniers jours"
         type: boolean
         default: false
+      lettre:
+        description: "Envoyer la lettre de la semaine maintenant (pour essayer)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,9 +52,11 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
+          LETTRE_TO: ${{ secrets.LETTRE_TO }}
         run: |
           OPTIONS=""
           if [ "${{ inputs.reanalyser }}" = "true" ]; then OPTIONS="--reanalyser 3"; fi
+          if [ "${{ inputs.lettre }}" = "true" ]; then OPTIONS="$OPTIONS --lettre"; fi
           if [ "${{ inputs.site_seulement }}" = "true" ]; then
             python -m veille.main --site $OPTIONS
           else
