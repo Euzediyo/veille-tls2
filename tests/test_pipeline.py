@@ -170,12 +170,35 @@ def test_podcast_script_ai(monkeypatch):
     class FakeMessages:
         def create(self, **kw):
             calls.update(kw)
-            text = "Bonjour, nous sommes le vendredi 9 octobre. Voici le flash Veille TLS. " + "Texte. " * 60
+            text = "\n".join(f"{'CLAIRE' if i % 2 else 'THOMAS'} : Réplique {i}." for i in range(8))
             return types.SimpleNamespace(stop_reason="end_turn", content=[types.SimpleNamespace(type="text", text=text)])
 
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
     monkeypatch.setattr(podcast.anthropic, "Anthropic", lambda: types.SimpleNamespace(messages=FakeMessages()))
     arts = [{**SAMPLE[0], "categorie": "reglementation", "score": 92, "resume": "R", "pourquoi": "P", "action": "Former"}]
     text = podcast.write_script(arts, PROFILE, "claude-haiku-5-5", date(2026, 10, 9), [])
-    assert text.startswith("Bonjour") and "vendredi 9 octobre" in calls["system"]
+    assert text.startswith("THOMAS : Réplique 0.") and "vendredi 9 octobre" in calls["system"]
     assert "Action recommandée : Former" in calls["messages"][0]["content"]
+
+
+def test_dialogue(monkeypatch, tmp_path):
+    import sys
+    from veille import podcast
+    text = "CLAIRE : Bonjour à tous.\n\n**Thomas** : Bonjour Claire.\nSuite de la phrase.\nNarrateur : ignoré ?\nCLAIRE :"
+    assert podcast.parse_dialogue(text) == [("CLAIRE", "Bonjour à tous."),
+                                            ("THOMAS", "Bonjour Claire. Suite de la phrase. Narrateur : ignoré ?")]
+    assert {h for h, _ in podcast.parse_dialogue(podcast.fallback_script(SAMPLE[:3], date(2026, 10, 9)))} == {"CLAIRE", "THOMAS"}
+
+    spoken = []
+
+    class FakeCommunicate:
+        def __init__(self, line, voice):
+            spoken.append(voice)
+
+        async def stream(self):
+            yield {"type": "audio", "data": b"ab"}
+            yield {"type": "WordBoundary"}
+
+    monkeypatch.setitem(sys.modules, "edge_tts", types.SimpleNamespace(Communicate=FakeCommunicate))
+    podcast.synthesize(text, tmp_path / "a.mp3", {"CLAIRE": "voix-f", "THOMAS": "voix-m"})
+    assert spoken == ["voix-f", "voix-m"] and (tmp_path / "a.mp3").read_bytes() == b"abab"
