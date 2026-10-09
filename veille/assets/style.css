@@ -262,7 +262,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 
 /* ---------- Affichage Journal : présentation de presse ---------- */
 [data-layout="journal"]{
-  --bg:#f7f4ee; --panel:#fffdf9; --panel-2:#efe9de; --line:#dcd4c7; --fg:#1c1a17; --muted:#625c54; --accent:#a3311e; --accent-2:#7d2416;
+  --bg:#f7f4ee; --panel:#fffdf9; --panel-2:#efe9de; --line:#cdc4b5; --fg:#141210; --muted:#45403a; --accent:#a3311e; --accent-2:#7d2416;
   --p1:#a3311e; --p2:#9a4d00; --p3:#776000; --p4:#2f6b3a; --ok:#2f6b3a;
   --c-reglementation:#1f4fa3; --c-apsad:#5d3a9b; --c-social:#a3480f; --c-telesurveillance:#a3243a; --c-marche:#2f6b3a; --c-management:#7a5d00;
   --display:"Newsreader",Georgia,"Times New Roman",serif; --body:"Public Sans","Segoe UI",Arial,sans-serif; --mono:"Public Sans","Segoe UI",Arial,sans-serif;
@@ -270,7 +270,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
   color-scheme:light;
 }
 [data-layout="journal"][data-theme="dark"]{
-  --bg:#161513; --panel:#1e1c19; --panel-2:#2a2723; --line:#3a3631; --fg:#ece7de; --muted:#a8a094; --accent:#f08a74; --accent-2:#f4a593;
+  --bg:#161513; --panel:#1e1c19; --panel-2:#2a2723; --line:#45403a; --fg:#f2eee7; --muted:#bfb7aa; --accent:#f08a74; --accent-2:#f4a593;
   --p1:#ff8f7d; --p2:#f0a35e; --p3:#d9c06a; --p4:#86c895; --ok:#86c895;
   --c-reglementation:#8fb3ff; --c-apsad:#c3a6ff; --c-social:#f2a36c; --c-telesurveillance:#ff8fa3; --c-marche:#86c895; --c-management:#e0c560;
   --bar:#161513; --bar-2:#161513;
@@ -323,7 +323,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .pa .due{margin:0;font:600 .9rem var(--body);color:var(--p3)}
 .pa .src{margin:0;font-size:.85rem;color:var(--muted)}
 .pa .act button{font-family:var(--body);border-radius:3px}
-.ev.pa.read{opacity:.7}
+.ev.pa.read{opacity:.8}
 .ev.pa.p1:not(.read){border-color:var(--line);animation:none}
 [data-layout="journal"] .ev:not(.pa),[data-layout="journal"] .dl,[data-layout="journal"] .arch button,[data-layout="journal"] .empty,[data-layout="journal"] .ics{border-radius:4px;animation:none}
 [data-layout="journal"] .ev:not(.pa) h3,[data-layout="journal"] .dl h3{font-family:var(--display);font-weight:700}
