@@ -2,7 +2,7 @@ name: Essai lecture (temporaire)
 on:
   push:
     branches: [resumes-payants]
-    paths: [".github/workflows/essai-lecture.yml", "veille/enrich.py"]
+    paths: [".github/workflows/essai-lecture.yml"]
 permissions:
   contents: write
 jobs:
@@ -14,32 +14,41 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - name: Lire quelques articles réels
+      - name: Tester des flux directs
         run: |
           python - <<'PY'
-          import json, urllib.robotparser, requests
-          from veille import collect, enrich
-          rp = urllib.robotparser.RobotFileParser()
-          rp.parse(requests.get("https://news.google.com/robots.txt", timeout=20).text.splitlines())
-          out = {"robots_rss_articles": rp.can_fetch(collect.USER_AGENT, "https://news.google.com/rss/articles/abc"),
-                 "robots_batchexecute": rp.can_fetch(collect.USER_AGENT, "https://news.google.com/_/DotsSplashUi/data/batchexecute"),
-                 "items": []}
-          report = []
-          items = collect.collect_google_news(['"sécurité privée" when:7d', '"télésurveillance" when:7d', '"CNAPS" when:7d'], report)[:15]
-          for it in items:
-              row = {"source": it["source"], "titre": it["titre"][:80], "extrait": len(it["extrait"] or "")}
-              try:
-                  row["decode"] = enrich.decode_google_news(it["url"])[:120]
-              except Exception as e:
-                  row["decode_err"] = repr(e)[:200]
-              r = enrich.enrich_one(it)
-              row.update(url=r["url"][:120], texte=len(r.get("texte") or ""), payant=r.get("payant"), debut=(r.get("texte") or "")[:200])
-              out["items"].append(row)
+          import json, feedparser, requests
+          from veille import collect
+          out = {"robots": {}, "flux": {}}
+          for u in ["https://news.google.com/rss/search?q=x", "https://news.google.com/rss/articles/abc"]:
+              out["robots"][u] = collect.allowed_by_robots(u)
+          sites = ["https://www.83-629.fr", "https://www.protectionsecurite-magazine.fr", "https://operationnels.com",
+                   "https://www.entoutesecurite.com", "https://www.detections.fr", "https://www.infoprotection.fr",
+                   "https://kohenavocats.fr", "https://www.gpmse.com", "https://www.cnaps.interieur.gouv.fr",
+                   "https://www.securite-privee.org", "https://www.usp-securite.fr", "https://www.aefinfo.fr",
+                   "https://www.ges-securite-privee.org", "https://www.cnpp.com", "https://www.lemondedelasecurite.fr",
+                   "https://www.expoprotection.com", "https://www.solutions-numeriques.com", "https://www.alarme-securite.info"]
+          for site in sites:
+              for path in ["/feed/", "/rss", "/rss.xml", "/feed.xml", "/actualites/feed/"]:
+                  url = site + path
+                  try:
+                      r = requests.get(url, headers={"User-Agent": collect.USER_AGENT}, timeout=15)
+                      f = feedparser.parse(r.content)
+                  except Exception as e:
+                      continue
+                  if f.entries:
+                      e = f.entries[0]
+                      desc = collect.clean_text(e.get("summary", ""), 3000)
+                      out["flux"][site] = {"url": url, "robots": collect.allowed_by_robots(url), "n": len(f.entries),
+                                           "titre": e.get("title", "")[:80], "resume": len(desc),
+                                           "contenu": len(collect.clean_text((e.get("content") or [{}])[0].get("value", ""), 5000))}
+                      break
+              else:
+                  out["flux"][site] = None
           json.dump(out, open("essai-lecture.json", "w"), ensure_ascii=False, indent=1)
-          print(json.dumps(out, ensure_ascii=False)[:3000])
           PY
       - name: Enregistrer le résultat
         run: |
           git config user.name "veille-tls[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add essai-lecture.json && git commit -m "Résultat de l'essai de lecture" && git push
+          git add essai-lecture.json && git commit -m "Résultat de l'essai des flux" && git push
