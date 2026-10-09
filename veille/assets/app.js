@@ -53,7 +53,6 @@
   function render() {
     renderTabs();
     renderChannels();
-    renderKpis();
     $("tools").hidden = st.view === "archives" || st.view === "echeances" || st.view === "semaine";
     $("flash").hidden = st.view !== "journal" || !episodes.length;
     renderSide();
@@ -93,7 +92,6 @@
     var light = document.documentElement.dataset.theme === "light";
     $("theme-t").textContent = light ? "Mode sombre" : "Mode clair";
     $("theme-btn").setAttribute("aria-label", light ? "Passer en mode sombre" : "Passer en mode clair");
-    document.querySelectorAll("[data-layout-set]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.layoutSet === (journal() ? "journal" : "supervision")); });
     if (latest) { var t = longDay(latest); $("mast-d").textContent = t.charAt(0).toUpperCase() + t.slice(1); }
   }
   function setPref(key, attr, value) {
@@ -127,15 +125,6 @@
       ' non lu(s) sur ' + items.length + '">' + unread + "</em></button>";
   }
 
-  function renderKpis() {
-    var unread = data.filter(function (it) { return shown(it) && !read.has(it.id); });
-    var p1 = unread.filter(function (it) { return it.score >= 90; }).length;
-    $("k-unread").textContent = unread.length;
-    $("k-p1").textContent = p1;
-    $("k-p1").parentNode.classList.toggle("alert", p1 > 0);
-    $("k-p2").textContent = unread.filter(function (it) { return it.score >= 70 && it.score < 90; }).length;
-    $("k-today").textContent = data.filter(function (it) { return it.edition === latest; }).length;
-  }
 
   function renderFeed() {
     var fav = st.view === "favoris";
@@ -282,14 +271,7 @@
     $("v-archives").innerHTML = keys.length ? html + "</ul>" : '<div class="empty">Les archives se rempliront au fil des éditions.</div>';
   }
 
-  function renderTicker() {
-    var hot = data.filter(function (it) { return it.score >= 70; }).sort(sortFeed).slice(0, 8);
-    if (!hot.length) { $("ticker").hidden = true; return; }
-    $("ticker-track").innerHTML = hot.map(function (it) {
-      var p = prio(it.score);
-      return '<span style="--pc:var(--' + p[0] + ')"><i>■ ' + p[1] + " " + it.score + "</i>" + esc(it.titre) + "</span>";
-    }).join("");
-  }
+
 
   // Flash audio : le dernier épisode en lecture, les précédents au choix.
   function renderFlash() {
@@ -318,7 +300,6 @@
     var t = e.target;
     var tab = t.closest(".tab"); if (tab) return setView(tab.dataset.view);
     var go = t.closest("[data-go]"); if (go) return setView(go.dataset.go);
-    var lay = t.closest("[data-layout-set]"); if (lay) return setPref("veilletls.affichage", "layout", lay.dataset.layoutSet);
     if (t.closest("#theme-btn")) return setPref("veilletls.theme", "theme", document.documentElement.dataset.theme === "light" ? "dark" : "light");
     var ch = t.closest(".ch");
     if (ch) { st.cat = ch.dataset.cat; st.limit = PAGE; if (st.view !== "journal" && st.view !== "favoris") st.view = "journal"; return render(); }
@@ -378,34 +359,16 @@
   }
   function hideToast() { $("toast").hidden = true; }
 
-  function tick() { $("clock").textContent = new Date().toLocaleTimeString("fr-FR"); }
 
-  function boot() {
-    var el = $("boot");
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var seen = false;
-    try { seen = sessionStorage.getItem("veilletls.boot") === "1"; sessionStorage.setItem("veilletls.boot", "1"); } catch (e) {}
-    if (reduce || seen || !el || journal()) { if (el) el.remove(); return; }
-    var lines = ["> Connexion au poste de supervision", "> Synchronisation des flux de veille", "> Chargement des événements", "> Poste opérationnel"];
-    var pre = el.querySelector("pre"), i = 0;
-    (function next() {
-      if (i < lines.length) {
-        pre.innerHTML += esc(lines[i]) + (i < lines.length - 1 ? ' <span class="ok">[OK]</span>' : "") + "\n";
-        i++; setTimeout(next, 170);
-      } else { el.classList.add("done"); setTimeout(function () { el.remove(); }, 450); }
-    })();
-  }
+
 
   function start(articles) {
     data = articles;
     latest = data.reduce(function (m, it) { return it.edition > m ? it.edition : m; }, "") || today;
     if (CFG.updated) $("last").textContent = CFG.updated;
-    renderTicker();
     render();
   }
 
-  boot();
-  tick(); setInterval(tick, 1000);
   if (window.VEILLE_ARTICLES) start(window.VEILLE_ARTICLES);
   else fetch("articles.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(start)
     .catch(function () { $("feed").innerHTML = '<div class="empty">Impossible de charger les articles. Vérifie ta connexion puis recharge la page.</div>'; });
