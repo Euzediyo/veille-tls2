@@ -1,156 +1,82 @@
 {
- "robots_rss_articles": false,
- "robots_batchexecute": false,
- "items": [
-  {
-   "source": "MyPetition.org",
-   "titre": "Aidez-moi à faire avancer ce combat : Chiens de sécurité privée : stop à la malt",
-   "extrait": 113,
-   "decode": "https://www.mypetition.org/petition/animaux/chiens-securite-privee-stop-a-maltraitance/287750",
-   "url": "https://www.mypetition.org/petition/animaux/chiens-securite-privee-stop-a-maltraitance/287750",
-   "texte": 1618,
-   "payant": null,
-   "debut": "\"Nous permettons au plus grand nombre de citoyens d'être entendus dans leur combat, jusqu'à la victoire , pour plus de démocratie et de solidarité.\" Déjà plus de 150 000 signatures ! Aidez-nous à empê"
+ "robots": {
+  "https://news.google.com/rss/search?q=x": false,
+  "https://news.google.com/rss/articles/abc": false
+ },
+ "flux": {
+  "https://www.83-629.fr": {
+   "url": "https://www.83-629.fr/rss",
+   "robots": true,
+   "n": 15,
+   "titre": "MAJ 07/10 - Organismes de formation en sécurité privée : 2 échéances à l’automne",
+   "resume": 209,
+   "contenu": 5000
   },
-  {
-   "source": "83-629.fr",
-   "titre": "Sécurité des JO 2030 : qui fixera la part de la sécurité privée ?",
-   "extrait": 75,
-   "decode": "https://www.83-629.fr/securite-des-jo-2030-qui-fixera-la-part-de-la-securite-privee/",
-   "url": "https://www.83-629.fr/securite-des-jo-2030-qui-fixera-la-part-de-la-securite-privee/",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Attaché, catégorie A, 4 ans sur le poste, habilitation au secret de la défense nationale exigée. L'offre est en ligne sur Choisir le service public, le site de l'emploi public. Elle ressemble à des ce"
+  "https://www.protectionsecurite-magazine.fr": null,
+  "https://operationnels.com": {
+   "url": "https://operationnels.com/feed/",
+   "robots": true,
+   "n": 12,
+   "titre": "Histoire : quand un défecteur cubain prit la défense aérienne américaine par sur",
+   "resume": 302,
+   "contenu": 1530
   },
-  {
-   "source": "Ogletree Deakins France",
-   "titre": "OD FLASH | Droit du travail : L’absence de carte professionnelle valide constitu",
-   "extrait": 249,
-   "decode": "https://ogletree.fr/publications/od-flash-droit-du-travail-labsence-de-carte-professionnelle-valide-constitue-a-elle-seu",
-   "url": "https://ogletree.fr/publications/od-flash-droit-du-travail-labsence-de-carte-professionnelle-valide-constitue-a-elle-seu",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Une société de sécurité privée avait licencié un agent de sécurité au motif qu’il ne détenait plus de carte professionnelle en cours de validité, document indispensable à l’exercice de son activité. L"
+  "https://www.entoutesecurite.com": {
+   "url": "https://www.entoutesecurite.com/feed/",
+   "robots": true,
+   "n": 3,
+   "titre": "Club Futsal Safin FC",
+   "resume": 434,
+   "contenu": 0
   },
-  {
-   "source": "Kohen Avocats",
-   "titre": "GRAND REFLEXE SECURITE en redressement judiciaire (BODACC du 6 octobre 2026) : c",
-   "extrait": 157,
-   "decode": "https://kohenavocats.fr/2026/10/06/grand-reflexe-securite-marseille-redressement-clients-fournisseurs-decisions-2026/",
-   "url": "https://kohenavocats.fr/2026/10/06/grand-reflexe-securite-marseille-redressement-clients-fournisseurs-decisions-2026/",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Maître Reda KOHEN intervient en droit immobilier, droit des sociétés et droit des affaires à Paris. Première analyse : 80 € TTC, réponse personnelle sous 24 heures. Article généré par une intelligence"
+  "https://www.detections.fr": null,
+  "https://www.infoprotection.fr": null,
+  "https://kohenavocats.fr": {
+   "url": "https://kohenavocats.fr/feed/",
+   "robots": true,
+   "n": 8,
+   "titre": "Fraude au président : quand la banque doit rembourser l’entreprise victime d’un ",
+   "resume": 436,
+   "contenu": 5000
   },
-  {
-   "source": "PSM Magazine",
-   "titre": "Des marchés publics de plus en plus intégrés !",
-   "extrait": 59,
-   "decode": "https://www.protectionsecurite-magazine.fr/actualite/surete-securite/des-marches-publics-de-plus-en-plus-integres+",
-   "url": "https://www.protectionsecurite-magazine.fr/actualite/surete-securite/des-marches-publics-de-plus-en-plus-integres+",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Des attributions de marchés publics font apparaître une même tendance : les acheteurs recherchent de moins en moins un simple fournisseur d’équipements et davantage des intégrateurs capables de déploy"
+  "https://www.gpmse.com": {
+   "url": "https://www.gpmse.com/feed/",
+   "robots": true,
+   "n": 10,
+   "titre": "Le GPMSE élargit sa gouvernance avec deux nouvelles vice-présidentes",
+   "resume": 328,
+   "contenu": 328
   },
-  {
-   "source": "Opérationnels SLDS",
-   "titre": "Milipol Forum 2026 : focus sur la sécurité des infrastructures critiques et des ",
-   "extrait": 110,
-   "decode": "https://operationnels.com/2026/10/07/milipol-forum-2026-focus-sur-la-securite-des-infrastructures-critiques-et-des-terri",
-   "url": "https://operationnels.com/2026/10/07/milipol-forum-2026-focus-sur-la-securite-des-infrastructures-critiques-et-des-terri",
-   "texte": 147,
-   "payant": null,
-   "debut": "Partenariat - Evènement - A un an de l’ouverture de Milipol Paris 2027, les acteurs de la sûreté et de la sécurité intérieure se retrouveront le 17"
+  "https://www.cnaps.interieur.gouv.fr": null,
+  "https://www.securite-privee.org": null,
+  "https://www.usp-securite.fr": null,
+  "https://www.aefinfo.fr": null,
+  "https://www.ges-securite-privee.org": {
+   "url": "https://www.ges-securite-privee.org/feed/",
+   "robots": true,
+   "n": 10,
+   "titre": "CP GES – SALAIRES : LE GES APPELLE À UNE RÉPONSE GLOBALE POUR LA SÉCURITÉ PRIVÉE",
+   "resume": 138,
+   "contenu": 138
   },
-  {
-   "source": "Ouest-France",
-   "titre": "Blocus des lycées : des élèves moins nombreux dans les rues de Saint-Brieuc mais",
-   "extrait": 113,
-   "decode": "https://www.ouest-france.fr/education/blocus-des-lycees-des-eleves-moins-nombreux-dans-les-rues-de-saint-brieuc-mais-tou",
-   "url": "https://www.ouest-france.fr/education/blocus-des-lycees-des-eleves-moins-nombreux-dans-les-rues-de-saint-brieuc-mais-tou",
-   "texte": 0,
-   "payant": null,
-   "debut": ""
+  "https://www.cnpp.com": null,
+  "https://www.lemondedelasecurite.fr": {
+   "url": "https://www.lemondedelasecurite.fr/feed/",
+   "robots": true,
+   "n": 10,
+   "titre": "Entreprise de sécurité privée à Dieppe : comment choisir le bon prestataire",
+   "resume": 109,
+   "contenu": 5000
   },
-  {
-   "source": "AEF info",
-   "titre": "L'examen du projet de loi \"résilience\" à l'Assemblée nationale à nouveau reporté",
-   "extrait": 89,
-   "decode": "https://www.aefinfo.fr/depeche/758004-lexamen-du-projet-de-loi-resilience-a-lassemblee-nationale-a-nouveau-reporte",
-   "url": "https://www.aefinfo.fr/depeche/758004-lexamen-du-projet-de-loi-resilience-a-lassemblee-nationale-a-nouveau-reporte",
-   "texte": 0,
-   "payant": true,
-   "debut": ""
+  "https://www.expoprotection.com": null,
+  "https://www.solutions-numeriques.com": {
+   "url": "https://www.solutions-numeriques.com/feed/",
+   "robots": true,
+   "n": 10,
+   "titre": "De vieux PC Windows pourraient perdre l’accès aux mises à jour en 2027",
+   "resume": 501,
+   "contenu": 3989
   },
-  {
-   "source": "83-629.fr",
-   "titre": "Qualiopi et autorisation CNAPS : les échéances d’octobre et novembre 2026",
-   "extrait": 83,
-   "decode": "https://www.83-629.fr/organismes-formation-securite-privee-echeances-automne-2026-maj-2026-10/",
-   "url": "https://www.83-629.fr/organismes-formation-securite-privee-echeances-automne-2026-maj-2026-10/",
-   "texte": 2500,
-   "payant": null,
-   "debut": "L’automne des organismes de formation aux activités privées de sécurité tient en 2 dates. La première est passée : le 1er octobre 2026 était la date butoir de la bascule des démarches auprès du CNAPS "
-  },
-  {
-   "source": "MyPetition.org",
-   "titre": "Aidez-moi à faire avancer ce combat : Chiens de sécurité privée : stop à la malt",
-   "extrait": 113,
-   "decode": "https://www.mypetition.org/petition/animaux/chiens-securite-privee-stop-a-maltraitance/287750/partager",
-   "url": "https://www.mypetition.org/petition/animaux/chiens-securite-privee-stop-a-maltraitance/287750/partager",
-   "texte": 187,
-   "payant": null,
-   "debut": "Votre partage permet de diffuser la pétition - Chiens de sécurité privée : stop à la maltraitance invisible - à d'autres citoyens engagés qui pourront la lire et se mobiliser à leur tour."
-  },
-  {
-   "source": "Kohen Avocats",
-   "titre": "KMSS en liquidation judiciaire (BODACC du 7 octobre 2026) : ce que doivent décid",
-   "extrait": 154,
-   "decode": "https://kohenavocats.fr/2026/10/07/kmss-colomiers-liquidation-clients-fournisseurs-decisions-2026/",
-   "url": "https://kohenavocats.fr/2026/10/07/kmss-colomiers-liquidation-clients-fournisseurs-decisions-2026/",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Maître Reda KOHEN intervient en droit immobilier, droit des sociétés et droit des affaires à Paris. Première analyse : 80 € TTC, réponse personnelle sous 24 heures. Article généré par une intelligence"
-  },
-  {
-   "source": "83-629.fr",
-   "titre": "Chiens de sécurité : 60 jours pour un décret attendu depuis 2008",
-   "extrait": 74,
-   "decode": "https://www.83-629.fr/chiens-de-securite-60-jours-pour-un-decret-attendu-depuis-2008/",
-   "url": "https://www.83-629.fr/chiens-de-securite-60-jours-pour-un-decret-attendu-depuis-2008/",
-   "texte": 2500,
-   "payant": null,
-   "debut": "Samedi 3 octobre, une association de protection animale a diffusé un communiqué de presse. Elle y annonce avoir adressé une mise en demeure au Premier ministre. L'objet : les règles qui doivent fixer "
-  },
-  {
-   "source": "83-629.fr",
-   "titre": "Responsable sécurité chez le client : 4 casquettes de trop ?",
-   "extrait": 70,
-   "decode": "https://www.83-629.fr/responsable-securite-chez-le-client-4-casquettes-de-trop/",
-   "url": "https://www.83-629.fr/responsable-securite-chez-le-client-4-casquettes-de-trop/",
-   "texte": 1129,
-   "payant": true,
-   "debut": "De 2015 à 2022, il travaille dans un grand hôpital public comme prestataire privé. Puis il change de côté. Contrat avec l'établissement, poste de responsable de la sécurité, et des évaluations sans re"
-  },
-  {
-   "source": "83-629.fr",
-   "titre": "Tranquillité publique : la préfecture la confie au privé",
-   "extrait": 66,
-   "decode": "https://www.83-629.fr/tranquillite-publique-la-prefecture-la-confie-au-prive/",
-   "url": "https://www.83-629.fr/tranquillite-publique-la-prefecture-la-confie-au-prive/",
-   "texte": 1269,
-   "payant": true,
-   "debut": "Béthune, un vendredi d'octobre, 20 h. Sur la Grand'Place et aux abords des bars, 2 agents de sécurité privée, dont un maître-chien, sont autorisés à patrouiller jusqu'à 3 h du matin. Le vendredi, le s"
-  },
-  {
-   "source": "83-629.fr",
-   "titre": "★ Infos du jour - lundi 5 octobre 2026",
-   "extrait": 48,
-   "decode": "https://www.83-629.fr/infos-du-jour-lundi-5-octobre-2026/",
-   "url": "https://www.83-629.fr/infos-du-jour-lundi-5-octobre-2026/",
-   "texte": 1222,
-   "payant": null,
-   "debut": "Nouvelle semaine, on fait le point. À la une aujourd'hui : « Carte pro retirée : un sénateur veut supprimer l'indemnité », et 2 autres actualités. Recalé par le gouvernement en mars, un sénateur revie"
-  }
- ]
+  "https://www.alarme-securite.info": null
+ }
 }
