@@ -1,0 +1,45 @@
+name: Essai lecture (temporaire)
+on:
+  push:
+    branches: [resumes-payants]
+    paths: [".github/workflows/essai-lecture.yml", "veille/enrich.py"]
+permissions:
+  contents: write
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Lire quelques articles réels
+        run: |
+          python - <<'PY'
+          import json, urllib.robotparser, requests
+          from veille import collect, enrich
+          rp = urllib.robotparser.RobotFileParser()
+          rp.parse(requests.get("https://news.google.com/robots.txt", timeout=20).text.splitlines())
+          out = {"robots_rss_articles": rp.can_fetch(collect.USER_AGENT, "https://news.google.com/rss/articles/abc"),
+                 "robots_batchexecute": rp.can_fetch(collect.USER_AGENT, "https://news.google.com/_/DotsSplashUi/data/batchexecute"),
+                 "items": []}
+          report = []
+          items = collect.collect_google_news(['"sécurité privée" when:7d', '"télésurveillance" when:7d', '"CNAPS" when:7d'], report)[:15]
+          for it in items:
+              row = {"source": it["source"], "titre": it["titre"][:80], "extrait": len(it["extrait"] or "")}
+              try:
+                  row["decode"] = enrich.decode_google_news(it["url"])[:120]
+              except Exception as e:
+                  row["decode_err"] = repr(e)[:200]
+              r = enrich.enrich_one(it)
+              row.update(url=r["url"][:120], texte=len(r.get("texte") or ""), payant=r.get("payant"), debut=(r.get("texte") or "")[:200])
+              out["items"].append(row)
+          json.dump(out, open("essai-lecture.json", "w"), ensure_ascii=False, indent=1)
+          print(json.dumps(out, ensure_ascii=False)[:3000])
+          PY
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "veille-tls[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add essai-lecture.json && git commit -m "Résultat de l'essai de lecture" && git push
