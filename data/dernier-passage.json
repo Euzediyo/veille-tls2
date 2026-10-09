@@ -1,6 +1,9 @@
 {
  "date": "2026-10-09",
  "journal": [
+  "Réanalyse : 89 articles des 3 derniers jours",
+  "Lecture : 16 articles lus sur 89 ; 1 réservés aux abonnés",
+  "IA : 89 articles analysés, 44010 jetons lus, 21625 jetons écrits",
   "Google News « \"télésurveillance\" when:2d » : 2 résultats",
   "Google News « \"centre de télésurveillance\" OR \"téléopérateur\" OR \"levée de doute\" when:2d » : 2 résultats",
   "Google News « \"CNAPS\" sécurité when:2d » : 4 résultats",
@@ -12,16 +15,22 @@
   "Google News « (\"PTI\" OR \"DATI\") \"travailleur isolé\" when:7d » : 0 résultats",
   "Google News « \"sécurité électronique\" (marché OR rachat OR acquisition OR lancement) when:7d » : 0 résultats",
   "Google News « (Verisure OR Securitas OR Seris OR Prosegur OR Nexecur OR \"EPS télésurveillance\") when:2d » : 8 résultats",
-  "Google News « \"intelligence artificielle\" (vidéosurveillance OR \"analyse vidéo\" OR alarmes) when:2d » : 5 résultats",
+  "Google News « \"intelligence artificielle\" (vidéosurveillance OR \"analyse vidéo\" OR alarmes) when:2d » : 6 résultats",
   "Google News « \"sécurité privée\" (recrutement OR pénurie OR formation OR attractivité) when:7d » : 10 résultats",
   "Google News « \"GPMSE\" OR \"GES sécurité\" OR \"USP sécurité privée\" when:7d » : 0 résultats",
   "CNIL : 10 articles",
   "GPMSE : 10 articles",
+  "83-629.fr : 15 articles",
+  "GES sécurité privée : 10 articles",
+  "Kohen Avocats : 8 articles",
+  "Opérationnels SLDS : 12 articles",
   "CNPP — Ressources et actualités : 0 nouveaux liens",
   "CNPP — Certification APSAD : 0 nouveaux liens",
-  "Collecte : 99 articles, 0 nouveaux, 0 envoyés à l'analyse",
+  "Collecte : 145 articles, 43 nouveaux, 25 envoyés à l'analyse",
+  "Lecture : 17 articles lus sur 25 ; 8 réservés aux abonnés",
+  "IA : 25 articles analysés, 23006 jetons lus, 9971 jetons écrits",
   "E-mail : non configuré, aucun envoi",
   "Site : régénéré",
-  "Podcast : épisode de 2 min 37 s sur 6 sujets"
+  "Podcast : épisode de 3 min 16 s sur 6 sujets"
  ]
 }

@@ -15,12 +15,13 @@
   },
   "categorie": "social",
   "score": 72,
-  "resume": "Un commentaire juridique indique que l'absence de carte professionnelle valide suffit à motiver le licenciement d'un agent de sécurité. Le manquement de l'employeur à l'obligation de formation ouvrirait seulement droit à indemnisation.",
-  "pourquoi": "Touche directement la gestion des agents (opérateurs de télésurveillance soumis à carte professionnelle) et les conséquences disciplinaires ou de licenciement en cas de carte expirée ou invalide.",
+  "resume": "Un article de cabinet juridique rappelle qu'un agent de sécurité privée dépourvu de carte professionnelle valide peut être licencié pour ce seul motif. Selon le même extrait, un défaut de formation imputable à l'employeur ouvre seulement droit à indemnisation. Le texte ne donne pas davantage de détails sur la jurisprudence citée.",
+  "pourquoi": "La validité de la carte professionnelle conditionne l'affectation des agents aux postes de télésurveillance et impacte directement la planification et les remplacements dans le centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "Vérifier la validité des cartes professionnelles de toutes les équipes et intégrer ce contrôle au suivi RH.",
-  "echeance": null
+  "action": "Vérifier la date de validité des cartes professionnelles de tous les téléopérateurs et anticiper les renouvellements dans le planning.",
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "896cc07a43c67eb6",
@@ -37,12 +38,13 @@
   },
   "categorie": "reglementation",
   "score": 35,
-  "resume": "La CNIL a clos une injonction prononcée début 2026 contre France Travail, sans appliquer l'astreinte, l'organisme s'étant mis en conformité. Le texte ne mentionne que ce cas précis.",
-  "pourquoi": "Décision RGPD concernant un organisme public sans lien direct avec la sécurité privée ; intérêt indirect seulement pour la conformité des données.",
+  "resume": "La CNIL a clos en septembre 2026 l'injonction prononcée contre France Travail en janvier 2026, après une amende de 5 millions d'euros pour insuffisance de sécurité des données. L'organisme a mis en place une authentification multifacteur et une politique de mots de passe renforcée, ce qui a conduit à ne pas liquider l'astreinte.",
+  "pourquoi": "Affaire RGPD relevant d'un secteur public sans lien direct avec la télésurveillance, mais elle illustre les attentes de sécurisation des accès que les centres peuvent retenir.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "e46cb6d2998f6c66",
@@ -57,13 +59,14 @@
    "reglementation": 2
   },
   "categorie": "reglementation",
-  "score": 40,
-  "resume": "La CNIL explique qu'une fuite ou un vol de données peut ouvrir droit à indemnisation lorsqu'il résulte d'un manquement au RGPD, la décision relevant du juge et non de la CNIL.",
-  "pourquoi": "Un centre de télésurveillance traite des données de clients et d'abonnés ; le risque de fuite et de responsabilité civile concerne indirectement ses procédures.",
+  "score": 30,
+  "resume": "La CNIL explique qu'une violation de données ouvre un droit à réparation devant le juge, et non devant elle, car elle ne peut pas accorder de dommages et intérêts. Le texte rappelle la compétence du tribunal judiciaire pour les entreprises et le rôle possible des associations mandatées.",
+  "pourquoi": "Information générale sur le RGPD ; elle concerne indirectement la responsabilité du centre en cas de fuite de données de clients ou d'abonnés.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "440fd3bb81874e31",
@@ -78,14 +81,18 @@
    "reglementation": 1,
    "apsad": 1
   },
-  "categorie": "hors_sujet",
-  "score": 25,
-  "resume": "Un arrêté publié en août 2026 approuve la version 3.2 du référentiel SecNumCloud pour les données sensibles de l'État. L'extrait ne donne pas d'autres détails.",
-  "pourquoi": "Référentiel cloud destiné aux données publiques sensibles, peu pertinent pour l'exploitation d'un centre de télésurveillance, sauf hébergement de données chez un prestataire cloud.",
+  "categorie": "reglementation",
+  "score": 68,
+  "resume": "Un arrêté publié en août 2026 donne une portée réglementaire au référentiel SecNumCloud version 3.2 pour les données sensibles de l'État confiées à des prestataires cloud. Les entreprises privées ne sont pas directement concernées, mais les fournisseurs de solutions de vidéoprotection, de télésurveillance ou de gestion d'alarmes dans le cloud pourraient devoir proposer une architecture qualifiée. La chaîne de sous-traitance est également visée.",
+  "pourquoi": "Si un centre de télésurveillance ou ses fournisseurs travaillent pour l'État avec des données sensibles hébergées dans le cloud, l'architecture et les sous-traitants des plateformes d'alarme pourraient devoir évoluer.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": {
+   "date": "2026-08-15",
+   "libelle": "Entrée en vigueur de l'arrêté approuvant SecNumCloud 3.2"
+  },
+  "payant": null
  },
  {
   "id": "0df73b39a380adaf",
@@ -101,13 +108,14 @@
    "management": 1
   },
   "categorie": "marche",
-  "score": 30,
-  "resume": "Le GPMSE annonce la nomination de deux vice-présidentes, dont une dirigeante de Verisure et une directrice générale de Mutaveil. L'extrait ne détaille pas d'autres décisions.",
-  "pourquoi": "Information de gouvernance d'un groupement professionnel du secteur, sans impact direct sur le centre.",
+  "score": 40,
+  "resume": "Le GPMSE annonce la nomination de deux vice-présidentes, dont Anne Perez de Verisure, en charge de l'offre globale de sécurité et de la protection des personnes vulnérables, et Cécile Roussy de Mutaveil, chargée des PME. Le groupement renforce ainsi sa gouvernance, le vice-président en charge de la télésurveillance restant Jean-Pierre Deleplanque.",
+  "pourquoi": "Changements de gouvernance au sein du syndicat professionnel de la sécurité électronique, sans effet direct sur l'exploitation d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "4372b17257585be9",
@@ -122,16 +130,14 @@
    "reglementation": 1
   },
   "categorie": "reglementation",
-  "score": 82,
-  "resume": "Un article annonce des échéances à venir en octobre et novembre 2026 liées à Qualiopi et à l'autorisation CNAPS. L'extrait ne précise pas les obligations concernées.",
-  "pourquoi": "Une échéance liée à l'autorisation CNAPS peut toucher directement l'entreprise et la formation de ses agents ; le contenu exact reste à vérifier dans la source.",
+  "score": 25,
+  "resume": "Un article annonce les échéances d'octobre et novembre 2026 relatives à Qualiopi et à l'autorisation CNAPS. L'extrait ne contient que le titre, le détail des dates n'est pas disponible.",
+  "pourquoi": "Sujet potentiellement utile sur les obligations CNAPS, mais sans détail dans l'extrait il est impossible de savoir s'il touche le centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "Consulter l'article source pour identifier les obligations exactes et vérifier l'état de l'autorisation CNAPS de l'entreprise.",
-  "echeance": {
-   "date": "2026-10-01",
-   "libelle": "Échéances Qualiopi et CNAPS d'octobre 2026"
-  }
+  "action": "",
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "d48db1143c447986",
@@ -146,13 +152,14 @@
    "management": 1
   },
   "categorie": "hors_sujet",
-  "score": 12,
-  "resume": "L'article, dont seul le titre est disponible, pose la question du sort des agents déjà formés comme maîtres-chiens en police municipale.",
-  "pourquoi": "Concerne la police municipale et non la sécurité privée ni la télésurveillance.",
+  "score": 10,
+  "resume": "Un article de la Gazette des Communes évoque la formation des maîtres-chiens en police municipale. L'extrait ne donne pas d'autre information.",
+  "pourquoi": "Concerne la police municipale et les maîtres-chiens, sans lien avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "f3a4ecddbab78b56",
@@ -167,13 +174,14 @@
    "management": 1
   },
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Le titre indique une formation en santé et sécurité au travail pour 120 travailleurs, au Vietnam. Aucun autre détail n'est disponible.",
-  "pourquoi": "Actualité étrangère sans lien avec le secteur de la télésurveillance en France.",
+  "score": 5,
+  "resume": "Un article de Vietnam.vn évoque une formation en sécurité et santé au travail pour 120 travailleurs. L'extrait ne donne pas d'autre détail.",
+  "pourquoi": "Contexte vietnamien sans rapport avec le secteur français de la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "c9a76287acb728e3",
@@ -187,14 +195,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "telesurveillance",
-  "score": 45,
-  "resume": "La commune de Maen Roch va installer des caméras de vidéoprotection pour lutter contre les incivilités. Seul le titre est disponible.",
-  "pourquoi": "Projet public de vidéoprotection pouvant générer une demande de raccordement ou de supervision, mais sans précision technique.",
+  "categorie": "hors_sujet",
+  "score": 25,
+  "resume": "La commune de Maen Roch installera des caméras de vidéoprotection contre les incivilités. L'extrait ne précise ni le nombre de caméras ni le calendrier.",
+  "pourquoi": "Projet municipal de vidéoprotection ; un nouveau dispositif public peut générer des besoins de supervision, mais l'impact reste indirect.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "f51d3cd766bcf073",
@@ -208,14 +217,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "telesurveillance",
-  "score": 45,
-  "resume": "La commune de Nérac installe des caméras de vidéoprotection, la ville invoquant une évolution du contexte. Seul le titre est disponible.",
-  "pourquoi": "Nouveau dispositif de vidéoprotection municipale pouvant représenter un marché ou une future supervision pour un centre.",
+  "categorie": "hors_sujet",
+  "score": 25,
+  "resume": "La ville de Nérac s'équipe de caméras de vidéoprotection. Seul le titre est disponible, sans précisions techniques ni calendrier.",
+  "pourquoi": "Installation municipale de vidéoprotection ; impact indirect et limité pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "bb24c911b23935f7",
@@ -230,13 +240,14 @@
    "telesurveillance": 1
   },
   "categorie": "telesurveillance",
-  "score": 40,
-  "resume": "Un article annonce le déploiement prochain de 42 caméras de vidéoprotection dans plusieurs quartiers de Metz. Seul le titre et l'extrait sont disponibles, sans détail sur le calendrier ni le mode d'exploitation.",
-  "pourquoi": "Un nouveau parc municipal de caméras peut générer à terme des raccordements ou des demandes de levée de doute pour les centres, mais l'impact reste indirect et non documenté.",
+  "score": 35,
+  "resume": "Selon le seul titre et l'extrait, la ville de Metz prévoit le déploiement de 42 nouvelles caméras de vidéoprotection dans plusieurs quartiers. L'article détaille les zones concernées, mais le contenu complet n'est pas disponible ici.",
+  "pourquoi": "Un déploiement municipal de caméras peut ouvrir un marché de supervision ou de raccordement pour les centres, mais le projet reste public et piloté par la collectivité, avec un impact direct faible sur l'exploitation.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "01112fe3a045860e",
@@ -251,13 +262,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 30,
-  "resume": "Le maire de Quimperlé justifie sa politique de vidéoprotection et sa manière de conduire sa majorité sur ce sujet. Seul le titre est connu, l'article ne donne pas d'éléments techniques.",
-  "pourquoi": "Il s'agit d'un débat politique local sur la vidéoprotection, sans impact direct sur les procédures ou les obligations d'un centre de télésurveillance.",
+  "score": 25,
+  "resume": "Le maire de Quimperlé, Michaël Quernez, défend la manière dont sa commune conduit son projet de vidéoprotection. L'extrait ne donne pas davantage de détails sur le dispositif.",
+  "pourquoi": "Il s'agit surtout d'un débat politique local, sans obligation ni changement opérationnel identifiable pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "d722c59457804045",
@@ -272,13 +284,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 30,
-  "resume": "La commune de Thiel-sur-Acolin inaugure un nouveau restaurant, une halle et un dispositif de vidéoprotection. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "Information locale d'équipement public, à faible impact pour un centre de télésurveillance, sauf raccordement éventuel ultérieur.",
+  "score": 25,
+  "resume": "La commune de Thiel-sur-Acolin inaugure un nouveau restaurant, une halle et un dispositif de vidéoprotection. Le texte disponible ne précise pas le nombre de caméras ni le mode d'exploitation.",
+  "pourquoi": "Information locale d'équipement public, sans conséquence directe sur les procédures ou les équipes d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "678c6f781e7e15e0",
@@ -293,13 +306,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 30,
-  "resume": "Le maire de Penmarc'h présente plusieurs grands projets communaux, dont un volet de vidéoprotection. Seul le titre est connu.",
-  "pourquoi": "La vidéoprotection n'est qu'un point parmi d'autres dans un programme municipal général, avec peu d'incidence directe sur un centre.",
+  "score": 20,
+  "resume": "Le maire de Penmarc'h présente plusieurs grands projets de la commune, parmi lesquels la vidéoprotection, un terrain de foot, le port et un centre nautique. L'extrait ne fournit pas de détail sur la vidéoprotection.",
+  "pourquoi": "La vidéoprotection n'est qu'un projet parmi d'autres dans une présentation générale, sans impact identifiable sur le centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "1d0d0b4c7d78c022",
@@ -314,13 +328,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 30,
-  "resume": "Un compte rendu de conseil de quartier évoque des travaux de placette et un projet de vidéoprotection. Seul le titre est disponible.",
-  "pourquoi": "Sujet de proximité sans lien direct avec les obligations ou les outils d'un centre de télésurveillance.",
+  "score": 25,
+  "resume": "Lors d'un conseil de quartier à la Fauvarge, les échanges ont porté sur des travaux de placette et sur la vidéoprotection. L'extrait ne permet pas de connaître les décisions prises.",
+  "pourquoi": "Compte rendu de quartier sans portée réglementaire ni technique pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "4f61e623eb9bdfac",
@@ -335,13 +350,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 35,
-  "resume": "Le projet de vidéoprotection de Domfront-en-Poiraie est de nouveau à l'étude par la commune. Seul le titre est connu, sans précision sur le calendrier.",
-  "pourquoi": "Un projet municipal en phase d'étude peut à terme concerner la supervision ou la levée de doute, mais aucun élément concret n'est donné.",
+  "score": 28,
+  "resume": "Le projet de vidéoprotection est à nouveau à l'étude à Domfront-en-Poiraie. Le titre et l'extrait ne précisent ni le calendrier ni le budget.",
+  "pourquoi": "Projet communal encore au stade de l'étude, sans obligation ni changement pour l'exploitation d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "813c269515efd614",
@@ -356,13 +372,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 30,
-  "resume": "La ville d'Ahuy a sollicité une subvention auprès du Département pour financer un projet de vidéoprotection. Seul le titre est disponible.",
-  "pourquoi": "Il s'agit d'un financement local, qui n'a pas d'effet direct sur les procédures ou les équipes d'un centre.",
+  "score": 25,
+  "resume": "La ville d'Ahuy a sollicité une subvention auprès du Département pour financer son projet de vidéoprotection. L'extrait ne donne pas le montant demandé.",
+  "pourquoi": "Demande de financement local sans effet direct sur les obligations ou les outils d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "597f6d87c94aa41a",
@@ -378,12 +395,13 @@
   },
   "categorie": "reglementation",
   "score": 30,
-  "resume": "Un député de la Manche met en garde contre un effet supposé des caméras de vidéoprotection. Seul le titre est connu, l'article ne détaille pas son argumentation.",
-  "pourquoi": "Prise de position politique sans nouvelle obligation réglementaire, donc peu d'impact immédiat sur un centre.",
+  "resume": "Le député Philippe Gosselin met en garde contre ce qu'il appelle l'effet plumeau des caméras de vidéoprotection à Saint-Lô. L'extrait ne détaille pas ses propositions.",
+  "pourquoi": "Débat d'opinion sur l'efficacité de la vidéoprotection, qui peut annoncer des évolutions du cadre mais n'a pas d'impact immédiat sur le centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "94795d0af542cc45",
@@ -398,13 +416,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 35,
-  "resume": "À Marseille, les forces de l'ordre s'appuient sur la vidéoprotection pour organiser leur présence lors de blocus de lycées. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "L'usage opérationnel de la vidéoprotection par la police illustre une complémentarité avec les dispositifs privés, mais sans obligation nouvelle pour un centre.",
+  "score": 38,
+  "resume": "À Marseille, les forces de l'ordre s'appuient sur la vidéoprotection pour organiser leur présence sur le terrain lors de blocus de lycées. L'extrait ne précise pas le cadre juridique de cet usage.",
+  "pourquoi": "L'usage opérationnel de la vidéo en temps réel pour guider des interventions illustre une articulation possible avec la levée de doute et la transmission, sans changer les procédures du centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "92d43633922f4f7d",
@@ -419,13 +438,14 @@
    "reglementation": 1
   },
   "categorie": "telesurveillance",
-  "score": 35,
-  "resume": "Suite à une série de délits dans la commune de Chéry-lès-Pouilly, la municipalité réfléchirait à installer un système de vidéoprotection. L'extrait ne donne pas davantage de détails sur le projet.",
-  "pourquoi": "Un projet communal de vidéoprotection peut à terme générer des besoins de supervision ou de levée de doute pour un centre, mais le projet n'est qu'évoqué et reste très indirect pour ce lecteur.",
+  "score": 25,
+  "resume": "À la suite de délits, la mairie de Chéry-lès-Pouilly envisage la mise en place de vidéoprotection. L'extrait ne précise ni les délits ni le projet retenu.",
+  "pourquoi": "Réaction locale à des faits de délinquance, sans enjeu identifié pour les centres de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "07c10a7e031ce478",
@@ -439,14 +459,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "reglementation",
-  "score": 35,
-  "resume": "Une commune du Finistère examine un projet d'installation de vidéoprotection lors d'une séance du conseil municipal. L'extrait ne donne pas d'autres détails sur le dispositif.",
-  "pourquoi": "Un projet municipal de vidéoprotection peut ouvrir un marché pour des centres de télésurveillance, mais l'impact reste indirect et l'information est très limitée.",
+  "categorie": "telesurveillance",
+  "score": 45,
+  "resume": "Un projet de vidéoprotection doit être présenté au conseil municipal de Clohars-Fouesnant. L'extrait est très bref et ne précise ni le nombre de caméras, ni le calendrier, ni le prestataire envisagé.",
+  "pourquoi": "Un nouveau dispositif de vidéoprotection communal peut ouvrir un marché ou un besoin de levée de doute vidéo, mais l'information reste locale et peu détaillée.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "62aed6613c03bef1",
@@ -461,13 +482,14 @@
    "telesurveillance": 1
   },
   "categorie": "hors_sujet",
-  "score": 12,
-  "resume": "L'article indique que la vidéosurveillance augmente les verbalisations routières. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "Il s'agit d'un sujet de contrôle routier sans lien direct avec l'organisation d'un centre de télésurveillance.",
+  "score": 15,
+  "resume": "Un article indique que le nombre de verbalisations routières augmente grâce à la vidéosurveillance. L'extrait ne donne ni chiffres ni détails sur le dispositif.",
+  "pourquoi": "Le sujet relève de la verbalisation routière et n'affecte pas directement l'exploitation d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "72ec6c81765f6049",
@@ -482,13 +504,14 @@
    "marche": 1
   },
   "categorie": "marche",
-  "score": 15,
-  "resume": "Un analyste financier modifie son objectif de cours sur l'action Verisure tout en conservant une recommandation d'achat. Seul le titre est disponible.",
-  "pourquoi": "C'est une information boursière sur un acteur de la sécurité, sans effet opérationnel pour le centre.",
+  "score": 35,
+  "resume": "Le courtier SEB ramène son objectif de cours sur Verisure à 14 euros tout en conservant une recommandation d'achat. L'extrait ne mentionne pas les motifs de cette révision.",
+  "pourquoi": "Verisure est un acteur majeur de la télésurveillance, mais cette information financière n'a pas d'effet opérationnel direct sur le centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "d895beca4a0534e7",
@@ -502,14 +525,15 @@
   "mots_cles_trouves": {
    "marche": 1
   },
-  "categorie": "marche",
-  "score": 20,
-  "resume": "Securitas met en avant une démarche de réemploi et de valorisation de ses uniformes en fin de vie. Seul le titre est disponible.",
-  "pourquoi": "Démarche RSE d'un grand groupe de sécurité, sans impact direct sur les équipes ou les outils du centre.",
+  "categorie": "hors_sujet",
+  "score": 10,
+  "resume": "Securitas met en place une démarche de réemploi et de valorisation de ses uniformes usagés. L'extrait ne donne pas de détails chiffrés.",
+  "pourquoi": "Le sujet concerne la gestion textile et l'environnement, sans lien avec les obligations ou l'exploitation d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "32c34499a4121d31",
@@ -525,12 +549,13 @@
   },
   "categorie": "reglementation",
   "score": 40,
-  "resume": "L'article s'interroge sur la place qui sera donnée à la sécurité privée dans la sécurité des Jeux olympiques de 2030. Seul le titre est disponible, sans précision sur les décisions prises.",
-  "pourquoi": "Le cadrage du rôle de la sécurité privée pourrait à terme influer sur les besoins en prestations et en personnel, mais l'impact est lointain.",
+  "resume": "Un article s'interroge sur la part des missions de sécurité des Jeux olympiques de 2030 qui sera confiée à la sécurité privée. L'extrait ne permet pas de connaître la réponse ni les acteurs chargés de la décision.",
+  "pourquoi": "Un éventuel élargissement du rôle de la sécurité privée lors d'un grand événement pourrait, à terme, toucher les prestataires et leurs moyens de supervision, mais l'impact reste lointain et indirect.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "fbaeaeaa4748db0f",
@@ -546,12 +571,13 @@
   },
   "categorie": "reglementation",
   "score": 55,
-  "resume": "Le titre évoque un décret sur les chiens de sécurité attendu depuis 2008, avec un délai de 60 jours. Seul le titre est disponible, le contenu du texte n'est pas connu.",
-  "pourquoi": "Un décret sur les chiens de sécurité relève du cadre de la sécurité privée et pourrait concerner les prestations de gardiennage, mais son lien avec la télésurveillance reste indirect.",
+  "resume": "Un article évoque un décret sur les chiens de sécurité, attendu depuis 2008, dont l'adoption est annoncée dans un délai de 60 jours. L'extrait ne précise pas le contenu du texte.",
+  "pourquoi": "Les chiens de sécurité font partie des moyens de la sécurité privée et un décret pourrait encadrer des prestations concernées par les agents et les entreprises, ce qui mérite un suivi.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "cbefc8373bacdfa2",
@@ -566,13 +592,14 @@
    "management": 1
   },
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "L'article annonce un recrutement de jeunes pour une formation gratuite au Burkina Faso et explique comment postuler. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "Sans lien avec la sécurité privée, la télésurveillance ou l'exploitation d'un centre en France.",
+  "score": 5,
+  "resume": "Un appel à candidatures annonce une formation gratuite au Burkina Faso pour 235 jeunes. L'extrait ne décrit pas le contenu de la formation.",
+  "pourquoi": "Il s'agit d'une offre de formation sans lien avec la sécurité privée ni avec la télésurveillance en France.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "480bf2b3dbce7ba2",
@@ -586,14 +613,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "hors_sujet",
-  "score": 25,
-  "resume": "La CNIL a organisé ses Rencontres Informatique & Libertés le 29 septembre 2026 et propose la rediffusion de l'événement. Les thèmes évoqués incluent les lunettes connectées et les sanctions.",
-  "pourquoi": "L'événement traite de protection des données en général, sans lien précis avec le fonctionnement d'un centre de télésurveillance.",
+  "categorie": "reglementation",
+  "score": 42,
+  "resume": "La CNIL a organisé le 29 septembre 2026 la deuxième édition de ses Rencontres Informatique & Libertés, consacrée notamment aux lunettes connectées et au rôle des sanctions. Le texte annonce une rediffusion et rappelle que la CNIL a prononcé en 2025 83 sanctions pour un total de 487 millions d'euros.",
+  "pourquoi": "Le RGPD encadre la vidéoprotection et la donnée client traitée par un centre, et le bilan des sanctions donne un signal utile, mais l'événement n'introduit pas d'obligation directe.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "c38ffe59cf949f18",
@@ -607,14 +635,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "hors_sujet",
-  "score": 18,
-  "resume": "La CNIL et Cybermalveillance.gouv.fr publient un support pratique destiné aux particuliers en cas de violation de données personnelles. Le public visé est le grand public.",
-  "pourquoi": "La ressource cible les particuliers et n'a pas d'incidence directe sur les obligations ou les outils d'un centre.",
+  "categorie": "reglementation",
+  "score": 30,
+  "resume": "La CNIL et Cybermalveillance.gouv.fr publient à l'occasion du Cybermois un dépliant destiné aux particuliers victimes d'une violation de leurs données. Il détaille les réflexes à avoir du jour de la découverte jusqu'à J+30.",
+  "pourquoi": "La ressource vise le grand public et n'impose aucune obligation aux centres, même si elle peut servir de support de sensibilisation.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "1886f2603693438f",
@@ -628,14 +657,18 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "hors_sujet",
-  "score": 10,
-  "resume": "La CNIL organise un événement sur les communications politiques et les ingérences étrangères, avec inscriptions ouvertes. Le sujet est éloigné de la sécurité privée.",
-  "pourquoi": "Le thème politique et électoral n'a pas de lien avec l'activité d'un centre de télésurveillance.",
+  "categorie": "reglementation",
+  "score": 25,
+  "resume": "La CNIL organise le 16 novembre 2026 un événement sur les communications politiques et les ingérences dans les élections. Le programme aborde le consentement au ciblage politique en ligne et les risques liés aux IA génératives.",
+  "pourquoi": "Le sujet concerne la communication politique et les élections, sans lien direct avec les activités d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": {
+   "date": "2026-11-01",
+   "libelle": "Événement CNIL sur les élections et l'éthique du numérique"
+  },
+  "payant": null
  },
  {
   "id": "38701bdc8ec1deee",
@@ -649,14 +682,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "hors_sujet",
-  "score": 12,
-  "resume": "La CNIL a clôturé une injonction prononcée en mai 2025 contre une société de services marketing. L'extrait ne donne pas d'autres détails sur les faits.",
-  "pourquoi": "Décision RGPD concernant un acteur sans lien direct avec la télésurveillance, sans impact sur les procédures du centre.",
+  "categorie": "reglementation",
+  "score": 40,
+  "resume": "La CNIL a clôturé, par délibération du 17 septembre 2026, l'injonction prononcée en mai 2025 contre la société SOLOCAL MARKETING SERVICES. Cette injonction faisait suite à une amende de 900 000 euros pour défaut de recueil et de preuve du consentement à la prospection électronique, les formulaires des courtiers en données étant jugés trompeurs. La société avait ensuite mis en place des mesures de vérification du consentement, jugées satisfaisantes, et l'astreinte n'a pas été liquidée.",
+  "pourquoi": "Le sujet porte sur le consentement à la prospection par SMS et courriel, ce qui n'affecte qu'indirectement un centre de télésurveillance. Il rappelle toutefois la vigilance attendue sur l'origine des données de contact.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "54e666f6c5806a29",
@@ -672,12 +706,16 @@
   },
   "categorie": "reglementation",
   "score": 35,
-  "resume": "Le Comité européen de la protection des données a adopté des lignes directrices sur le pouvoir d'infliger des amendes administratives, ainsi que la version finale sur l'articulation entre DSA et RGPD. L'extrait ne détaille pas le contenu.",
-  "pourquoi": "Texte européen indirectement lié au RGPD appliqué à la sécurité, mais sans effet direct identifié sur un centre de télésurveillance.",
+  "resume": "Le CEPD a adopté le 17 septembre 2026 des lignes directrices sur le pouvoir des autorités de protection des données d'infliger des amendes administratives, avec une méthode en cinq étapes et une présentation des mesures correctrices. Il a aussi publié la version finale de ses lignes directrices sur l'articulation entre le DSA et le RGPD. Les premières sont soumises à consultation publique jusqu'au 13 novembre 2026.",
+  "pourquoi": "Ces textes européens concernent surtout les fournisseurs de services numériques et les autorités de contrôle. Ils ont un impact indirect sur les données traitées par un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": {
+   "date": "2026-11-13",
+   "libelle": "Fin de la consultation publique sur les lignes directrices CEPD relatives aux amendes"
+  },
+  "payant": null
  },
  {
   "id": "dcda8e0798dfe259",
@@ -693,12 +731,13 @@
   },
   "categorie": "telesurveillance",
   "score": 55,
-  "resume": "Un article juridique publié dans une revue professionnelle s'interroge sur le caractère à risque de la télésurveillance et sur les responsabilités qui en découlent. Seul un extrait est disponible, sans le contenu détaillé.",
-  "pourquoi": "Le thème des responsabilités des prestataires de télésurveillance concerne directement le responsable de centre, mais l'extrait ne permet pas de savoir quelles obligations sont précisées.",
+  "resume": "Il s'agit d'une veille du GPMSE reprenant un article de la revue ETS n°836 du 15 septembre 2026, signé par Maître Séverine Vielh (Cabinet Ronsard Avocats). L'extrait ne donne pas le contenu juridique, réservé à la lecture de l'article complet. Le texte précise qu'il s'agit d'informations générales, non d'un conseil juridique.",
+  "pourquoi": "Le sujet porte directement sur les obligations et responsabilités liées à la télésurveillance, mais l'extrait ne permet pas d'en identifier les points précis.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b8de454729e075fe",
@@ -712,14 +751,15 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "marche",
-  "score": 45,
-  "resume": "Un rapport conjoint de l'inspection générale de l'administration et du contrôle général économique et financier analyse les fragilités économiques du secteur de la sécurité privée. Il évoque une possible intervention publique renforcée.",
-  "pourquoi": "Contexte économique du secteur pouvant influer à terme sur les marchés et la régulation, mais sans mesure concrète annoncée pour les centres.",
+  "categorie": "reglementation",
+  "score": 75,
+  "resume": "Un rapport conjoint de l'IGA et du CGefi, publié le 23 juillet 2026, analyse les fragilités économiques de la sécurité privée, surtout le gardiennage et la surveillance humaine. Il recommande la création d'un observatoire économique au sein du CNAPS et une clarification des activités connexes. Il reconnaît aussi le modèle de la sécurité électronique, avec une sous-traitance à deux niveaux pour les interventions sur alarme, et évoque un assouplissement possible du principe d'exclusivité.",
+  "pourquoi": "Le rapport touche au cadre du CNAPS, aux activités connexes et à la sous-traitance, ce qui concerne directement les prestataires de sécurité électronique et leurs solutions hybrides.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "",
-  "echeance": null
+  "action": "Lire le rapport complet et vérifier l'impact sur les contrats de sous-traitance et les prestations connexes du centre.",
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "baecacd1d8aa7a8b",
@@ -733,12 +773,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Il s'agit de l'édito hebdomadaire d'une publication du secteur pharmaceutique. L'extrait ne contient aucun contenu exploitable.",
-  "pourquoi": "Sans rapport avec la sécurité privée ni la télésurveillance.",
+  "resume": "Il s'agit de l'édito hebdomadaire du média TICpharma daté du 9 octobre 2026. L'extrait ne contient aucun contenu exploitable.",
+  "pourquoi": "Le média est spécialisé dans le secteur pharmaceutique et n'a aucun lien avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "0485f58daf2ef44a",
@@ -751,13 +792,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "marche",
-  "score": 38,
-  "resume": "Un opérateur de télécommunications présente des solutions de détection de drones lors d'un salon à Bordeaux. L'extrait ne donne pas d'autres précisions.",
-  "pourquoi": "Innovation de détection pouvant à terme intéresser la sécurité des sites, mais le lien avec la télésurveillance reste lointain.",
+  "score": 30,
+  "resume": "Un article de Sud Ouest annonce qu'un opérateur de télécommunications, Orange, se lance dans la détection de drones, présentée au salon des drones de Bordeaux. Seul le titre est disponible.",
+  "pourquoi": "La détection de drones est un nouveau marché qui peut à terme intéresser la détection, mais l'article ne concerne pas directement la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "a5b7c6e04f05d814",
@@ -770,13 +812,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "marche",
-  "score": 42,
-  "resume": "Deux acteurs de la sécurité présentent des innovations autour de SIPP à Marseille. Seul le titre est disponible, sans détail technique.",
-  "pourquoi": "Innovation potentiellement liée aux systèmes de sécurité, mais l'information reste trop vague pour évaluer un impact sur le centre.",
+  "score": 35,
+  "resume": "Presse Agence signale que les entreprises Vigilane et Safee présentent de nouvelles solutions de sécurité à Marseille, avec SIPP. Seul le titre est disponible, sans détail sur les produits.",
+  "pourquoi": "Il s'agit d'un signal sur les acteurs et innovations du marché de la sécurité, sans information précise pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "ee53e58c8b274467",
@@ -789,13 +832,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Un véhicule a fini sa course dans le canal du Midi à Carcassonne. Fait divers sans lien avec le secteur.",
-  "pourquoi": "Fait divers local sans enjeu pour un centre de télésurveillance.",
+  "score": 2,
+  "resume": "Un fait divers relaté par L'Indépendant décrit la sortie de route d'une voiture à Carcassonne, qui termine dans le canal du Midi. Seul le titre et l'extrait sont disponibles.",
+  "pourquoi": "Ce fait divers n'a aucun lien avec l'organisation, les obligations ou les outils d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "5034f06d7a68ac1d",
@@ -808,13 +852,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 4,
-  "resume": "Une intervention de secours mobilisant plusieurs véhicules et pompiers suite à une alerte au monoxyde de carbone. Fait divers sans précision supplémentaire.",
-  "pourquoi": "Fait divers sans lien avec les obligations ou les outils d'un centre de télésurveillance.",
+  "score": 3,
+  "resume": "La République du Centre rapporte une intervention de huit véhicules et quatorze pompiers pour une alerte au monoxyde de carbone à Châlette-sur-Loing. Seul le titre est disponible.",
+  "pourquoi": "Ce fait divers local ne touche pas aux procédures ou aux outils d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "1335261efcdb5a9f",
@@ -827,13 +872,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "social",
-  "score": 62,
-  "resume": "Un article juridique aborde la situation où un client réduit le nombre d'agents d'une prestation et s'interroge sur la valeur du silence de l'entreprise prestataire. Seul le titre est disponible.",
-  "pourquoi": "Question contractuelle et sociale touchant aux plannings et aux effectifs affectés à une prestation, utile à connaître pour la gestion des équipes.",
+  "score": 70,
+  "resume": "Le site 83-629.fr pose la question de savoir si le silence d'une entreprise de sécurité face à la réduction des effectifs d'agents demandée par un client vaut accord. Seul le titre est disponible, la réponse n'est pas connue à partir de l'extrait.",
+  "pourquoi": "La réduction d'effectifs d'agents par un client touche aux contrats, aux plannings et à la situation des salariés, sujets qui peuvent concerner les équipes d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "",
-  "echeance": null
+  "action": "Vérifier les clauses des contrats clients concernant la modification des effectifs et les formaliser par écrit.",
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "033af52de5ac8013",
@@ -846,13 +892,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 5,
-  "resume": "Le titre évoque des palpations pratiquées à la SNCF qui deviennent permanentes au lieu d'être ponctuelles. Seul le titre est disponible, sans détail.",
-  "pourquoi": "Sujet de sûreté ferroviaire sans lien avec l'organisation d'un centre de télésurveillance.",
+  "score": 12,
+  "resume": "L'article évoque la prolongation d'un dispositif de palpations dans les gares de la SNCF, sans que l'extrait permette de préciser les modalités. Seul le titre et un court extrait sont disponibles.",
+  "pourquoi": "Le sujet relève de la sûreté ferroviaire et n'a pas d'incidence directe sur les procédures, les opérateurs ou les obligations d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "98530489a781e54d",
@@ -865,13 +912,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "Il s'agit d'une simple revue quotidienne dont seul le titre est connu, sans contenu détaillé.",
-  "pourquoi": "Aucun contenu exploitable pour un centre de télésurveillance.",
+  "score": 5,
+  "resume": "Il s'agit d'une simple rubrique d'actualités quotidienne dont l'extrait ne détaille aucun contenu.",
+  "pourquoi": "Aucun contenu exploitable pour un centre de télésurveillance n'apparaît dans l'extrait.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "adc00546ead37eb4",
@@ -884,13 +932,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "Un particulier installe une caravane pour loger son fils et reçoit ensuite un courrier de la mairie. Seul le titre est disponible.",
-  "pourquoi": "Fait de vie locale sans rapport avec la sécurité privée ni la télésurveillance.",
+  "score": 3,
+  "resume": "Le récit concerne un particulier ayant installé une caravane dans son jardin puis reçu un courrier de la mairie. Seul l'extrait est disponible.",
+  "pourquoi": "C'est un fait de vie privée sans lien avec la sécurité privée ni l'activité d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "4b5042181da6548d",
@@ -903,13 +952,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Une action syndicale menée dans un magasin Carrefour est mentionnée. Seul le titre est disponible.",
-  "pourquoi": "Conflit local sans lien direct avec un centre de télésurveillance.",
+  "score": 4,
+  "resume": "Une action syndicale de la CGT menée dans un magasin Carrefour à Ollioules est signalée. L'extrait ne donne pas d'autres détails.",
+  "pourquoi": "Il s'agit d'un conflit local dans la grande distribution, sans rapport avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "12df8d6d0e2c2e9c",
@@ -922,13 +972,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 2,
-  "resume": "L'article évoque le recours à des avions et équipages loués à l'étranger par des compagnies israéliennes, avec un risque pour la sécurité. Seul le titre est disponible.",
-  "pourquoi": "Transport aérien sans lien avec la télésurveillance ni la sécurité privée française.",
+  "score": 8,
+  "resume": "L'article aborde la pratique des compagnies aériennes israéliennes qui louent avions et personnel de bord étrangers, avec un enjeu de sécurité évoqué. Seul l'extrait est disponible.",
+  "pourquoi": "Le sujet concerne l'aérien et n'a pas de lien direct avec les obligations ou les outils d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "a2b117b9801f75ef",
@@ -941,13 +992,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Un panorama de conflits sociaux dans la distribution est annoncé. Seul le titre est disponible.",
-  "pourquoi": "Actualité sociale de la distribution, sans lien avec la branche prévention-sécurité.",
+  "score": 6,
+  "resume": "L'article évoque des conflits sociaux dans plusieurs enseignes de distribution d'ameublement. L'extrait ne précise pas les revendications.",
+  "pourquoi": "Ces conflits relèvent d'autres branches professionnelles et ne concernent pas la convention de la prévention-sécurité.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "0cd8e0763473e128",
@@ -960,13 +1012,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "Une possible mesure scolaire à Hô Chi Minh-Ville est évoquée. Seul le titre est disponible.",
-  "pourquoi": "Actualité scolaire étrangère sans rapport avec le secteur.",
+  "score": 2,
+  "resume": "Des écoles de Hô Chi Minh-Ville pourraient autoriser les parents à attendre dans la cour pour récupérer leurs enfants. Seul l'extrait est disponible.",
+  "pourquoi": "Information sans lien avec la sécurité privée ni avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b0b8d3d5c19678a6",
@@ -979,13 +1032,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "Il est question d'une mesure touristique, sans précision disponible dans le titre.",
-  "pourquoi": "Tourisme sans lien avec la télésurveillance.",
+  "score": 1,
+  "resume": "L'extrait évoque une mesure au Vietnam destinée à soutenir le tourisme, sans autre précision.",
+  "pourquoi": "Le sujet touristique vietnamien n'a aucune incidence sur un centre de télésurveillance en France.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b919ea0189b6ea6e",
@@ -999,12 +1053,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 1,
-  "resume": "Un changement à la présidence d'un groupe d'élus départementaux est annoncé. Seul le titre est disponible.",
-  "pourquoi": "Politique locale sans rapport avec le secteur de la sécurité.",
+  "resume": "Un élu départemental du Lot-et-Garonne est désigné à la présidence du groupe majoritaire. L'extrait ne donne pas d'autres éléments.",
+  "pourquoi": "Il s'agit de politique locale sans lien avec l'activité de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "e1ef53050419c4ea",
@@ -1016,14 +1071,15 @@
   "origine": "google_news",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "telesurveillance",
-  "score": 40,
-  "resume": "Une commune d'Ille-et-Vilaine doit installer prochainement vingt caméras pour lutter contre les incivilités. Seul le titre est disponible, sans détail technique.",
-  "pourquoi": "Projet de vidéoprotection municipale pouvant indirectement concerner des prestations de surveillance ou de levée de doute, sans information sur le prestataire.",
+  "categorie": "reglementation",
+  "score": 35,
+  "resume": "Une commune d'Ille-et-Vilaine prévoit l'installation prochaine de vingt caméras de vidéoprotection afin de lutter contre les incivilités. Seul le titre et l'extrait sont disponibles, sans précision sur le calendrier ni sur le dispositif de visionnage.",
+  "pourquoi": "Le projet touche la vidéoprotection, qui peut ponctuellement concerner les centres, mais l'extrait ne mentionne ni raccordement à un centre ni obligation nouvelle.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "dd71ec8d0501baf2",
@@ -1036,13 +1092,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 5,
-  "resume": "Un fait divers local : deux individus ont été arrêtés après avoir vidé les horodateurs de La Baule, pour un butin supérieur à 8 000 euros. L'extrait ne donne pas davantage de détails.",
+  "score": 3,
+  "resume": "Deux hommes ont été interpellés à La Baule après avoir vidé la monnaie des horodateurs de la ville, selon l'extrait, pour un butin supérieur à 8 000 euros. Le fait divers ne porte que sur un vol local, sans lien avec la sécurité privée.",
   "pourquoi": "Fait divers sans lien avec l'organisation, les obligations ou les outils d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "51f7f80076c6b1cf",
@@ -1055,13 +1112,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 12,
-  "resume": "La ville de Toulouse va désormais expulser des logements sociaux les personnes impliquées dans le trafic de drogue. Seul le titre est disponible.",
-  "pourquoi": "Mesure de politique du logement sans incidence directe sur les obligations ou l'exploitation d'un centre de télésurveillance.",
+  "score": 8,
+  "resume": "La ville de Toulouse prévoit désormais d'expulser les trafiquants de drogue de leur logement social. L'extrait ne donne pas davantage de détails sur le dispositif.",
+  "pourquoi": "Mesure de politique du logement sans incidence sur les activités de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "19f5efa7c310e23e",
@@ -1074,13 +1132,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 8,
-  "resume": "Un article en direct sur le blocus de lycées, avec des cours totalement ou partiellement suspendus dans 375 établissements. Seul le titre est disponible.",
-  "pourquoi": "Actualité scolaire et sociale sans lien avec la sécurité privée ni avec le centre.",
+  "score": 5,
+  "resume": "Selon un direct d'Europe 1, les cours sont totalement ou partiellement suspendus dans 375 établissements scolaires en raison d'un blocus. L'extrait ne dit rien de plus.",
+  "pourquoi": "Actualité scolaire sans lien direct avec la télésurveillance ni la sécurité privée.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "3a16dfd90a0ab041",
@@ -1093,13 +1152,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 15,
-  "resume": "Une conférence locale de prévention sur les arnaques et les cambriolages est annoncée. Seul le titre est disponible.",
-  "pourquoi": "Action de prévention grand public, sans enjeu direct pour un centre de télésurveillance.",
+  "score": 6,
+  "resume": "Une conférence sur les arnaques et les cambriolages est annoncée à Bretteville-sur-Odon. L'extrait ne précise ni les intervenants ni le contenu.",
+  "pourquoi": "Action de prévention locale, peu liée aux obligations ou aux procédures d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "f0451c510d53a3db",
@@ -1112,13 +1172,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Un accident de la route impliquant un adolescent à trottinette sur le trajet du collège dans la Loire. Seul le titre est disponible.",
-  "pourquoi": "Fait divers routier sans lien avec la télésurveillance.",
+  "score": 2,
+  "resume": "Un adolescent circulant en trottinette a été renversé sur le chemin du collège dans la Loire, et le conducteur a pris la fuite. L'extrait ne donne pas d'autres éléments.",
+  "pourquoi": "Fait divers routier sans rapport avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "c33fece12457cdb5",
@@ -1131,13 +1192,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 8,
-  "resume": "Une responsable politique alerte sur le moral des policiers engagés lors du blocus des lycées. Seul le titre est disponible.",
-  "pourquoi": "Débat politique sur le maintien de l'ordre, sans incidence sur le secteur de la sécurité privée.",
+  "score": 4,
+  "resume": "Une élue, Laure Lavalette, s'exprime dans Europe 1 sur le moral des policiers pendant le blocus des lycées. L'extrait ne contient que la citation d'introduction.",
+  "pourquoi": "Débat politique sur les forces de l'ordre, sans incidence sur un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "bb47e2aecbc8cacb",
@@ -1150,13 +1212,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 2,
-  "resume": "Article local sur l'assainissement dans la commune d'Oucques-la-Nouvelle. Seul le titre est disponible.",
-  "pourquoi": "Sujet d'infrastructure locale sans rapport avec la télésurveillance.",
+  "score": 1,
+  "resume": "L'article concerne l'assainissement à Oucques-la-Nouvelle. L'extrait ne contient pas d'autre information.",
+  "pourquoi": "Sujet d'assainissement municipal, sans rapport avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "11025a64d6cdb3a7",
@@ -1169,13 +1232,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 8,
-  "resume": "Les forces de l'ordre expriment leur amertume après la suspension de l'usage de grenades assourdissantes lors du blocus des lycées. Seul le titre est disponible.",
-  "pourquoi": "Question de maintien de l'ordre public, sans lien avec les activités d'un centre de télésurveillance.",
+  "score": 4,
+  "resume": "Selon Europe 1, les forces de l'ordre expriment leur amertume après la suspension de l'usage des grenades assourdissantes pendant le blocus des lycées. L'extrait ne donne pas davantage de détails.",
+  "pourquoi": "Actualité du maintien de l'ordre, sans lien avec la sécurité privée ni la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "9392cc23d8adb81a",
@@ -1188,13 +1252,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "marche",
-  "score": 35,
-  "resume": "Un article évoque la transition d'un réseau départemental, vingt ans après l'ADSL, vers des services numériques. Seul le titre est disponible.",
-  "pourquoi": "Évolution des infrastructures de télécommunication, indirectement pertinente pour la transmission des alarmes, mais sans détail exploitable.",
+  "score": 18,
+  "resume": "Le réseau local des Hautes-Pyrénées, vingt ans après l'ADSL, engage une transition vers des services numériques. L'extrait ne précise pas les services concernés ni les acteurs.",
+  "pourquoi": "Évolution des réseaux numériques locaux, dont le lien avec la transmission des alarmes reste indirect et non documenté.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "7650f4569e403f65",
@@ -1207,17 +1272,18 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 5,
-  "resume": "Des élus locaux s'inspirent d'une entreprise de la Manche pour orienter leurs politiques d'emploi des jeunes. Seul le titre est disponible.",
-  "pourquoi": "Politique locale de l'emploi, sans lien avec le secteur de la télésurveillance.",
+  "score": 2,
+  "resume": "Des élus de Coutances s'inspirent de l'entreprise Dujardin pour orienter leurs politiques d'emploi des jeunes. L'extrait ne donne pas d'autres détails.",
+  "pourquoi": "Politique locale de l'emploi, sans rapport avec le fonctionnement d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "562f21825aac5d1a",
-  "titre": "Réouverture prochaine d'une salle polyvalente à Saint-Aubin-d'Arquenay",
+  "titre": "Réouverture prochaine d'une salle polyvalente",
   "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxNaXVQRDRSR0R3ZWJsWm9CeEJCUE0yVWNTUEJiTjEtVnh4Q0lCSWhsaG9NTlRFNkhtQ0RzUFY1M2FheUFfdWpuV2R1d2FsMEg5YWVfekJFc0VnNEJsNHRlTU5wRzZzNVNseXRieHNnNUZQcmZjTEVBekFtZURobFBCTXBRQmpqSUIycUhXQUhISFI3dUZ6RFhfeENua2Ytd2tZZTN6MHNhVmZHQjN5cHNPaVdNZTdYZzFPQ0JlaXY0TmNoenp5RWlxaXhNRXo4Tms1ZThtYWkwUEpQZzYyWjhvdzNrTWxHUWh0NDN5SnBJamhJQy1fd3RVSDZ4TnpYVDNqWUtyYWJ0ckItSjloNVQtdkhUUlVQTVMtQUJLVGcwcWpLdHphX2pKUQ?oc=5",
   "source": "Ouest-France",
   "date": "2026-10-08T11:50:42+00:00",
@@ -1227,12 +1293,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article local annonce la réouverture prochaine d'une salle polyvalente après des travaux. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "Information municipale sans lien avec la télésurveillance, la réglementation ou les équipes d'un centre.",
+  "resume": "Un article local annonce la réouverture prochaine d'une salle polyvalente après plusieurs mois de travaux. L'extrait ne donne pas d'autre détail.",
+  "pourquoi": "Information locale sans lien avec la télésurveillance, la réglementation ou le management d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "8480b0a472f1c78f",
@@ -1246,12 +1313,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article sportif local évoque la participation d'un pilote breton à un championnat de modélisme. Seul le titre est disponible.",
+  "resume": "Un article sportif local évoque un participant breton au championnat de France d'automodélisme. L'extrait ne contient pas d'autre information.",
   "pourquoi": "Sujet sportif sans rapport avec la sécurité privée ni avec un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b756c88a66951ecc",
@@ -1264,13 +1332,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 5,
-  "resume": "Un article local signale des dégradations près de la mairie d'Arbouans. Seul le titre est disponible, sans détail supplémentaire.",
-  "pourquoi": "Fait divers local sans enjeu identifié pour l'organisation ou les obligations d'un centre de télésurveillance.",
+  "score": 12,
+  "resume": "Un article signale des dégradations près de la mairie d'Arbouans. L'extrait ne précise ni les faits ni les suites.",
+  "pourquoi": "Fait divers local sans enjeu identifié pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "574bce9ff4ca7503",
@@ -1284,12 +1353,13 @@
   "mots_cles_trouves": {},
   "categorie": "reglementation",
   "score": 35,
-  "resume": "Un article grand public indique que la vidéo-verbalisation progresse en France, sans plus de précisions dans l'extrait disponible. Il ne s'agit que du titre et de l'extrait.",
-  "pourquoi": "La vidéo-verbalisation relève de la vidéoprotection publique ; cela peut indirectement intéresser un centre qui gère des images, mais l'impact direct reste faible.",
+  "resume": "Un article grand public indique que la vidéo-verbalisation, qui permet de sanctionner des infractions sans interpellation, progresse en France. L'extrait reste général et ne cite ni texte, ni chiffres, ni date.",
+  "pourquoi": "Le sujet touche indirectement à la vidéoprotection, mais le contenu est grand public et sans obligation nouvelle pour les centres.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "0b5e7fc99ae9b9ab",
@@ -1303,12 +1373,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article local annonce l'ouverture prochaine d'une école après des travaux. Seul le titre est disponible.",
-  "pourquoi": "Information locale sans lien avec la télésurveillance ni avec la sécurité privée.",
+  "resume": "Un article local annonce l'ouverture d'une nouvelle école à Bain-de-Bretagne en novembre, après des travaux. L'extrait ne donne pas d'autres détails.",
+  "pourquoi": "Information locale sans lien avec la télésurveillance ni la sécurité privée.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "80f83d309f7cd60f",
@@ -1322,12 +1393,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 5,
-  "resume": "Un article grand public s'interroge sur la possibilité de vivre sans traces numériques. Seul le titre et l'extrait sont disponibles.",
-  "pourquoi": "Sujet de société sans lien direct avec les obligations, les outils ou les équipes d'un centre de télésurveillance.",
+  "resume": "Un article de divertissement lié à une émission de télévision s'interroge sur la possibilité de vivre sans téléphone ni carte bancaire. L'extrait ne contient pas d'analyse approfondie.",
+  "pourquoi": "Contenu de divertissement sans lien avec les activités d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "a168f6642a98da1e",
@@ -1340,13 +1412,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 0,
-  "resume": "Un article fait état d'une intervention des secours après un accident de la route. Seul le titre est disponible.",
-  "pourquoi": "Fait divers routier sans enjeu pour un centre de télésurveillance.",
+  "score": 3,
+  "resume": "Un article signale un grave accident de la route près de Bourg-en-Bresse, avec intervention des secours. L'extrait ne précise ni bilan ni circonstances.",
+  "pourquoi": "Fait divers routier sans enjeu pour les centres de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b7fafd035fc4e6d9",
@@ -1360,12 +1433,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article de programmes télévisés présente les nouveautés des plateformes de streaming. Seul le titre est disponible.",
-  "pourquoi": "Contenu de loisirs sans rapport avec la télésurveillance.",
+  "resume": "Un article de loisirs présente les nouveautés de films et séries disponibles en streaming en octobre 2026. L'extrait ne cite que le titre et les plateformes.",
+  "pourquoi": "Contenu culturel sans rapport avec le métier de responsable de centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "2db55e288eadee68",
@@ -1379,12 +1453,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article de conseils pratiques recense des applications de streaming pour iPhone. Seul le titre est disponible.",
-  "pourquoi": "Contenu grand public sans lien avec le métier de télésurveillance.",
+  "resume": "Un article propose une sélection d'applications gratuites de films et séries pour iPhone. L'extrait ne donne pas de détail supplémentaire.",
+  "pourquoi": "Contenu grand public sans lien avec la sécurité privée ni l'exploitation d'un centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "27082d3bbcd13981",
@@ -1398,12 +1473,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 0,
-  "resume": "Un article de programmes présente une sélection de séries disponibles sur Prime Video. Seul le titre est disponible.",
-  "pourquoi": "Contenu de loisirs sans rapport avec la télésurveillance.",
+  "resume": "Un article de loisirs classe les séries à voir sur Prime Video en octobre 2026. L'extrait ne contient que ce classement annoncé.",
+  "pourquoi": "Contenu de divertissement sans rapport avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "9f4fd45db0496de0",
@@ -1417,12 +1493,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 12,
-  "resume": "L'article évoque un projet madrilène autour de la 5G autonome, présenté comme une étape vers la 6G. Seul le titre est disponible, sans détail technique.",
-  "pourquoi": "Les réseaux mobiles généraux n'ont pas d'incidence directe sur les procédures ou les outils d'un centre de télésurveillance à ce stade.",
+  "resume": "Un article des Echos indique que Madrid étudie la 5G autonome comme étape vers la 6G. Seul le titre et un court extrait sont disponibles, sans détail technique supplémentaire.",
+  "pourquoi": "Sujet de télécommunications générales, sans lien direct avec les obligations ou les outils d'un centre de télésurveillance à ce stade.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": true
  },
  {
   "id": "e3cd5257d9205045",
@@ -1436,12 +1513,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 3,
-  "resume": "Témoignage d'un propriétaire immobilier sur la location touristique de ses logements pour limiter les occupations illégales. Seul le titre est disponible.",
-  "pourquoi": "Sujet immobilier sans lien avec la sécurité privée ni l'exploitation d'un centre de télésurveillance.",
+  "resume": "Un magazine féminin présente le témoignage d'un propriétaire de 150 logements qui privilégie la location touristique pour limiter les occupations illégales. Seul l'extrait est disponible.",
+  "pourquoi": "Immobilier et témoignage personnel, sans rapport avec la télésurveillance ou la sécurité privée.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "702cadf9c3584470",
@@ -1455,12 +1533,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 2,
-  "resume": "Interview de gérants de fonds sur leur approche d'investissement. Seul le titre est disponible.",
-  "pourquoi": "Sujet de gestion financière sans rapport avec le secteur de la télésurveillance.",
+  "resume": "Un article de Zonebourse évoque la stratégie d'investissement des gérants d'Amos Value. Seul le titre et une citation d'extrait sont disponibles.",
+  "pourquoi": "Finance de marché, sans lien avec le secteur de la sécurité ou de la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "108c85f9753cf061",
@@ -1472,14 +1551,15 @@
   "origine": "google_news",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "marche",
-  "score": 10,
-  "resume": "Le titre indique un montant total de levées de fonds par des startups françaises sur une semaine. Aucun détail sur les secteurs concernés n'est disponible.",
-  "pourquoi": "Information générale de financement, sans lien direct identifié avec la télésurveillance.",
+  "categorie": "hors_sujet",
+  "score": 4,
+  "resume": "Maddyness annonce que les startups françaises ont levé 217 millions d'euros en une semaine. Aucun détail sectoriel n'est fourni dans l'extrait.",
+  "pourquoi": "Information générale sur le financement des startups, sans lien identifiable avec la télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "4d6d0167f7fce627",
@@ -1492,13 +1572,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 8,
-  "resume": "Une levée de fonds de 2 millions d'euros pour une application d'IA dédiée au padel. Seul le titre est disponible.",
-  "pourquoi": "Application sportive sans rapport direct avec les centres de télésurveillance.",
+  "score": 5,
+  "resume": "Une levée de fonds de 2 millions d'euros par la société SPASH, qui veut utiliser l'IA pour le padel, est annoncée. L'extrait ne donne pas d'autres détails.",
+  "pourquoi": "Application de l'IA au sport, sans rapport direct avec les outils de télésurveillance, même si le financement d'une IA est un signal faible du marché.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "f63d65594c4ce200",
@@ -1512,12 +1593,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 5,
-  "resume": "Article au titre générique sur l'accélération des tâches de transformation numérique. Aucun détail n'est disponible.",
-  "pourquoi": "Titre trop générique pour identifier un lien avec les outils ou l'organisation d'un centre de télésurveillance.",
+  "resume": "Un article de Vietnam.vn appelle à accélérer les tâches de transformation numérique. L'extrait est très général et ne précise ni acteurs ni mesures.",
+  "pourquoi": "Discours général sur la transformation numérique au Vietnam, sans lien concret avec un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "fce05308c6440860",
@@ -1529,14 +1611,15 @@
   "origine": "google_news",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "marche",
-  "score": 15,
-  "resume": "Orange Maroc annonce trois partenariats dans le domaine technologique. Seul le titre est disponible, sans précision sur leur contenu.",
-  "pourquoi": "Partenariats télécoms au Maroc, lien indirect et lointain avec le secteur de la télésurveillance.",
+  "categorie": "hors_sujet",
+  "score": 6,
+  "resume": "Industrie du Maroc signale qu'Orange Maroc a annoncé trois partenariats technologiques. Le contenu détaillé des partenariats n'est pas disponible.",
+  "pourquoi": "Partenariats d'un opérateur télécom marocain, sans lien identifiable avec la télésurveillance en France.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "f0195bfefd10d5e6",
@@ -1548,14 +1631,15 @@
   "origine": "google_news",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "marche",
-  "score": 25,
-  "resume": "Analyse historique des sociétés militaires privées en Amérique latine, depuis la fin de la guerre froide. Seul le titre est disponible.",
-  "pourquoi": "Sujet de sécurité privée militaire à l'international, sans impact opérationnel sur un centre de télésurveillance français.",
+  "categorie": "hors_sujet",
+  "score": 18,
+  "resume": "The Conversation présente un article sur les sociétés militaires privées en Amérique latine, depuis la fin de la guerre froide jusqu'à l'acteur Vectus Global. Seul le titre et l'extrait sont disponibles.",
+  "pourquoi": "Géopolitique de la sécurité privée militaire à l'étranger ; le lien avec la sécurité privée française reste très indirect.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "86f69b3b6fc1c285",
@@ -1568,13 +1652,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 4,
-  "resume": "Titre évoquant la surveillance des plages et des nuits au Pays Basque. Seul le titre est disponible, et la source semble peu fiable.",
-  "pourquoi": "Sujet touristique et faits divers locaux sans lien avec l'exploitation d'un centre de télésurveillance.",
+  "score": 3,
+  "resume": "Un article au titre évocateur traite de la surveillance au Pays Basque, entre plages animées et nuits agitées. Seul le titre et l'extrait sont disponibles, et le contenu réel n'est pas connu.",
+  "pourquoi": "Titre de type faits divers ou tourisme, sans information exploitable pour un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "0ea2df9ffa1fece8",
@@ -1588,12 +1673,13 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 1,
-  "resume": "Bulletin d'informations quotidien sans contenu détaillé disponible. Seul le titre est disponible.",
-  "pourquoi": "Titre générique sans contenu identifiable en lien avec le secteur.",
+  "resume": "Il s'agit d'une simple rubrique quotidienne de 83-629.fr, sans contenu identifiable dans l'extrait.",
+  "pourquoi": "Aucun contenu exploitable, l'extrait ne contient pas d'information sur le secteur.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "b785e9552aabc992",
@@ -1606,17 +1692,18 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 10,
-  "resume": "Annonce de l'arrivée de deux nouvelles vice-présidentes au sein du GPMSE, rediffusée depuis un magazine partenaire. Seul le titre et un extrait très court sont disponibles, sans détail sur leurs missions.",
-  "pourquoi": "Information institutionnelle sur la gouvernance du groupement, sans impact sur l'organisation, les obligations ou les équipes d'un centre de télésurveillance.",
+  "score": 12,
+  "resume": "Article de la newsletter GPMSE, republié depuis un magazine spécialisé, annonçant l'arrivée de deux nouvelles vice-présidentes au sein de la gouvernance du groupement. L'extrait ne contient pas de détail sur leurs profils ni sur leurs missions.",
+  "pourquoi": "Information institutionnelle interne au groupement, sans impact direct sur l'organisation, les obligations ou les équipes du centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "6c8c03e35b6cabd7",
-  "titre": "EDITO",
+  "titre": "Édito de rentrée du GPMSE : veille juridique, contacts opérationnels et salon Expoprotection",
   "url": "https://www.gpmse.com/edito-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-21T15:26:17+00:00",
@@ -1624,14 +1711,18 @@
   "origine": "rss",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "hors_sujet",
-  "score": 5,
-  "resume": "Éditorial de rentrée adressé aux adhérents du GPMSE, présentant la lettre d'information comme un outil d'accompagnement. L'extrait ne contient aucun contenu opérationnel.",
-  "pourquoi": "Message de présentation générale sans information utile à l'exploitation d'un centre de télésurveillance.",
+  "categorie": "management",
+  "score": 45,
+  "resume": "Le président du GPMSE présente la lettre de rentrée et rappelle les ressources du site, dont une nouvelle rubrique de veille juridique réservée à l'espace adhérent. Il annonce que le groupement demandera aux adhérents leurs contacts opérationnels afin de leur diffuser les informations utiles à leurs métiers. Il signale aussi la présence de la sécurité privée sous forme de village au salon Expoprotection, début novembre, sous l'égide de la FFSP.",
+  "pourquoi": "La demande de contacts opérationnels pourrait concerner les équipes du centre, et la veille juridique intéresse le suivi réglementaire, mais l'article reste général.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": {
+   "date": "2026-11-01",
+   "libelle": "Salon Expoprotection (village de la sécurité privée)"
+  },
+  "payant": null
  },
  {
   "id": "de5d9381df290bda",
@@ -1644,20 +1735,21 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "reglementation",
-  "score": 62,
-  "resume": "Selon cet extrait, le démarchage téléphonique serait interdit dans tous les secteurs depuis le 11 août 2026, en application d'une loi de juin 2025, avec quelques exceptions de prospection encore admises. Le détail des exceptions n'est pas disponible dans l'extrait.",
-  "pourquoi": "Concerne indirectement le centre s'il pratique de la prospection téléphonique commerciale ou si ses équipes d'appel sortant sont concernées par ces règles ; à vérifier auprès des textes officiels.",
+  "score": 88,
+  "resume": "Depuis le 11 août 2026, le démarchage téléphonique est interdit sauf consentement préalable du consommateur, en application de la loi du 30 juin 2025. Le consentement doit être explicite, libre, spécifique, éclairé et révocable, valable un an au maximum et conservé pendant trois ans minimum. Les appels sont autorisés du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h, sans plus de quatre sollicitations sur 30 jours. L'extrait aborde aussi le contrôle par l'employeur de l'activité des salariés, notamment l'écoute et l'enregistrement des appels.",
+  "pourquoi": "Un centre qui effectue des appels sortants pour prospection ou vérification doit adapter ses scripts, son recueil de consentement et ses plages d'appel ; l'écoute et l'enregistrement des appels touchent aussi les téléopérateurs.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "",
+  "action": "Vérifier avec le service commercial que chaque campagne d'appels sortants dispose d'un consentement documenté et respecte les plages horaires et la limite de quatre appels par 30 jours.",
   "echeance": {
-   "date": "2026-08-01",
-   "libelle": "Interdiction générale du démarchage téléphonique"
-  }
+   "date": "2026-08-11",
+   "libelle": "Entrée en vigueur de l'interdiction du démarchage téléphonique sans consentement"
+  },
+  "payant": null
  },
  {
   "id": "00fd3e9446b72e62",
-  "titre": "Actualités, événements et salons 2026",
+  "titre": "Actualités, événements et salons 2026 : révision de la norme R31 en conférence",
   "url": "https://www.gpmse.com/actualites-evenements-et-salons-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-21T09:40:28+00:00",
@@ -1665,21 +1757,19 @@
   "origine": "rss",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "hors_sujet",
-  "score": 40,
-  "resume": "Calendrier d'événements du GPMSE, dont un webinaire en octobre 2026 sur le lien entre sécurité physique et cybersécurité, abordant les attaques hybrides et les textes NIS 2 et Cyber Resilience Act. Le contenu détaillé du webinaire n'est connu que par l'extrait.",
-  "pourquoi": "Le webinaire touche aux exigences de sécurité de bout en bout qui peuvent intéresser les outils de transmission et de supervision d'un centre, mais reste un événement de promotion.",
+  "categorie": "apsad",
+  "score": 52,
+  "resume": "La page d'événements du GPMSE présente les thèmes de salons 2026, dont les menaces hybrides, NIS 2 et le Cyber Resilience Act, ainsi que le référentiel ReCyF. Le groupement animera une conférence au Village de la Sécurité Privée sur la révision de la norme R31 pour la télésurveillance. La date et l'horaire de cette conférence restent à préciser.",
+  "pourquoi": "La révision de la norme R31 concerne directement les exigences de la télésurveillance, même si l'extrait ne donne pas de contenu technique.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": {
-   "date": "2026-10-13",
-   "libelle": "Webinaire lier sécurité physique et cybersécurité"
-  }
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "413d418b9491c0d6",
-  "titre": "Cybersécurité : sensibilisation suite aux fuites de données à la DGFIP",
+  "titre": "Cybersécurité : fuite de données à la DGFIP et bonnes pratiques de sécurité",
   "url": "https://www.gpmse.com/cybersecurite-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-21T08:13:25+00:00",
@@ -1687,14 +1777,15 @@
   "origine": "rss",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "hors_sujet",
-  "score": 35,
-  "resume": "Un incident de sécurité a permis à des cybercriminels d'accéder au système d'information de la DGFIP entre juin et août 2026, en usurpant des identifiants. Des données concernant environ 678 000 personnes seraient concernées.",
-  "pourquoi": "Fait cyber dans la sphère publique sans lien direct avec le centre ; il peut toutefois servir de rappel pour la sensibilisation des opérateurs aux usurpations d'identifiants.",
+  "categorie": "telesurveillance",
+  "score": 40,
+  "resume": "Entre juin et août 2026, des cybercriminels ont accédé au système d'information de la DGFIP en usurpant des identifiants, exposant les données d'environ 678 000 personnes. L'ANSSI rappelle des bonnes pratiques de mise à jour, de durcissement et de prudence avec les équipements connectés. L'article présente aussi six types d'attaques réseau, dont l'homme du milieu, le DDoS et le DNS spoofing.",
+  "pourquoi": "Les menaces réseau décrites (DDoS, usurpation, interception) peuvent toucher la chaîne de transmission des alarmes, mais l'article reste général et ne vise pas les centres.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
-  "echeance": null
+  "echeance": null,
+  "payant": null
  },
  {
   "id": "af27a990fa64fc9a",
@@ -1708,15 +1799,16 @@
   "mots_cles_trouves": {},
   "categorie": "management",
   "score": 30,
-  "resume": "Annonce du congrès annuel du GPMSE les 10 et 11 juin 2027 à Mandelieu, avec une soirée de retrouvailles nouvelle pour 2027. Le programme détaillé n'est pas fourni dans l'extrait.",
-  "pourquoi": "Événement de la profession qui peut servir à la formation ou à la veille du responsable, mais sans obligation ni changement immédiat pour le centre.",
+  "resume": "Le GPMSE annonce son congrès annuel les 10 et 11 juin 2027 à Mandelieu, dans le sud-est de la France. Une soirée cocktail est prévue la veille, limitée à 120 personnes et facturée 60 euros, avec un sondage préalable. Une plateforme de réservation d'hôtels à tarifs négociés est également proposée.",
+  "pourquoi": "Information logistique pour les adhérents, sans effet sur l'exploitation du centre, mais utile pour la planification des déplacements.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": {
-   "date": "2027-06-01",
+   "date": "2027-06-10",
    "libelle": "Congrès GPMSE 2027 à Mandelieu"
-  }
+  },
+  "payant": null
  },
  {
   "id": "9d73407a82fc3b7a",
@@ -1729,13 +1821,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 3,
-  "resume": "Seul le titre est disponible : il s'agit d'une action syndicale de la CGT visant l'enseigne Carrefour. Aucun autre détail n'est connu.",
-  "pourquoi": "Un conflit dans la grande distribution n'a pas de lien avec l'organisation, les obligations ou les équipes d'un centre de télésurveillance.",
+  "score": 5,
+  "resume": "L'extrait ne contient que le titre et le nom du site, sans détail sur l'opération menée.",
+  "pourquoi": "Actualité sociale d'une enseigne de distribution, sans lien avec la télésurveillance.",
   "action": "",
   "echeance": null,
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-09"
+  "edition": "2026-10-09",
+  "payant": null
  },
  {
   "id": "2c12f3727f1179e8",
@@ -1748,13 +1841,14 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
-  "score": 2,
-  "resume": "Seul le titre est disponible : il présente l'entreprise N4 Group, spécialisée dans les équipements de fitness et la nutrition sportive. Aucun autre détail n'est connu.",
-  "pourquoi": "Cette start-up du secteur sportif ne concerne ni la sécurité privée ni la télésurveillance.",
+  "score": 3,
+  "resume": "L'extrait ne contient que le titre et la source, sans détail sur l'entreprise.",
+  "pourquoi": "Article sur une entreprise du secteur fitness, sans lien avec la télésurveillance.",
   "action": "",
   "echeance": null,
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-09"
+  "edition": "2026-10-09",
+  "payant": null
  },
  {
   "id": "ee6cc1627540a6dd",
@@ -1768,8 +1862,558 @@
   "mots_cles_trouves": {},
   "categorie": "hors_sujet",
   "score": 3,
-  "resume": "Le titre indique le lancement d'un programme ÉLAN+ destiné à former la prochaine génération de dirigeants dans la fonction publique canadienne. L'extrait ne donne pas d'autres détails.",
-  "pourquoi": "Article lié à la fonction publique canadienne, sans rapport avec la sécurité privée, la télésurveillance ni l'exploitation d'un centre en France.",
+  "resume": "L'extrait ne contient que le titre et la source : un programme de formation de leaders dans la fonction publique canadienne.",
+  "pourquoi": "Programme de la fonction publique canadienne, sans lien avec le secteur de la sécurité privée.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09",
+  "payant": null
+ },
+ {
+  "id": "bc9681db1c8113ca",
+  "titre": "Référentiel qualité des organismes de formation : un indicateur ajouté au 1er novembre 2026",
+  "url": "https://www.83-629.fr/organismes-formation-securite-privee-echeances-automne-2026-maj-2026-10/",
+  "source": "83-629.fr",
+  "date": "2026-10-09T06:00:40+00:00",
+  "extrait": "Un décret du ministère du Travail qui ne cite jamais le CNAPS va pourtant modifier, le 1er novembre, le contenu de ce que le CNAPS vient vérifier dans vos locaux. Sans qu’un seul texte de l’Intérieur ne bouge.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 3,
+   "management": 1
+  },
+  "payant": null,
+  "categorie": "reglementation",
+  "score": 40,
+  "resume": "Un décret du 1er août 2026, pris par le ministère du Travail, modifie le référentiel national qualité des actions de formation et entrera en vigueur le 1er novembre 2026. Le tableau des indicateurs passe de 32 à 33, sans changement des sept critères, et le nouvel indicateur 33 ne concerne que l'apprentissage. L'article souligne que ce texte, qui ne cite pas le CNAPS, change pourtant le contenu des vérifications menées par le CNAPS auprès des organismes de formation en sécurité privée. Une bascule des démarches CNAPS sur téléservice était également attendue au 1er octobre 2026.",
+  "pourquoi": "Le texte ne vise pas directement les centres de télésurveillance, mais il touche les organismes qui forment les agents et les contrôles CNAPS associés, ce qui peut concerner indirectement la formation de vos équipes.",
+  "action": "",
+  "echeance": {
+   "date": "2026-11-01",
+   "libelle": "Entrée en vigueur du nouveau référentiel qualité de la formation"
+  },
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "ffd62601304c851d",
+  "titre": "Perte de la carte professionnelle : proposition de loi sur l'indemnité de licenciement",
+  "url": "https://www.83-629.fr/carte-pro-retiree-un-senateur-veut-supprimer-lindemnite/",
+  "source": "83-629.fr",
+  "date": "2026-10-05T07:00:00+00:00",
+  "extrait": "Recalé par le gouvernement en mars, un sénateur revient par la loi : l'agent de sécurité qui perd sa carte professionnelle partirait sans indemnité de licenciement. 2 lignes de texte. Mais qui viseraient-elles vraiment ? L'agent condamné, ou aussi celui que l'administration a fini par rétablir ?",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1,
+   "social": 1
+  },
+  "payant": true,
+  "categorie": "reglementation",
+  "score": 55,
+  "resume": "Le sénateur Hugues Saury a déposé le 23 septembre 2026 une proposition de loi d'un seul article visant à supprimer l'indemnité de licenciement d'un agent de sécurité qui perd son emploi après la perte de sa carte professionnelle. L'article explique le mécanisme actuel de l'article L. 612-21 du code de la sécurité intérieure, qui rompt de plein droit le contrat et ouvre droit à l'indemnité légale, sauf dispositions conventionnelles plus favorables, avec garantie du revenu de remplacement. L'auteur interroge la portée réelle du texte, car il ne vise pas une intention mais des situations concrètes.",
+  "pourquoi": "Si elle aboutissait, la règle modifierait la gestion des ruptures de contrat des agents privés de carte, un cas qui se présente dans les équipes de télésurveillance et qui doit être traité proprement par le responsable.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "ad23343d78d932b6",
+  "titre": "Un agent de sécurité peut-il protéger un collage d'affiches ?",
+  "url": "https://www.83-629.fr/un-agent-de-securite-peut-il-proteger-un-collage-daffiches/",
+  "source": "83-629.fr",
+  "date": "2026-10-02T07:00:56+00:00",
+  "extrait": "Un parti peut-il payer des agents de sécurité pour accompagner ses colleurs d'affiches ? La question paraît simple. Elle touche pourtant à la voie publique, au préfet, au type de carte professionnelle et au financement de la campagne. Une affaire récente montre où passe la ligne.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1,
+   "social": 1
+  },
+  "payant": true,
+  "categorie": "hors_sujet",
+  "score": 15,
+  "resume": "L'article revient sur un incident survenu lors des élections municipales de mars 2026 à Clichy-la-Garenne, où une liste accuse des militants adverses d'avoir été aidés par des agents de sécurité privée. Il pose la question de ce qu'un parti peut légalement payer comme agents de sécurité pendant une campagne, selon la carte détenue. Le texte s'appuie sur le cadre juridique des cartes professionnelles.",
+  "pourquoi": "Cas électoral sans lien direct avec l'exploitation d'un centre de télésurveillance ; seule la rappel du cadre des cartes professionnelles présente un intérêt marginal.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "5badb34e7e091947",
+  "titre": "Webinaire sur le recrutement dans la sécurité privée (10 septembre 2026)",
+  "url": "https://ges-securite-privee.org/agenda/recrutement-dans-la-securite-privee-les-4-leviers-pour-lever-les-tensions-terrain",
+  "source": "GES sécurité privée",
+  "date": "2026-08-28T12:09:20+00:00",
+  "extrait": "L’article [Webinaire] Recrutement dans la sécurité privée : les 4 leviers pour lever les tensions terrain – Wink – 10/09/26 à 15h est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1,
+   "management": 1
+  },
+  "payant": null,
+  "categorie": "management",
+  "score": 40,
+  "resume": "Un webinaire organisé par Wink sur les leviers pour lever les tensions de recrutement dans la sécurité privée était annoncé pour le 10 septembre 2026 à 15h. L'extrait ne contient que l'annonce, sans détail sur le contenu des quatre leviers présentés.",
+  "pourquoi": "Les difficultés de recrutement d'agents touchent aussi les équipes de téléopérateurs, ce qui intéresse le responsable d'exploitation, sans information suffisante pour aller plus loin.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "c55ada7bd7f619eb",
+  "titre": "Chéry-lès-Pouilly : la mairie envisage la vidéoprotection face à la délinquance",
+  "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQM0RNYzVZOW9xNU9Zc19sMjBlZ2JqMGMxSVpfb183Zm4wYU5jdURHVkJWVmk0dzJsdGtkanlrRDZLREk0QnRYMDdLeUwwRHU3ZE5CUlVnUmJya2FMNEpHV1JQbWJNZDBKWnVvdUVnZTFqcmNqM3NzOFpCc2hJWWNlZHpueXN1QVprN0RCUndqTVBRNGdaZDFtdmE1Rkx0ZTJPN1VBdG13TVpSVHJzUHhxaFZhSlhHNURVNHhBSVNR?oc=5",
+  "source": "L'Union",
+  "date": "2026-10-08T05:50:30+00:00",
+  "extrait": "Face à la multiplication de délits à Chéry-lès-Pouilly, la mairie songe à la vidéoprotection L'Union",
+  "origine": "google_news",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "telesurveillance",
+  "score": 35,
+  "resume": "Selon le titre, la mairie de Chéry-lès-Pouilly envisage de recourir à la vidéoprotection après une multiplication de délits dans la commune. L'extrait ne donne aucun détail sur le projet, son calendrier ou son prestataire.",
+  "pourquoi": "Un projet municipal de vidéoprotection peut représenter une opportunité ou un signal de marché pour un centre de télésurveillance, mais l'information reste très limitée.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "b005fbda0371ebb9",
+  "titre": "Protection d'une star en voyage privé : qui a le droit d'escorter, contre rémunération ?",
+  "url": "https://www.83-629.fr/proteger-une-star-en-voyage-prive-un-metier-et-une-carte/",
+  "source": "83-629.fr",
+  "date": "2026-10-05T05:59:06+00:00",
+  "extrait": "Escorter une star pendant ses voyages privés n'a rien d'un service rendu entre amis : la loi en fait une activité à part entière, avec sa carte et ses interdits. L'affaire du policier chargé de la sécurité des Bleus pose une question que notre secteur de la sécurité privée connaît par cœur.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "reglementation",
+  "score": 30,
+  "resume": "L'article revient sur l'affaire judiciaire impliquant l'ancien chef de la sécurité de l'équipe de France de football, avec des montants versés par un joueur et un prêt ultérieur. Il pose la question de la légalité d'une escorte privée rémunérée et de la carte nécessaire pour l'exercer. Les faits restent présumés, la personne étant présumée innocente.",
+  "pourquoi": "L'affaire relève surtout du pénal et de la déontologie ; elle rappelle toutefois que le cadre des cartes professionnelles s'applique aussi aux prestations de protection rapprochée.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "366e547b68359e55",
+  "titre": "Salaires de la sécurité privée : 1 % proposé par le GES, 10 % demandé par les syndicats",
+  "url": "https://www.83-629.fr/salaires-securite-privee-2027-ges-1-pour-cent-smic/",
+  "source": "83-629.fr",
+  "date": "2026-10-02T06:00:00+00:00",
+  "extrait": "Le GES défend le 1 % patronal pour 2027 et réclame une conférence sociale. L'intersyndicale vise les accords de modulation. Entre les deux, une fiche de paie : ce que vaut ce 1 % pour un agent, à quelle distance le SMIC se trouve déjà du bas de la grille, et qui manque à la table.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "social",
+  "score": 80,
+  "resume": "Le GES maintient une proposition de revalorisation de 1 % sur la grille conventionnelle, formulée le 21 septembre, et demande une conférence sociale de la branche. Les six syndicats réclament 10 % sur toute la grille et menacent les accords de modulation du temps de travail. L'article montre que le SMIC, relevé au 1er juin 2026, se rapproche du bas de la grille, et que les majorations de nuit et de dimanche restent bloquées à 10 %.",
+  "pourquoi": "Les salaires, la grille et les accords de modulation du temps de travail déterminent directement la rémunération, le planning et la fidélisation des téléopérateurs.",
+  "action": "Préparer une simulation du coût d'une revalorisation de 1 % et de 10 % sur les coefficients de votre centre pour anticiper les questions des équipes.",
+  "echeance": {
+   "date": "2027-01-01",
+   "libelle": "Revalorisation proposée par les employeurs, non acquise"
+  },
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "a8164b9f830f74a5",
+  "titre": "Le GES appelle à une réponse globale sur les salaires dans la sécurité privée",
+  "url": "https://ges-securite-privee.org/actualites/salaires-le-ges-appelle-a-une-reponse-globale-pour-la-securite-privee",
+  "source": "GES sécurité privée",
+  "date": "2026-10-07T08:29:17+00:00",
+  "extrait": "L’article CP GES – SALAIRES : LE GES APPELLE À UNE RÉPONSE GLOBALE POUR LA SÉCURITÉ PRIVÉE est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "social",
+  "score": 65,
+  "resume": "Un communiqué de presse du GES publié le 7 octobre 2026 appelle à une réponse globale sur les salaires de la sécurité privée. L'extrait ne contient que le titre, sans détail sur les propositions chiffrées.",
+  "pourquoi": "Le communiqué s'inscrit dans les négociations salariales de la branche qui concernent directement les agents de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "618cc8e4d07246f1",
+  "titre": "Le GES appelle à la responsabilité et à une réponse globale sur les salaires",
+  "url": "https://ges-securite-privee.org/actualites/cp-ges-salaires-le-ges-appelle-a-la-responsabilite-et-a-une-reponse-globale-pour-la-securite-privee",
+  "source": "GES sécurité privée",
+  "date": "2026-10-01T09:30:34+00:00",
+  "extrait": "L’article CP GES – SALAIRES : LE GES APPELLE À LA RESPONSABILITÉ ET À UNE RÉPONSE GLOBALE POUR LA SÉCURITÉ PRIVÉE est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "social",
+  "score": 65,
+  "resume": "Un communiqué de presse du GES publié le 1er octobre 2026 appelle à la responsabilité des acteurs et à une réponse globale sur les salaires de la sécurité privée. L'extrait ne contient que le titre, sans détail sur les chiffres avancés.",
+  "pourquoi": "Ce communiqué précède les échanges sur la grille salariale, qui conditionnent le coût des équipes de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "f18baaacfffab4d9",
+  "titre": "Discours de clôture du 7e congrès national de la sécurité privée",
+  "url": "https://ges-securite-privee.org/actualites/discours-de-cloture-du-7eme-congres-national-de-la-securite-privee",
+  "source": "GES sécurité privée",
+  "date": "2026-09-25T08:17:26+00:00",
+  "extrait": "L’article Discours de clôture du 7eme congrès national de la sécurité privée est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "marche",
+  "score": 40,
+  "resume": "Le président du GES clôt le 7e congrès national de la sécurité privée en défendant la fragilité économique du secteur, documentée par un rapport IGA-CGEFI. Il réclame la reconnaissance de l'indice des coûts de revient, des clauses de révision et une responsabilisation accrue des donneurs d'ordre. Il plaide aussi pour des règles plus claires sur les missions, qualifications et conditions d'intervention des agents.",
+  "pourquoi": "Les clauses de révision et la responsabilité des donneurs d'ordre influencent les tarifs et les contrats de télésurveillance, mais le discours reste de portée générale.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "647449ef3f48785d",
+  "titre": "Discours d'ouverture du 7e congrès national de la sécurité privée : appel à arbitrages réglementaires",
+  "url": "https://ges-securite-privee.org/actualites/discours-douverture-du-7eme-congres-national-de-la-securite-privee",
+  "source": "GES sécurité privée",
+  "date": "2026-09-25T08:12:38+00:00",
+  "extrait": "L’article Discours d’ouverture du 7eme congrès national de la sécurité privée est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "reglementation",
+  "score": 72,
+  "resume": "Le président du GES ouvre le 7e congrès national de la sécurité privée et plaide pour un changement de cap : le secteur doit choisir son modèle plutôt que corriger le cadre existant. Il cite le rapport IGA–CGEFI, qui confirme les difficultés des entreprises, et dénonce des incohérences réglementaires autour de la vidéoprotection (cartes, spécialités, formations qui se contredisent) et de la frontière entre sécurité incendie, Livre VI et activités connexes. La poly-activité est refusée pour des motifs jugés administratifs. Le discours évoque aussi l'intelligence artificielle, la robotisation, les drones et la vidéoprotection intégrée à la surveillance humaine, sans texte précis cité. Il s'agit d'un discours de position, sans nouvelle obligation datée.",
+  "pourquoi": "Les points sur la vidéoprotection et la cohérence du cadre du Livre VI pourraient annoncer des évolutions touchant les qualifications des opérateurs et les activités d'un centre de télésurveillance, mais rien n'est encore décidé.",
+  "action": "Suivre les suites du rapport IGA–CGEFI et les décisions annoncées sur la vidéoprotection et la poly-activité.",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "2cddc6a8b304010d",
+  "titre": "Lettre d'information juridique du GES : veille du 6 au 24 juillet 2026",
+  "url": "https://ges-securite-privee.org/juridique/lettre-dinformation-juridique-du-ges-du-6-au-24-juillet-2026",
+  "source": "GES sécurité privée",
+  "date": "2026-09-04T14:04:18+00:00",
+  "extrait": "L’article Lettre d’information juridique du GES – Du 6 au 24 juillet 2026 est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": true,
+  "categorie": "reglementation",
+  "score": 45,
+  "resume": "Le GES publie sa lettre juridique couvrant la période du 6 au 24 juillet 2026. L'extrait fourni ne présente que la présentation générale du groupement, qui assure une veille sur les évolutions législatives, réglementaires et conventionnelles du secteur. Le contenu détaillé des évolutions n'est pas visible dans l'extrait.",
+  "pourquoi": "Une lettre de veille juridique peut contenir des évolutions du CNAPS ou de la convention collective utiles au centre, mais l'extrait ne permet pas de les identifier.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "12b9f1e14cad93e8",
+  "titre": "Tour des Régions GES : étape de Grenoble le 9 octobre",
+  "url": "https://ges-securite-privee.org/actualite-a-la-une/tour-des-regions-ges-le-9-octobre-a-grenoble",
+  "source": "GES sécurité privée",
+  "date": "2026-09-25T14:49:23+00:00",
+  "extrait": "L’article Tour des Régions GES – le 9 octobre à Grenoble est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "hors_sujet",
+  "score": 10,
+  "resume": "Annonce d'une étape du Tour des Régions du GES à Grenoble, le 9 octobre. L'extrait ne contient que le lien de publication, sans détail sur le programme.",
+  "pourquoi": "Événement syndical régional sans impact direct sur l'organisation d'un centre de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "71b913e9eac2b8ae",
+  "titre": "7e congrès national de la sécurité privée",
+  "url": "https://ges-securite-privee.org/actualite-a-la-une/7e-congres-national-de-la-securite-privee",
+  "source": "GES sécurité privée",
+  "date": "2026-08-08T14:55:46+00:00",
+  "extrait": "L’article 7e congrès national de la sécurité privée est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "hors_sujet",
+  "score": 25,
+  "resume": "Annonce du 7e congrès national de la sécurité privée. L'extrait ne contient que le lien de publication et aucun contenu détaillé.",
+  "pourquoi": "Information d'agenda sans obligation ni outil concerné directement ; le discours d'ouverture de ce congrès est traité séparément.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "97a2d06a44595bdb",
+  "titre": "Lettre d'information juridique du GES : veille du 1er juin au 3 juillet 2026",
+  "url": "https://ges-securite-privee.org/juridique/lettre-dinformation-juridique-du-ges-du-1er-juin-au-3-juillet-2026",
+  "source": "GES sécurité privée",
+  "date": "2026-07-13T13:33:17+00:00",
+  "extrait": "L’article Lettre d’information juridique du GES – Du 1er Juin au 3 Juillet 2026 est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": true,
+  "categorie": "reglementation",
+  "score": 45,
+  "resume": "Le GES publie sa lettre juridique couvrant la période du 1er juin au 3 juillet 2026. L'extrait se limite à la présentation du groupement et de sa veille juridique, sans détail des textes évoqués.",
+  "pourquoi": "Une veille juridique sectorielle peut relayer des changements réglementaires ou conventionnels, mais le contenu n'est pas accessible ici.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "84ef8f3f1bbb314d",
+  "titre": "Lettre d'information juridique du GES : veille du 1er avril au 31 mai 2026",
+  "url": "https://ges-securite-privee.org/juridique/lettre-dinformation-juridique-du-ges-du-1er-avril-au-31-mai-2026",
+  "source": "GES sécurité privée",
+  "date": "2026-06-03T18:06:50+00:00",
+  "extrait": "L’article Lettre d’information juridique du GES – Du 1er Avril au 31 Mai 2026 est apparu en premier sur GES Sécurité Privée .",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "reglementation",
+  "score": 40,
+  "resume": "Annonce de la lettre juridique du GES couvrant avril et mai 2026. Seul le titre est disponible, aucun contenu juridique n'est précisé.",
+  "pourquoi": "Lettre de veille potentiellement utile pour retrouver des évolutions réglementaires passées, mais sans détail visible.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "d51ecd1556943137",
+  "titre": "Sécheresse dans le Finistère : restrictions d'usage de l'eau et amendes",
+  "url": "https://kohenavocats.fr/2026/10/09/secheresse-finistere-alerte-ecarlate-interdiction-arroser-laver-amende-contestation-2026/",
+  "source": "Kohen Avocats",
+  "date": "2026-10-09T20:59:57+00:00",
+  "extrait": "Le Finistère passe en alerte écarlate avec 30 jours de stock d'eau : ce que l'arrêté sécheresse interdit au propriétaire et au locataire, l'amende de 1 500 € et les recours. The post Sécheresse Finistère : alerte écarlate, interdiction d’arroser et de laver, amende de 1 500 € — que risque-t-on et comment contester ? appeared first on Maître Reda Kohen, avocat en droit immobilier et droit des affaires à Paris .",
+  "origine": "rss",
+  "filtre": "mots_cles",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "hors_sujet",
+  "score": 5,
+  "resume": "Article de cabinet d'avocats sur les arrêtés préfectoraux de restriction des usages de l'eau pendant la sécheresse dans le Finistère, avec une amende pouvant atteindre 1 500 euros. Il s'appuie sur le code de l'environnement et un arrêt de la cour administrative d'appel de Nantes.",
+  "pourquoi": "Le sujet relève du droit de l'environnement pour les particuliers et n'a pas de lien avec les obligations d'un centre de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "43d837b2f0cb1266",
+  "titre": "Milipol Forum 2026 : sécurité des infrastructures critiques et des territoires",
+  "url": "https://operationnels.com/2026/10/07/milipol-forum-2026-focus-sur-la-securite-des-infrastructures-critiques-et-des-territoires/?utm_source=rss&utm_medium=rss&utm_campaign=milipol-forum-2026-focus-sur-la-securite-des-infrastructures-critiques-et-des-territoires",
+  "source": "Opérationnels SLDS",
+  "date": "2026-10-07T14:42:40+00:00",
+  "extrait": "Partenariat – Evènement – A un an de l’ouverture de Milipol Paris 2027, les acteurs de la sûreté et de la sécurité intérieure se retrouveront ... The post Milipol Forum 2026 : focus sur la sécurité des infrastructures critiques et des territoires appeared first on Opérationnels – Soutien, Logistique, Défense, Sécurité .",
+  "origine": "rss",
+  "filtre": "mots_cles",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "marche",
+  "score": 35,
+  "resume": "Le premier Milipol Forum se tiendra le 17 novembre 2026 à la DGGN à Issy-les-Moulineaux, avec deux tables rondes sur les infrastructures critiques et la sécurité des territoires. Il prépare le salon Milipol Paris, prévu du 16 au 19 novembre 2027 à Villepinte. Les chiffres de l'édition 2025 sont rappelés : 1 171 exposants et 32 035 visiteurs.",
+  "pourquoi": "Événement de la sûreté utile pour la veille commerciale et les contacts avec les industriels, sans obligation directe pour le centre.",
+  "action": "",
+  "echeance": {
+   "date": "2026-11-01",
+   "libelle": "Milipol Forum à Issy-les-Moulineaux"
+  },
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "dc00d4a5446cda74",
+  "titre": "Incendies de forêt : surveillance renforcée dans les Pyrénées-Atlantiques",
+  "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1CUjhHZXh3Z1dQLWE3YWtITUlEY21TMXFxNnp2NXA5N1N0ams1UmRWemlYbEpyWHJCSmF3Z0M5N21uVENLNV9tZjZkWWc5eUtmREN5TFFtVldWd2Fqbjd1TFpOakFIYzFxM0hLOEltWQ?oc=5",
+  "source": "horticulture-abadie-pyrenees.com",
+  "date": "2026-10-09T07:28:37+00:00",
+  "extrait": "Incendies de forêt : les Pyrénées-Atlantiques renforcent la surveillance, d'Anglet aux montagnes du Béarn horticulture-abadie-pyrenees.com",
+  "origine": "google_news",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": null,
+  "categorie": "hors_sujet",
+  "score": 5,
+  "resume": "Annonce d'un renforcement de la surveillance des incendies de forêt dans les Pyrénées-Atlantiques. L'extrait ne contient que le titre et une source sans rapport avec la sécurité privée.",
+  "pourquoi": "Information de sécurité civile sans lien avec les activités ou obligations d'un centre de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "d8b9ac8d7b013145",
+  "titre": "Agents de sécurité : comparatif des plateformes de recrutement SeekGuard et job boards",
+  "url": "https://www.83-629.fr/agent-de-securite-seekguard-job-boards-ou-groupes-whatsapp/",
+  "source": "83-629.fr",
+  "date": "2026-10-08T06:00:41+00:00",
+  "extrait": "Plateforme spécialisée, job board généraliste ou groupe WhatsApp de vacations : l'agent de sécurité a le choix. Le recruteur aussi. J'ai comparé les plateformes du secteur, interrogé SeekGuard, et regardé ce que deviennent les données d'un CV posté n'importe où.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": null,
+  "categorie": "social",
+  "score": 42,
+  "resume": "Un comparatif évalue les plateformes de mise en relation pour agents de sécurité, dont SeekGuard, classé 2e en 2025. Le service est gratuit pour les agents, la carte professionnelle est vérifiée via le système public du CNAPS, et le profil peut rester anonyme. Des points restent à clarifier sur la durée de conservation des données et la mention du numéro de carte professionnelle. Le plus de 1 000 recrutements en CDD et CDI depuis 2025 est annoncé par la plateforme.",
+  "pourquoi": "Les recrutements d'agents passent de plus en plus par ces plateformes, ce qui peut intéresser les équipes RH et le recrutement de téléopérateurs, mais l'impact reste indirect.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "1ad4435485fafad0",
+  "titre": "Tranquillité publique : une préfecture confie la surveillance de rues au privé",
+  "url": "https://www.83-629.fr/tranquillite-publique-la-prefecture-la-confie-au-prive/",
+  "source": "83-629.fr",
+  "date": "2026-10-06T08:00:55+00:00",
+  "extrait": "Une préfecture qui autorise noir sur blanc des agents privés sur la voie publique \"pour la tranquillité publique\". Une mairie qui commande. Une société qui exécute. Il y a 30 ans, à moins de 30 km de là, la même idée avait déjà fini devant le juge.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": true,
+  "categorie": "reglementation",
+  "score": 40,
+  "resume": "À Béthune, la préfecture a autorisé par arrêté des agents de sécurité privée à patrouiller le soir dans le centre-ville, dont un maître-chien, les vendredis et samedis jusqu'à la fin novembre. Un premier arrêté estival prévoyait déjà 6 agents par jour sur une vingtaine de rues et de places. L'auteur s'interroge sur la sous-traitance d'une mission de tranquillité publique normalement assurée par la police, et rappelle un précédent judiciaire d'une commune voisine il y a plus de 30 ans. L'article est en accès partiel.",
+  "pourquoi": "Il s'agit d'un arrêté préfectoral qui élargit les missions autorisées aux agents privés sur la voie publique, ce qui peut faire évoluer le cadre juridique de la sécurité privée, sans impact direct sur les procédures du centre.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "4f23f9e41befe68c",
+  "titre": "Responsable sécurité chez le client : un licenciement contesté devant le juge",
+  "url": "https://www.83-629.fr/responsable-securite-chez-le-client-4-casquettes-de-trop/",
+  "source": "83-629.fr",
+  "date": "2026-10-06T07:00:58+00:00",
+  "extrait": "De 2015 à 2022, il travaille à l'hôpital comme prestataire. Puis il devient responsable sécurité chez le client, avec de bonnes évaluations. Ensuite, 5 mois d'altercations, de messages nocturnes et de consignes aux agents. Quelle casquette portait-il, et à quel moment ?",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": true,
+  "categorie": "social",
+  "score": 25,
+  "resume": "L'article relate le parcours d'un responsable de sécurité qui, après plusieurs années comme prestataire dans un hôpital public, a été recruté par l'établissement puis licencié sans préavis ni indemnité à l'été 2025. Il a saisi le juge. L'auteur s'interroge sur le poids des bonnes évaluations passées face aux incidents relevés ensuite, et sur le cumul des rôles de donneur d'ordre, gardien des images et auteur de signalements. L'extrait ne donne pas la décision du juge.",
+  "pourquoi": "C'est un litige individuel sur un poste de sécurité chez un client, sans lien direct avec l'exploitation d'un centre de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "59e6e8f69a1be4d6",
+  "titre": "Agent de sécurité debout dix heures par jour : qui doit fournir le siège ?",
+  "url": "https://www.83-629.fr/agent-securite-debout-10-heures-qui-doit-fournir-le-siege/",
+  "source": "83-629.fr",
+  "date": "2026-10-06T06:00:53+00:00",
+  "extrait": "10 heures debout par jour, sans pouvoir s'asseoir, et un médecin du travail qui avait demandé d'y remédier. Le dossier semblait solide. Qui doit fournir le siège quand l'agent travaille chez le client, et que faire d'une préconisation du médecin du travail ?",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": true,
+  "categorie": "social",
+  "score": 40,
+  "resume": "Un agent affecté à la surveillance de magasins a passé presque quatre ans en station debout quasi permanente, jusqu'à la survenue d'une hernie discale. Le médecin du travail avait préconisé un aménagement de poste cinq mois avant sa déclaration de maladie, et l'employeur ne conteste pas les conditions de travail. L'article questionne le délai de huit ans pour obtenir une réponse et la responsabilité de fournir un siège lorsque l'agent travaille chez un client. Le dénouement exact n'apparaît pas dans l'extrait.",
+  "pourquoi": "Il pose la question de l'aménagement de poste et des préconisations du médecin du travail, qui peut concerner aussi les téléopérateurs travaillant longtemps assis ou debout selon l'organisation du poste.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "211e02806587f7b2",
+  "titre": "Chantiers gardés : des SMS peuvent-ils servir de preuve de facturation ?",
+  "url": "https://www.83-629.fr/gardiennage-chantier-factures-impayees-preuve-des-heures/",
+  "source": "83-629.fr",
+  "date": "2026-10-02T08:00:39+00:00",
+  "extrait": "4 chantiers, des agents, des alarmes, et tout se commandait par SMS. 3 ans plus tard, la société de gardiennage réclame ses factures et le client exige des preuves. Les messages suffiront-ils ? Plus piégeux qu'il n'y paraît.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": true,
+  "categorie": "marche",
+  "score": 25,
+  "resume": "Une société de gardiennage réclame à un promoteur immobilier le paiement de prestations anciennes, pour des chantiers avec agents, alarmes et caméras. Le client conteste les factures faute de justificatifs. Le liquidateur de la société, placée en liquidation judiciaire, s'appuie sur un procès-verbal de commissaire de justice recensant de nombreux SMS entre les deux sociétés. L'article examine la valeur probante de ces échanges devant un juge. Le montant et le verdict ne sont pas précisés dans l'extrait.",
+  "pourquoi": "C'est un litige commercial entre prestataire et client, sans rapport direct avec les obligations ou les outils d'un centre de télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "d19329be99993361",
+  "titre": "Sélection des articles les plus lus de septembre 2026 sur le site",
+  "url": "https://www.83-629.fr/les-10-articles-a-ne-pas-manquer-septembre-2026/",
+  "source": "83-629.fr",
+  "date": "2026-10-01T09:01:09+00:00",
+  "extrait": "Les 10 articles les plus lus de septembre.",
+  "origine": "rss",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "payant": null,
+  "categorie": "reglementation",
+  "score": 40,
+  "resume": "Ce message est un récapitulatif des dix articles les plus lus de septembre sur le site source. Il évoque notamment un événement privé refusé faute d'effectifs suffisants, une rumeur de contrôle CNAPS sur les dépassements d'heures jugée fausse, un agent SSIAP exposé à des risques, une taxation d'office, une limite des contrats SSIAP tranchée en appel, un contrôle lors d'une compétition sportive, ou encore une affaire de mobilité et d'avertissements. Il mentionne aussi le lancement par le ministère de l'Intérieur du Beauvau de la sécurité privée, sans calendrier ni texte public à ce stade.",
+  "pourquoi": "L'annonce du Beauvau de la sécurité privée peut conduire à des évolutions réglementaires du secteur, à suivre sans effet immédiat sur le centre.",
   "action": "",
   "echeance": null,
   "analyse_par": "claude-haiku-5-5",
