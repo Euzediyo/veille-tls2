@@ -140,7 +140,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>{escape(site['hebergeur'])}</p>
 <h2>Contenus et droits d'auteur</h2>
 <p>Ce journal ne reproduit aucun article. Pour chaque information, il publie un titre, un résumé court rédigé automatiquement par une intelligence artificielle avec ses propres mots, le nom de la source et un lien vers l'article original. Les textes officiels (lois, décrets, arrêtés, décisions de justice) peuvent être cités plus largement.</p>
-<p>Le flash audio quotidien est rédigé par la même IA à partir de ces résumés, puis lu par une voix de synthèse. Il ne reprend aucun texte d'article.</p>
+<p>Le flash audio quotidien est rédigé par la même IA à partir de ces résumés, sous la forme d'un dialogue entre deux animateurs fictifs, lu par des voix de synthèse. Il ne reprend aucun texte d'article.</p>
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un score de pertinence de 0 à 100 du point de vue d'un responsable de centre de télésurveillance, explique ce score, propose une action pour les articles importants et repère les échéances. Les articles notés sous {profile.get('seuil_publication', 30)} ou jugés hors sujet ne sont pas publiés.</p>

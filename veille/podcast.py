@@ -1,5 +1,5 @@
-"""Flash audio quotidien : l'IA écrit un court bulletin parlé à partir des articles du jour,
-une voix de synthèse française le lit, et l'épisode est publié sur le site avec un flux podcast.
+"""Flash audio quotidien : l'IA écrit un court dialogue entre deux animateurs à partir des articles
+du jour, deux voix de synthèse françaises le lisent, et l'épisode est publié sur le site avec un flux podcast.
 
 Les fichiers audio ne sont pas enregistrés dans le dépôt (ils le feraient grossir chaque jour) :
 seule la liste des épisodes l'est (data/podcast.json). À chaque publication, les épisodes récents
@@ -42,20 +42,32 @@ def select(articles: list[dict], today: date) -> list[dict]:
     return chosen if len(chosen) >= 3 else [it for it in pool if it["score"] >= 30][:3]
 
 
-SYSTEM = """Tu présentes « le flash Veille TLS », un bulletin audio quotidien destiné aux
-responsables et aux opérateurs de centres de télésurveillance. Ton texte sera lu tel quel par
-une voix de synthèse.
+HOSTS = ("CLAIRE", "THOMAS")
+DEFAULT_VOICES = {"CLAIRE": "fr-FR-VivienneMultilingualNeural", "THOMAS": "fr-FR-RemyMultilingualNeural"}
 
-Règles :
-- Français, ton de radio d'information : clair, posé, phrases courtes.
-- Entre 300 et 450 mots, soit environ trois minutes.
-- Commence par : « Bonjour, nous sommes le {date}. Voici le flash Veille TLS. »
+SYSTEM = """Tu écris « le flash Veille TLS », un podcast quotidien d'environ quatre minutes destiné
+aux responsables et aux opérateurs de centres de télésurveillance. Deux animateurs, Claire et
+Thomas, discutent de l'actualité du jour. Le texte sera lu tel quel par deux voix de synthèse.
+
+Forme :
+- Chaque réplique sur sa propre ligne, précédée de « CLAIRE : » ou « THOMAS : ». Rien d'autre.
+- Une vraie conversation : ils se répondent, réagissent (« Ah oui, ça va parler aux
+  opérateurs »), se posent des questions, se relancent. Répliques courtes, d'une à trois phrases,
+  ton détendu mais professionnel, tutoiement entre eux, vouvoiement envers les auditeurs.
+- Entre 450 et 600 mots au total.
+- Claire ouvre : « Bonjour à tous, nous sommes le {date}, et voici le flash Veille TLS. »
+  Thomas la salue et annonce le premier sujet.
 - Traite les sujets dans l'ordre reçu. Pour chacun : ce qui se passe, pourquoi c'est important
-  pour un centre de télésurveillance, et l'action recommandée quand il y en a une. Cite la
-  source (« selon ... »). Enchaîne les sujets avec des transitions naturelles.
-- Termine par : « Retrouvez le détail et les liens sur le site Veille TLS. Bonne journée. »
+  pour un centre de télésurveillance, et l'action recommandée quand il y en a une. Dis d'où vient
+  l'information par le nom du média ou de l'organisme ; si la source n'est qu'une adresse de
+  site, dis simplement « un site spécialisé ».
+- Thomas conclut : « Retrouvez le détail et les liens sur le site Veille TLS. » et Claire
+  souhaite une bonne journée.
+
+Fond :
 - Uniquement les informations fournies : n'invente aucun chiffre, aucune date, aucun nom.
-- Texte brut uniquement : pas de titres, de listes, de markdown, d'émojis ni d'adresses web.
+  Si seul le titre est connu, dites-le simplement.
+- Texte brut : pas de markdown, d'émojis, de didascalies entre parenthèses ni d'adresses web.
   Écris les nombres et les dates comme on les prononce quand c'est plus naturel."""
 
 
@@ -68,18 +80,37 @@ def _topic_block(it: dict, cats: dict) -> str:
     return "\n".join(lines)
 
 
+def parse_dialogue(text: str) -> list[tuple[str, str]]:
+    """Découpe le texte en répliques (animateur, phrase). Une ligne sans nom prolonge la réplique précédente."""
+    turns: list[tuple[str, str]] = []
+    for line in text.splitlines():
+        line = line.strip().strip("*")
+        if not line:
+            continue
+        head, sep, rest = line.partition(":")
+        name = head.strip().strip("*").upper()
+        if sep and name in HOSTS:
+            if rest.strip():
+                turns.append((name, rest.strip()))
+        elif turns:
+            turns[-1] = (turns[-1][0], turns[-1][1] + " " + line)
+    return turns
+
+
 def fallback_script(items: list[dict], day: date) -> str:
-    """Bulletin de secours sans IA : lecture des titres et des résumés."""
-    parts = [f"Bonjour, nous sommes le {spoken_date(day)}. Voici le flash Veille TLS."]
-    ordinals = ["Premier sujet", "Deuxième sujet", "Troisième sujet", "Quatrième sujet", "Cinquième sujet", "Sixième sujet"]
+    """Dialogue de secours sans IA : les deux animateurs lisent à tour de rôle titres et résumés."""
+    lines = [f"CLAIRE : Bonjour à tous, nous sommes le {spoken_date(day)}, et voici le flash Veille TLS.",
+             "THOMAS : Bonjour Claire. Voici les sujets du jour."]
     for n, it in enumerate(items):
-        parts.append(f"{ordinals[n]}, selon {it['source']} : {it['titre'].rstrip('.')}.")
+        host = HOSTS[n % 2]
+        text = f"Selon {it['source']} : {it['titre'].rstrip('.')}."
         if it.get("resume"):
-            parts.append(it["resume"])
+            text += " " + it["resume"]
         if it.get("action"):
-            parts.append(f"Action recommandée : {it['action'].rstrip('.')}.")
-    parts.append("Retrouvez le détail et les liens sur le site Veille TLS. Bonne journée.")
-    return "\n\n".join(parts)
+            text += f" Action recommandée : {it['action'].rstrip('.')}."
+        lines.append(f"{host} : {text}")
+    lines += ["THOMAS : Retrouvez le détail et les liens sur le site Veille TLS.", "CLAIRE : Bonne journée à tous."]
+    return "\n".join(lines)
 
 
 def write_script(items: list[dict], profile: dict, model: str, day: date, report: list[str]) -> str:
@@ -89,7 +120,7 @@ def write_script(items: list[dict], profile: dict, model: str, day: date, report
     try:
         response = anthropic.Anthropic().messages.create(
             model=model,
-            max_tokens=4000,
+            max_tokens=6000,
             system=SYSTEM.replace("{date}", spoken_date(day)),
             messages=[{"role": "user", "content": prompt}],
         )
@@ -97,17 +128,29 @@ def write_script(items: list[dict], profile: dict, model: str, day: date, report
         report.append(f"Podcast : texte de secours ({exc.__class__.__name__})")
         return fallback_script(items, day)
     text = next((b.text for b in response.content if b.type == "text"), "").strip()
-    if response.stop_reason != "end_turn" or len(text) < 200:
+    if response.stop_reason != "end_turn" or len(parse_dialogue(text)) < 6:
         report.append(f"Podcast : texte de secours (réponse {response.stop_reason})")
         return fallback_script(items, day)
     return text
 
 
-def synthesize(text: str, path: Path, voice: str) -> None:
-    """Lecture du texte par une voix de synthèse gratuite (service de Microsoft Edge)."""
+def synthesize(text: str, path: Path, voices: dict) -> None:
+    """Lecture du dialogue par deux voix de synthèse gratuites (service de Microsoft Edge).
+    Chaque réplique est lue par la voix de son animateur, puis les morceaux sont mis bout à bout."""
     import edge_tts
 
-    asyncio.run(edge_tts.Communicate(text, voice).save(str(path)))
+    async def run() -> bytes:
+        audio = bytearray()
+        for host, line in parse_dialogue(text):
+            async for chunk in edge_tts.Communicate(line, voices[host]).stream():
+                if chunk["type"] == "audio":
+                    audio += chunk["data"]
+        return bytes(audio)
+
+    data = asyncio.run(run())
+    if not data:
+        raise RuntimeError("aucun son produit")
+    path.write_bytes(data)
 
 
 def load_episodes() -> list[dict]:
@@ -131,7 +174,7 @@ def make_episode(articles: list[dict], profile: dict, site_cfg: dict, today: dat
     folder.mkdir(parents=True, exist_ok=True)
     name = f"podcast/{today.isoformat()}.mp3"
     try:
-        synthesize(text, OUT / name, site_cfg.get("podcast_voix", "fr-FR-HenriNeural"))
+        synthesize(text, OUT / name, {**DEFAULT_VOICES, **(site_cfg.get("podcast_voix") or {})})
     except Exception as exc:  # service non officiel : une panne ne doit pas bloquer le journal
         report.append(f"Podcast : voix de synthèse indisponible ({exc.__class__.__name__}), pas d'épisode")
         return
@@ -183,7 +226,7 @@ def feed(episodes: list[dict], site_cfg: dict) -> str:
     return f"""<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel>
 <title>{xml_escape(site_cfg['titre'])} · le flash audio</title><link>{xml_escape(base)}</link>
-<description>Chaque matin, trois minutes sur l'actualité de la télésurveillance et de la sécurité privée. Bulletin rédigé par une IA et lu par une voix de synthèse.</description>
+<description>Chaque matin, quelques minutes de conversation sur l'actualité de la télésurveillance et de la sécurité privée. Dialogue rédigé par une IA et lu par deux voix de synthèse.</description>
 <language>fr</language><itunes:author>{xml_escape(site_cfg['editeur'])}</itunes:author>
 <itunes:image href="{xml_escape(base)}icon-512.png"/><itunes:explicit>false</itunes:explicit>
 <itunes:category text="News"/>
