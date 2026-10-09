@@ -408,7 +408,7 @@
  },
  {
   "id": "92d43633922f4f7d",
-  "titre": "À la suite de délits à Chéry-lès-Pouilly, la mairie songe à la « vidéoprotection »",
+  "titre": "Chéry-lès-Pouilly : la mairie envisage la vidéoprotection après des délits",
   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPTktpY2l2RTJMZHhJdnNDc0UtdlhIdnFOUjAxaDIxWEhWV0xVZ3pBSFJXUFFvNjN6NjlJX3VidXpEVmxxMWxVam5ZMHBfUkxjNWFsUWZhdHFsWGduTk9UV1R4M2w1UUJRZlh2dVRqSmtmZnlNV21remxvei1WTDdxU1h0dmt2a3ZDMW02b0ZmOVVWUS1CN243aVVWTDFNeW5KRExHLUlMeE95eFh2UDdnYTBMajA5ajA1aTl1YVR6Tm9MdjQ?oc=5",
   "source": "L'Ardennais",
   "date": "2026-10-08T05:50:30+00:00",
@@ -418,11 +418,11 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "reglementation",
-  "score": 38,
-  "resume": "",
-  "pourquoi": "Score estimé par mots-clés (article non analysé par l'IA).",
-  "analyse_par": "mots-clés",
+  "categorie": "telesurveillance",
+  "score": 35,
+  "resume": "Suite à une série de délits dans la commune de Chéry-lès-Pouilly, la municipalité réfléchirait à installer un système de vidéoprotection. L'extrait ne donne pas davantage de détails sur le projet.",
+  "pourquoi": "Un projet communal de vidéoprotection peut à terme générer des besoins de supervision ou de levée de doute pour un centre, mais le projet n'est qu'évoqué et reste très indirect pour ce lecteur.",
+  "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": null
@@ -555,7 +555,7 @@
  },
  {
   "id": "cbefc8373bacdfa2",
-  "titre": "Burkina Faso : 235 jeunes recherchés pour une formation gratuite, voici comment postuler",
+  "titre": "Burkina Faso : appel à candidatures pour une formation gratuite destinée à 235 jeunes",
   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNdF91RGJ2LVBvTzFyTlo3VHA1b2QtT0NZcHh3RHBScmxSRnRQRWpoY2Ntc3NFaTk2TU5fWTlHRjJQMFBkTS1qekIyY01XcDJFd2I1Z3FHVFV2NG5aakFxcVlWcUo1NXo1eGZ1OF82bDNCM3FsWXhKcWdOSU91Y3dyWlBGX2hLMTZtYURuRHIza2wzVzhkYkxEZHNNLXNKOUZTM3BVNS1GclFHUjNwUXc?oc=5",
   "source": "YOP L-FRII",
   "date": "2026-10-07T14:30:49+00:00",
@@ -565,11 +565,11 @@
   "mots_cles_trouves": {
    "management": 1
   },
-  "categorie": "management",
-  "score": 32,
-  "resume": "",
-  "pourquoi": "Score estimé par mots-clés (article non analysé par l'IA).",
-  "analyse_par": "mots-clés",
+  "categorie": "hors_sujet",
+  "score": 0,
+  "resume": "L'article annonce un recrutement de jeunes pour une formation gratuite au Burkina Faso et explique comment postuler. Seul le titre et l'extrait sont disponibles.",
+  "pourquoi": "Sans lien avec la sécurité privée, la télésurveillance ou l'exploitation d'un centre en France.",
+  "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": null
@@ -1751,6 +1751,25 @@
   "score": 2,
   "resume": "Seul le titre est disponible : il présente l'entreprise N4 Group, spécialisée dans les équipements de fitness et la nutrition sportive. Aucun autre détail n'est connu.",
   "pourquoi": "Cette start-up du secteur sportif ne concerne ni la sécurité privée ni la télésurveillance.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-09"
+ },
+ {
+  "id": "ee6cc1627540a6dd",
+  "titre": "Lancement du programme ÉLAN+ pour la relève de leaders",
+  "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5NZElsWDZ6cDAwXzVYcFluaFZjR09ZZFhPRFVVQTJPaXd3MnNrR1FDR2dCaklXQjk2bXhMVGVYLTU2c0NySWRBa1c1cWFSVHhPY21yaWNYcVdtQVA2U2gxdWlpbUNhc0FNWWJlSEZmWGExalV4MHViY1pwWQ?oc=5",
+  "source": "Alliance de la Fonction publique du Canada",
+  "date": "2026-10-09T20:55:56+00:00",
+  "extrait": "Inspirer la prochaine génération de leaders : un départ en force pour ÉLAN+ Alliance de la Fonction publique du Canada",
+  "origine": "google_news",
+  "filtre": "aucun",
+  "mots_cles_trouves": {},
+  "categorie": "hors_sujet",
+  "score": 3,
+  "resume": "Le titre indique le lancement d'un programme ÉLAN+ destiné à former la prochaine génération de dirigeants dans la fonction publique canadienne. L'extrait ne donne pas d'autres détails.",
+  "pourquoi": "Article lié à la fonction publique canadienne, sans rapport avec la sécurité privée, la télésurveillance ni l'exploitation d'un centre en France.",
   "action": "",
   "echeance": null,
   "analyse_par": "claude-haiku-5-5",
