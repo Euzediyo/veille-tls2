@@ -1,0 +1,18 @@
+# Réglages du site public.
+titre: "Veille TLS"
+sous_titre: "Le journal quotidien de la télésurveillance et de la sécurité privée"
+# Adresse publique du site (sert au flux RSS).
+url: "https://euzediyo.github.io/veille-tls2/"
+
+# Mentions légales (obligatoires pour un site public en France).
+editeur: "À COMPLÉTER : nom ou pseudonyme de l'éditeur"
+contact: "À COMPLÉTER : adresse e-mail de contact"
+hebergeur: "GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis"
+
+# Modèle d'IA utilisé pour l'analyse.
+modele: "claude-haiku-5-5"
+# Nombre maximum d'articles envoyés à l'IA par passage (plafond de dépense).
+max_articles_ia: 120
+
+# E-mail du matin : articles dont le score atteint ce seuil.
+seuil_email: 70
