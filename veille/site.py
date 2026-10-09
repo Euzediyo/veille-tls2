@@ -37,6 +37,7 @@ def label(score: int) -> str:
 
 
 def head(title: str, site: dict, description: str = "") -> str:
+    v = site.get("_version", "")
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -53,7 +54,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 <link rel="alternate" type="application/rss+xml" title="{escape(site['titre'])}" href="feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v={v}">
 </head>"""
 
 
@@ -119,7 +120,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 </div>
 {footer(site)}
 <script>window.VEILLE = {json.dumps(config, ensure_ascii=False)};</script>
-<script src="app.js"></script>
+<script src="app.js?v={site.get('_version', '')}"></script>
 </body>
 </html>
 """
@@ -220,6 +221,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     write_icons(OUT)
 
     now = datetime.now(ZoneInfo("Europe/Paris"))
+    # Numéro de version ajouté aux liens : force les navigateurs à recharger la mise en forme à chaque publication.
+    site = {**site, "_version": now.strftime("%Y%m%d%H%M")}
     updated = f"{now.day} {MOIS[now.month - 1]} à {now:%Hh%M}"
     ics_url = site["url"].rstrip("/") + "/echeances.ics"
 
