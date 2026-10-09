@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 BATCH_SIZE = 10
 
 
-def build_system_prompt(profile: dict) -> str:
+def build_system_prompt(profile: dict, learned: str = "") -> str:
     cats = "\n".join(
         f"- {key} : {c['nom']} (priorité {c['priorite']}). {c['description'].strip()}"
         for key, c in profile["categories"].items()
@@ -58,7 +58,7 @@ Pour chaque article reçu, renvoie :
   Si le jour exact n'est pas connu, prends le premier jour du mois. Sinon, chaînes vides.
 
 Tu ne connais l'article que par son titre et son extrait (parfois le début du texte) : base-toi
-uniquement sur eux."""
+uniquement sur eux.{learned}"""
 
 
 SCHEMA = {
@@ -132,7 +132,7 @@ def _deadline(a: dict) -> dict | None:
     return {"date": day.isoformat(), "libelle": label} if label else None
 
 
-def analyze(items: list[dict], profile: dict, model: str, report: list[str]) -> list[dict]:
+def analyze(items: list[dict], profile: dict, model: str, report: list[str], learned: str = "") -> list[dict]:
     if not items:
         return []
     if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -140,7 +140,7 @@ def analyze(items: list[dict], profile: dict, model: str, report: list[str]) -> 
         return [{**it, **keyword_fallback(it, profile, "IA non configurée")} for it in items]
 
     client = anthropic.Anthropic()
-    system = [{"type": "text", "text": build_system_prompt(profile), "cache_control": {"type": "ephemeral"}}]
+    system = [{"type": "text", "text": build_system_prompt(profile, learned), "cache_control": {"type": "ephemeral"}}]
     results, tokens_in, tokens_out = [], 0, 0
 
     for start in range(0, len(items), BATCH_SIZE):

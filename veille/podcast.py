@@ -36,7 +36,7 @@ def spoken_date(day: date) -> str:
 
 def select(articles: list[dict], today: date) -> list[dict]:
     """Sujets du flash : les articles importants de l'édition du jour, à défaut les meilleurs."""
-    pool = [it for it in articles if it["edition"] == today.isoformat() and it["categorie"] != "hors_sujet"]
+    pool = [it for it in articles if it["edition"] == today.isoformat() and it["categorie"] != "hors_sujet" and not it.get("non_pertinent")]
     pool.sort(key=lambda it: it["score"], reverse=True)
     chosen = [it for it in pool if it["score"] >= 50][:MAX_SUJETS]
     return chosen if len(chosen) >= 3 else [it for it in pool if it["score"] >= 30][:3]

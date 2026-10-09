@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import analyze, collect, enrich, notify, podcast, prefilter, site, store
+from . import analyze, avis, collect, enrich, notify, podcast, prefilter, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 
@@ -37,10 +37,14 @@ def main() -> int:
     today = datetime.now(ZoneInfo("Europe/Paris")).date()
     report: list[str] = []
 
+    # Avis « non pertinent » envoyés depuis le site : ils guident l'IA dès ce passage.
+    avis.collect(report, today.isoformat())
+    learned = avis.prompt_block(avis.load(), profile)
+
     if args.reanalyser and os.environ.get("ANTHROPIC_API_KEY"):
         recent = store.load_articles(days=args.reanalyser, today=today)[: site_cfg.get("max_articles_ia", 120)]
         report.append(f"Réanalyse : {len(recent)} articles des {args.reanalyser} derniers jours")
-        store.replace_articles(analyze.analyze(enrich.enrich(recent, sources.get("sources_payantes") or [], report), profile, site_cfg["modele"], report))
+        store.replace_articles(analyze.analyze(enrich.enrich(recent, sources.get("sources_payantes") or [], report), profile, site_cfg["modele"], report, learned))
 
     if not args.site:
         raw = collect.collect_google_news(sources.get("google_news") or [], report)
@@ -55,7 +59,7 @@ def main() -> int:
         report.append(f"Collecte : {len(raw)} articles, {len(fresh)} nouveaux, {len(candidates)} envoyés à l'analyse")
 
         candidates = enrich.enrich(candidates, sources.get("sources_payantes") or [], report)
-        analysed = analyze.analyze(candidates, profile, site_cfg["modele"], report)
+        analysed = analyze.analyze(candidates, profile, site_cfg["modele"], report, learned)
 
         # Articles récents notés par mots-clés faute d'IA : ils sont analysés dès que l'IA est disponible.
         if os.environ.get("ANTHROPIC_API_KEY"):
@@ -63,7 +67,7 @@ def main() -> int:
             pending = [it for it in pending if it["id"] not in {a["id"] for a in analysed}][: site_cfg.get("max_articles_ia", 120)]
             if pending:
                 report.append(f"Rattrapage : {len(pending)} articles récents notés par mots-clés")
-                store.replace_articles(analyze.analyze(pending, profile, site_cfg["modele"], report))
+                store.replace_articles(analyze.analyze(pending, profile, site_cfg["modele"], report, learned))
         store.add_articles(analysed, today)
         store.save_seen(seen, fresh, today)
 
