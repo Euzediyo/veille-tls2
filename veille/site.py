@@ -140,7 +140,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Ce journal ne reproduit aucun article. Pour chaque information, il publie un titre, un résumé court rédigé automatiquement par une intelligence artificielle avec ses propres mots, le nom de la source et un lien vers l'article original. Les textes officiels (lois, décrets, arrêtés, décisions de justice) peuvent être cités plus largement.</p>
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
-<p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un score de pertinence de 0 à 100 du point de vue d'un responsable de centre de télésurveillance, explique ce score, propose une action pour les articles importants et repère les échéances. Les articles notés sous {profile.get('seuil_publication', 30)} ne sont pas publiés.</p>
+<p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un score de pertinence de 0 à 100 du point de vue d'un responsable de centre de télésurveillance, explique ce score, propose une action pour les articles importants et repère les échéances. Les articles notés sous {profile.get('seuil_publication', 30)} ou jugés hors sujet ne sont pas publiés.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus et les favoris sont mémorisés uniquement dans votre navigateur.</p>
@@ -227,7 +227,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     ics_url = site["url"].rstrip("/") + "/echeances.ics"
 
     seuil = profile.get("seuil_publication", 30)
-    public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles if it["score"] >= seuil]
+    public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles
+              if it["score"] >= seuil and it["categorie"] != "hors_sujet"]
     public.sort(key=lambda it: (it["edition"], it["score"]), reverse=True)
 
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")

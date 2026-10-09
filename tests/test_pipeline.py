@@ -84,11 +84,12 @@ def test_site_build(tmp_path, monkeypatch):
          "pourquoi": "P", "action": "Former les opérateurs", "echeance": {"date": "2027-04-01", "libelle": "Entrée en vigueur"}},
         {**SAMPLE[3], "edition": "2026-10-09", "categorie": "marche", "score": 55, "resume": "R", "pourquoi": "P"},
         {**SAMPLE[2], "edition": "2026-10-09", "categorie": "reglementation", "score": 10, "resume": "", "pourquoi": "P"},
+        {**SAMPLE[1], "edition": "2026-10-09", "categorie": "hors_sujet", "score": 40, "resume": "", "pourquoi": "P"},
     ]
     site.build(PROFILE, SITE, arts, date(2026, 10, 9))
     out = tmp_path / "site"
     public = json.loads((out / "articles.json").read_text(encoding="utf-8"))
-    assert [it["id"] for it in public] == ["id4", "id1"]          # score 10 non publié, plus récent d'abord
+    assert [it["id"] for it in public] == ["id4", "id1"]          # score 10 et hors sujet non publiés, plus récent d'abord
     assert public[1]["resume"] == "R<script>"                       # échappé côté navigateur, pas dans le JSON
     index = (out / "index.html").read_text(encoding="utf-8")
     assert '"key": "reglementation"' in index and "app.js" in index
