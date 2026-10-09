@@ -16,6 +16,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
+  if (req.url.endsWith(".mp3")) return; // l'audio passe directement, sans copie locale
   event.respondWith(
     fetch(req).then((res) => {
       const copy = res.clone();

@@ -10,7 +10,7 @@
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   var PAGE = 40;
 
-  var data = [], latest = "", today = isoLocal(new Date());
+  var data = [], episodes = [], latest = "", today = isoLocal(new Date());
   var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, hideRead: false, day: "", limit: PAGE };
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris");
 
@@ -51,6 +51,7 @@
     renderChannels();
     renderKpis();
     $("tools").hidden = st.view === "archives" || st.view === "echeances";
+    $("flash").hidden = st.view !== "journal" || !episodes.length;
     $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris";
     $("v-echeances").hidden = st.view !== "echeances";
     $("v-archives").hidden = st.view !== "archives";
@@ -184,6 +185,27 @@
     }).join("");
   }
 
+  // Flash audio : le dernier épisode en lecture, les précédents au choix.
+  function renderFlash() {
+    if (!episodes.length) return;
+    var ep = episodes[0], min = Math.max(1, Math.round(ep.duree / 60));
+    var older = episodes.length > 1 ? '<select id="flash-ep" aria-label="Choisir un épisode">' + episodes.map(function (e, i) {
+      return '<option value="' + i + '">' + esc(longDay(e.date)) + "</option>"; }).join("") + "</select>" : "";
+    $("flash").innerHTML = '<div class="flash-h"><span class="onair"><i></i>Flash audio</span><b id="flash-t">' + esc(longDay(ep.date)) +
+      '</b><span id="flash-d">' + min + " min</span></div>" +
+      '<audio id="flash-a" controls preload="none" src="' + esc(ep.fichier) + '"></audio>' +
+      '<p class="flash-s" id="flash-s">Au sommaire : ' + esc(ep.sujets.join(" · ")) + "</p>" +
+      '<div class="flash-f">' + older + '<button type="button" class="btn" data-copy="' + esc(CFG.podcast || "") +
+      '">Copier le lien du podcast</button></div>';
+    var sel = $("flash-ep");
+    if (sel) sel.addEventListener("change", function () {
+      var e = episodes[+sel.value];
+      $("flash-a").src = e.fichier; $("flash-t").textContent = longDay(e.date);
+      $("flash-d").textContent = Math.max(1, Math.round(e.duree / 60)) + " min";
+      $("flash-s").textContent = "Au sommaire : " + e.sujets.join(" · ");
+    });
+  }
+
   // ---------- interactions ----------
   function setView(v) { st.view = v; st.limit = PAGE; if (v !== "journal") st.day = ""; render(); window.scrollTo({ top: 0 }); }
   document.addEventListener("click", function (e) {
@@ -252,6 +274,9 @@
   if (window.VEILLE_ARTICLES) start(window.VEILLE_ARTICLES);
   else fetch("articles.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(start)
     .catch(function () { $("feed").innerHTML = '<div class="empty">Impossible de charger les articles. Vérifie ta connexion puis recharge la page.</div>'; });
+
+  if (!window.VEILLE_ARTICLES) fetch("podcast.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (list) { episodes = list || []; renderFlash(); render(); }).catch(function () {});
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     navigator.serviceWorker.register("sw.js").catch(function () {});

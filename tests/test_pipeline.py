@@ -115,3 +115,67 @@ def test_replace_articles(tmp_path, monkeypatch):
     store.replace_articles([{**SAMPLE[0], "score": 92, "analyse_par": "claude-haiku-5-5"}])
     arts = store.load_articles(days=3, today=date(2026, 10, 10))
     assert len(arts) == 1 and arts[0]["score"] == 92 and arts[0]["edition"] == "2026-10-09"
+
+
+def test_podcast(tmp_path, monkeypatch):
+    from veille import podcast
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setattr(podcast, "OUT", tmp_path / "site")
+    monkeypatch.setattr(podcast, "EPISODES", tmp_path / "podcast.json")
+    monkeypatch.setattr(podcast, "synthesize", lambda text, path, voice: path.write_bytes(b"\0" * 1_080_000))
+    (tmp_path / "podcast.json").write_text(json.dumps([
+        {"date": "2026-10-08", "titre": "Flash d'hier", "fichier": "podcast/2026-10-08.mp3", "octets": 9, "duree": 1, "sujets": ["A"], "texte": ""},
+        {"date": "2026-09-01", "titre": "Trop ancien", "fichier": "podcast/2026-09-01.mp3", "octets": 9, "duree": 1, "sujets": ["B"], "texte": ""},
+    ]), encoding="utf-8")
+
+    def fake_get(url, timeout):
+        raise podcast.requests.ConnectionError("hors ligne")
+    monkeypatch.setattr(podcast.requests, "get", fake_get)
+
+    arts = [{**SAMPLE[i], "edition": "2026-10-09", "categorie": cat, "score": score, "resume": "Résumé.", "pourquoi": "P", "action": ""}
+            for i, (cat, score) in enumerate([("reglementation", 92), ("hors_sujet", 80), ("marche", 55), ("social", 40)])]
+    assert [it["id"] for it in podcast.select(arts, date(2026, 10, 9))] == ["id1", "id3", "id4"]  # complété jusqu'à 3 sujets
+
+    report = []
+    podcast.make_episode(arts, PROFILE, SITE, date(2026, 10, 9), report)
+    published = podcast.publish(SITE, date(2026, 10, 9), report)
+    assert [ep["date"] for ep in published] == ["2026-10-09"]          # hier introuvable en ligne, septembre expiré
+    assert published[0]["duree"] == 180 and "vendredi 9 octobre" in published[0]["texte"]
+    saved = json.loads((tmp_path / "podcast.json").read_text(encoding="utf-8"))
+    assert [ep["date"] for ep in saved] == ["2026-10-08", "2026-10-09"]  # gardé pour une prochaine tentative
+    xml = (tmp_path / "site" / "podcast.xml").read_text(encoding="utf-8")
+    assert 'podcast/2026-10-09.mp3" length="1080000" type="audio/mpeg"' in xml
+    assert json.loads((tmp_path / "site" / "podcast.json").read_text(encoding="utf-8"))[0]["fichier"] == "podcast/2026-10-09.mp3"
+
+
+def test_podcast_voice_failure(tmp_path, monkeypatch):
+    from veille import podcast
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setattr(podcast, "OUT", tmp_path / "site")
+    monkeypatch.setattr(podcast, "EPISODES", tmp_path / "podcast.json")
+
+    def broken(text, path, voice):
+        raise OSError("service indisponible")
+    monkeypatch.setattr(podcast, "synthesize", broken)
+    arts = [{**SAMPLE[0], "edition": "2026-10-09", "categorie": "reglementation", "score": 92, "resume": "", "pourquoi": "P", "action": ""}]
+    report = []
+    podcast.make_episode(arts, PROFILE, SITE, date(2026, 10, 9), report)
+    assert not (tmp_path / "podcast.json").exists() and "indisponible" in report[-1]
+
+
+def test_podcast_script_ai(monkeypatch):
+    from veille import podcast
+    calls = {}
+
+    class FakeMessages:
+        def create(self, **kw):
+            calls.update(kw)
+            text = "Bonjour, nous sommes le vendredi 9 octobre. Voici le flash Veille TLS. " + "Texte. " * 60
+            return types.SimpleNamespace(stop_reason="end_turn", content=[types.SimpleNamespace(type="text", text=text)])
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    monkeypatch.setattr(podcast.anthropic, "Anthropic", lambda: types.SimpleNamespace(messages=FakeMessages()))
+    arts = [{**SAMPLE[0], "categorie": "reglementation", "score": 92, "resume": "R", "pourquoi": "P", "action": "Former"}]
+    text = podcast.write_script(arts, PROFILE, "claude-haiku-5-5", date(2026, 10, 9), [])
+    assert text.startswith("Bonjour") and "vendredi 9 octobre" in calls["system"]
+    assert "Action recommandée : Former" in calls["messages"][0]["content"]
