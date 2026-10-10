@@ -70,6 +70,7 @@ def main() -> int:
                 report.append(f"Rattrapage : {len(pending)} articles récents notés par mots-clés")
                 store.replace_articles(analyze.analyze(pending, profile, site_cfg["modele"], report, learned))
         store.add_articles(analysed, today)
+        store.save_collect_time(datetime.now(ZoneInfo("Europe/Paris")))
         store.save_seen(seen, fresh, today)
 
         try:

@@ -12,6 +12,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
+from . import store
 from .icons import write_icons
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -284,7 +285,9 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     now = datetime.now(ZoneInfo("Europe/Paris"))
     # Numéro de version ajouté aux liens : force les navigateurs à recharger la mise en forme à chaque publication.
     site = {**site, "_version": now.strftime("%Y%m%d%H%M")}
-    updated = f"{now.day} {MOIS[now.month - 1]} à {now:%Hh%M}"
+    # Heure de la dernière vraie collecte : une simple republication du site ne la change pas.
+    collected = (store.load_collect_time() or now).astimezone(ZoneInfo("Europe/Paris"))
+    updated = f"{collected.day} {MOIS[collected.month - 1]} à {collected:%Hh%M}"
     ics_url = site["url"].rstrip("/") + "/echeances.ics"
 
     seuil = profile.get("seuil_publication", 30)

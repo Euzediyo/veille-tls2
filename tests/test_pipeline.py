@@ -2,12 +2,13 @@
 
 import json
 import types
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import yaml
 
-from veille import analyze, prefilter, site
+from veille import analyze, prefilter, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 PROFILE = yaml.safe_load((CONFIG / "profil.yaml").read_text(encoding="utf-8"))
@@ -79,6 +80,8 @@ def test_ai_response_parsing(monkeypatch):
 
 def test_site_build(tmp_path, monkeypatch):
     monkeypatch.setattr(site, "OUT", tmp_path / "site")
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    store.save_collect_time(datetime(2026, 10, 9, 6, 45, tzinfo=ZoneInfo("Europe/Paris")))
     arts = [
         {**SAMPLE[0], "edition": "2026-10-08", "categorie": "reglementation", "score": 94, "resume": "R<script>",
          "pourquoi": "P", "action": "Former les opérateurs", "echeance": {"date": "2027-04-01", "libelle": "Entrée en vigueur"}},
@@ -93,6 +96,7 @@ def test_site_build(tmp_path, monkeypatch):
     assert public[1]["resume"] == "R<script>"                       # échappé côté navigateur, pas dans le JSON
     index = (out / "index.html").read_text(encoding="utf-8")
     assert '"key": "reglementation"' in index and "app.js" in index
+    assert '"updated": "9 octobre à 06h45"' in index                # heure de la dernière vraie collecte, pas de la republication
     ics = (out / "echeances.ics").read_text(encoding="utf-8")
     assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1
     assert "<rss" in (out / "feed.xml").read_text(encoding="utf-8")
