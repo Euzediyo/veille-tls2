@@ -27,9 +27,15 @@
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
   function longDay(iso) { var d = new Date(iso + "T12:00:00"); return JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
   function dayLabel(iso) {
-    var diff = days(latest, iso), d = new Date(iso + "T12:00:00");
+    var diff = days(today, iso), d = new Date(iso + "T12:00:00");
     var txt = JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()];
-    return (diff === 0 ? "Dernière édition · " : diff === 1 ? "Veille · " : "") + txt;
+    return diff === 0 ? "Collecte du jour · " + txt : diff === 1 ? "Collecte d'hier · " + txt : "Collecte du " + txt;
+  }
+  function stamp(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "";
+    var txt = d.getDate() + " " + MOIS[d.getMonth()] + (d.getFullYear() !== new Date().getFullYear() ? " " + d.getFullYear() : "");
+    return d.getHours() || d.getMinutes() ? txt + " à " + hour(iso) : txt;
   }
   function journal() { return document.documentElement.dataset.layout === "journal"; }
   function hour(iso) { var d = new Date(iso); return isNaN(d) ? "" : String(d.getHours()).padStart(2, "0") + "h" + String(d.getMinutes()).padStart(2, "0"); }
@@ -92,7 +98,7 @@
     var light = document.documentElement.dataset.theme === "light";
     $("theme-t").textContent = light ? "Mode sombre" : "Mode clair";
     $("theme-btn").setAttribute("aria-label", light ? "Passer en mode sombre" : "Passer en mode clair");
-    if (latest) { var t = longDay(latest); $("mast-d").textContent = t.charAt(0).toUpperCase() + t.slice(1); }
+    var t = longDay(today); $("mast-d").textContent = t.charAt(0).toUpperCase() + t.slice(1);
   }
   function setPref(key, attr, value) {
     document.documentElement.dataset[attr] = value;
@@ -188,7 +194,7 @@
       '<p class="why">' + esc(it.pourquoi) + "</p>" +
       (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") +
       (it.echeance ? '<p class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</p>" : "") +
-      '<p class="src">' + esc(it.source) + " · " + hour(it.date) + "</p>" + actions(isRead, isFav) + "</article>";
+      '<p class="src">' + esc(it.source) + (stamp(it.date) ? " · publié le " + stamp(it.date) : "") + "</p>" + actions(isRead, isFav) + "</article>";
   }
 
   function card(it, n, une) {
@@ -197,7 +203,7 @@
     var due = it.echeance ? '<span class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</span>" : "";
     return '<article class="ev ' + p[0] + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ");animation-delay:" + Math.min(n, 12) * 30 + 'ms" data-id="' + it.id + '">' +
       '<div class="prio"><span class="led" aria-hidden="true"></span><b>' + it.score + "</b><small>" + p[1] + "<br>" + p[2].toUpperCase() + "</small></div>" +
-      '<div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + esc(it.source) + "</span><span>" + hour(it.date) + "</span>" +
+      '<div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + esc(it.source) + "</span><span>" + stamp(it.date) + "</span>" +
       (isRead ? '<span class="state lu">LU</span>' : '<span class="state new">NON LU</span>') +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 RÉSERVÉ AUX ABONNÉS</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
