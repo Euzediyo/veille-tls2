@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from .prefilter import _title_key
@@ -75,6 +75,15 @@ def load_articles(days: int | None = None, today: date | None = None) -> list[di
         limit = (today - timedelta(days=days)).isoformat()
         items = [it for it in items if it["edition"] >= limit]
     return items
+
+
+def save_collect_time(when: datetime) -> None:
+    _write(DATA / "derniere-collecte.json", {"heure": when.isoformat(timespec="minutes")})
+
+
+def load_collect_time() -> datetime | None:
+    value = _read(DATA / "derniere-collecte.json", {}).get("heure")
+    return datetime.fromisoformat(value) if value else None
 
 
 def save_report(report: list[str], today: date) -> None:
