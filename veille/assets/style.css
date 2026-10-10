@@ -332,3 +332,32 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
   [data-layout="journal"] .tabs{justify-content:flex-start}
   [data-layout="journal"] .mast{padding-top:4px}
 }
+
+/* ---------- Téléphone : barre d'onglets en bas, canaux et filtres en menus déroulants ---------- */
+.ti,.m-only{display:none}
+.sel2{display:contents}
+@media (max-width:700px){
+  .d-only,.rail{display:none}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}
+  [data-layout="journal"] .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:none;padding:4px 2px calc(4px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);border-bottom:0;overflow:visible}
+  [data-layout="journal"] .tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0 4px;border-bottom:0;border-top:2px solid transparent;font:600 10.5px var(--body);letter-spacing:.02em;text-transform:none;min-width:0}
+  [data-layout="journal"] .tab[aria-selected="true"]{border-top-color:var(--accent);color:var(--fg)}
+  .tab .ti{display:block}
+  .tab em{position:absolute;top:2px;left:calc(50% + 6px);margin:0;padding:0 5px;font-size:10px;line-height:16px;min-width:16px;text-align:center}
+  #t-journal-n{background:var(--accent);color:#fff}
+  .toast{bottom:calc(80px + env(safe-area-inset-bottom))}
+  .tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .tools .m-only,#ack-all .m-only{display:inline}
+  .tools select.m-only,.tools button.m-only{display:block}
+  #cat-sel{width:100%;min-width:0;grid-column:1/2}
+  #filt-btn{padding-inline:16px}
+  .tools .search,.tools .sel2{display:none}
+  .tools.open .search{display:flex;grid-column:1/-1}
+  .tools.open .sel2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;grid-column:1/-1}
+  .sel2 select{width:100%;min-width:0}
+  #filt-btn[aria-expanded="true"]{border-color:var(--fg)}
+  .tools .seg{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr)}
+  .tools .seg button{justify-content:center;padding:10px 6px;font-size:13px}
+  .tools #ack-all{grid-column:1/-1}
+  .tools #unmask,.tools .daychip{grid-column:1/-1;justify-self:start}
+}

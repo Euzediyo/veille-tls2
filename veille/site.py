@@ -87,23 +87,25 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 </header>
 
 <nav class="tabs" role="tablist" aria-label="Vues">
-  <button type="button" class="tab" role="tab" data-view="journal">Journal <em id="t-journal-n" title="non lus">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="semaine">La semaine</button>
-  <button type="button" class="tab" role="tab" data-view="favoris">Favoris <em id="t-favoris-n">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="echeances">Échéances <em id="t-echeances-n" title="à venir">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="archives">Archives</button>
+  <button type="button" class="tab" role="tab" data-view="journal"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg><span>Journal</span> <em id="t-journal-n" title="non lus">0</em></button>
+  <button type="button" class="tab" role="tab" data-view="semaine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><span class="d-only">La </span>Semaine</span></button>
+  <button type="button" class="tab" role="tab" data-view="favoris"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg><span>Favoris</span> <em id="t-favoris-n">0</em></button>
+  <button type="button" class="tab" role="tab" data-view="echeances"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span>Échéances</span> <em id="t-echeances-n" title="à venir">0</em></button>
+  <button type="button" class="tab" role="tab" data-view="archives"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><span>Archives</span></button>
 </nav>
 
 <div class="shell">
   <main class="main">
     <nav class="rail" id="rail" aria-label="Catégories"></nav>
     <div class="tools" id="tools">
+      <select id="cat-sel" class="m-only" aria-label="Canal"></select>
+      <button type="button" class="btn m-only" id="filt-btn" aria-expanded="false" aria-controls="tools">Filtres</button>
       <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
         <input id="q" type="search" placeholder="Rechercher : R31, levée de doute, convention collective…" aria-label="Rechercher" autocomplete="off"></label>
-      <select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Tout</option></select>
-      <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select>
+      <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Tout</option></select>
+      <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
       <div class="seg" id="readf" role="group" aria-label="Afficher"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
-      <button type="button" class="btn" id="ack-all">Tout marquer comme lu</button>
+      <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
       <button type="button" class="btn ghost" id="unmask" hidden></button>
       <span class="daychip" id="daychip" hidden><span id="daychip-t"></span><button type="button" id="daychip-x" aria-label="Revenir à toutes les éditions">✕</button></span>
     </div>
