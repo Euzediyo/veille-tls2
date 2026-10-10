@@ -122,6 +122,11 @@
       html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return it.categorie === c.key; }));
     });
     $("rail").innerHTML = html;
+    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return it.categorie === c.key; })]; }));
+    $("cat-sel").innerHTML = opts.map(function (o) {
+      var n = o[2].filter(function (it) { return !read.has(it.id); }).length;
+      return '<option value="' + o[0] + '"' + (st.cat === o[0] ? " selected" : "") + ">" + esc(o[1]) + " (" + n + ")</option>";
+    }).join("");
   }
   function channel(key, name, sub, items) {
     var unread = items.filter(function (it) { return !read.has(it.id); }).length;
@@ -340,6 +345,11 @@
   });
   $("q").addEventListener("input", function (e) { st.q = e.target.value; st.limit = PAGE; render(); });
   $("period").addEventListener("change", function (e) { st.period = +e.target.value; st.day = ""; st.limit = PAGE; render(); });
+  $("cat-sel").addEventListener("change", function (e) { st.cat = e.target.value; st.limit = PAGE; if (st.view !== "journal" && st.view !== "favoris") st.view = "journal"; render(); });
+  $("filt-btn").addEventListener("click", function () {
+    var open = $("tools").classList.toggle("open");
+    $("filt-btn").setAttribute("aria-expanded", open);
+  });
   $("min").addEventListener("change", function (e) { st.min = +e.target.value; st.limit = PAGE; render(); });
   $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });
   $("daychip-x").addEventListener("click", function () { st.day = ""; render(); });
