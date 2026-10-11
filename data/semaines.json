@@ -3,8 +3,8 @@
   "lundi": "2026-10-05",
   "titre": "Semaine du 5 au 11 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-10",
-  "synthese": "Cette semaine, deux sujets dominent. Depuis le 11 août 2026, le démarchage téléphonique est interdit sans consentement préalable, en application de la loi du 30 juin 2025 (GPMSE). Côté social, le GES propose 1 % de revalorisation sur la grille, tandis que les six syndicats réclament 10 % et menacent les accords de modulation du temps de travail (83-629.fr). Le rapport IGA-CGefi du 23 juillet 2026, relayé par GPMSE, souligne la fragilité économique du gardiennage.\n\nPour votre centre, cela impose de revoir les scripts et le recueil de consentement des campagnes sortantes, avec des plages d'appel strictes et au plus quatre sollicitations sur 30 jours. La validité des cartes professionnelles doit aussi être contrôlée : selon Ogletree Deakins France, un agent qui en est dépourvu peut être licencié pour ce seul motif. L'arrêté relatif à SecNumCloud 3.2 ne vise pas directement les entreprises privées, mais il peut concerner les fournisseurs de plateformes d'alarme travaillant pour l'État.\n\nÉchéances à ne pas manquer : l'arrêté SecNumCloud 3.2 entre en vigueur le 15 août 2026, et la revalorisation de 1 % proposée par les employeurs, non acquise, est fixée au 1er janvier 2027. Préparez une simulation du coût de 1 % et de 10 % sur vos coefficients, et lisez le rapport IGA-CGefi. Le décret sur les chiens de sécurité, annoncé sous 60 jours, mérite aussi un suivi, son contenu n'étant pas précisé.",
+  "maj": "2026-10-11",
+  "synthese": "Cette semaine, deux sujets dominent. Le premier est la réglementation du démarchage téléphonique : selon GPMSE, depuis le 11 août 2026, il est interdit sans consentement préalable, en application de la loi du 30 juin 2025. Le second concerne les salaires de la branche : le GES maintient une proposition de 1 % sur la grille, tandis que les six syndicats réclament 10 %, sans accord à ce stade. Le rapport IGA-CGEFI du 23 juillet 2026, relayé par GPMSE et évoqué dans le discours d'ouverture du 7e congrès du GES, pointe aussi les fragilités économiques du secteur et la cohérence du cadre réglementaire, sans nouvelle obligation datée.\n\nPour un centre de télésurveillance, cela impose de revoir les campagnes d'appels sortants : consentement explicite et documenté, conservé trois ans au minimum, appels du lundi au vendredi de 10 h à 13 h et de 14 h à 20 h, et au plus quatre sollicitations sur 30 jours. L'écoute et l'enregistrement des appels concernent également les téléopérateurs. Il faut aussi contrôler la validité des cartes professionnelles, dont l'absence peut motiver un licenciement selon un cabinet juridique (Ogletree Deakins France).\n\nLes échéances à retenir sont le 11 août 2026, date d'entrée en vigueur de l'interdiction du démarchage, et le 15 août 2026 pour l'arrêté sur SecNumCloud 3.2, qui ne concerne directement que les données sensibles de l'État. La revalorisation salariale de 2027 n'est pas acquise : préparez dès maintenant une simulation du coût d'une hausse de 1 % et de 10 %.",
   "articles": [
    "de5d9381df290bda",
    "366e547b68359e55",
@@ -15,7 +15,7 @@
    "440fd3bb81874e31",
    "a8164b9f830f74a5",
    "618cc8e4d07246f1",
-   "fbaeaeaa4748db0f"
+   "8ef68db2522a1a5f"
   ],
   "echeances": [
    "1886f2603693438f",
