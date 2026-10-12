@@ -1,7 +1,8 @@
 {
- "date": "2026-10-12",
+ "date": "2026-10-13",
  "journal": [
+  "Regroupement : 2 événements repris par plusieurs sources (10 articles)",
   "Site : régénéré",
-  "Podcast : voix de synthèse indisponible (WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=de49c8e3ea9547), pas d'épisode"
+  "Podcast : aucun sujet aujourd'hui, pas d'épisode"
  ]
 }

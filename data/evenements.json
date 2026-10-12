@@ -1,17 +1,24 @@
 {
- "maj": "2026-10-12",
+ "maj": "2026-10-13",
  "groupes": [
   {
    "sujet": "Rumeur de partenariat Apple et ADT",
    "ids": [
     "bdf5424e4e7d0872",
     "8fba403efa3dfca3",
-    "2bdc1179dfa9c1e9",
-    "0def42ac1a1528ec",
     "5a4f6fa0cea31ac5",
+    "89172241c1b56615",
+    "0def42ac1a1528ec",
     "7291256b57b54026",
     "31f10280bc03c230",
     "bba97fc235caa18d"
+   ]
+  },
+  {
+   "sujet": "Mobilisation des agents de sécurité à l'aéroport de Nice",
+   "ids": [
+    "c6c16d90f9cd9ad7",
+    "1b4c3d3cab2cc1a1"
    ]
   }
  ]
