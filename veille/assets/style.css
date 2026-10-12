@@ -540,3 +540,35 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
   [data-layout="journal"] .tab > span{white-space:nowrap;font-size:10px;letter-spacing:0}
   .ev.pa.une .lede{font-size:1.02rem;line-height:1.55}
 }
+
+/* Presse française / presse internationale : deux grands boutons sur toute la largeur. */
+.press{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 6px}
+.press button{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 12px;border:1px solid var(--line);border-radius:4px;background:none;color:var(--muted);cursor:pointer;font:700 1.05rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.05em}
+.press button:hover{border-color:var(--fg);color:var(--fg)}
+.press button[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.press em{font:600 12px var(--body);font-style:normal;min-width:26px;padding:2px 7px;border-radius:99px;background:var(--panel-2);color:var(--muted)}
+.press em.hot{background:var(--accent);color:var(--on-accent)}
+/* Cases à cocher : articles non lus, articles déjà lus. */
+.readbox{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 8px;font-size:.92rem}
+.readbox label{display:inline-flex;align-items:center;gap:8px;min-height:40px;cursor:pointer;user-select:none}
+.readbox input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.readbox em{font-style:normal;font-weight:700;color:var(--muted)}
+/* Veille essentielle / veille élargie : deux sections repliables, ouvertes par défaut. */
+.sec{border-top:3px double var(--fg);margin-bottom:18px}
+.sec > summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 0 12px 26px;position:relative}
+.sec > summary::-webkit-details-marker{display:none}
+.sec > summary::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-right:2px solid var(--fg);border-bottom:2px solid var(--fg);transform:rotate(-45deg);transition:transform .15s}
+.sec[open] > summary::before{transform:rotate(45deg);top:16px}
+.sec-t{font:700 1.35rem/1.2 var(--display)}
+.sec-d{color:var(--muted);font-size:.9rem}
+.sec > summary em{margin-left:auto;font-style:normal;font-size:.85rem;color:var(--muted)}
+.sec > summary:hover .sec-t{text-decoration:underline;text-underline-offset:4px}
+.sec-b{padding-bottom:6px}
+.sec .ess{margin-bottom:22px}
+.sec .ess.front{border-bottom:1px solid var(--line)}
+@media (max-width:700px){
+  .press{gap:8px}.press button{flex-direction:column;gap:6px;padding:12px 8px;font-size:.88rem}
+  .readbox{flex-direction:column;gap:0}
+  .sec-t{font-size:1.15rem}.sec-d{flex-basis:100%;font-size:.82rem}
+  .sec > summary em{margin-left:0}
+}
