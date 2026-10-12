@@ -9,10 +9,9 @@
   var MOIS_C = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   var PAGE = 40;
-  var INTL = "international";
 
   var data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date());
-  var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
+  var st = { view: "journal", press: "fr", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
   var toastTimer = 0;
 
@@ -26,9 +25,10 @@
   function days(a, b) { return Math.round((Date.parse(a + "T12:00:00") - Date.parse(b + "T12:00:00")) / 864e5); }
   function prio(s) { return s >= 90 ? ["p1", "P1", "Critique"] : s >= 70 ? ["p2", "P2", "Important"] : s >= 50 ? ["p3", "P3", "Intéressant"] : ["p4", "P4", "Veille"]; }
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
-  // Canal d'un article : la presse internationale a son propre canal, à part des six rubriques françaises.
-  function inCat(it, key) { return key === "all" || (key === INTL ? !!it.international : !it.international && it.categorie === key); }
-  function tagHtml(it) { return (it.international ? '<span class="tag intl">International</span>' : "") + '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
+  function inCat(it, key) { return key === "all" || it.categorie === key; }
+  function tagHtml(it) { return '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
+  // Le journal sépare la presse française (affichée par défaut) et la presse internationale.
+  function inPress(it, press) { return (press === "intl") === !!it.international; }
   function longDay(iso) { var d = new Date(iso + "T12:00:00"); return JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
   function dayLabel(iso) {
     var diff = days(today, iso), d = new Date(iso + "T12:00:00");
@@ -45,8 +45,9 @@
   function hour(iso) { var d = new Date(iso); return isNaN(d) ? "" : String(d.getHours()).padStart(2, "0") + "h" + String(d.getMinutes()).padStart(2, "0"); }
 
   // ---------- filtres ----------
-  function matches(it, ignoreCat) {
+  function matches(it, ignoreCat, ignorePress) {
     if (it.score < st.min) return false;
+    if (!ignorePress && st.view !== "favoris" && !inPress(it, st.press)) return false;
     if (st.day) { if (it.edition !== st.day) return false; }
     else if (days(latest, it.edition) >= st.period) return false;
     if (!ignoreCat && !inCat(it, st.cat)) return false;
@@ -125,10 +126,8 @@
     CATS.forEach(function (c) {
       html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return inCat(it, c.key); }));
     });
-    html += channel(INTL, "International", "Presse étrangère, résumée en français", pool.filter(function (it) { return inCat(it, INTL); }));
     $("rail").innerHTML = html;
-    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })]; }),
-      [[INTL, "International", pool.filter(function (it) { return inCat(it, INTL); })]]);
+    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })]; }));
     $("cat-sel").innerHTML = opts.map(function (o) {
       var n = o[2].filter(function (it) { return !read.has(it.id); }).length;
       return '<option value="' + o[0] + '"' + (st.cat === o[0] ? " selected" : "") + ">" + esc(o[1]) + " (" + n + ")</option>";
@@ -157,6 +156,13 @@
     $("readf").hidden = fav;
     $("unmask").hidden = fav || !masked.size;
     $("unmask").textContent = masked.size > 1 ? "Réafficher les " + masked.size + " articles masqués" : "Réafficher l'article masqué";
+    $("press").hidden = fav;
+    ["fr", "intl"].forEach(function (k) {
+      var n = data.filter(function (it) { return inPress(it, k) && shown(it) && !read.has(it.id) && matches(it, false, true); }).length;
+      $("pr-" + k).textContent = n;
+      $("pr-" + k).className = n ? "hot" : "";
+      document.querySelector('[data-press="' + k + '"]').setAttribute("aria-pressed", st.press === k);
+    });
     var feed = $("feed");
     if (!items.length) {
       feed.innerHTML = fav ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
@@ -328,6 +334,7 @@
       try { navigator.clipboard.writeText(copy.dataset.copy).then(done, function () {}); } catch (err) {}
       return;
     }
+    var pr = t.closest("[data-press]"); if (pr) { st.press = pr.dataset.press; st.limit = PAGE; return render(); }
     var rf = t.closest("[data-rf]"); if (rf) { st.readFilter = rf.dataset.rf; st.limit = PAGE; return render(); }
     if (t.closest("[data-undo]")) { masked.delete(t.closest("[data-undo]").dataset.undo); saveSet("veilletls.masques", masked); hideToast(); return render(); }
     var ev = t.closest(".ev"); if (!ev) return;

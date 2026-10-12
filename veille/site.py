@@ -110,7 +110,10 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <button type="button" class="btn ghost" id="unmask" hidden></button>
       <span class="daychip" id="daychip" hidden><span id="daychip-t"></span><button type="button" id="daychip-x" aria-label="Revenir à toutes les éditions">✕</button></span>
     </div>
-    <div class="feed" id="v-journal"><div class="feed" id="feed"></div></div>
+    <div class="feed" id="v-journal"><div class="press" id="press" role="group" aria-label="Presse">
+      <button type="button" data-press="fr" aria-pressed="true"><span>Presse française</span><em id="pr-fr">0</em></button>
+      <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
+      <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>
     <div class="feed" id="v-echeances" hidden></div>
     <div id="v-archives" hidden></div>
