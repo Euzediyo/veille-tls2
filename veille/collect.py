@@ -56,7 +56,7 @@ def _entry_date(entry) -> str:
         value = entry.get(key)
         if value:
             return datetime(*value[:6], tzinfo=timezone.utc).isoformat()
-    return datetime.now(timezone.utc).isoformat()
+    return ""  # date de publication inconnue : le site l'indique au lieu d'afficher la date de découverte
 
 
 def _fetch_feed(url: str):
@@ -176,7 +176,7 @@ def collect_pages(pages: list[dict], state: dict, report: list[str]) -> list[dic
                 "titre": links[href],
                 "url": href,
                 "source": name,
-                "date": datetime.now(timezone.utc).isoformat(),
+                "date": "",  # une page surveillée ne donne pas la date de publication
                 "extrait": f"Nouveau contenu repéré sur la page « {name} ».",
                 "origine": "page",
                 "filtre": "aucun",

@@ -104,3 +104,38 @@ bareme:
   - [0, 29, "IGNORÉ", "Hors sujet ou sans intérêt pour un centre de télésurveillance ; n'apparaît pas dans le journal."]
 
 seuil_publication: 30
+
+# ---------------------------------------------------------------------------
+# Sélection éditoriale (appliquée à chaque publication, y compris aux articles
+# déjà enregistrés : une modification ici s'applique au prochain passage).
+# ---------------------------------------------------------------------------
+
+# Deux niveaux de lecture. La « Veille essentielle » est affichée par défaut ;
+# la « Veille élargie » montre en plus les informations indirectes et la culture du secteur.
+veille_essentielle:
+  # Tout article dont la pertinence atteint ce seuil est essentiel.
+  score_min: 70
+  # Dans ces catégories cœur de métier, un seuil plus bas suffit.
+  categories_coeur: [reglementation, apsad, social, telesurveillance]
+  score_min_coeur: 60
+
+# Un article publié plus de ce nombre de jours avant sa découverte part dans
+# « Ressources de fond » : il reste consultable, avec sa date réelle, mais
+# n'alimente ni le journal du jour, ni la synthèse de la semaine, ni le flash audio.
+ressources_de_fond_jours: 30
+
+# Hors métier : télésurveillance médicale (suivi de patients) sans lien avec la sécurité.
+# Un article est écarté seulement s'il contient un terme médical ET aucun terme de sécurité
+# (cherchés dans le titre et l'extrait d'origine, pas dans le texte rédigé par l'IA).
+# La téléassistance d'alerte, les PTI/DATI ou la protection des soignants restent publiés.
+hors_metier_medical:
+  termes_medicaux: [psychiatrie, psychiatrique, patient, patients, télémédecine, télésanté,
+    "télésurveillance médicale", télésuivi, "suivi médical", "suivi des patients", "suivi à distance des patients",
+    télécardiologie, cardiaque, diabète, diabétique, glycémie, oncologie, cancer, "maladie chronique",
+    "maladies chroniques", "dispositif médical", "dispositifs médicaux", "assurance maladie", "e-santé",
+    "remote patient monitoring", telehealth, telemedicine, "patient monitoring"]
+  termes_securite: [alarme, alarmes, intrusion, cambriolage, malveillance, agression, agressions, violence,
+    violences, sûreté, "sécurité privée", "agent de sécurité", "agents de sécurité", "levée de doute",
+    vidéoprotection, vidéosurveillance, PTI, DATI, "travailleur isolé", "travailleurs isolés",
+    téléassistance, "bouton d'alerte", "appel d'urgence", incendie, CNAPS, APSAD, "centre de télésurveillance",
+    téléopérateur, téléopérateurs, security, alarm, "lone worker"]
