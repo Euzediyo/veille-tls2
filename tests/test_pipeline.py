@@ -107,16 +107,17 @@ def test_site_build(tmp_path, monkeypatch):
     index = (out / "index.html").read_text(encoding="utf-8")
     assert '"key": "reglementation"' in index and "app.js" in index
     assert '"updated": "9 octobre à 06h45"' in index                # heure de la dernière vraie collecte, pas de la republication
-    # Interface : « Scan immédiat » rangé dans le menu Administration, sélecteur de presse discret,
-    # choix de la vue mémorisé, lien d'évitement pour le clavier.
-    admin = index[index.index('<details class="admin"'):index.index("</details>")]
-    assert "Scan immédiat" in admin and "ne protège rien" in admin and index.count("Scan immédiat") == 1
+    # Interface : plus de menu Administration ni de collecte manuelle, boutons de presse, cases lus / non lus
+    # avec le choix de la vue à côté, lien d'évitement pour le clavier.
+    assert 'class="admin"' not in index and "Scan immédiat" not in index and "/actions/workflows" not in index
+    readbox = index[index.index('id="readf"'):index.index('id="count"')]
+    assert 'id="show-read"' in readbox and 'data-density="detaillee"' in readbox
     assert 'data-press="fr" aria-pressed="true"' in index and 'data-press="intl"' in index and 'id="show-unread" checked' in index and 'id="show-read"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
     assert 'localStorage.getItem("veilletls.vue")' in index
     # Présentation « Rubriques » : rubriques sous le titre, recherche et filtres rangés derrière un bouton.
     assert 'class="rub"' in index and 'id="rail"' in index and 'id="cat-sel"' not in index
     assert index.index('id="filt-btn"') < index.index("</header>") < index.index('id="tools"')
-    assert 'getItem("veilletls.vue")||"compacte"' in index
+    assert 'getItem("veilletls.vue")||"detaillee"' in index                 # vue détaillée par défaut
     ics = (out / "echeances.ics").read_text(encoding="utf-8")
     assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1   # l'ancienne date non vérifiée n'y est pas
     assert public[0]["echeance"]["precision"] == "a_verifier"
