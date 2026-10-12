@@ -24,7 +24,18 @@
   function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
   function isoLocal(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
   function days(a, b) { return Math.round((Date.parse(a + "T12:00:00") - Date.parse(b + "T12:00:00")) / 864e5); }
-  function prio(s) { return s >= 90 ? ["p1", "P1", "Critique"] : s >= 70 ? ["p2", "P2", "Important"] : s >= 50 ? ["p3", "P3", "Intéressant"] : ["p4", "P4", "Veille"]; }
+  // Dimensions de l'analyse, jugées séparément : la pertinence ne dit pas l'urgence.
+  var LBL = {
+    pertinence: { directe: "Pertinence directe", indirecte: "Pertinence indirecte", faible: "Pertinence faible" },
+    urgence: { immediate: "Action immédiate", a_anticiper: "À anticiper", information: "Information" },
+    statut: { texte_publie: "Texte publié", proposition: "Proposition", negociation: "Négociation", annonce: "Annonce", rumeur: "Rumeur" },
+    perimetre: { france: "France", union_europeenne: "Union européenne", autre_pays: "Autre pays" },
+    contenu: { article: "début de l'article analysé", extrait: "extrait uniquement", titre: "titre uniquement" }
+  };
+  var DUE_TYPES = [["obligation", "Obligations"], ["consultation", "Consultations"], ["evenement", "Événements"],
+    ["annonce_non_confirmee", "Annonces non confirmées"], ["", "Dates à vérifier"]];
+  // Couleur de la fiche : d'après l'urgence quand l'IA l'a jugée, sinon neutre.
+  function tone(it) { return { immediate: "p1", a_anticiper: "p2", information: "p3" }[it.urgence] || "p4"; }
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
   function inCat(it, key) { return key === "all" || it.categorie === key; }
   function tagHtml(it) { return '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
@@ -110,13 +121,12 @@
   // Colonne de droite : prochaines échéances et résumé de la semaine.
   function renderSide() {
     var on = st.view === "journal" || st.view === "favoris" || st.view === "fond";
-    var up = data.filter(function (it) { return it.echeance && it.echeance.date >= today; })
-      .sort(function (a, b) { return a.echeance.date < b.echeance.date ? -1 : 1; });
-    var seen = {}, due = up.filter(function (it) { var k = it.echeance.date + it.echeance.libelle; if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 4);
+    var due = uniqueDue(data).filter(function (it) { return it.echeance.date && upcoming(it.echeance); }).slice(0, 4);
     $("side-due").hidden = !on || !due.length;
     $("side-due").innerHTML = '<h2>Prochaines échéances</h2>' + due.map(function (it) {
-      var d = new Date(it.echeance.date + "T12:00:00");
-      return '<div class="sd"><b>' + d.getDate() + "<small>" + MOIS_C[d.getMonth()] + "</small></b><span>" + esc(it.echeance.libelle) + "</span></div>";
+      var e = it.echeance, d = new Date(e.date.slice(0, 7) + "-15T12:00:00"), exact = e.precision === "jour";
+      return '<div class="sd' + (exact ? "" : " approx") + '"><b>' + (exact ? +e.date.slice(8, 10) : "?") + "<small>" + MOIS_C[d.getMonth()] + "</small></b><span>" +
+        esc(e.libelle) + (exact ? "" : "<small>" + esc(dueWhen(e)) + "</small>") + "</span></div>";
     }).join("") + '<button type="button" class="lnk" data-go="echeances">Toutes les échéances</button>';
     var w = weeks[0], first = w && w.synthese ? (w.synthese.match(/[^.!?]+[.!?]+/g) || [w.synthese]).slice(0, 2).join("").trim() : "";
     $("side-week").hidden = !on || !w;
@@ -140,10 +150,10 @@
 
   function renderTabs() {
     var unread = unreadCount(data.filter(function (it) { return shown(it) && !it.fond && inLevel(it, st.level); }));
-    var upcoming = data.filter(function (it) { return it.echeance && it.echeance.date >= today; }).length;
+    var nextDue = uniqueDue(data).filter(function (it) { return it.echeance.date && upcoming(it.echeance); }).length;
     $("t-journal-n").textContent = unread;
     $("t-favoris-n").textContent = data.filter(function (it) { return favs.has(it.id); }).length;
-    $("t-echeances-n").textContent = upcoming;
+    $("t-echeances-n").textContent = nextDue;
     $("t-fond-n").textContent = data.filter(function (it) { return it.fond && shown(it) && !read.has(it.id); }).length;
     document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.view === st.view); });
   }
@@ -250,17 +260,47 @@
 
   // Affichage « Journal » : présentation de presse, le premier article en une, résumés complets.
   function paperCard(it, une) {
-    var p = prio(it.score), done = isRead(it), isFav = favs.has(it.id);
-    return '<article class="ev pa ' + p[0] + (une ? " une" : "") + (done ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ')" data-id="' + it.id + '">' +
-      '<div class="kick">' + tagHtml(it) + "<span>" + p[2] + " · Pertinence : " + it.score + "\u00a0%</span>" +
+    var p = tone(it), done = isRead(it), isFav = favs.has(it.id);
+    var dims = it.pertinence ? LBL.pertinence[it.pertinence] + " (" + it.score + "\u00a0%)" : "Pertinence : " + it.score + "\u00a0%";
+    return '<article class="ev pa ' + p + (une ? " une" : "") + (done ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p + ')" data-id="' + it.id + '">' +
+      '<div class="kick">' + tagHtml(it) + "<span>" + esc(dims) + "</span>" +
+      (it.urgence ? '<span class="dim u-' + esc(it.urgence) + '">' + esc(LBL.urgence[it.urgence]) + "</span>" : "") +
+      (it.statut ? '<span class="dim s-' + esc(it.statut) + '">' + esc(LBL.statut[it.statut]) + "</span>" : "") +
+      (it.perimetre ? '<span class="dim">' + esc(LBL.perimetre[it.perimetre]) + "</span>" : "") +
       (done ? '<span class="state lu">Lu</span>' : "") +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
       (it.resume ? '<p class="lede">' + esc(it.resume) + "</p>" : "") +
       '<p class="why">' + esc(it.pourquoi) + "</p>" +
+      (it.qui_concerne ? '<p class="who">' + esc(it.qui_concerne) + "</p>" : "") +
       (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") +
-      (it.echeance ? '<p class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</p>" : "") +
-      '<p class="src">' + esc(it.source) + " · " + published(it) + "</p>" + reprises(it) + actions(done, isFav) + "</article>";
+      (it.verifications ? '<p class="check">' + esc(it.verifications) + "</p>" : "") +
+      (it.echeance ? '<p class="due">' + esc(dueLabel(it.echeance)) + "</p>" : "") +
+      '<p class="src">' + esc(it.source) + " · " + published(it) + (it.contenu ? " · analyse : " + esc(LBL.contenu[it.contenu]) : "") + "</p>" +
+      reprises(it) + actions(done, isFav) + "</article>";
+  }
+
+  // ---------- échéances ----------
+  // Une date n'est jamais affichée plus précise que la source : jour exact, mois, période ou inconnue.
+  function dueWhen(e) {
+    if (e.precision === "jour") return shortDate(e.date);
+    if (e.precision === "mois" && e.date) { var m = MOIS[+e.date.slice(5, 7) - 1]; return m.charAt(0).toUpperCase() + m.slice(1) + " " + e.date.slice(0, 4) + " — date à confirmer"; }
+    if (e.precision === "periode") return (e.periode || e.date) + " (période approximative)";
+    if (e.precision === "a_verifier" && e.date) return shortDate(e.date) + " (date non vérifiée)";
+    return "Date inconnue";
+  }
+  function dueType(e) { for (var i = 0; i < DUE_TYPES.length; i++) if (DUE_TYPES[i][0] === (e.type || "")) return DUE_TYPES[i][1]; return "Dates à vérifier"; }
+  function dueLabel(e) { return "Échéance : " + dueWhen(e) + " · " + e.libelle + (e.type === "annonce_non_confirmee" ? " (non confirmée)" : ""); }
+  // Fin de la période couverte par la date : un mois reste « à venir » jusqu'à son dernier jour.
+  function dueEnd(e) { return !e.date ? "" : e.date.length === 7 ? e.date + "-31" : e.date; }
+  function upcoming(e) { return !e.date || dueEnd(e) >= today; }
+  // Une seule fois chaque échéance (même date, même libellé), quel que soit le nombre d'articles.
+  function uniqueDue(list) {
+    var seen = {}, out = [];
+    list.filter(function (it) { return it.echeance; })
+      .sort(function (a, b) { return (a.statut !== "texte_publie") - (b.statut !== "texte_publie") || b.score - a.score; })
+      .forEach(function (it) { var k = it.echeance.cle || it.echeance.date + it.echeance.libelle; if (!seen[k]) { seen[k] = 1; out.push(it); } });
+    return out.sort(function (a, b) { return (a.echeance.date || "9999") < (b.echeance.date || "9999") ? -1 : 1; });
   }
 
   // Autres médias qui relatent le même événement : consultables, mais comptés comme une seule information.
@@ -275,40 +315,36 @@
       }).join("") + "</ul></details>";
   }
 
-  function card(it, n, une) {
-    if (journal()) return paperCard(it, une);
-    var p = prio(it.score), isRead = read.has(it.id), isFav = favs.has(it.id);
-    var due = it.echeance ? '<span class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</span>" : "";
-    return '<article class="ev ' + p[0] + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ");animation-delay:" + Math.min(n, 12) * 30 + 'ms" data-id="' + it.id + '">' +
-      '<div class="prio"><span class="led" aria-hidden="true"></span><b>' + it.score + "</b><small>" + p[1] + "<br>" + p[2].toUpperCase() + "</small></div>" +
-      '<div class="body"><div class="meta">' + tagHtml(it) + "<span>" + esc(it.source) + "</span><span>" + stamp(it.date) + "</span>" +
-      (isRead ? '<span class="state lu">LU</span>' : '<span class="state new">NON LU</span>') +
-      (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 RÉSERVÉ AUX ABONNÉS</span>' : "") + "</div>" +
-      '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
-      (it.resume ? "<p>" + esc(it.resume) + "</p>" : "") +
-      '<p class="why">' + esc(it.pourquoi) + "</p>" +
-      (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + due + actions(isRead, isFav) + "</div></article>";
-  }
+  function card(it, n, une) { return paperCard(it, une); }
   function shortDate(iso) { var d = new Date(iso + "T12:00:00"); return d.getDate() + " " + MOIS_C[d.getMonth()] + " " + d.getFullYear(); }
 
   function renderDeadlines() {
-    var items = data.filter(function (it) { return it.echeance; }).sort(function (a, b) { return a.echeance.date < b.echeance.date ? -1 : 1; });
-    var up = items.filter(function (it) { return it.echeance.date >= today; });
-    var past = items.filter(function (it) { return it.echeance.date < today; }).reverse();
+    var items = uniqueDue(data);
     var html = '<div class="ics">S\'abonner au calendrier dans Google Agenda, Outlook ou sur téléphone : <code>' + esc(CFG.ics || "") +
-      '</code><button type="button" class="btn" data-copy="' + esc(CFG.ics || "") + '">Copier le lien</button></div>';
+      '</code><button type="button" class="btn" data-copy="' + esc(CFG.ics || "") + '">Copier le lien</button>' +
+      '<small>Seules les dates exactes sont envoyées au calendrier ; un mois seul ou une date à vérifier reste ici.</small></div>';
     if (!items.length) html += '<div class="empty">Aucune échéance repérée pour l\'instant. L\'IA les ajoute dès qu\'un texte annonce une date d\'entrée en vigueur ou une date limite.</div>';
-    if (up.length) html += '<div class="day">À venir</div>' + up.map(deadline).join("");
+    // Obligations, consultations, événements et annonces non confirmées sont séparés.
+    DUE_TYPES.forEach(function (t) {
+      var up = items.filter(function (it) { return (it.echeance.type || "") === t[0] && upcoming(it.echeance); });
+      if (up.length) html += '<div class="day">' + esc(t[1]) + " à venir</div>" + up.map(deadline).join("");
+    });
+    var past = items.filter(function (it) { return !upcoming(it.echeance); }).reverse();
     if (past.length) html += '<div class="day">Passées</div>' + past.map(deadline).join("");
     $("v-echeances").innerHTML = html;
   }
   function deadline(it) {
-    var d = new Date(it.echeance.date + "T12:00:00"), left = days(it.echeance.date, today);
-    var when = left > 0 ? "J-" + left : left === 0 ? "Aujourd'hui" : "Passée";
-    return '<article class="dl' + (left < 0 ? " past" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ')"><div class="date"><b>' + d.getDate() + "</b><span>" +
-      MOIS_C[d.getMonth()] + " " + d.getFullYear() + "</span><em>" + when + '</em></div><div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) +
-      "</span><span>" + esc(it.source) + "</span></div><h3>" + esc(it.echeance.libelle) + '</h3><p><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
-      esc(it.titre) + "</a></p>" + (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + "</div></article>";
+    var e = it.echeance, exact = e.precision === "jour", left = exact ? days(e.date, today) : null;
+    var when = !exact ? "" : left > 0 ? "J-" + left : left === 0 ? "Aujourd'hui" : "Passée";
+    var d = e.date ? new Date(e.date.slice(0, 7) + "-15T12:00:00") : null;
+    var big = exact ? +e.date.slice(8, 10) : "?", small = d ? MOIS_C[d.getMonth()] + " " + d.getFullYear() : "date inconnue";
+    var src = e.url && e.url !== it.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.source) + "</a>" : esc(e.source || it.source);
+    return '<article class="dl' + (upcoming(e) ? "" : " past") + (exact ? "" : " approx") + '" style="--cc:var(--c-' + esc(it.categorie) + ')"><div class="date"><b>' + big + "</b><span>" +
+      esc(small) + "</span>" + (when ? "<em>" + when + "</em>" : "") + '</div><div class="body"><div class="meta"><span class="tag">' + esc(dueType(e)) +
+      '</span><span class="tag">' + esc(catName(it.categorie)) + "</span></div><h3>" + esc(e.libelle) + '</h3><p class="when">' + esc(dueWhen(e)) + "</p>" +
+      (e.justification ? '<p class="just">' + esc(e.justification) + "</p>" : "") +
+      '<p class="srcd">Source : ' + src + ' · <a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.titre) + "</a></p>" +
+      (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") + "</div></article>";
   }
 
   // Résumé de la semaine : synthèse de l'IA, articles à retenir et échéances à venir.
@@ -343,11 +379,10 @@
         month = m; var d = new Date(k + "T12:00:00");
         html += '<h2 class="month">' + MOIS[d.getMonth()].replace(/^./, function (c) { return c.toUpperCase(); }) + " " + d.getFullYear() + '</h2><ul class="arch">';
       }
-      var counts = [0, 0, 0, 0], unread = 0;
-      byDay[k].forEach(function (it) { counts[["p1", "p2", "p3", "p4"].indexOf(prio(it.score)[0])]++; if (!read.has(it.id)) unread++; });
-      var parts = ["Critique", "Important", "Intéressant", "Veille"].map(function (l, i) {
-        return counts[i] ? '<span style="--pc:var(--p' + (i + 1) + ')"><i>●</i> ' + counts[i] + " " + l.toLowerCase() + "</span>" : "";
-      }).join("");
+      var ess = 0, broad = 0, unread = 0;
+      byDay[k].forEach(function (it) { if (it.niveau === "elargie") broad++; else ess++; if (!read.has(it.id)) unread++; });
+      var parts = (ess ? '<span style="--pc:var(--p2)"><i>●</i> ' + ess + " essentielle" + (ess > 1 ? "s" : "") + "</span>" : "") +
+        (broad ? '<span style="--pc:var(--p4)"><i>●</i> ' + broad + " veille élargie</span>" : "");
       html += '<li><button type="button" data-day="' + k + '"><span class="d">' + esc(longDay(k)) + '</span><span class="n">' + parts +
         "<span>" + unread + " non lu" + (unread > 1 ? "s" : "") + "</span></span></button></li>";
     });
