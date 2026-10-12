@@ -1,7 +1,9 @@
 {
  "date": "2026-10-12",
  "journal": [
+  "Regroupement : 1 événements repris par plusieurs sources (8 articles)",
+  "Semaine : résumé mis à jour (5 articles à retenir)",
   "Site : régénéré",
-  "Podcast : voix de synthèse indisponible (WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=6b522140d1e04f), pas d'épisode"
+  "Podcast : voix de synthèse indisponible (WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=c1ea99c021804d), pas d'épisode"
  ]
 }
