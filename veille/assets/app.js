@@ -12,7 +12,7 @@
 
   var byId = {}, data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date()), groups = {};
   // Veille essentielle affichée par défaut à chaque visite ; la veille élargie ajoute les informations indirectes.
-  var DEFAULTS = { press: "fr", level: "essentielle", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "" };
+  var DEFAULTS = { press: "all", level: "essentielle", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "" };
   var st = Object.assign({ view: "journal", limit: PAGE }, DEFAULTS);
   // Fiches développées en vue compacte (le temps de la visite).
   var opened = new Set();
@@ -42,7 +42,9 @@
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
   function inCat(it, key) { return key === "all" || it.categorie === key; }
   function tagHtml(it) { return '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
-  // Presse française (par défaut), internationale, ou les deux.
+  // Origine de l'article, affichée à côté du titre : la presse française et internationale sont mélangées.
+  function pressTag(it) { return ' <span class="press-t' + (it.international ? " intl" : "") + '">' + (it.international ? "Presse internationale" : "Presse française") + "</span>"; }
+  // Toute la presse (par défaut), seulement française ou seulement internationale.
   function inPress(it, press) { return press === "all" || (press === "intl") === !!it.international; }
   function inLevel(it, level) { return level === "elargie" || it.niveau !== "elargie"; }
   // Articles qui relatent le même événement : une seule fiche, lue dès qu'un de ses articles est lu.
@@ -177,7 +179,7 @@
 
   function renderChannels() {
     var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it, true); });
-    var html = '<p class="lbl">Canaux</p>' + channel("all", "Tous les canaux", "", pool);
+    var html = '<h2 class="lbl">Canaux</h2>' + channel("all", "Tous les canaux", "", pool);
     CATS.forEach(function (c) {
       html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return inCat(it, c.key); }));
     });
@@ -273,7 +275,7 @@
     if (v === "fond") return out;
     if (st.day) out.push(["day", "Édition du " + longDay(st.day)]);
     else if (st.period !== DEFAULTS.period) out.push(["period", "Période : " + PERIODS[st.period]]);
-    if (st.press !== DEFAULTS.press) out.push(["press", st.press === "intl" ? "Presse internationale" : "Presse française et internationale"]);
+    if (st.press !== DEFAULTS.press) out.push(["press", st.press === "intl" ? "Presse internationale seulement" : "Presse française seulement"]);
     if (st.level !== DEFAULTS.level) out.push(["level", "Veille élargie"]);
     return out;
   }
@@ -325,7 +327,7 @@
       return '<li data-id="' + esc(it.id) + '" class="' + (isRead(it) ? "read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ')">' +
         '<div class="kick">' + tagHtml(it) + (it.urgence ? '<span class="dim u-' + esc(it.urgence) + '">' + esc(LBL.urgence[it.urgence]) + "</span>" : "") +
         (it.statut && it.statut !== "texte_publie" ? '<span class="dim s-' + esc(it.statut) + '">' + esc(LBL.statut[it.statut]) + "</span>" : "") + "</div>" +
-        '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
+        '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h3>" +
         '<p class="impact">' + esc(impact(it)) + "</p>" +
         '<p class="src">' + esc(it.source) + (extra ? " et " + extra + " autre" + (extra > 1 ? "s" : "") + " source" + (extra > 1 ? "s" : "") : "") + "</p></li>";
     }).join("") + "</ol>";
@@ -374,7 +376,7 @@
       (done ? '<span class="state lu">Lu</span>' : "") +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       (une ? '<p class="une-l">À la une</p>' : "") +
-      '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
+      '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h3>" +
       (short ? src + (it.resume && !open ? '<p class="lede">' + esc(brief(it.resume)) + "</p>" : "") +
         (open ? '<div class="more-d" id="d-' + esc(it.id) + '">' + detail + "</div>" : "") +
         actions(done, isFav, '<button type="button" class="tgl" data-detail aria-expanded="' + open + '" aria-controls="d-' + esc(it.id) + '">' + (open ? "Masquer le détail" : "Voir le détail") + "</button>")

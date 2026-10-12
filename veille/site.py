@@ -101,9 +101,9 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 </nav>
 
 <div class="shell">
+  <nav class="nav" aria-label="Canaux"><div class="rail" id="rail"></div></nav>
   <main class="main" id="contenu" tabindex="-1">
     <section class="ess" id="ess" aria-labelledby="ess-h" hidden></section>
-    <nav class="rail" id="rail" aria-label="Catégories"></nav>
     <div class="tools" id="tools">
       <select id="cat-sel" class="m-only" aria-label="Canal"></select>
       <button type="button" class="btn m-only" id="filt-btn" aria-expanded="false" aria-controls="tools">Filtres<em id="filt-n" hidden></em></button>
@@ -112,7 +112,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
       <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
       <div class="row2">
-        <div class="seg" id="press" role="group" aria-label="Presse"><span class="seg-l" aria-hidden="true">Presse</span><button type="button" data-press="fr" aria-pressed="true">France <em id="pr-fr">0</em></button><button type="button" data-press="intl" aria-pressed="false">International <em id="pr-intl">0</em></button><button type="button" data-press="all" aria-pressed="false">Tous <em id="pr-all">0</em></button></div>
+        <div class="seg" id="press" role="group" aria-label="Presse"><span class="seg-l" aria-hidden="true">Presse</span><button type="button" data-press="all" aria-pressed="true">Toute <em id="pr-all">0</em></button><button type="button" data-press="fr" aria-pressed="false">Française <em id="pr-fr">0</em></button><button type="button" data-press="intl" aria-pressed="false">Internationale <em id="pr-intl">0</em></button></div>
         <div class="seg" id="readf" role="group" aria-label="Lecture"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
         <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div>
         <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
