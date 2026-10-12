@@ -113,18 +113,20 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
       <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
       <div class="row2">
-        <div class="seg" id="press" role="group" aria-label="Presse"><span class="seg-l" aria-hidden="true">Presse</span><button type="button" data-press="all" aria-pressed="true">Toute <em id="pr-all">0</em></button><button type="button" data-press="fr" aria-pressed="false">Française <em id="pr-fr">0</em></button><button type="button" data-press="intl" aria-pressed="false">Internationale <em id="pr-intl">0</em></button></div>
-        <div class="seg" id="readf" role="group" aria-label="Lecture"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
         <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div>
-        <div class="seg" id="level" role="group" aria-label="Niveau de veille"><span class="seg-l" aria-hidden="true">Veille</span><button type="button" data-level="essentielle" aria-pressed="true" title="Impact direct, forte pertinence métier">Essentielle <em id="lv-essentielle">0</em></button><button type="button" data-level="elargie" aria-pressed="false" title="Avec les informations indirectes et la culture du secteur">Élargie <em id="lv-elargie">0</em></button></div>
         <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
         <button type="button" class="btn ghost" id="unmask" hidden></button>
       </div>
     </div>
     <div class="active" id="active" hidden></div>
-    <section class="ess" id="ess" aria-labelledby="ess-h" hidden></section>
     <div class="feed" id="v-journal">
       <h2 class="rub-h" id="rub-h" hidden></h2>
+      <div class="press" id="press" role="group" aria-label="Presse">
+        <button type="button" data-press="fr" aria-pressed="true"><span>Presse française</span><em id="pr-fr">0</em></button>
+        <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
+      <div class="readbox" id="readf" role="group" aria-label="Articles affichés">
+        <label><input type="checkbox" id="show-unread" checked> Afficher les articles non lus <em id="rf-unread">0</em></label>
+        <label><input type="checkbox" id="show-read"> Afficher les articles déjà lus <em id="rf-read">0</em></label></div>
       <p class="count" id="count" role="status"></p>
       <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>

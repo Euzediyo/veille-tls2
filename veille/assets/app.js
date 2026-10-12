@@ -12,12 +12,15 @@
 
   var byId = {}, data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date()), groups = {};
   // Veille essentielle affichée par défaut à chaque visite ; la veille élargie ajoute les informations indirectes.
-  var DEFAULTS = { press: "all", level: "essentielle", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "" };
+  // Presse française par défaut ; « readFilter » suit les deux cases : non lus, lus, les deux (all) ou aucune (none).
+  var DEFAULTS = { press: "fr", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "" };
   var st = Object.assign({ view: "journal", limit: PAGE }, DEFAULTS);
   // Fiches développées en vue compacte (le temps de la visite).
   var opened = new Set();
   // Sujets présentés à la une (en tête de page) : ils ne sont pas répétés dans la liste en dessous.
   var onFront = {};
+  // Sections « Veille essentielle » et « Veille élargie » : ouvertes à chaque visite, repliables.
+  var folded = {};
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
   var toastTimer = 0;
 
@@ -44,11 +47,10 @@
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
   function inCat(it, key) { return key === "all" || it.categorie === key; }
   function tagHtml(it) { return '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
-  // Origine de l'article, affichée à côté du titre : la presse française et internationale sont mélangées.
-  function pressTag(it) { return ' <span class="press-t' + (it.international ? " intl" : "") + '">' + (it.international ? "Presse internationale" : "Presse française") + "</span>"; }
-  // Toute la presse (par défaut), seulement française ou seulement internationale.
+  // Origine de l'article, à côté du titre, là où les deux presses sont mélangées (favoris, semaine, ressources).
+  function pressTag(it) { if (st.view === "journal") return ""; return ' <span class="press-t' + (it.international ? " intl" : "") + '">' + (it.international ? "Presse internationale" : "Presse française") + "</span>"; }
+  // Presse française (par défaut) ou presse internationale.
   function inPress(it, press) { return press === "all" || (press === "intl") === !!it.international; }
-  function inLevel(it, level) { return level === "elargie" || it.niveau !== "elargie"; }
   // Articles qui relatent le même événement : une seule fiche, lue dès qu'un de ses articles est lu.
   function members(it) { return groups[it.groupe || it.id] || [it]; }
   function isRead(it) { return members(it).some(function (m) { return read.has(m.id); }); }
@@ -98,7 +100,6 @@
       // Les ressources de fond (articles anciens) ne sont pas présentées comme des actualités.
       if (it.fond) return false;
       if (!ignorePress && !inPress(it, st.press)) return false;
-      if (!ignoreLevel && !inLevel(it, st.level)) return false;
       if (st.day) { if (it.edition !== st.day) return false; }
       else if (days(latest, it.edition) >= st.period) return false;
     }
@@ -112,7 +113,7 @@
     return terms.every(function (t) { return hay.indexOf(t) !== -1; });
   }
   function shown(it) { return !masked.has(it.id); }
-  function byRead(it) { return st.readFilter === "all" || (st.readFilter === "read") === isRead(it); }
+  function byRead(it) { if (st.readFilter === "none") return false; return st.readFilter === "all" || (st.readFilter === "read") === isRead(it); }
   function sortFeed(a, b) { return a.edition !== b.edition ? (a.edition < b.edition ? 1 : -1) : b.score - a.score; }
   function sortPublished(a, b) { return (a.date || "") !== (b.date || "") ? ((a.date || "") < (b.date || "") ? 1 : -1) : b.score - a.score; }
 
@@ -125,7 +126,6 @@
     $("flash").hidden = st.view !== "journal" || !episodes.length;
     renderSide();
     renderPrefs();
-    renderEss();
     renderActive();
     $("rub-h").hidden = st.view !== "journal" || st.cat === "all";
     $("rub-h").textContent = catName(st.cat);
@@ -171,7 +171,7 @@
   }
 
   function renderTabs() {
-    var unread = unreadCount(data.filter(function (it) { return shown(it) && !it.fond && inLevel(it, st.level); }));
+    var unread = unreadCount(data.filter(function (it) { return shown(it) && !it.fond; }));
     var nextDue = uniqueDue(data).filter(function (it) { return it.echeance.date && upcoming(it.echeance); }).length;
     $("t-journal-n").textContent = unread;
     $("t-favoris-n").textContent = data.filter(function (it) { return favs.has(it.id); }).length;
@@ -204,27 +204,22 @@
     // Une seule fiche par événement (la mieux classée), les reprises sont consultables dessous.
     var groupsPool = fav ? pool : collapse(pool.sort(fond ? sortPublished : sortFeed));
     var items = fav ? pool.sort(sortFeed) : groupsPool.filter(byRead);
-    var front = st.view === "journal" && !$("ess").hidden && Object.keys(onFront).length;
-    if (front) items = items.filter(function (it) { return !onFront[it.groupe || it.id]; });
     var nRead = groupsPool.filter(isRead).length;
     $("rf-unread").textContent = groupsPool.length - nRead;
     $("rf-read").textContent = nRead;
-    document.querySelectorAll("[data-rf]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.rf === st.readFilter); });
+    $("show-unread").checked = st.readFilter === "unread" || st.readFilter === "all";
+    $("show-read").checked = st.readFilter === "read" || st.readFilter === "all";
     $("readf").hidden = fav;
     $("unmask").hidden = fav || !masked.size;
     $("unmask").textContent = masked.size > 1 ? "Réafficher les " + masked.size + " articles masqués" : "Réafficher l'article masqué";
     $("press").hidden = fav || fond;
-    $("level").hidden = fav || fond;
-    ["fr", "intl", "all"].forEach(function (k) {
+    ["fr", "intl"].forEach(function (k) {
       var n = unreadCount(data.filter(function (it) { return inPress(it, k) && shown(it) && matches(it, false, true); }));
       var b = document.querySelector('[data-press="' + k + '"]');
       $("pr-" + k).textContent = n;
-      b.setAttribute("aria-label", { fr: "Presse française", intl: "Presse internationale", all: "Toute la presse" }[k] + ", " + n + " non lu" + (n > 1 ? "s" : ""));
+      $("pr-" + k).className = n ? "hot" : "";
+      b.setAttribute("aria-label", (k === "fr" ? "Presse française" : "Presse internationale") + ", " + n + " non lu" + (n > 1 ? "s" : ""));
       b.setAttribute("aria-pressed", st.press === k);
-    });
-    ["essentielle", "elargie"].forEach(function (k) {
-      $("lv-" + k).textContent = unreadCount(data.filter(function (it) { return inLevel(it, k) && shown(it) && matches(it, false, false, true); }));
-      document.querySelector('[data-level="' + k + '"]').setAttribute("aria-pressed", st.level === k);
     });
     // Compteurs : ce qui correspond à la sélection, puis le total général de la rubrique.
     var total = fav ? data.filter(function (it) { return favs.has(it.id); }).length
@@ -234,11 +229,13 @@
     $("count").hidden = st.view === "journal" && !activeFilters().length;
     $("count").innerHTML = "<b>" + items.length + "</b> article" + (items.length > 1 ? "s" : "") + " pour cette sélection, sur <b>" + total + "</b> au total " + where + ".";
     var feed = $("feed"), head = fond ? '<div class="intro">Articles anciens repérés tardivement, avec leur date de publication réelle. Utiles pour comprendre le contexte, ils ne sont pas présentés comme l\'actualité du jour ni repris dans la synthèse de la semaine.</div>' : "";
-    if (!items.length && front && !activeFilters().length) {
-      feed.innerHTML = '<div class="empty">Les autres articles de la période sont lus. La prochaine édition arrive demain matin.</div>';
+    if (!fav && st.readFilter === "none") {
+      feed.innerHTML = head + '<div class="empty">Cochez « Afficher les articles non lus » ou « Afficher les articles déjà lus » pour voir des articles.</div>';
       return;
     }
-    if (!items.length) {
+    // Journal : la veille essentielle (avec la une) puis la veille élargie, chacune dans sa section repliable.
+    var front = st.view === "journal" ? renderEss() : "";
+    if (!items.length && !front) {
       // « Tout est lu » seulement si des articles correspondent aux filtres et qu'ils sont tous lus.
       feed.innerHTML = head + (fav && !favs.size ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
         fond && !total ? '<div class="empty">Aucune ressource de fond pour l\'instant.</div>' :
@@ -247,9 +244,19 @@
         noResult());
       return;
     }
-    // À la une : l'article le plus important de la première édition affichée (impact, urgence, fiabilité).
-    var une = journal() && !fav && !fond && !front;
-    if (une) {
+    if (st.view !== "journal") { feed.innerHTML = head + wrap(list(items, false, fond)); return; }
+    var hasFront = Object.keys(onFront).length > 0;
+    items = items.filter(function (it) { return !onFront[it.groupe || it.id]; });
+    var ess = items.filter(function (it) { return it.niveau !== "elargie"; }), broad = items.filter(function (it) { return it.niveau === "elargie"; });
+    var poolE = groupsPool.filter(function (it) { return it.niveau !== "elargie"; }), poolB = groupsPool.filter(function (it) { return it.niveau === "elargie"; });
+    feed.innerHTML = section("essentielle", "Veille essentielle", "Impact direct, forte pertinence métier", ess.length + Object.keys(onFront).length,
+        front + (ess.length ? wrap(list(ess, !hasFront)) : hasFront ? "" : sectionEmpty(poolE))) +
+      section("elargie", "Veille élargie", "Informations indirectes et culture du secteur", broad.length,
+        broad.length ? wrap(list(broad, false)) : sectionEmpty(poolB));
+  }
+  // Liste d'articles par jour de collecte ; « une » met en tête l'article le plus important de la première édition.
+  function list(items, une, fond) {
+    if (une && items.length) {
       var first = items.filter(function (it) { return it.edition === items[0].edition; }).sort(byWeight)[0];
       items = [first].concat(items.filter(function (it) { return it !== first; }));
     }
@@ -259,7 +266,15 @@
       html += card(it, n++, une && n === 1);
     });
     if (items.length > st.limit) html += '<button type="button" class="btn more" data-more>Afficher ' + Math.min(PAGE, items.length - st.limit) + " articles de plus</button>";
-    feed.innerHTML = head + (journal() ? '<div class="paper">' + html + "</div>" : html);
+    return html;
+  }
+  function section(key, title, def, n, body) {
+    return '<details class="sec" data-sec="' + key + '"' + (folded[key] ? "" : " open") + '><summary><span class="sec-t">' + title +
+      '</span><span class="sec-d">' + def + '</span><em>' + n + " article" + (n > 1 ? "s" : "") + '</em></summary><div class="sec-b">' + body + "</div></details>";
+  }
+  function sectionEmpty(pool) {
+    if (st.readFilter === "unread" && pool.length) return '<div class="empty ok"><b>✓ Tout est lu</b> dans cette section.</div>';
+    return '<div class="empty">Aucun article dans cette section pour cette sélection.</div>';
   }
 
   function noResult() {
@@ -275,12 +290,9 @@
     if (st.q.trim()) out.push(["q", "Recherche : « " + st.q.trim() + " »"]);
     if (v === "favoris") return out;
     if (st.min !== DEFAULTS.min) out.push(["min", "Pertinence ≥ " + st.min + " %"]);
-    if (st.readFilter !== DEFAULTS.readFilter) out.push(["readFilter", st.readFilter === "read" ? "Articles lus" : "Lus et non lus"]);
     if (v === "fond") return out;
     if (st.day) out.push(["day", "Édition du " + longDay(st.day)]);
     else if (st.period !== DEFAULTS.period) out.push(["period", "Période : " + PERIODS[st.period]]);
-    if (st.press !== DEFAULTS.press) out.push(["press", st.press === "intl" ? "Presse internationale seulement" : "Presse française seulement"]);
-    if (st.level !== DEFAULTS.level) out.push(["level", "Veille élargie"]);
     return out;
   }
   function renderActive() {
@@ -307,7 +319,7 @@
   // un jour calme, le bloc le dit au lieu d'être complété avec des informations secondaires.
   function essentials() {
     var pool = data.filter(function (it) {
-      return shown(it) && !it.fond && it.edition === latest && it.niveau !== "elargie" && it.pertinence !== "faible" &&
+      return shown(it) && !it.fond && it.edition === latest && inPress(it, st.press) && it.niveau !== "elargie" && it.pertinence !== "faible" &&
         (it.pertinence === "directe" || it.score >= 70);
     });
     return collapse(pool.sort(byWeight)).slice(0, 3);
@@ -315,23 +327,18 @@
   // La une : le sujet le plus important en grand, les deux suivants à côté. Un jour calme, elle le dit.
   // Elle n'apparaît que sur la page d'accueil (toutes rubriques, sans recherche).
   function renderEss() {
-    var box = $("ess");
     onFront = {};
-    box.hidden = st.view !== "journal" || st.cat !== "all" || !!st.q.trim() || st.readFilter === "read" || !!(st.day && st.day !== latest) || !latest;
-    if (box.hidden) return;
+    if (st.view !== "journal" || st.cat !== "all" || !!st.q.trim() || st.readFilter === "read" || !!(st.day && st.day !== latest) || !latest) return "";
     var list = essentials();
     if (!list.length) {
-      var others = collapse(data.filter(function (it) { return shown(it) && !it.fond && it.edition === latest; })).length;
-      box.className = "ess calm";
-      box.innerHTML = '<h2 id="ess-h">Aucune nouvelle information majeure ' + (latest === today ? "aujourd'hui" : "dans l'édition du " + esc(longDay(latest))) + ".</h2>" +
+      var others = collapse(data.filter(function (it) { return shown(it) && !it.fond && it.edition === latest && inPress(it, st.press); })).length;
+      return '<section class="ess calm" id="ess" aria-labelledby="ess-h"><h2 id="ess-h">Aucune nouvelle information majeure ' + (latest === today ? "aujourd'hui" : "dans l'édition du " + esc(longDay(latest))) + ".</h2>" +
         (others ? "<span>L'édition contient " + others + " information" + (others > 1 ? "s" : "") + " secondaire" + (others > 1 ? "s" : "") + ", indirecte" + (others > 1 ? "s" : "") +
-          " ou de culture du secteur.</span>" + (st.level === "essentielle" ? '<button type="button" class="btn" data-level="elargie">Voir la veille élargie</button>' : "") : "");
-      return;
+          " ou de culture du secteur, présentées dans les sections ci-dessous.</span>" : "") + "</section>";
     }
     list.forEach(function (it) { onFront[it.groupe || it.id] = 1; });
     var when = latest === today ? "aujourd'hui" : "de l'édition du " + longDay(latest), rest = list.slice(1);
-    box.className = "ess front";
-    box.innerHTML = '<h2 id="ess-h" class="sr">L\'essentiel ' + esc(when) + '</h2><div class="lead">' + paperCard(list[0], true, true) + "</div>" +
+    return '<section class="ess front" id="ess" aria-labelledby="ess-h"><h2 id="ess-h" class="sr">L\'essentiel ' + esc(when) + '</h2><div class="lead">' + paperCard(list[0], true, true) + "</div>" +
       '<div class="also"><h3 class="also-h">' + (rest.length ? "À retenir aussi" : "À retenir") + "</h3>" +
       (rest.length ? "<ol>" + rest.map(function (it) {
         var extra = members(it).length - 1;
@@ -341,7 +348,7 @@
           '<h4><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h4>" +
           '<p class="impact">' + esc(impact(it)) + "</p>" +
           '<p class="src">' + esc(it.source) + (extra ? " et " + extra + " autre" + (extra > 1 ? "s" : "") + " source" + (extra > 1 ? "s" : "") : "") + "</p></li>";
-      }).join("") + "</ol>" : '<p class="impact">Aucune autre information majeure ' + esc(when) + ". Le reste de l'actualité est ci-dessous.</p>") + "</div>";
+      }).join("") + "</ol>" : '<p class="impact">Aucune autre information majeure ' + esc(when) + ". Le reste de l'actualité est ci-dessous.</p>") + "</div></section>";
   }
   // Impact concret : l'action recommandée, sinon qui est concerné, sinon pourquoi c'est important.
   function impact(it) { return it.action || (it.qui_concerne ? "Concerne : " + it.qui_concerne : it.pourquoi); }
@@ -562,8 +569,6 @@
       render();
       return focusAfter(document.querySelector('.ev[data-id="' + did + '"] [data-detail]'));
     }
-    var lv = t.closest("[data-level]"); if (lv) { st.level = lv.dataset.level; st.limit = PAGE; return render(); }
-    var rf = t.closest("[data-rf]"); if (rf) { st.readFilter = rf.dataset.rf; st.limit = PAGE; return render(); }
     if (t.closest("[data-undo]")) { members(byId[t.closest("[data-undo]").dataset.undo] || { id: t.closest("[data-undo]").dataset.undo }).forEach(function (m) { masked.delete(m.id); }); saveSet("veilletls.masques", masked); hideToast(); return render(); }
     if (t.closest("[data-open]") && t.closest(".ess")) { read.add(t.closest("[data-id]").dataset.id); saveSet("veilletls.lus", read); return setTimeout(render, 300); }
     var ev = t.closest(".ev"); if (!ev) return;
@@ -595,6 +600,17 @@
     $("filt-btn").setAttribute("aria-expanded", open);
     if (open) $("q").focus();
   });
+  // Cases « non lus » / « déjà lus » : chacune s'ajoute à l'autre.
+  function readBoxes() {
+    var u = $("show-unread").checked, r = $("show-read").checked;
+    st.readFilter = u && r ? "all" : u ? "unread" : r ? "read" : "none"; st.limit = PAGE; render();
+  }
+  $("show-unread").addEventListener("change", readBoxes);
+  $("show-read").addEventListener("change", readBoxes);
+  // Sections repliées : mémorisées le temps de la visite, pour survivre aux nouveaux rendus.
+  document.addEventListener("toggle", function (e) {
+    var d = e.target; if (d.classList && d.classList.contains("sec")) folded[d.dataset.sec] = !d.open;
+  }, true);
   $("min").addEventListener("change", function (e) { st.min = +e.target.value; st.limit = PAGE; render(); });
   $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });
   // Après un nouveau rendu, le focus clavier revient sur un élément proche au lieu de se perdre.

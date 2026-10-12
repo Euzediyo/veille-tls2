@@ -111,7 +111,7 @@ def test_site_build(tmp_path, monkeypatch):
     # choix de la vue mémorisé, lien d'évitement pour le clavier.
     admin = index[index.index('<details class="admin"'):index.index("</details>")]
     assert "Scan immédiat" in admin and "ne protège rien" in admin and index.count("Scan immédiat") == 1
-    assert 'data-press="all"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
+    assert 'data-press="fr" aria-pressed="true"' in index and 'data-press="intl"' in index and 'id="show-unread" checked' in index and 'id="show-read"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
     assert 'localStorage.getItem("veilletls.vue")' in index
     # Présentation « Rubriques » : rubriques sous le titre, recherche et filtres rangés derrière un bouton.
     assert 'class="rub"' in index and 'id="rail"' in index and 'id="cat-sel"' not in index
