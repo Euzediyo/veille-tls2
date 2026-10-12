@@ -565,6 +565,11 @@ def test_deadline_display_dedup_and_calendar(tmp_path, monkeypatch):
     assert pairs[0][1]["id"] == "e70" and pairs[0][0]["source"] == "Exemple"     # la source qui justifie est conservée
     _, due = semaine.select(arts, date(2026, 10, 12), PROFILE)
     assert sorted(it["id"] for it in due) == ["e70", "e72", "e73", "e74"]
+    # Libellés différents mais même événement regroupé et même date : une seule échéance.
+    other = dict(apple, libelle="Événement Apple, annonce possible d'un partenariat avec ADT")
+    grouped = editorial.annotate([arts[0], art(75, "F", 50, "marche", echeance=other)], PROFILE, [["e70", "e75"]])
+    assert len(editorial.unique_deadlines(grouped)) == 1
+    assert len(editorial.unique_deadlines([arts[0], art(75, "F", 50, "marche", echeance=other)])) == 2
 
     monkeypatch.setattr(site, "OUT", tmp_path / "site")
     monkeypatch.setattr(store, "DATA", tmp_path)

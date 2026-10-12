@@ -151,14 +151,18 @@ def deadline(it: dict) -> dict | None:
     out.setdefault("precision", "a_verifier")
     out["source"] = due.get("source") or it.get("source", "")
     out["url"] = due.get("url") or it.get("url", "")
-    out["cle"] = deadline_key(out)
+    out["cle"] = deadline_key(out, it.get("groupe"))
     return out
 
 
-def deadline_key(due: dict) -> str:
-    """Clé de dédoublonnage : même date (ou même mois) et même libellé, une fois normalisés."""
+def deadline_key(due: dict, group: str | None = None) -> str:
+    """Clé de dédoublonnage : même date (ou même mois) et même libellé, une fois normalisés. Pour des
+    articles qui relatent le même événement, même date suffit : leurs libellés varient souvent."""
+    when = due.get("date") or due.get("periode") or "?"
+    if group:
+        return f"{when}|groupe:{group}"
     words = [w for w in normalize(due.get("libelle", "")).split() if len(w) > 2][:8]
-    return (due.get("date") or due.get("periode") or "?") + "|" + " ".join(words)
+    return when + "|" + " ".join(words)
 
 
 def unverified_deadline(it: dict) -> bool:
