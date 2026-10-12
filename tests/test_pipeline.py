@@ -113,6 +113,10 @@ def test_site_build(tmp_path, monkeypatch):
     assert "Scan immédiat" in admin and "ne protège rien" in admin and index.count("Scan immédiat") == 1
     assert 'data-press="all"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
     assert 'localStorage.getItem("veilletls.vue")' in index
+    # Présentation « Rubriques » : rubriques sous le titre, recherche et filtres rangés derrière un bouton.
+    assert 'class="rub"' in index and 'id="rail"' in index and 'id="cat-sel"' not in index
+    assert index.index('id="filt-btn"') < index.index("</header>") < index.index('id="tools"')
+    assert 'getItem("veilletls.vue")||"compacte"' in index
     ics = (out / "echeances.ics").read_text(encoding="utf-8")
     assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1   # l'ancienne date non vérifiée n'y est pas
     assert public[0]["echeance"]["precision"] == "a_verifier"

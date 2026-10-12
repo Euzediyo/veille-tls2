@@ -16,6 +16,8 @@
   var st = Object.assign({ view: "journal", limit: PAGE }, DEFAULTS);
   // Fiches développées en vue compacte (le temps de la visite).
   var opened = new Set();
+  // Sujets présentés à la une (en tête de page) : ils ne sont pas répétés dans la liste en dessous.
+  var onFront = {};
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
   var toastTimer = 0;
 
@@ -125,6 +127,8 @@
     renderPrefs();
     renderEss();
     renderActive();
+    $("rub-h").hidden = st.view !== "journal" || st.cat === "all";
+    $("rub-h").textContent = catName(st.cat);
     $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris" && st.view !== "fond";
     $("v-echeances").hidden = st.view !== "echeances";
     $("v-semaine").hidden = st.view !== "semaine";
@@ -177,27 +181,19 @@
     document.querySelectorAll(".tab").forEach(function (t) { if (t.dataset.view === st.view) t.setAttribute("aria-current", "page"); else t.removeAttribute("aria-current"); });
   }
 
+  // Rubriques : « À la une » (tous les canaux) puis un canal par rubrique, avec le nombre d'articles non lus.
   function renderChannels() {
-    var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it, true); });
-    var html = '<h2 class="lbl">Canaux</h2>' + channel("all", "Tous les canaux", "", pool);
-    CATS.forEach(function (c) {
-      html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return inCat(it, c.key); }));
-    });
+    var pool = data.filter(function (it) { return shown(it) && matches(it, true); });
+    var html = channel("all", "À la une", pool);
+    CATS.forEach(function (c) { html += channel(c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })); });
     $("rail").innerHTML = html;
-    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })]; }));
-    $("cat-sel").innerHTML = opts.map(function (o) {
-      var n = st.view === "favoris" ? o[2].filter(function (it) { return !read.has(it.id); }).length : unreadCount(o[2]);
-      return '<option value="' + o[0] + '"' + (st.cat === o[0] ? " selected" : "") + ">" + esc(o[1]) + " (" + n + ")</option>";
-    }).join("");
   }
-  function channel(key, name, sub, items) {
-    var unread = st.view === "favoris" ? items.filter(function (it) { return !read.has(it.id); }).length : unreadCount(items);
+  function channel(key, name, items) {
+    var unread = unreadCount(items), on = st.view === "journal" && st.cat === key;
     var color = key === "all" ? "var(--accent)" : "var(--c-" + key + ")";
-    return '<button type="button" class="ch" data-cat="' + key + '" aria-pressed="' + (st.cat === key) + '" style="--cc:' + color + '"><i></i><span>' +
-      esc(name) + (sub ? "<small>" + esc(sub) + "</small>" : "") + '</span><em class="' + (unread ? "hot" : "") + '" title="' + unread +
-      ' non lu(s) sur ' + items.length + '">' + unread + "</em></button>";
+    return '<button type="button" class="ch" data-cat="' + key + '" aria-pressed="' + on + '"' + (on ? ' aria-current="page"' : "") + ' style="--cc:' + color + '">' +
+      esc(name) + (unread ? ' <em title="' + unread + ' non lu' + (unread > 1 ? "s" : "") + '">' + unread + "</em>" : "") + "</button>";
   }
-
 
   function renderFeed() {
     var fav = st.view === "favoris", fond = st.view === "fond";
@@ -208,6 +204,8 @@
     // Une seule fiche par événement (la mieux classée), les reprises sont consultables dessous.
     var groupsPool = fav ? pool : collapse(pool.sort(fond ? sortPublished : sortFeed));
     var items = fav ? pool.sort(sortFeed) : groupsPool.filter(byRead);
+    var front = st.view === "journal" && !$("ess").hidden && Object.keys(onFront).length;
+    if (front) items = items.filter(function (it) { return !onFront[it.groupe || it.id]; });
     var nRead = groupsPool.filter(isRead).length;
     $("rf-unread").textContent = groupsPool.length - nRead;
     $("rf-read").textContent = nRead;
@@ -232,8 +230,14 @@
     var total = fav ? data.filter(function (it) { return favs.has(it.id); }).length
       : collapse(data.filter(function (it) { return shown(it) && !!it.fond === fond; })).length;
     var where = fav ? "dans vos favoris" : fond ? "dans les ressources de fond" : "dans le journal";
+    // Le compteur ne s'affiche que s'il apporte quelque chose : filtres actifs, favoris ou ressources.
+    $("count").hidden = st.view === "journal" && !activeFilters().length;
     $("count").innerHTML = "<b>" + items.length + "</b> article" + (items.length > 1 ? "s" : "") + " pour cette sélection, sur <b>" + total + "</b> au total " + where + ".";
     var feed = $("feed"), head = fond ? '<div class="intro">Articles anciens repérés tardivement, avec leur date de publication réelle. Utiles pour comprendre le contexte, ils ne sont pas présentés comme l\'actualité du jour ni repris dans la synthèse de la semaine.</div>' : "";
+    if (!items.length && front && !activeFilters().length) {
+      feed.innerHTML = '<div class="empty">Les autres articles de la période sont lus. La prochaine édition arrive demain matin.</div>';
+      return;
+    }
     if (!items.length) {
       // « Tout est lu » seulement si des articles correspondent aux filtres et qu'ils sont tous lus.
       feed.innerHTML = head + (fav && !favs.size ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
@@ -244,7 +248,7 @@
       return;
     }
     // À la une : l'article le plus important de la première édition affichée (impact, urgence, fiabilité).
-    var une = journal() && !fav && !fond;
+    var une = journal() && !fav && !fond && !front;
     if (une) {
       var first = items.filter(function (it) { return it.edition === items[0].edition; }).sort(byWeight)[0];
       items = [first].concat(items.filter(function (it) { return it !== first; }));
@@ -267,7 +271,7 @@
   function activeFilters() {
     var v = st.view, out = [];
     if (v !== "journal" && v !== "favoris" && v !== "fond") return out;
-    if (st.cat !== "all") out.push(["cat", "Canal : " + catName(st.cat)]);
+    // La rubrique choisie se lit dans le menu des rubriques : ce n'est pas un filtre à retirer.
     if (st.q.trim()) out.push(["q", "Recherche : « " + st.q.trim() + " »"]);
     if (v === "favoris") return out;
     if (st.min !== DEFAULTS.min) out.push(["min", "Pertinence ≥ " + st.min + " %"]);
@@ -284,7 +288,7 @@
     $("active").hidden = !list.length;
     $("filt-n").hidden = !list.length;
     $("filt-n").textContent = list.length;
-    $("filt-btn").setAttribute("aria-label", list.length ? "Filtres, " + list.length + " actif" + (list.length > 1 ? "s" : "") : "Filtres");
+    $("filt-btn").setAttribute("aria-label", "Rechercher et affiner" + (list.length ? ", " + list.length + " filtre" + (list.length > 1 ? "s" : "") + " actif" + (list.length > 1 ? "s" : "") : ""));
     $("active").innerHTML = list.length ? '<span class="active-l">Filtres actifs :</span>' + list.map(function (f) {
       return '<button type="button" class="chip" data-unfilter="' + f[0] + '" aria-label="Retirer le filtre ' + esc(f[1]) + '">' + esc(f[1]) + ' <span aria-hidden="true">✕</span></button>';
     }).join("") + '<button type="button" class="btn reset" data-reset>Réinitialiser les filtres</button>' : "";
@@ -308,11 +312,14 @@
     });
     return collapse(pool.sort(byWeight)).slice(0, 3);
   }
+  // La une : le sujet le plus important en grand, les deux suivants à côté. Un jour calme, elle le dit.
+  // Elle n'apparaît que sur la page d'accueil (toutes rubriques, sans recherche).
   function renderEss() {
     var box = $("ess");
-    box.hidden = st.view !== "journal" || !!(st.day && st.day !== latest) || !latest;
+    onFront = {};
+    box.hidden = st.view !== "journal" || st.cat !== "all" || !!st.q.trim() || st.readFilter === "read" || !!(st.day && st.day !== latest) || !latest;
     if (box.hidden) return;
-    var list = essentials(), when = latest === today ? "aujourd'hui" : "de l'édition du " + longDay(latest);
+    var list = essentials();
     if (!list.length) {
       var others = collapse(data.filter(function (it) { return shown(it) && !it.fond && it.edition === latest; })).length;
       box.className = "ess calm";
@@ -321,16 +328,20 @@
           " ou de culture du secteur.</span>" + (st.level === "essentielle" ? '<button type="button" class="btn" data-level="elargie">Voir la veille élargie</button>' : "") : "");
       return;
     }
-    box.className = "ess";
-    box.innerHTML = '<h2 id="ess-h">L\'essentiel ' + esc(when) + "</h2><ol>" + list.map(function (it) {
-      var extra = members(it).length - 1;
-      return '<li data-id="' + esc(it.id) + '" class="' + (isRead(it) ? "read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ')">' +
-        '<div class="kick">' + tagHtml(it) + (it.urgence ? '<span class="dim u-' + esc(it.urgence) + '">' + esc(LBL.urgence[it.urgence]) + "</span>" : "") +
-        (it.statut && it.statut !== "texte_publie" ? '<span class="dim s-' + esc(it.statut) + '">' + esc(LBL.statut[it.statut]) + "</span>" : "") + "</div>" +
-        '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h3>" +
-        '<p class="impact">' + esc(impact(it)) + "</p>" +
-        '<p class="src">' + esc(it.source) + (extra ? " et " + extra + " autre" + (extra > 1 ? "s" : "") + " source" + (extra > 1 ? "s" : "") : "") + "</p></li>";
-    }).join("") + "</ol>";
+    list.forEach(function (it) { onFront[it.groupe || it.id] = 1; });
+    var when = latest === today ? "aujourd'hui" : "de l'édition du " + longDay(latest), rest = list.slice(1);
+    box.className = "ess front";
+    box.innerHTML = '<h2 id="ess-h" class="sr">L\'essentiel ' + esc(when) + '</h2><div class="lead">' + paperCard(list[0], true, true) + "</div>" +
+      '<div class="also"><h3 class="also-h">' + (rest.length ? "À retenir aussi" : "À retenir") + "</h3>" +
+      (rest.length ? "<ol>" + rest.map(function (it) {
+        var extra = members(it).length - 1;
+        return '<li data-id="' + esc(it.id) + '" class="' + (isRead(it) ? "read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ')">' +
+          '<div class="kick">' + tagHtml(it) + (it.urgence && it.urgence !== "information" ? '<span class="dim u-' + esc(it.urgence) + '">' + esc(LBL.urgence[it.urgence]) + "</span>" : "") +
+          (it.statut && it.statut !== "texte_publie" ? '<span class="dim s-' + esc(it.statut) + '">' + esc(LBL.statut[it.statut]) + "</span>" : "") + "</div>" +
+          '<h4><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h4>" +
+          '<p class="impact">' + esc(impact(it)) + "</p>" +
+          '<p class="src">' + esc(it.source) + (extra ? " et " + extra + " autre" + (extra > 1 ? "s" : "") + " source" + (extra > 1 ? "s" : "") : "") + "</p></li>";
+      }).join("") + "</ol>" : '<p class="impact">Aucune autre information majeure ' + esc(when) + ". Le reste de l'actualité est ci-dessous.</p>") + "</div>";
   }
   // Impact concret : l'action recommandée, sinon qui est concerné, sinon pourquoi c'est important.
   function impact(it) { return it.action || (it.qui_concerne ? "Concerne : " + it.qui_concerne : it.pourquoi); }
@@ -357,9 +368,10 @@
   // Affichage « Journal » : présentation de presse, le premier article en une.
   // Vue détaillée : résumés complets. Vue compacte : titre, source, date, badges et résumé court,
   // le détail s'ouvre à la demande (la une reste toujours développée).
-  function paperCard(it, une) {
+  // En tête de page (lead), la une compacte garde le résumé entier et l'action, le reste s'ouvre à la demande.
+  function paperCard(it, une, lead) {
     var p = tone(it), done = isRead(it), isFav = favs.has(it.id);
-    var short = compact() && !une, open = !short || opened.has(it.id);
+    var short = compact() && (!une || !!lead), open = !short || opened.has(it.id);
     var dims = it.pertinence ? LBL.pertinence[it.pertinence] + " (" + it.score + " %)" : "Pertinence : " + it.score + " %";
     var src = '<p class="src">' + esc(it.source) + " · " + published(it) + (open && it.contenu ? " · analyse : " + esc(LBL.contenu[it.contenu]) : "") + "</p>";
     var detail = (it.resume && (!short || open) ? '<p class="lede">' + esc(it.resume) + "</p>" : "") +
@@ -377,7 +389,8 @@
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       (une ? '<p class="une-l">À la une</p>' : "") +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a>" + pressTag(it) + "</h3>" +
-      (short ? src + (it.resume && !open ? '<p class="lede">' + esc(brief(it.resume)) + "</p>" : "") +
+      (short ? src + (it.resume && !open ? '<p class="lede">' + esc(lead ? it.resume : brief(it.resume)) + "</p>" : "") +
+        (lead && !open && it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") +
         (open ? '<div class="more-d" id="d-' + esc(it.id) + '">' + detail + "</div>" : "") +
         actions(done, isFav, '<button type="button" class="tgl" data-detail aria-expanded="' + open + '" aria-controls="d-' + esc(it.id) + '">' + (open ? "Masquer le détail" : "Voir le détail") + "</button>")
         : detail + src + actions(done, isFav)) + "</article>";
@@ -529,7 +542,7 @@
     var go = t.closest("[data-go]"); if (go) return setView(go.dataset.go);
     if (t.closest("#theme-btn")) return setPref("veilletls.theme", "theme", document.documentElement.dataset.theme === "light" ? "dark" : "light");
     var ch = t.closest(".ch");
-    if (ch) { st.cat = ch.dataset.cat; st.limit = PAGE; if (st.view !== "journal" && st.view !== "favoris") st.view = "journal"; return render(); }
+    if (ch) { st.cat = ch.dataset.cat; st.view = "journal"; st.day = ""; st.limit = PAGE; render(); return window.scrollTo({ top: 0 }); }
     var dayBtn = t.closest("[data-day]"); if (dayBtn) { st.day = dayBtn.dataset.day; st.view = "journal"; st.limit = PAGE; render(); return window.scrollTo({ top: 0 }); }
     if (t.closest("[data-more]")) { st.limit += PAGE; return render(); }
     var copy = t.closest("[data-copy]");
@@ -577,10 +590,10 @@
   });
   $("q").addEventListener("input", function (e) { st.q = e.target.value; st.limit = PAGE; render(); });
   $("period").addEventListener("change", function (e) { st.period = +e.target.value; st.day = ""; st.limit = PAGE; render(); });
-  $("cat-sel").addEventListener("change", function (e) { st.cat = e.target.value; st.limit = PAGE; if (st.view !== "journal" && st.view !== "favoris") st.view = "journal"; render(); });
   $("filt-btn").addEventListener("click", function () {
     var open = $("tools").classList.toggle("open");
     $("filt-btn").setAttribute("aria-expanded", open);
+    if (open) $("q").focus();
   });
   $("min").addEventListener("change", function (e) { st.min = +e.target.value; st.limit = PAGE; render(); });
   $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });

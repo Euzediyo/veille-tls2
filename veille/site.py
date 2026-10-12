@@ -46,7 +46,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description or site['sous_titre'])}">
 <meta name="theme-color" content="#070c14">
-<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.density=localStorage.getItem("veilletls.vue")||"detaillee"}}catch(e){{}}</script>
+<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.density=localStorage.getItem("veilletls.vue")||"compacte"}}catch(e){{}}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -87,10 +87,13 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       </div>
     </details>
     <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p><span class="mast-s">{escape(site['sous_titre'])}</span><span class="mast-d"><span id="mast-d"></span> · Dernière collecte : <span id="last">--</span></span></p></div>
-    <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button>
+    <div class="mast-r"><button type="button" class="btn find" id="filt-btn" aria-expanded="false" aria-controls="tools"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg><span class="find-t">Rechercher</span><em id="filt-n" hidden></em></button>
+    <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button></div>
   </div>
 </header>
 
+<div class="navbar">
+<nav class="rub" aria-label="Rubriques"><div class="rail" id="rail"></div></nav>
 <nav class="tabs" aria-label="Vues">
   <button type="button" class="tab" data-view="journal"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg><span>Journal</span> <em id="t-journal-n" title="Articles non lus, au total">0</em></button>
   <button type="button" class="tab" data-view="semaine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><span class="d-only">La </span>Semaine</span></button>
@@ -100,13 +103,11 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
   <button type="button" class="tab" data-view="archives"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><span>Archives</span></button>
 </nav>
 
+</div>
+
 <div class="shell">
-  <nav class="nav" aria-label="Canaux"><div class="rail" id="rail"></div></nav>
   <main class="main" id="contenu" tabindex="-1">
-    <section class="ess" id="ess" aria-labelledby="ess-h" hidden></section>
-    <div class="tools" id="tools">
-      <select id="cat-sel" class="m-only" aria-label="Canal"></select>
-      <button type="button" class="btn m-only" id="filt-btn" aria-expanded="false" aria-controls="tools">Filtres<em id="filt-n" hidden></em></button>
+    <div class="tools" id="tools" aria-label="Rechercher et affiner">
       <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
         <input id="q" type="search" placeholder="Rechercher : R31, levée de doute, convention collective…" aria-label="Rechercher" autocomplete="off"></label>
       <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
@@ -115,15 +116,15 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         <div class="seg" id="press" role="group" aria-label="Presse"><span class="seg-l" aria-hidden="true">Presse</span><button type="button" data-press="all" aria-pressed="true">Toute <em id="pr-all">0</em></button><button type="button" data-press="fr" aria-pressed="false">Française <em id="pr-fr">0</em></button><button type="button" data-press="intl" aria-pressed="false">Internationale <em id="pr-intl">0</em></button></div>
         <div class="seg" id="readf" role="group" aria-label="Lecture"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
         <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div>
+        <div class="seg" id="level" role="group" aria-label="Niveau de veille"><span class="seg-l" aria-hidden="true">Veille</span><button type="button" data-level="essentielle" aria-pressed="true" title="Impact direct, forte pertinence métier">Essentielle <em id="lv-essentielle">0</em></button><button type="button" data-level="elargie" aria-pressed="false" title="Avec les informations indirectes et la culture du secteur">Élargie <em id="lv-elargie">0</em></button></div>
         <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
         <button type="button" class="btn ghost" id="unmask" hidden></button>
       </div>
     </div>
     <div class="active" id="active" hidden></div>
+    <section class="ess" id="ess" aria-labelledby="ess-h" hidden></section>
     <div class="feed" id="v-journal">
-      <div class="level" id="level" role="group" aria-label="Niveau de veille">
-      <button type="button" data-level="essentielle" aria-pressed="true"><span>Veille essentielle <em id="lv-essentielle">0</em></span><small>Impact direct, forte pertinence métier</small></button>
-      <button type="button" data-level="elargie" aria-pressed="false"><span>Veille élargie <em id="lv-elargie">0</em></span><small>Avec les informations indirectes et la culture du secteur</small></button></div>
+      <h2 class="rub-h" id="rub-h" hidden></h2>
       <p class="count" id="count" role="status"></p>
       <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>
