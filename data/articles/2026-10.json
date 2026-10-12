@@ -3626,5 +3626,49 @@
   "echeance": null,
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-12"
+ },
+ {
+  "id": "a00463a9ac1f8a04",
+  "titre": "Télésurveillance en psychiatrie : une start-up acquiert un concurrent allemand",
+  "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1RSk9nVnA3V2hMNmJfa0VOa0VUZDJDQjY3M3VMWUw1OGw4Rzk5M29Yblg1czdTbWxLTFFfUm4yNXNpd1hKeWgzV3U3ZS1IUXBq?oc=5",
+  "source": "TICpharma",
+  "date": "2026-10-12T05:35:25+00:00",
+  "extrait": "Télésurveillance en psychiatrie : Resilience Care acquiert l'allemand Recovery Cat TICpharma",
+  "origine": "google_news",
+  "filtre": "aucun",
+  "mots_cles_trouves": {
+   "telesurveillance": 1
+  },
+  "payant": null,
+  "categorie": "telesurveillance",
+  "score": 35,
+  "resume": "Le titre indique que Resilience Care, acteur de la télésurveillance en psychiatrie, rachète la société allemande Recovery Cat. L'extrait ne donne ni montant, ni date précise, ni détail sur l'activité ou les technologies concernées. Il s'agit d'une opération de marché dans le domaine médical, éloignée de la télésurveillance d'alarmes de sécurité.",
+  "pourquoi": "Le terme « télésurveillance » recouvre ici un usage médical de suivi de patients, sans lien direct avec les alarmes, la levée de doute ou les procédures d'un centre de sécurité ; l'impact pour le centre reste indirect.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-12"
+ },
+ {
+  "id": "919ac1684ae21a47",
+  "titre": "Effacement d'une condamnation du casier judiciaire (bulletin n°2) : délais, requête et réhabilitation",
+  "url": "https://kohenavocats.fr/2026/10/12/casier-judiciaire-effacer-bulletin-n2-delais-requete-rehabilitation-recours-2026/",
+  "source": "Kohen Avocats",
+  "date": "2026-10-12T05:48:09+00:00",
+  "extrait": "Condamnation ancienne qui bloque un emploi public, un agrément ou une habilitation : délais automatiques, requête en exclusion du bulletin n°2, réhabilitation et recours (2026). The post Casier judiciaire : effacer une condamnation du bulletin n°2, délais automatiques, requête, réhabilitation et recours (2026) appeared first on Maître Reda Kohen, avocat en droit immobilier et droit des affaires à Paris .",
+  "origine": "rss",
+  "filtre": "mots_cles",
+  "mots_cles_trouves": {
+   "reglementation": 1
+  },
+  "payant": null,
+  "categorie": "hors_sujet",
+  "score": 8,
+  "resume": "Il s'agit d'une publicité de cabinet d'avocats expliquant comment effacer une condamnation du bulletin n°2 du casier judiciaire. L'extrait détaille les trois types de bulletins, les exclusions automatiques et les voies de réhabilitation, sans évoquer de changement de texte ni d'obligation nouvelle. Le contenu est général et ne porte pas sur la sécurité privée.",
+  "pourquoi": "Le sujet concerne le casier judiciaire des particuliers et n'affecte pas directement l'organisation, les obligations ou les équipes d'un centre de télésurveillance ; un lien pourrait exister seulement pour le contrôle des agents, non traité ici.",
+  "action": "",
+  "echeance": null,
+  "analyse_par": "claude-haiku-5-5",
+  "edition": "2026-10-12"
  }
 ]
