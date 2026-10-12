@@ -20,7 +20,7 @@ google_news:
   - '"vidéoprotection" OR "vidéosurveillance algorithmique" when:2d'
   - '("PTI" OR "DATI") "travailleur isolé" when:7d'
   - '"sécurité électronique" (marché OR rachat OR acquisition OR lancement) when:7d'
-  - '(Verisure OR Securitas OR Seris OR Prosegur OR Nexecur OR "EPS télésurveillance") when:2d'
+  - '(Verisure OR Securitas OR Seris OR Prosegur OR Nexecur OR "EPS télésurveillance" OR Scutum) when:2d'
   - '"intelligence artificielle" (vidéosurveillance OR "analyse vidéo" OR alarmes) when:2d'
   - '"sécurité privée" (recrutement OR pénurie OR formation OR attractivité) when:7d'
   - '"GPMSE" OR "GES sécurité" OR "USP sécurité privée" when:7d'
