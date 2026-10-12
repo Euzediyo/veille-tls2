@@ -586,3 +586,11 @@ def test_weekly_and_podcast_keep_nuances():
     assert "Janvier 2027 — date à confirmer" in text and "annonce non confirmée" in text and "IDCC 1351" in text
     assert "Janvier 2027 — date à confirmer" in podcast._topic_block(it, PROFILE["categories"])
     assert "pertinent ne veut pas dire urgent" in podcast.SYSTEM and "n'est pas forcément urgente" in semaine.SYSTEM
+
+
+def test_every_module_imports():
+    # Le passage quotidien importe tous les modules : une erreur d'import bloquerait la publication.
+    import importlib
+    for name in ("main", "notify", "analyze", "avis", "collect", "editorial", "enrich", "evenements",
+                 "podcast", "prefilter", "semaine", "site", "store"):
+        importlib.import_module(f"veille.{name}")

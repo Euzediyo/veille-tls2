@@ -8,7 +8,7 @@ from email.message import EmailMessage
 from datetime import date
 from html import escape
 
-from .site import MOIS, label
+from .site import MOIS, dims
 
 
 def fr_date(iso: str) -> str:
@@ -29,7 +29,7 @@ def send_digest(items: list[dict], site: dict, profile: dict, day: str, report: 
 
     lines, blocks = [], []
     for it in top:
-        lvl = label(it["score"])
+        lvl = dims(it) or "pertinence"
         cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
         action = f"Action recommandée : {it['action']}\n" if it.get("action") else ""
         lines.append(f"[{it['score']} {lvl}] {it['titre']}\n{it.get('resume', '')}\nPourquoi : {it['pourquoi']}\n{action}{it['url']}\n")
