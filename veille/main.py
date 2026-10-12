@@ -19,6 +19,7 @@ import yaml
 from . import analyze, avis, collect, editorial, enrich, evenements, notify, podcast, prefilter, semaine, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
+MAX_DEADLINE_CHECKS = 40
 
 
 def load_yaml(name: str) -> dict:
@@ -46,6 +47,17 @@ def main() -> int:
         recent = store.load_articles(days=args.reanalyser, today=today)[: site_cfg.get("max_articles_ia", 120)]
         report.append(f"Réanalyse : {len(recent)} articles des {args.reanalyser} derniers jours")
         store.replace_articles(analyze.analyze(enrich.enrich(recent, sources.get("sources_payantes") or [], report), profile, site_cfg["modele"], report, learned))
+
+    # Échéances enregistrées avant la précision des dates : relues et réanalysées une fois, pour ne pas
+    # présenter comme vérifiée une date peut-être approximative (« premier du mois » par défaut).
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        old = [it for it in store.load_articles() if editorial.unverified_deadline(it)][:MAX_DEADLINE_CHECKS]
+        if old:
+            redone = analyze.analyze(enrich.enrich(old, sources.get("sources_payantes") or [], report), profile,
+                                     site_cfg["modele"], report, learned)
+            redone = [it for it in redone if it.get("analyse_par") == site_cfg["modele"]]  # jamais remplacé par les mots-clés
+            store.replace_articles(redone)
+            report.append(f"Échéances : {len(redone)} anciennes dates réanalysées sur {len(old)}")
 
     if not args.site:
         raw = collect.collect_google_news(sources.get("google_news") or [], report)

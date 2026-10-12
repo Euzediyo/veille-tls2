@@ -349,6 +349,22 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .pa .todo::before{content:"À faire : ";font:700 .95rem var(--body);letter-spacing:0;text-transform:none;color:var(--accent)}
 .pa .due{margin:0;font:600 .9rem var(--body);color:var(--p3)}
 .pa .src{margin:0;font-size:.85rem;color:var(--muted)}
+/* Dimensions de l'analyse : urgence, statut et périmètre, séparés du score de pertinence. */
+.pa .dim{font:600 11px var(--body);letter-spacing:.04em;text-transform:none;border:1px solid var(--line);border-radius:3px;padding:1px 7px;color:var(--fg)}
+.pa .dim.u-immediate{border-color:var(--p1);color:var(--p1)}
+.pa .dim.u-a_anticiper{border-color:var(--p2);color:var(--p2)}
+.pa .dim.s-rumeur,.pa .dim.s-proposition,.pa .dim.s-negociation{border-style:dashed}
+.pa .who{margin:0;font-size:.95rem}
+.pa .who::before{content:"Qui est concerné ? ";font-weight:700;color:var(--fg)}
+.pa .check{margin:0;font-size:.92rem;color:var(--muted)}
+.pa .check::before{content:"À vérifier : ";font-weight:700;color:var(--p2)}
+.dl.approx .date b{color:var(--muted)}
+.dl .when{margin:0;font-weight:600}
+.dl .just{margin:0;font-style:italic;color:var(--muted);font-size:.92rem}
+.dl .srcd{margin:0;font-size:.88rem;color:var(--muted)}
+.ics small{flex-basis:100%;font-size:.85rem}
+.sd.approx b{color:var(--muted)}
+.sd span small{display:block;font:400 .8rem var(--body);text-transform:none;margin:0;color:var(--muted)}
 .pa .act button{font-family:var(--body);border-radius:3px}
 .ev.pa.read{opacity:.8}
 .ev.pa.p1:not(.read){border-color:var(--line);animation:none}

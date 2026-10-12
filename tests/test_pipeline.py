@@ -55,7 +55,11 @@ def test_ai_response_parsing(monkeypatch):
     payload = {"analyses": [
         {"id": "id1", "categorie": "reglementation", "score": 140, "titre": "Décret carte pro",
          "resume": "Un décret modifie la carte.", "pourquoi": "Impact direct sur le centre.",
-         "action": "Prévenir les opérateurs", "echeance_date": "2027-03-01", "echeance_libelle": "Entrée en vigueur"},
+         "pertinence": "directe", "urgence": "a_anticiper", "statut": "texte_publie", "perimetre": "france",
+         "qui_concerne": "Entreprises autorisées par le CNAPS", "verifications": "",
+         "action": "Prévenir les opérateurs", "echeance_date": "2027-03-01", "echeance_libelle": "Entrée en vigueur",
+         "echeance_precision": "jour", "echeance_periode": "", "echeance_type": "obligation",
+         "echeance_justification": "le décret entre en vigueur le 1er mars 2027"},
         {"id": "inconnu", "categorie": "marche", "score": 50, "titre": "x", "resume": "", "pourquoi": "",
          "action": "", "echeance_date": "", "echeance_libelle": ""},
     ]}
@@ -73,7 +77,11 @@ def test_ai_response_parsing(monkeypatch):
     out = {it["id"]: it for it in analyze.analyze(kept, PROFILE, "claude-haiku-5-5", [])}
     assert out["id1"]["score"] == 100 and out["id1"]["analyse_par"] == "claude-haiku-5-5"
     assert out["id1"]["action"] == "Prévenir les opérateurs"
-    assert out["id1"]["echeance"] == {"date": "2027-03-01", "libelle": "Entrée en vigueur"}
+    assert out["id1"]["echeance"] == {"date": "2027-03-01", "precision": "jour", "periode": "", "type": "obligation",
+                                      "libelle": "Entrée en vigueur", "justification": "le décret entre en vigueur le 1er mars 2027",
+                                      "source": "Exemple", "url": "https://exemple.fr/1"}
+    assert out["id1"]["urgence"] == "a_anticiper" and out["id1"]["qui_concerne"].startswith("Entreprises")
+    assert out["id1"]["contenu"] == "titre"            # aucun extrait ni texte lu : constaté, pas estimé par l'IA
     assert "inconnu" not in out
     assert out["id4"]["analyse_par"] == "mots-clés"   # absent de la réponse : notation de secours
 
@@ -84,8 +92,10 @@ def test_site_build(tmp_path, monkeypatch):
     store.save_collect_time(datetime(2026, 10, 9, 6, 45, tzinfo=ZoneInfo("Europe/Paris")))
     arts = [
         {**SAMPLE[0], "edition": "2026-10-08", "categorie": "reglementation", "score": 94, "resume": "R<script>",
-         "pourquoi": "P", "action": "Former les opérateurs", "echeance": {"date": "2027-04-01", "libelle": "Entrée en vigueur"}},
-        {**SAMPLE[3], "edition": "2026-10-09", "categorie": "marche", "score": 55, "resume": "R", "pourquoi": "P"},
+         "pourquoi": "P", "action": "Former les opérateurs",
+         "echeance": {"date": "2027-04-01", "precision": "jour", "type": "obligation", "libelle": "Entrée en vigueur"}},
+        {**SAMPLE[3], "edition": "2026-10-09", "categorie": "marche", "score": 55, "resume": "R", "pourquoi": "P",
+         "echeance": {"date": "2026-11-01", "libelle": "Ancienne échéance approximative"}},   # analyse d'avant la précision des dates
         {**SAMPLE[2], "edition": "2026-10-09", "categorie": "reglementation", "score": 10, "resume": "", "pourquoi": "P"},
         {**SAMPLE[1], "edition": "2026-10-09", "categorie": "hors_sujet", "score": 40, "resume": "", "pourquoi": "P"},
     ]
@@ -98,7 +108,8 @@ def test_site_build(tmp_path, monkeypatch):
     assert '"key": "reglementation"' in index and "app.js" in index
     assert '"updated": "9 octobre à 06h45"' in index                # heure de la dernière vraie collecte, pas de la republication
     ics = (out / "echeances.ics").read_text(encoding="utf-8")
-    assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1
+    assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1   # l'ancienne date non vérifiée n'y est pas
+    assert public[0]["echeance"]["precision"] == "a_verifier"
     assert "<rss" in (out / "feed.xml").read_text(encoding="utf-8")
     assert json.loads((out / "manifest.webmanifest").read_text(encoding="utf-8"))["display"] == "standalone"
     assert "__VERSION__" not in (out / "sw.js").read_text(encoding="utf-8")
@@ -107,9 +118,20 @@ def test_site_build(tmp_path, monkeypatch):
 
 
 def test_deadline_validation():
-    assert analyze._deadline({"echeance_date": "2027-01-01", "echeance_libelle": "X"}) == {"date": "2027-01-01", "libelle": "X"}
-    assert analyze._deadline({"echeance_date": "janvier", "echeance_libelle": "X"}) is None
-    assert analyze._deadline({"echeance_date": "", "echeance_libelle": ""}) is None
+    it = {"source": "S", "url": "u"}
+    def due(**kw):
+        a = {"echeance_libelle": "X", "echeance_type": "obligation", "echeance_precision": "jour", "echeance_date": "",
+             "echeance_periode": "", "echeance_justification": "", "statut": "texte_publie", **kw}
+        return analyze._deadline(a, it)
+    assert due(echeance_date="2027-01-15")["date"] == "2027-01-15"
+    # Mois seul : jamais transformé en « premier du mois ».
+    assert {k: due(echeance_precision="mois", echeance_date="2026-11-01")[k] for k in ("date", "precision")} == {"date": "2026-11", "precision": "mois"}
+    assert {k: due(echeance_date="2026-11")[k] for k in ("date", "precision")} == {"date": "2026-11", "precision": "mois"}   # « jour » sans jour
+    assert due(echeance_precision="periode", echeance_date="2027-01", echeance_periode="début 2027")["periode"] == "début 2027"
+    assert due(echeance_date="janvier")["precision"] == "inconnue"
+    assert due(echeance_type="aucune") is None and due(echeance_libelle="") is None
+    # Une proposition ne crée pas d'obligation.
+    assert due(echeance_date="2027-01-01", statut="proposition")["type"] == "annonce_non_confirmee"
 
 
 def test_replace_articles(tmp_path, monkeypatch):
@@ -477,3 +499,90 @@ def test_no_artificial_filling(tmp_path, monkeypatch):
     page = site.essential_html(editorial.annotate(quiet, PROFILE, []), SITE, PROFILE, date(2026, 10, 12))
     assert "Aucune nouvelle information majeure aujourd'hui." in page and "deux caméras" not in page
     assert "Aucune nouvelle information majeure" in (Path(site.ASSETS) / "app.js").read_text(encoding="utf-8")
+
+
+# ---------- Dimensions de l'analyse et échéances ----------
+
+def test_content_level_comes_from_extraction():
+    from veille import editorial
+    gnews = art(50, "Décret sur la vidéoprotection", extrait="Décret sur la vidéoprotection Légifrance", source="Légifrance")
+    assert editorial.content_level(gnews) == "titre"                       # Google Actualités : titre + nom du média
+    rich = art(51, "Décret", extrait="Le décret publié ce matin précise les conditions de transmission des images aux forces de l'ordre.")
+    assert editorial.content_level(rich) == "extrait"
+    assert editorial.content_level({**gnews, "texte": "Début de l'article lu sur la page."}) == "article"
+    assert "Contenu disponible : titre uniquement" in analyze._article_block(gnews)
+
+
+def test_analysis_dimensions_and_prompt_rules():
+    prompt = analyze.build_system_prompt(PROFILE)
+    assert "premier jour du mois" not in prompt                            # ancienne consigne supprimée
+    assert "N'invente jamais un jour" in prompt and "qui_concerne" in prompt
+    assert "traitement d'alarme" in prompt and "démarche lui-même des prospects" in prompt
+    assert "une information très pertinente n'est pas\nforcément urgente" in prompt
+    props = analyze.SCHEMA["properties"]["analyses"]["items"]["properties"]
+    assert props["urgence"]["enum"] == ["immediate", "a_anticiper", "information"]
+    assert props["statut"]["enum"] == ["texte_publie", "proposition", "negociation", "annonce", "rumeur"]
+    assert props["perimetre"]["enum"] == ["france", "union_europeenne", "autre_pays"]
+    assert props["echeance_precision"]["enum"] == ["jour", "mois", "periode", "inconnue"]
+
+
+def test_unconfirmed_never_immediate(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    base = {"categorie": "social", "score": 80, "titre": "Salaires", "resume": "R", "pourquoi": "P", "pertinence": "directe",
+            "urgence": "immediate", "statut": "negociation", "perimetre": "france", "qui_concerne": "Salariés IDCC 1351",
+            "action": "Suivre la négociation", "verifications": "Issue de la négociation", "echeance_libelle": "Revalorisation proposée",
+            "echeance_precision": "mois", "echeance_date": "2027-01", "echeance_periode": "", "echeance_type": "obligation",
+            "echeance_justification": "proposition du GES pour janvier 2027"}
+    payload = {"analyses": [{**base, "id": "e60"}]}
+
+    class FakeMessages:
+        def create(self, **kwargs):
+            return types.SimpleNamespace(stop_reason="end_turn", content=[types.SimpleNamespace(type="text", text=json.dumps(payload))],
+                                         usage=types.SimpleNamespace(input_tokens=1, cache_read_input_tokens=0, output_tokens=1))
+
+    monkeypatch.setattr(analyze.anthropic, "Anthropic", lambda: types.SimpleNamespace(messages=FakeMessages()))
+    out = analyze.analyze([art(60, "Salaires : 1 % proposé par le GES")], PROFILE, "claude-haiku-5-5", [])[0]
+    assert out["urgence"] == "a_anticiper"                                  # une négociation n'est jamais « action immédiate »
+    assert out["echeance"]["type"] == "annonce_non_confirmee" and out["echeance"]["date"] == "2027-01"
+    assert out["echeance"]["source"] == "Exemple" and "GES" in out["echeance"]["justification"]
+
+
+def test_deadline_display_dedup_and_calendar(tmp_path, monkeypatch):
+    from veille import editorial, semaine
+    exact = {"date": "2026-11-16", "precision": "jour", "type": "evenement", "libelle": "Événement CNIL sur l'éthique du numérique"}
+    month = {"date": "2026-11", "precision": "mois", "type": "obligation", "libelle": "Entrée en vigueur du référentiel qualité"}
+    assert editorial.deadline_text(exact) == "16 novembre 2026"
+    assert editorial.deadline_text(month) == "Novembre 2026 — date à confirmer"
+    assert editorial.deadline_text({"date": "2027-01", "precision": "periode", "periode": "début 2027"}) == "début 2027 (période approximative)"
+    assert "non vérifiée" in editorial.deadline_text({"date": "2026-11-01", "precision": "a_verifier"})
+    # Même événement Apple cité par deux articles : une seule échéance, dans les listes comme au calendrier.
+    apple = {"date": "2026-10-13", "precision": "jour", "type": "evenement", "libelle": "Événement Apple « Welcome Home »"}
+    arts = [art(70, "A", 60, "marche", echeance=apple), art(71, "B", 55, "marche", echeance=dict(apple)),
+            art(72, "C", 40, "reglementation", echeance=exact), art(73, "D", 40, "reglementation", echeance=month),
+            art(74, "E", 40, "reglementation", echeance={"date": "2026-11-01", "libelle": "Ancienne date"})]
+    pairs = editorial.unique_deadlines(arts)
+    assert [d["libelle"] for d, _ in pairs].count("Événement Apple « Welcome Home »") == 1
+    assert pairs[0][1]["id"] == "e70" and pairs[0][0]["source"] == "Exemple"     # la source qui justifie est conservée
+    _, due = semaine.select(arts, date(2026, 10, 12), PROFILE)
+    assert sorted(it["id"] for it in due) == ["e70", "e72", "e73", "e74"]
+
+    monkeypatch.setattr(site, "OUT", tmp_path / "site")
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    site.build(PROFILE, SITE, arts, date(2026, 10, 12), groups=[])
+    cal = (tmp_path / "site" / "echeances.ics").read_text(encoding="utf-8")
+    assert cal.count("BEGIN:VEVENT") == 2                                       # Apple une fois + CNIL ; pas le mois seul ni l'ancienne date
+    assert "20261013" in cal and "20261116" in cal and "20261101" not in cal
+    js = (Path(site.ASSETS) / "app.js").read_text(encoding="utf-8")
+    assert "date à confirmer" in js and "Qui est concerné" in (Path(site.ASSETS) / "style.css").read_text(encoding="utf-8")
+
+
+def test_weekly_and_podcast_keep_nuances():
+    from veille import editorial, podcast, semaine
+    it = art(80, "Salaires", 80, "social", pertinence="directe", urgence="a_anticiper", statut="negociation", perimetre="france",
+             contenu="titre", qui_concerne="Salariés de la branche IDCC 1351", verifications="Accord signé ?",
+             echeance={"date": "2027-01", "precision": "mois", "type": "annonce_non_confirmee", "libelle": "Revalorisation"})
+    text = "\n".join(editorial.describe(it))
+    assert "statut : négociation" in text and "urgence : à anticiper" in text and "Contenu réellement lu : titre uniquement" in text
+    assert "Janvier 2027 — date à confirmer" in text and "annonce non confirmée" in text and "IDCC 1351" in text
+    assert "Janvier 2027 — date à confirmer" in podcast._topic_block(it, PROFILE["categories"])
+    assert "pertinent ne veut pas dire urgent" in podcast.SYSTEM and "n'est pas forcément urgente" in semaine.SYSTEM

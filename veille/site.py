@@ -21,22 +21,19 @@ ASSETS = Path(__file__).resolve().parent / "assets"
 REPO = "https://github.com/Euzediyo/veille-tls2"
 REPO_ACTIONS = REPO + "/actions/workflows/journal.yml"
 
-MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
-        "septembre", "octobre", "novembre", "décembre"]
+MOIS = editorial.MOIS
 
-LEVELS = [(90, "Critique"), (70, "Important"), (50, "Intéressant"), (30, "Veille")]
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
-                 "resume", "pourquoi", "action", "echeance", "payant", "international", "fond", "niveau", "groupe")
+                 "resume", "pourquoi", "action", "echeance", "payant", "international", "fond", "niveau", "groupe",
+                 "pertinence", "urgence", "statut", "perimetre", "qui_concerne", "verifications", "contenu")
 FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
          "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600"
          "&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap")
 
 
-def label(score: int) -> str:
-    for threshold, name in LEVELS:
-        if score >= threshold:
-            return name
-    return "Ignoré"
+def dims(it: dict) -> str:
+    """Dimensions de l'analyse (pertinence, urgence, statut, périmètre), séparées du score."""
+    return " · ".join(editorial.LABELS[k][it[k]] for k in ("pertinence", "urgence", "statut", "perimetre") if it.get(k))
 
 
 def head(title: str, site: dict, description: str = "") -> str:
@@ -155,6 +152,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <h2>Comment ce journal est fait</h2>
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un taux de pertinence de 0 à 100 % du point de vue d'un responsable de centre de télésurveillance, explique ce taux, propose une action pour les articles importants et repère les échéances. Les articles sous {profile.get('seuil_publication', 30)} % ou jugés hors sujet ne sont pas publiés.</p>
 <p>La <b>veille essentielle</b>, affichée par défaut, réunit les articles à impact direct ou à forte pertinence métier ; la <b>veille élargie</b> y ajoute les informations indirectes et la culture du secteur. Quand plusieurs médias reprennent la même information ou la même rumeur, une seule fiche est publiée, avec les autres sources consultables : ces reprises ne valent pas confirmations indépendantes. Un article publié plus de {profile.get('ressources_de_fond_jours', 30)} jours avant sa découverte est rangé dans les « Ressources de fond », avec sa date réelle, et n'est pas présenté comme une actualité. Le suivi médical à distance (télésurveillance de patients) n'est pas retenu, sauf lien avec la sécurité.</p>
+<p>Le taux de pertinence ne dit pas l'urgence : chaque article est aussi qualifié séparément par sa pertinence métier (directe, indirecte, faible), son urgence (action immédiate, à anticiper, information), son statut (texte publié, proposition, négociation, annonce, rumeur) et son périmètre (France, Union européenne, autre pays). Le contenu réellement lu (début de l'article, extrait ou titre seul) est constaté par le programme, pas estimé par l'IA. Une échéance n'est jamais affichée plus précise que sa source : un mois seul reste « date à confirmer », et seules les dates exactes vont au calendrier.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>
@@ -170,16 +168,23 @@ def _essential_item(it: dict, profile: dict) -> str:
     day = editorial.published_on(it)
     when = f"publié le {day.day} {MOIS[day.month - 1]} {day.year}" if day else "date de publication inconnue"
     lines = [f"<h3>{escape(it['titre'])}</h3>",
-             f"<p><b>{escape(cat)}</b> · pertinence {it['score']} % ({label(it['score'])}) · {escape(it['source'])} · {when}"
+             f"<p><b>{escape(cat)}</b> · score {it['score']} %" + (f" · {escape(dims(it))}" if dims(it) else "") + f" · {escape(it['source'])} · {when}"
              + (" · réservé aux abonnés" if it.get("payant") else "") + "</p>"]
     if it.get("resume"):
         lines.append(f"<p>{escape(it['resume'])}</p>")
     lines.append(f"<p>Pourquoi c'est important : {escape(it['pourquoi'])}</p>")
+    if it.get("contenu"):
+        lines.append(f"<p>Contenu analysé : {editorial.CONTENT_LABELS[it['contenu']]}.</p>")
+    if it.get("qui_concerne"):
+        lines.append(f"<p>Qui est concerné ? {escape(it['qui_concerne'])}</p>")
     if it.get("action"):
         lines.append(f"<p>Action recommandée : {escape(it['action'])}</p>")
-    if it.get("echeance"):
-        due = date.fromisoformat(it["echeance"]["date"])
-        lines.append(f"<p>Échéance : {due.day} {MOIS[due.month - 1]} {due.year}, {escape(it['echeance']['libelle'])}</p>")
+    if it.get("verifications"):
+        lines.append(f"<p>À vérifier : {escape(it['verifications'])}</p>")
+    due = editorial.deadline(it)
+    if due:
+        kind = editorial.DEADLINE_TYPES.get(due["type"], "À vérifier")
+        lines.append(f"<p>Échéance ({escape(kind.lower())}) : {escape(editorial.deadline_text(due))}, {escape(due['libelle'])}</p>")
     if it.get("reprises"):
         names = ", ".join(escape(r["source"]) for r in it["reprises"])
         lines.append(f"<p>Même information reprise par : {names} (reprises, pas des confirmations indépendantes).</p>")
@@ -220,7 +225,7 @@ def feed_xml(items: list[dict], site: dict, profile: dict) -> str:
     rows = []
     for it in entries:
         cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
-        desc = f"[Pertinence {it['score']} % · {label(it['score'])} · {cat}] {it.get('resume', '')} Pourquoi : {it['pourquoi']}"
+        desc = f"[{cat} · score {it['score']} %" + (f" · {dims(it)}" if dims(it) else "") + f"] {it.get('resume', '')} Pourquoi : {it['pourquoi']}"
         if it.get("action"):
             desc += f" Action recommandée : {it['action']}"
         pub = format_datetime(datetime.fromisoformat(it.get("date") or it["edition"] + "T06:00:00+00:00"))
@@ -242,19 +247,23 @@ def _ics_text(s: str) -> str:
 
 
 def ics(items: list[dict], site: dict) -> str:
+    """Calendrier : une seule fois chaque échéance, et seulement les dates exactes (un mois seul ou
+    une date non vérifiée n'y figurent pas, pour ne pas inventer de jour)."""
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     events = []
-    for it in items:
-        due = it.get("echeance")
-        if not due:
+    for due, it in editorial.unique_deadlines(items):
+        if due["precision"] != "jour":
             continue
         day = date.fromisoformat(due["date"])
-        desc = f"{it['titre']} ({it['source']}). {it.get('action', '')} {it['url']}".strip()
+        summary = ("Non confirmé : " if due["type"] == "annonce_non_confirmee" else "") + due["libelle"]
+        desc = " ".join(x for x in (f"{editorial.DEADLINE_TYPES.get(due['type'], '')}.",
+                                    f"Source : {due['source']}.", due.get("justification", ""),
+                                    it.get("action", ""), due["url"]) if x)
         events.append("\r\n".join([
             "BEGIN:VEVENT", f"UID:{it['id']}@veille-tls", f"DTSTAMP:{stamp}",
             f"DTSTART;VALUE=DATE:{day:%Y%m%d}",
-            f"SUMMARY:{_ics_text(due['libelle'])}", f"DESCRIPTION:{_ics_text(desc)}",
-            f"URL:{it['url']}", "END:VEVENT"]))
+            f"SUMMARY:{_ics_text(summary)}", f"DESCRIPTION:{_ics_text(desc)}",
+            f"URL:{due['url']}", "END:VEVENT"]))
     return "\r\n".join(["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Veille TLS//FR", "CALSCALE:GREGORIAN",
                         f"X-WR-CALNAME:{_ics_text(site['titre'])} · échéances", *events, "END:VCALENDAR"]) + "\r\n"
 
@@ -304,7 +313,9 @@ def build(profile: dict, site: dict, articles: list[dict], today: date, groups: 
     ics_url = site["url"].rstrip("/") + "/echeances.ics"
 
     articles = editorial.annotate(articles, profile, evenements.groups() if groups is None else groups)
-    public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles if editorial.publishable(it, profile)]
+    # Échéances complétées : précision de la date (« a_verifier » pour une ancienne analyse), type, source.
+    public = [{**{k: it.get(k) for k in PUBLIC_FIELDS}, "echeance": editorial.deadline(it)}
+              for it in articles if editorial.publishable(it, profile)]
     public.sort(key=lambda it: (it["edition"], it["score"]), reverse=True)
 
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")
