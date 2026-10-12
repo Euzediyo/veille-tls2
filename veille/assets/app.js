@@ -615,11 +615,6 @@
   $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });
   // Après un nouveau rendu, le focus clavier revient sur un élément proche au lieu de se perdre.
   function focusAfter(el) { if (el && el.focus) el.focus({ preventScroll: true }); }
-  // Menu « Administration » : se ferme avec Échap ou en cliquant ailleurs.
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && $("admin").open) { $("admin").open = false; $("admin").querySelector("summary").focus(); }
-  });
-  document.addEventListener("click", function (e) { if ($("admin").open && !e.target.closest("#admin")) $("admin").open = false; });
   $("ack-all").addEventListener("click", function () {
     data.forEach(function (it) { if (st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it)) read.add(it.id); });
     saveSet("veilletls.lus", read); render();

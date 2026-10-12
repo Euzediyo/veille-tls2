@@ -19,7 +19,6 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
 ASSETS = Path(__file__).resolve().parent / "assets"
 REPO = "https://github.com/Euzediyo/veille-tls2"
-REPO_ACTIONS = REPO + "/actions/workflows/journal.yml"
 
 MOIS = editorial.MOIS
 
@@ -46,7 +45,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description or site['sous_titre'])}">
 <meta name="theme-color" content="#070c14">
-<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.density=localStorage.getItem("veilletls.vue")||"compacte"}}catch(e){{}}</script>
+<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.density=localStorage.getItem("veilletls.vue")||"detaillee"}}catch(e){{}}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -79,13 +78,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="bar home">
   <div class="mast-row">
-    <details class="admin" id="admin">
-      <summary><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="adm-t">Administration</span></summary>
-      <div class="admin-p">
-        <a href="{REPO_ACTIONS}" target="_blank" rel="noopener">Scan immédiat<small>Ouvre GitHub pour lancer une collecte</small></a>
-        <p>Ce menu range simplement les outils de l'administrateur : il ne protège rien. C'est GitHub qui vérifie l'accès (compte autorisé requis).</p>
-      </div>
-    </details>
+    <span class="mast-l" aria-hidden="true"></span>
     <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p><span class="mast-s">{escape(site['sous_titre'])}</span><span class="mast-d"><span id="mast-d"></span> · Dernière collecte : <span id="last">--</span></span></p></div>
     <div class="mast-r"><button type="button" class="btn find" id="filt-btn" aria-expanded="false" aria-controls="tools"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg><span class="find-t">Rechercher</span><em id="filt-n" hidden></em></button>
     <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button></div>
@@ -113,7 +106,6 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
       <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
       <div class="row2">
-        <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div>
         <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
         <button type="button" class="btn ghost" id="unmask" hidden></button>
       </div>
@@ -126,7 +118,8 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
       <div class="readbox" id="readf" role="group" aria-label="Articles affichés">
         <label><input type="checkbox" id="show-unread" checked> Afficher les articles non lus <em id="rf-unread">0</em></label>
-        <label><input type="checkbox" id="show-read"> Afficher les articles déjà lus <em id="rf-read">0</em></label></div>
+        <label><input type="checkbox" id="show-read"> Afficher les articles déjà lus <em id="rf-read">0</em></label>
+        <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div></div>
       <p class="count" id="count" role="status"></p>
       <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>
