@@ -53,11 +53,18 @@ def main() -> int:
         pages_state = store.load_pages_state()
         raw += collect.collect_pages(sources.get("pages") or [], pages_state, report)
         store.save_pages_state(pages_state)
+        intl = sources.get("international") or {}
+        raw += collect.collect_google_news(intl.get("google_news") or [], report, international=True)
+        raw += collect.collect_rss(intl.get("rss") or [], report, international=True)
 
         seen = store.load_seen()
         fresh = prefilter.deduplicate(raw, seen)
-        candidates = prefilter.prefilter(fresh, profile, site_cfg.get("max_articles_ia", 120))
-        report.append(f"Collecte : {len(raw)} articles, {len(fresh)} nouveaux, {len(candidates)} envoyés à l'analyse")
+        # La presse internationale a son propre plafond : elle ne prend pas la place des sources françaises.
+        candidates = prefilter.prefilter([it for it in fresh if not it.get("international")], profile, site_cfg.get("max_articles_ia", 120))
+        foreign = prefilter.prefilter([it for it in fresh if it.get("international")], profile, site_cfg.get("max_articles_international", 40))
+        report.append(f"Collecte : {len(raw)} articles, {len(fresh)} nouveaux, {len(candidates) + len(foreign)} envoyés à l'analyse"
+                      f" (dont {len(foreign)} internationaux)")
+        candidates += foreign
 
         candidates = enrich.enrich(candidates, sources.get("sources_payantes") or [], report)
         analysed = analyze.analyze(candidates, profile, site_cfg["modele"], report, learned)
@@ -87,7 +94,8 @@ def main() -> int:
     site.build(profile, site_cfg, articles, today)
     report.append("Site : régénéré")
     try:
-        if not args.site:
+        # Un épisode manqué (voix de synthèse en panne) est refait à la publication suivante.
+        if not args.site or not podcast.has_episode(today):
             podcast.make_episode(articles, profile, site_cfg, today, report)
         podcast.publish(site_cfg, today, report)
     except Exception as exc:  # le flash audio ne doit jamais bloquer la publication du journal

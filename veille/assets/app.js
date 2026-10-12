@@ -9,6 +9,7 @@
   var MOIS_C = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   var PAGE = 40;
+  var INTL = "international";
 
   var data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date());
   var st = { view: "journal", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
@@ -25,6 +26,9 @@
   function days(a, b) { return Math.round((Date.parse(a + "T12:00:00") - Date.parse(b + "T12:00:00")) / 864e5); }
   function prio(s) { return s >= 90 ? ["p1", "P1", "Critique"] : s >= 70 ? ["p2", "P2", "Important"] : s >= 50 ? ["p3", "P3", "Intéressant"] : ["p4", "P4", "Veille"]; }
   function catName(k) { return CAT[k] ? CAT[k].nom : "Autre"; }
+  // Canal d'un article : la presse internationale a son propre canal, à part des six rubriques françaises.
+  function inCat(it, key) { return key === "all" || (key === INTL ? !!it.international : !it.international && it.categorie === key); }
+  function tagHtml(it) { return (it.international ? '<span class="tag intl">International</span>' : "") + '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
   function longDay(iso) { var d = new Date(iso + "T12:00:00"); return JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
   function dayLabel(iso) {
     var diff = days(today, iso), d = new Date(iso + "T12:00:00");
@@ -45,10 +49,10 @@
     if (it.score < st.min) return false;
     if (st.day) { if (it.edition !== st.day) return false; }
     else if (days(latest, it.edition) >= st.period) return false;
-    if (!ignoreCat && st.cat !== "all" && it.categorie !== st.cat) return false;
+    if (!ignoreCat && !inCat(it, st.cat)) return false;
     var terms = norm(st.q).split(/\s+/).filter(Boolean);
     if (!terms.length) return true;
-    var hay = norm([it.titre, it.resume, it.pourquoi, it.action, it.source, catName(it.categorie)].join(" "));
+    var hay = norm([it.titre, it.resume, it.pourquoi, it.action, it.source, catName(it.categorie), it.international ? "international" : ""].join(" "));
     return terms.every(function (t) { return hay.indexOf(t) !== -1; });
   }
   function shown(it) { return !masked.has(it.id); }
@@ -119,10 +123,12 @@
     var pool = data.filter(function (it) { return st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it, true); });
     var html = '<p class="lbl">Canaux</p>' + channel("all", "Tous les canaux", "", pool);
     CATS.forEach(function (c) {
-      html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return it.categorie === c.key; }));
+      html += channel(c.key, c.nom, "Priorité " + c.priorite, pool.filter(function (it) { return inCat(it, c.key); }));
     });
+    html += channel(INTL, "International", "Presse étrangère, résumée en français", pool.filter(function (it) { return inCat(it, INTL); }));
     $("rail").innerHTML = html;
-    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return it.categorie === c.key; })]; }));
+    var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })]; }),
+      [[INTL, "International", pool.filter(function (it) { return inCat(it, INTL); })]]);
     $("cat-sel").innerHTML = opts.map(function (o) {
       var n = o[2].filter(function (it) { return !read.has(it.id); }).length;
       return '<option value="' + o[0] + '"' + (st.cat === o[0] ? " selected" : "") + ">" + esc(o[1]) + " (" + n + ")</option>";
@@ -140,7 +146,7 @@
   function renderFeed() {
     var fav = st.view === "favoris";
     var pool = data.filter(function (it) {
-      if (fav) return favs.has(it.id) && (st.cat === "all" || it.categorie === st.cat) && (!st.q || matches(Object.assign({}, it, { edition: latest, score: 100 })));
+      if (fav) return favs.has(it.id) && inCat(it, st.cat) && (!st.q || matches(Object.assign({}, it, { edition: latest, score: 100 })));
       return shown(it) && matches(it);
     });
     var items = (fav ? pool : pool.filter(byRead)).sort(sortFeed);
@@ -171,7 +177,7 @@
   // Plus rien à lire : on propose les favoris et les articles les plus importants de la période.
   function allRead(pool) {
     var html = '<div class="empty ok"><b>✓ Tout est lu.</b> Plus aucun article à lire ici. La prochaine édition arrive demain matin.</div>', n = 0;
-    var mine = data.filter(function (it) { return favs.has(it.id) && shown(it) && (st.cat === "all" || it.categorie === st.cat); }).sort(sortFeed).slice(0, 5);
+    var mine = data.filter(function (it) { return favs.has(it.id) && shown(it) && inCat(it, st.cat); }).sort(sortFeed).slice(0, 5);
     if (mine.length) html += '<h2 class="done-h">Vos favoris</h2>' + wrap(mine.map(function (it) { return card(it, n++); }).join(""));
     var top = pool.filter(function (it) { return it.score >= 70 && !favs.has(it.id); })
       .sort(function (a, b) { return b.score - a.score || (a.edition < b.edition ? 1 : -1); }).slice(0, 5);
@@ -191,7 +197,7 @@
   function paperCard(it, une) {
     var p = prio(it.score), isRead = read.has(it.id), isFav = favs.has(it.id);
     return '<article class="ev pa ' + p[0] + (une ? " une" : "") + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ')" data-id="' + it.id + '">' +
-      '<div class="kick"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + p[2] + " · Pertinence : " + it.score + "\u00a0%</span>" +
+      '<div class="kick">' + tagHtml(it) + "<span>" + p[2] + " · Pertinence : " + it.score + "\u00a0%</span>" +
       (isRead ? '<span class="state lu">Lu</span>' : "") +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
@@ -208,7 +214,7 @@
     var due = it.echeance ? '<span class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</span>" : "";
     return '<article class="ev ' + p[0] + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ");animation-delay:" + Math.min(n, 12) * 30 + 'ms" data-id="' + it.id + '">' +
       '<div class="prio"><span class="led" aria-hidden="true"></span><b>' + it.score + "</b><small>" + p[1] + "<br>" + p[2].toUpperCase() + "</small></div>" +
-      '<div class="body"><div class="meta"><span class="tag">' + esc(catName(it.categorie)) + "</span><span>" + esc(it.source) + "</span><span>" + stamp(it.date) + "</span>" +
+      '<div class="body"><div class="meta">' + tagHtml(it) + "<span>" + esc(it.source) + "</span><span>" + stamp(it.date) + "</span>" +
       (isRead ? '<span class="state lu">LU</span>' : '<span class="state new">NON LU</span>') +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 RÉSERVÉ AUX ABONNÉS</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +

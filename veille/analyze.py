@@ -57,6 +57,13 @@ Pour chaque article reçu, renvoie :
   au format AAAA-MM-JJ et un libellé court (ex. « Entrée en vigueur du décret formation »).
   Si le jour exact n'est pas connu, prends le premier jour du mois. Sinon, chaînes vides.
 
+Presse internationale : un article marqué « Portée : internationale » vient d'un média étranger,
+souvent en anglais. Rédige quand même titre, résumé, explication et action en français, et dis
+de quel pays il s'agit quand c'est connu. Note-le selon ce qu'il apprend à un centre de
+télésurveillance français : une tendance ou une technologie qui peut arriver en France, un
+concurrent ou un grand groupe présent en France, une norme ou un texte européen, une bonne pratique
+transposable. Une simple actualité locale étrangère sans leçon pour la France reste sous 30.
+
 Tu ne connais l'article que par son titre et son extrait (parfois le début du texte) : base-toi
 uniquement sur eux.{learned}"""
 
@@ -96,6 +103,7 @@ def _article_block(item: dict) -> str:
     return (
         f"<article id=\"{item['id']}\">\n"
         f"Titre : {item['titre']}\nSource : {item['source']}\nDate : {item['date'][:10]}\n"
+        + ("Portée : internationale\n" if item.get("international") else "") +
         f"Extrait : {item.get('texte') or item['extrait'] or '(aucun extrait disponible)'}\n</article>"
     )
 

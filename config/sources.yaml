@@ -56,6 +56,42 @@ pages:
     url: "https://www.scutum-group.com/fr/actualite-et-presse"
     lien_contient: "/fr/publications/"
 
+# Revue de presse internationale : articles étrangers, résumés et notés en français par l'IA,
+# publiés dans le canal « International ». L'édition Google News s'écrit « PAYS:langue ».
+# Le nombre d'articles envoyés à l'IA est plafonné par max_articles_international (config/site.yaml).
+international:
+  google_news:
+    - requete: '"alarm monitoring" OR "monitoring center" OR "monitoring centre" OR "alarm receiving centre" when:3d'
+      edition: "US:en"
+    - requete: '"remote video monitoring" OR "video verification" OR "remote guarding" when:3d'
+      edition: "US:en"
+    - requete: '"alarm receiving centre" OR "remote monitoring" (security OR alarm) when:3d'
+      edition: "GB:en"
+    - requete: '"private security" (regulation OR licensing OR law OR "minimum wage") when:3d'
+      edition: "GB:en"
+    - requete: '(Securitas OR Verisure OR Prosegur OR "Allied Universal" OR ADT OR G4S OR "Brinks Home") (acquisition OR acquires OR results OR launches OR monitoring) when:3d'
+      edition: "US:en"
+    - requete: '"video analytics" OR "AI video surveillance" (alarm OR monitoring) when:3d'
+      edition: "US:en"
+    - requete: '(Euralarm OR CoESS OR "EN 50518" OR "The Monitoring Association") when:14d'
+      edition: "GB:en"
+    - requete: '"télésurveillance" OR "sécurité privée" OR "centrale d''alarme" when:3d'
+      edition: "BE:fr"
+    - requete: '"télésurveillance" OR "sécurité privée" OR "centrale d''alarme" when:3d'
+      edition: "CH:fr"
+    - requete: '"télésurveillance" OR "sécurité privée" OR "agence de sécurité" when:3d'
+      edition: "CA:fr"
+  rss:
+    - nom: "Security Magazine"
+      url: "https://www.securitymagazine.com/rss/15"
+      filtre: mots_cles
+    - nom: "SDM Magazine"
+      url: "https://www.sdmmag.com/rss/15"
+      filtre: mots_cles
+    - nom: "SDM Magazine — Monitoring"
+      url: "https://www.sdmmag.com/rss/topic/2654-monitoring"
+      filtre: aucun
+
 # Médias dont les articles sont réservés aux abonnés (nom exact de la source, tel qu'affiché
 # sur le journal). Pour les autres sites, le programme le détecte en lisant la page quand il le peut.
 sources_payantes:

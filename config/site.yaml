@@ -13,6 +13,8 @@ hebergeur: "GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, 
 modele: "claude-haiku-5-5"
 # Nombre maximum d'articles envoyés à l'IA par passage (plafond de dépense).
 max_articles_ia: 120
+# Plafond à part pour la revue de presse internationale.
+max_articles_international: 40
 
 # Voix des deux animateurs du flash audio (autres voix possibles : fr-FR-DeniseNeural, fr-FR-HenriNeural).
 podcast_voix:
