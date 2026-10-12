@@ -26,8 +26,9 @@ la même annonce, la même décision, le même texte, la même rumeur ou la mêm
 plusieurs médias, y compris quand l'un est en français et l'autre en anglais.
 
 Ne regroupe pas des articles qui partagent seulement un thème, un acteur ou un mot. Exemples :
-- plusieurs articles sur la rumeur d'un partenariat entre Apple et ADT : un seul groupe ;
-- un article sur le cours de bourse d'ADT et un article sur ce partenariat : pas ensemble ;
+- plusieurs articles sur la rumeur d'un partenariat entre Apple et ADT : un seul groupe, y compris
+  ceux qui la commentent sous un autre angle (réaction des actionnaires, analyse, date de l'annonce) ;
+- un article sur le cours de bourse d'ADT qui ne parle pas de ce partenariat : pas dans ce groupe ;
 - deux communes différentes qui installent des caméras de vidéoprotection : pas ensemble ;
 - deux lettres d'information d'un même organisme sur des périodes différentes : pas ensemble.
 
