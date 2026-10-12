@@ -70,7 +70,7 @@
  },
  {
   "id": "440fd3bb81874e31",
-  "titre": "SecNumCloud 3.2 référence pour les données sensibles de l'État",
+  "titre": "SecNumCloud 3.2 devient référence réglementaire pour les données sensibles de l'État",
   "url": "https://www.gpmse.com/actualite-data-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-21T08:41:14+00:00",
@@ -82,17 +82,30 @@
    "apsad": 1
   },
   "categorie": "reglementation",
-  "score": 68,
-  "resume": "Un arrêté publié en août 2026 donne une portée réglementaire au référentiel SecNumCloud version 3.2 pour les données sensibles de l'État confiées à des prestataires cloud. Les entreprises privées ne sont pas directement concernées, mais les fournisseurs de solutions de vidéoprotection, de télésurveillance ou de gestion d'alarmes dans le cloud pourraient devoir proposer une architecture qualifiée. La chaîne de sous-traitance est également visée.",
-  "pourquoi": "Si un centre de télésurveillance ou ses fournisseurs travaillent pour l'État avec des données sensibles hébergées dans le cloud, l'architecture et les sous-traitants des plateformes d'alarme pourraient devoir évoluer.",
+  "score": 62,
+  "resume": "Un arrêté du 12 août 2026, publié au Journal officiel du 14 août, approuve officiellement le référentiel SecNumCloud en version 3.2 et lui donne une portée réglementaire pour l'article 31 de la loi SREN. Les administrations et opérateurs de l'État qui confient à un prestataire privé un cloud traitant des données sensibles doivent désormais utiliser une offre conforme, attestée par une qualification de l'ANSSI ou une certification européenne équivalente. L'arrêté est entré en vigueur le 15 août 2026. Les entreprises privées ne sont pas directement tenues par ce texte, mais un adhérent fournissant à l'État un système de vidéoprotection, de télésurveillance ou de gestion d'alarmes reposant sur le cloud pourrait devoir proposer une architecture qualifiée. Le texte intégral n'a été lu que partiellement.",
+  "pourquoi": "Le texte ne s'impose pas directement aux centres, mais un centre travaillant avec l'État sur des outils cloud de télésurveillance pourrait être concerné par les exigences de sous-traitance et de localisation des données.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "",
+  "action": "Lire le texte officiel de l'arrêté avant de vérifier si nos plateformes de traitement d'alarmes ou de vidéo travaillent avec des clients publics.",
   "echeance": {
    "date": "2026-08-15",
-   "libelle": "Entrée en vigueur de l'arrêté approuvant SecNumCloud 3.2"
+   "precision": "jour",
+   "periode": "",
+   "type": "obligation",
+   "libelle": "Entrée en vigueur de l'arrêté approuvant SecNumCloud 3.2",
+   "justification": "l'arrêté du 12 août 2026 est entré en vigueur le 15 août 2026",
+   "source": "GPMSE",
+   "url": "https://www.gpmse.com/actualite-data-nl-sept-26/"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "indirecte",
+  "urgence": "a_anticiper",
+  "statut": "texte_publie",
+  "perimetre": "france",
+  "qui_concerne": "administrations et opérateurs de l'État confiant un cloud traitant des données sensibles, et leurs prestataires privés",
+  "verifications": "Vérifier le champ d'application exact de l'article 31 de la loi SREN et la liste des données visées ; vérifier si les outils de télésurveillance utilisés sont hébergés dans le cloud.",
+  "contenu": "article"
  },
  {
   "id": "0df73b39a380adaf",
@@ -647,7 +660,7 @@
  },
  {
   "id": "1886f2603693438f",
-  "titre": "Événement CNIL du 16 novembre 2026 sur l'éthique du numérique et les élections",
+  "titre": "Événement CNIL du 16 novembre 2026 sur éthique, élections et ingérences",
   "url": "https://www.cnil.fr/fr/air2026",
   "source": "CNIL",
   "date": "2026-09-28T12:00:00+00:00",
@@ -657,18 +670,31 @@
   "mots_cles_trouves": {
    "reglementation": 1
   },
-  "categorie": "reglementation",
-  "score": 25,
-  "resume": "La CNIL organise le 16 novembre 2026 un événement sur les communications politiques et les ingérences dans les élections. Le programme aborde le consentement au ciblage politique en ligne et les risques liés aux IA génératives.",
-  "pourquoi": "Le sujet concerne la communication politique et les élections, sans lien direct avec les activités d'un centre de télésurveillance.",
+  "categorie": "hors_sujet",
+  "score": 12,
+  "resume": "La CNIL organise le lundi 16 novembre 2026 à partir de 14 h un événement sur les enjeux éthiques des communications politiques et des ingérences dans les élections. Des tables rondes traiteront du ciblage politique en ligne, du consentement des électeurs et des manipulations étrangères, notamment via l'IA générative. Les inscriptions sont ouvertes.",
+  "pourquoi": "Sujet politique et électoral sans lien avec l'exploitation d'un centre de télésurveillance.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": {
-   "date": "2026-11-01",
-   "libelle": "Événement CNIL sur les élections et l'éthique du numérique"
+   "date": "2026-11-16",
+   "precision": "jour",
+   "periode": "",
+   "type": "evenement",
+   "libelle": "Événement CNIL sur éthique du numérique et élections",
+   "justification": "lundi 16 novembre 2026, à partir de 14 h",
+   "source": "CNIL",
+   "url": "https://www.cnil.fr/fr/air2026"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "faible",
+  "urgence": "information",
+  "statut": "annonce",
+  "perimetre": "france",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "article"
  },
  {
   "id": "38701bdc8ec1deee",
@@ -694,7 +720,7 @@
  },
  {
   "id": "54e666f6c5806a29",
-  "titre": "Lignes directrices européennes sur les amendes RGPD et le DSA",
+  "titre": "Lignes directrices du CEPD sur les amendes RGPD et l'articulation avec le DSA",
   "url": "https://www.cnil.fr/fr/pleniere-cepd-amendes-reglement-services-numeriques",
   "source": "CNIL",
   "date": "2026-09-23T12:00:00+00:00",
@@ -706,16 +732,29 @@
   },
   "categorie": "reglementation",
   "score": 35,
-  "resume": "Le CEPD a adopté le 17 septembre 2026 des lignes directrices sur le pouvoir des autorités de protection des données d'infliger des amendes administratives, avec une méthode en cinq étapes et une présentation des mesures correctrices. Il a aussi publié la version finale de ses lignes directrices sur l'articulation entre le DSA et le RGPD. Les premières sont soumises à consultation publique jusqu'au 13 novembre 2026.",
-  "pourquoi": "Ces textes européens concernent surtout les fournisseurs de services numériques et les autorités de contrôle. Ils ont un impact indirect sur les données traitées par un centre de télésurveillance.",
+  "resume": "Le Comité européen de la protection des données a adopté le 17 septembre 2026 des lignes directrices sur le pouvoir des autorités de protection des données d'infliger des amendes administratives, avec une méthode en cinq étapes et quatorze exemples pratiques. Il a aussi adopté la version finale de ses lignes directrices sur l'interaction entre le DSA et le RGPD. La version sur les amendes est soumise à consultation publique jusqu'au 13 novembre 2026.",
+  "pourquoi": "Un centre traitant des données personnelles de clients et d'appelants est concerné par le RGPD, mais ces lignes directrices visent surtout les autorités et les grandes plateformes.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": {
    "date": "2026-11-13",
-   "libelle": "Fin de la consultation publique sur les lignes directrices CEPD relatives aux amendes"
+   "precision": "jour",
+   "periode": "",
+   "type": "consultation",
+   "libelle": "Fin de la consultation publique sur les lignes directrices sur les amendes",
+   "justification": "consultation publique jusqu'au 13 novembre 2026",
+   "source": "CNIL",
+   "url": "https://www.cnil.fr/fr/pleniere-cepd-amendes-reglement-services-numeriques"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "faible",
+  "urgence": "information",
+  "statut": "proposition",
+  "perimetre": "union_europeenne",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "article"
  },
  {
   "id": "dcda8e0798dfe259",
@@ -1711,22 +1750,35 @@
   "origine": "rss",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "management",
-  "score": 45,
-  "resume": "Le président du GPMSE présente la lettre de rentrée et rappelle les ressources du site, dont une nouvelle rubrique de veille juridique réservée à l'espace adhérent. Il annonce que le groupement demandera aux adhérents leurs contacts opérationnels afin de leur diffuser les informations utiles à leurs métiers. Il signale aussi la présence de la sécurité privée sous forme de village au salon Expoprotection, début novembre, sous l'égide de la FFSP.",
-  "pourquoi": "La demande de contacts opérationnels pourrait concerner les équipes du centre, et la veille juridique intéresse le suivi réglementaire, mais l'article reste général.",
+  "categorie": "hors_sujet",
+  "score": 25,
+  "resume": "Le président du GPMSE présente la rentrée et rappelle l'existence d'une nouvelle rubrique de veille juridique dans l'espace adhérent. Il annonce une sollicitation prochaine des adhérents pour transmettre les contacts opérationnels afin de partager les informations métier. Il invite aussi au salon Expoprotection début novembre, où la sécurité privée sera présentée pour la première fois sous forme de village, sous l'égide de la FFSP.",
+  "pourquoi": "Information de vie associative, avec une invitation à transmettre des contacts opérationnels pouvant faciliter la diffusion de veille utile au centre.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": {
-   "date": "2026-11-01",
-   "libelle": "Salon Expoprotection (village de la sécurité privée)"
+   "date": "2026-11",
+   "precision": "mois",
+   "periode": "",
+   "type": "evenement",
+   "libelle": "Salon Expoprotection",
+   "justification": "salon Expoprotection début novembre",
+   "source": "GPMSE",
+   "url": "https://www.gpmse.com/edito-nl-sept-26/"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "faible",
+  "urgence": "information",
+  "statut": "annonce",
+  "perimetre": "france",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "article"
  },
  {
   "id": "de5d9381df290bda",
-  "titre": "Démarchage téléphonique : la réglementation évolue",
+  "titre": "Démarchage téléphonique : interdiction de principe depuis le 11 août 2026",
   "url": "https://www.gpmse.com/veille-et-outils-du-manager-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-21T10:06:07+00:00",
@@ -1735,17 +1787,30 @@
   "filtre": "aucun",
   "mots_cles_trouves": {},
   "categorie": "reglementation",
-  "score": 88,
-  "resume": "Depuis le 11 août 2026, le démarchage téléphonique est interdit sauf consentement préalable du consommateur, en application de la loi du 30 juin 2025. Le consentement doit être explicite, libre, spécifique, éclairé et révocable, valable un an au maximum et conservé pendant trois ans minimum. Les appels sont autorisés du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h, sans plus de quatre sollicitations sur 30 jours. L'extrait aborde aussi le contrôle par l'employeur de l'activité des salariés, notamment l'écoute et l'enregistrement des appels.",
-  "pourquoi": "Un centre qui effectue des appels sortants pour prospection ou vérification doit adapter ses scripts, son recueil de consentement et ses plages d'appel ; l'écoute et l'enregistrement des appels touchent aussi les téléopérateurs.",
+  "score": 70,
+  "resume": "Selon la lettre du GPMSE, depuis le 11 août 2026 le démarchage téléphonique est interdit par principe dans tous les secteurs, en application de la loi du 30 juin 2025, sauf consentement préalable explicite du consommateur. Le consentement est valable un an au maximum, doit être conservé trois ans et peut être retiré à tout moment, y compris à l'oral. Les appels de prospection sont limités aux jours ouvrés, de 10 h à 13 h et de 14 h à 20 h, et à quatre tentatives par période de 30 jours. L'extrait ne traite pas du contrôle de l'activité des salariés, qui est évoqué dans la suite de l'article.",
+  "pourquoi": "Ces règles concernent un centre seulement s'il démarche lui-même des prospects ; elles ne visent pas les appels de traitement d'alarme ou de levée de doute dans le cadre d'un contrat.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
-  "action": "Vérifier avec le service commercial que chaque campagne d'appels sortants dispose d'un consentement documenté et respecte les plages horaires et la limite de quatre appels par 30 jours.",
+  "action": "Vérifier avec la direction commerciale si le centre réalise des appels de prospection ; si oui, mettre à jour les procédures de consentement.",
   "echeance": {
    "date": "2026-08-11",
-   "libelle": "Entrée en vigueur de l'interdiction du démarchage téléphonique sans consentement"
+   "precision": "jour",
+   "periode": "",
+   "type": "obligation",
+   "libelle": "Entrée en vigueur de l'interdiction du démarchage téléphonique sans consentement",
+   "justification": "depuis le 11 août 2026, en application de la loi du 30 juin 2025",
+   "source": "GPMSE",
+   "url": "https://www.gpmse.com/veille-et-outils-du-manager-nl-sept-26/"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "indirecte",
+  "urgence": "a_anticiper",
+  "statut": "texte_publie",
+  "perimetre": "france",
+  "qui_concerne": "entreprises réalisant des appels de démarchage commercial par téléphone",
+  "verifications": "Lire la loi du 30 juin 2025 et son décret d'application pour confirmer la date d'entrée en vigueur et le champ exact ; confirmer que les appels d'alarme et de levée de doute sont exclus.",
+  "contenu": "article"
  },
  {
   "id": "00fd3e9446b72e62",
@@ -1789,7 +1854,7 @@
  },
  {
   "id": "af27a990fa64fc9a",
-  "titre": "Save the date : congrès GPMSE 2027",
+  "titre": "Congrès GPMSE 2027 : dates et modalités",
   "url": "https://www.gpmse.com/save-the-date-congres-gpmse-2027-nl-sept-26/",
   "source": "GPMSE",
   "date": "2026-09-18T10:17:25+00:00",
@@ -1797,18 +1862,31 @@
   "origine": "rss",
   "filtre": "aucun",
   "mots_cles_trouves": {},
-  "categorie": "management",
-  "score": 30,
-  "resume": "Le GPMSE annonce son congrès annuel les 10 et 11 juin 2027 à Mandelieu, dans le sud-est de la France. Une soirée cocktail est prévue la veille, limitée à 120 personnes et facturée 60 euros, avec un sondage préalable. Une plateforme de réservation d'hôtels à tarifs négociés est également proposée.",
-  "pourquoi": "Information logistique pour les adhérents, sans effet sur l'exploitation du centre, mais utile pour la planification des déplacements.",
+  "categorie": "hors_sujet",
+  "score": 20,
+  "resume": "Le GPMSE annonce son congrès annuel les 10 et 11 juin 2027 à Mandelieu-La Napoule, dans le sud-est de la France. Une soirée cocktail est proposée la veille, limitée à 120 personnes, au prix de 60 euros, avec un sondage préalable. Une plateforme de réservation d'hôtels à tarifs négociés est mise en place.",
+  "pourquoi": "Événement associatif sans impact opérationnel direct sur le centre, à noter seulement pour l'agenda.",
   "analyse_par": "claude-haiku-5-5",
   "edition": "2026-10-09",
   "action": "",
   "echeance": {
    "date": "2027-06-10",
-   "libelle": "Congrès GPMSE 2027 à Mandelieu"
+   "precision": "jour",
+   "periode": "",
+   "type": "evenement",
+   "libelle": "Congrès GPMSE 2027",
+   "justification": "congrès les jeudi 10 et vendredi 11 juin 2027",
+   "source": "GPMSE",
+   "url": "https://www.gpmse.com/save-the-date-congres-gpmse-2027-nl-sept-26/"
   },
-  "payant": null
+  "payant": null,
+  "pertinence": "faible",
+  "urgence": "information",
+  "statut": "annonce",
+  "perimetre": "france",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "article"
  },
  {
   "id": "9d73407a82fc3b7a",
@@ -1885,16 +1963,29 @@
   },
   "payant": null,
   "categorie": "reglementation",
-  "score": 40,
-  "resume": "Un décret du 1er août 2026, pris par le ministère du Travail, modifie le référentiel national qualité des actions de formation et entrera en vigueur le 1er novembre 2026. Le tableau des indicateurs passe de 32 à 33, sans changement des sept critères, et le nouvel indicateur 33 ne concerne que l'apprentissage. L'article souligne que ce texte, qui ne cite pas le CNAPS, change pourtant le contenu des vérifications menées par le CNAPS auprès des organismes de formation en sécurité privée. Une bascule des démarches CNAPS sur téléservice était également attendue au 1er octobre 2026.",
-  "pourquoi": "Le texte ne vise pas directement les centres de télésurveillance, mais il touche les organismes qui forment les agents et les contrôles CNAPS associés, ce qui peut concerner indirectement la formation de vos équipes.",
-  "action": "",
+  "score": 58,
+  "resume": "Le décret du 1er août 2026 modifie le référentiel national qualité des actions de développement des compétences et entre en vigueur le 1er novembre 2026. Le nombre d'indicateurs passe de 32 à 33, le nouvel indicateur 33 étant rattaché au critère 7 et réservé à l'apprentissage. Les sept critères restent inchangés. Le texte émane du ministère du Travail et ne cite pas le CNAPS, mais l'article explique qu'il modifie ce que le CNAPS vérifie chez les organismes de formation aux activités de sécurité privée. Un téléservice du CNAPS est aussi entré en service le 1er octobre 2026.",
+  "pourquoi": "Un centre qui fait appel à un organisme de formation ou qui forme ses propres agents doit savoir que les critères de contrôle évoluent, même si le nouvel indicateur vise l'apprentissage.",
+  "action": "Lire le décret n° 2026-728 avant de vérifier si les organismes de formation utilisés par le centre sont concernés.",
   "echeance": {
    "date": "2026-11-01",
-   "libelle": "Entrée en vigueur du nouveau référentiel qualité de la formation"
+   "precision": "jour",
+   "periode": "",
+   "type": "obligation",
+   "libelle": "Entrée en vigueur du référentiel qualité à 33 indicateurs",
+   "justification": "l'article 2 du décret du 1er août 2026 fixe l'entrée en vigueur au 1er novembre 2026",
+   "source": "83-629.fr",
+   "url": "https://www.83-629.fr/organismes-formation-securite-privee-echeances-automne-2026-maj-2026-10/"
   },
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-09"
+  "edition": "2026-10-09",
+  "pertinence": "indirecte",
+  "urgence": "a_anticiper",
+  "statut": "texte_publie",
+  "perimetre": "france",
+  "qui_concerne": "organismes de formation aux activités privées de sécurité et organismes de formation professionnelle",
+  "verifications": "Confirmer auprès du CNAPS l'effet du nouvel indicateur sur les contrôles ; l'article est un site tiers qui interprète le texte.",
+  "contenu": "article"
  },
  {
   "id": "ffd62601304c851d",
@@ -2011,7 +2102,7 @@
  },
  {
   "id": "366e547b68359e55",
-  "titre": "Salaires de la sécurité privée : 1 % proposé par le GES, 10 % demandé par les syndicats",
+  "titre": "Salaires de la branche sécurité privée : négociation bloquée entre 1 % patronal et 10 % syndical",
   "url": "https://www.83-629.fr/salaires-securite-privee-2027-ges-1-pour-cent-smic/",
   "source": "83-629.fr",
   "date": "2026-10-02T06:00:00+00:00",
@@ -2024,15 +2115,28 @@
   "payant": null,
   "categorie": "social",
   "score": 80,
-  "resume": "Le GES maintient une proposition de revalorisation de 1 % sur la grille conventionnelle, formulée le 21 septembre, et demande une conférence sociale de la branche. Les six syndicats réclament 10 % sur toute la grille et menacent les accords de modulation du temps de travail. L'article montre que le SMIC, relevé au 1er juin 2026, se rapproche du bas de la grille, et que les majorations de nuit et de dimanche restent bloquées à 10 %.",
-  "pourquoi": "Les salaires, la grille et les accords de modulation du temps de travail déterminent directement la rémunération, le planning et la fidélisation des téléopérateurs.",
-  "action": "Préparer une simulation du coût d'une revalorisation de 1 % et de 10 % sur les coefficients de votre centre pour anticiper les questions des équipes.",
+  "resume": "Le GES, première organisation patronale de la branche, maintient sa proposition de 1 % d'augmentation, faite le 21 septembre, et demande une conférence sociale de la sécurité privée. Six syndicats réclament 10 % sur toute la grille et menacent les accords de modulation du temps de travail. Selon l'article, le SMIC relevé au 1er juin 2026 à 12,31 euros de l'heure ne laisse plus au coefficient 120 qu'un écart de 0,9 %. Une hausse de 1 % au 1er janvier 2027 porterait le bas de grille à 1 902,69 euros, mais un SMIC relevé de plus de 1,91 % le ferait repasser sous ce niveau. Les majorations de nuit et de dimanche restent à 10 %.",
+  "pourquoi": "Les salaires minima, les majorations et le risque de modulation du temps de travail concernent directement les agents et la planification du centre.",
+  "action": "Suivre l'issue de la négociation salariale de la branche avant de préparer tout ajustement de grille ou de planning.",
   "echeance": {
    "date": "2027-01-01",
-   "libelle": "Revalorisation proposée par les employeurs, non acquise"
+   "precision": "jour",
+   "periode": "",
+   "type": "annonce_non_confirmee",
+   "libelle": "Revalorisation éventuelle des salaires de la branche au 1er janvier 2027",
+   "justification": "la proposition de 1 % porte sur une revalorisation au 1er janvier 2027, sans accord conclu",
+   "source": "83-629.fr",
+   "url": "https://www.83-629.fr/salaires-securite-privee-2027-ges-1-pour-cent-smic/"
   },
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-09"
+  "edition": "2026-10-09",
+  "pertinence": "directe",
+  "urgence": "a_anticiper",
+  "statut": "negociation",
+  "perimetre": "france",
+  "qui_concerne": "salariés de la branche IDCC 1351 et entreprises de prévention et de sécurité",
+  "verifications": "Confirmer les positions auprès des organisations signataires ou du compte rendu officiel de la commission paritaire ; vérifier les chiffres de grille et de SMIC au Journal officiel.",
+  "contenu": "article"
  },
  {
   "id": "a8164b9f830f74a5",
@@ -2268,16 +2372,20 @@
   },
   "payant": null,
   "categorie": "marche",
-  "score": 35,
-  "resume": "Le premier Milipol Forum se tiendra le 17 novembre 2026 à la DGGN à Issy-les-Moulineaux, avec deux tables rondes sur les infrastructures critiques et la sécurité des territoires. Il prépare le salon Milipol Paris, prévu du 16 au 19 novembre 2027 à Villepinte. Les chiffres de l'édition 2025 sont rappelés : 1 171 exposants et 32 035 visiteurs.",
-  "pourquoi": "Événement de la sûreté utile pour la veille commerciale et les contacts avec les industriels, sans obligation directe pour le centre.",
+  "score": 30,
+  "resume": "L'extrait annonce un événement consacré à la sûreté et à la sécurité intérieure, un an avant Milipol Paris 2027, avec un focus sur les infrastructures critiques et les territoires. Le contenu détaillé n'a pas été lu.",
+  "pourquoi": "Salon de sûreté potentiellement utile pour la veille marché, mais l'extrait ne précise ni programme ni intervenants.",
   "action": "",
-  "echeance": {
-   "date": "2026-11-01",
-   "libelle": "Milipol Forum à Issy-les-Moulineaux"
-  },
+  "echeance": null,
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-09"
+  "edition": "2026-10-09",
+  "pertinence": "faible",
+  "urgence": "information",
+  "statut": "annonce",
+  "perimetre": "france",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "extrait"
  },
  {
   "id": "dc00d4a5446cda74",
@@ -4200,7 +4308,7 @@
  },
  {
   "id": "2bdc1179dfa9c1e9",
-  "titre": "Partenariat Apple et ADT évoqué avant l'événement du 13 octobre",
+  "titre": "Rumeur d'un partenariat entre Apple et ADT avant un événement Apple du 13 octobre",
   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ2I0Rm1kVXRyUUJ2Rll2T2UzREF0NjI0aXlYcDUzMWc2RlFHeDlEb2VKNHk5eGdVZ01XU2pTU01Ib2M5V092QjBzeWVFLXgwU2tYNUt2dHY3bEt5Z0pCaHlhNlNPLXg1RWJPQVFPNkJNWXoySU1CZzMzS2NlM0ZpbnhETkNvaWJZUTVYaWtBSUJubV9FM1Fmd1hJQVhyWkdZNzcxMGpfc3FRdw?oc=5",
   "source": "The Mac Observer",
   "date": "2026-10-11T12:16:26+00:00",
@@ -4213,20 +4321,33 @@
   },
   "payant": null,
   "categorie": "marche",
-  "score": 60,
-  "resume": "Un site spécialisé Apple rapporte une rumeur de partenariat entre Apple et ADT, à l'approche de l'événement « Welcome Home » prévu le 13 octobre. L'extrait ne permet pas de confirmer l'annonce ni d'en connaître le contenu.",
-  "pourquoi": "Une annonce d'Apple impliquant ADT pourrait modifier le paysage de la maison connectée et l'offre de services de télésurveillance grand public.",
+  "score": 25,
+  "resume": "Un média américain rapporte, au conditionnel, qu'un partenariat entre Apple et ADT, groupe de télésurveillance américain, pourrait être annoncé avant l'événement Apple du 13 octobre 2026. Seul le titre a été lu, sans détail sur le contenu.",
+  "pourquoi": "Si la rumeur se confirmait, un grand acteur de la domotique et de la sécurité pourrait influencer les attentes clients, mais rien n'est confirmé.",
   "action": "",
   "echeance": {
    "date": "2026-10-13",
-   "libelle": "Événement Apple « Welcome Home »"
+   "precision": "jour",
+   "periode": "",
+   "type": "annonce_non_confirmee",
+   "libelle": "Événement Apple « Welcome Home »",
+   "justification": "l'événement Apple du 13 octobre est mentionné dans le titre, la date du partenariat est seulement rumeur",
+   "source": "The Mac Observer",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ2I0Rm1kVXRyUUJ2Rll2T2UzREF0NjI0aXlYcDUzMWc2RlFHeDlEb2VKNHk5eGdVZ01XU2pTU01Ib2M5V092QjBzeWVFLXgwU2tYNUt2dHY3bEt5Z0pCaHlhNlNPLXg1RWJPQVFPNkJNWXoySU1CZzMzS2NlM0ZpbnhETkNvaWJZUTVYaWtBSUJubV9FM1Fmd1hJQVhyWkdZNzcxMGpfc3FRdw?oc=5"
   },
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-12"
+  "edition": "2026-10-12",
+  "pertinence": "indirecte",
+  "urgence": "information",
+  "statut": "rumeur",
+  "perimetre": "autre_pays",
+  "qui_concerne": "",
+  "verifications": "",
+  "contenu": "extrait"
  },
  {
   "id": "0def42ac1a1528ec",
-  "titre": "Annonce possible d'un partenariat ADT lors de l'événement « Welcome Home » d'Apple",
+  "titre": "Possible partenariat entre ADT et Apple lors de l'événement « Welcome Home »",
   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQV2YwZ2E2ME8ydjB5X3VZQ3gyMC1LODlIbkhBVURrOTJLVjVydXhRcG5OenFxbjI2Wkd0UURiM2RVWnZoaDBKakNKbTYxeXRKQjNKaHF3ZEdudlFsRVhhb25FX0JLSnNjTEpRZWNsYUMzUHFiSzA4MUkyUlhtS2lxczlWczNoMU1QUmFOUWNQcUZxZ1hvdkdtVk5lM3pDWm9yUjRVMUJEblAzRklQb3F2RG10UnY4Q0nSAbwBQVVfeXFMTlRIb0VRbGNiUnBnSElDUTNfb3lkc01RZzhXZUlTS3pMSFFLdzM4VW91dmxCNzNjSFVZU0p0Q3F3UXVEdEJwQThXZ0pJS2t5d1ROeFBoVWdCY1VFblNXQWFKT1NXWW9KQmJRaHZlSFoxOFJla0Z3WXJvSXpMQnhFeXljT0JtYzF0enFUSUZlSVFEWDdtYTM2V1pUV0VDSUg3aEpjUkw3bXhBbTFBVWZIQml2Q1o3QkRzWlItVGw?oc=5",
   "source": "The Apple Post",
   "date": "2026-10-11T03:31:38+00:00",
@@ -4239,16 +4360,29 @@
   },
   "payant": null,
   "categorie": "marche",
-  "score": 60,
-  "resume": "Un site spécialisé Apple indique qu'un partenariat avec ADT pourrait être annoncé lors de l'événement « Welcome Home » du 13 octobre. L'extrait ne précise pas la nature de l'accord et reste au stade de la spéculation.",
-  "pourquoi": "Une annonce de ce type pourrait signaler une montée en puissance de la télésurveillance intégrée aux plateformes de maison connectée, concurrençant les offres traditionnelles.",
+  "score": 40,
+  "resume": "Un média américain, The Apple Post, rapporte qu'Apple pourrait annoncer un partenariat avec ADT, un grand acteur américain de la sécurité et de la télésurveillance résidentielle, lors de son événement « Welcome Home » prévu le 13 octobre. L'information est au conditionnel et repose uniquement sur le titre et un court extrait, sans détail sur la nature de l'accord ni sur les services concernés.",
+  "pourquoi": "Une intégration entre une plateforme domotique grand public et un fournisseur de télésurveillance pourrait traduire une tendance du marché (sécurité connectée à la maison, nouveaux canaux de distribution) susceptible d'intéresser un centre, sans impact opérationnel démontré à ce stade.",
   "action": "",
   "echeance": {
    "date": "2026-10-13",
-   "libelle": "Événement Apple « Welcome Home »"
+   "precision": "jour",
+   "periode": "",
+   "type": "annonce_non_confirmee",
+   "libelle": "Événement Apple « Welcome Home », annonce possible d'un partenariat avec ADT",
+   "justification": "L'article indique une annonce possible lors de l'événement « Welcome Home » du 13 octobre.",
+   "source": "The Apple Post",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQV2YwZ2E2ME8ydjB5X3VZQ3gyMC1LODlIbkhBVURrOTJLVjVydXhRcG5OenFxbjI2Wkd0UURiM2RVWnZoaDBKakNKbTYxeXRKQjNKaHF3ZEdudlFsRVhhb25FX0JLSnNjTEpRZWNsYUMzUHFiSzA4MUkyUlhtS2lxczlWczNoMU1QUmFOUWNQcUZxZ1hvdkdtVk5lM3pDWm9yUjRVMUJEblAzRklQb3F2RG10UnY4Q0nSAbwBQVVfeXFMTlRIb0VRbGNiUnBnSElDUTNfb3lkc01RZzhXZUlTS3pMSFFLdzM4VW91dmxCNzNjSFVZU0p0Q3F3UXVEdEJwQThXZ0pJS2t5d1ROeFBoVWdCY1VFblNXQWFKT1NXWW9KQmJRaHZlSFoxOFJla0Z3WXJvSXpMQnhFeXljT0JtYzF0enFUSUZlSVFEWDdtYTM2V1pUV0VDSUg3aEpjUkw3bXhBbTFBVWZIQml2Q1o3QkRzWlItVGw?oc=5"
   },
   "analyse_par": "claude-haiku-5-5",
-  "edition": "2026-10-12"
+  "edition": "2026-10-12",
+  "pertinence": "indirecte",
+  "urgence": "information",
+  "statut": "rumeur",
+  "perimetre": "autre_pays",
+  "qui_concerne": "",
+  "verifications": "Vérifier l'annonce officielle d'Apple ou d'ADT après l'événement du 13 octobre 2026 ; l'information n'est qu'une possibilité rapportée par un média étranger.",
+  "contenu": "extrait"
  },
  {
   "id": "3d7bea2e2c262de9",

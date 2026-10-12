@@ -30,7 +30,7 @@
   "titre": "Semaine du 12 au 18 octobre 2026",
   "en_cours": true,
   "maj": "2026-10-12",
-  "synthese": "Cette semaine, le sujet principal est le rapprochement supposé entre ADT et Apple dans la maison connectée, signalé par Digital Trends et Simply Wall Street. D'autres médias ont repris la même information, mais il s'agit d'une seule source, et elle reste non confirmée : son périmètre et ses modalités ne sont pas connus. Sur le plan technique, trois annonces concernent l'analyse vidéo et le stockage : un boîtier d'analyse IA en périphérie de ARSA Technology (Security Info Watch), la solution VK VMS de DMP avec AlarmVision (SDM Magazine) et un brevet Cozaint pour l'architecture MARCIA (SDM Magazine).\n\nPour un centre de télésurveillance, rien ne change immédiatement dans les procédures. Ces annonces méritent toutefois votre attention : une analyse vidéo embarquée peut faciliter la levée de doute et le tri des alarmes, et l'archivage multi-niveaux de MARCIA peut modifier le temps d'accès aux preuves vidéo. Les offres Plus et Pro de DMP, avec recherche en langage naturel, pourraient aussi faire évoluer ce que proposent vos installateurs.\n\nAucune échéance réglementaire ou opérationnelle n'est mentionnée cette semaine. Il vous est donc conseillé de suivre les communications officielles d'ADT et d'Apple, sans les considérer comme acquises tant qu'elles ne sont pas confirmées, et d'évaluer ces outils d'analyse vidéo lors de vos prochains choix techniques.",
+  "synthese": "Cette semaine, l'actualité porte surtout sur la vidéo et l'analyse intelligente. Digital Trends rapporte qu'Apple pourrait s'appuyer sur ADT pour son écosystème de maison connectée. Reprise par plusieurs médias, l'information reste non confirmée, car ces reprises ne sont pas des sources indépendantes. Le périmètre et les modalités de cette collaboration supposée restent inconnus.\n\nPour un centre de télésurveillance, les effets concrets restent limités à ce stade. Le boîtier d'analyse vidéo par IA d'ARSA Technology, installable sur des systèmes existants, pourrait intéresser la levée de doute, mais ses performances et ses tarifs ne sont pas précisés. Cozaint annonce un brevet américain pour son architecture MARCIA, qui restitue depuis des bandes LTO une vidéo archivée directement dans le logiciel de gestion vidéo, ce qui peut faciliter l'accès aux preuves. DMP lance enfin VK VMS, avec les abonnements AlarmVision Plus et Pro.\n\nAucune échéance ni obligation réglementaire n'est signalée cette semaine. Ces annonces sont à suivre, sans action immédiate requise. Si vous envisagez l'une de ces solutions, vérifiez sa compatibilité avec votre parc existant.",
   "articles": [
    "bdf5424e4e7d0872",
    "1eb56f7d55014325",
@@ -39,10 +39,8 @@
    "4690562610ea108f"
   ],
   "echeances": [
-   "2bdc1179dfa9c1e9",
-   "6c8c03e35b6cabd7",
+   "0def42ac1a1528ec",
    "bc9681db1c8113ca",
-   "43d837b2f0cb1266",
    "54e666f6c5806a29"
   ]
  }
