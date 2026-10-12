@@ -107,6 +107,12 @@ def test_site_build(tmp_path, monkeypatch):
     index = (out / "index.html").read_text(encoding="utf-8")
     assert '"key": "reglementation"' in index and "app.js" in index
     assert '"updated": "9 octobre à 06h45"' in index                # heure de la dernière vraie collecte, pas de la republication
+    # Interface : « Scan immédiat » rangé dans le menu Administration, sélecteur de presse discret,
+    # choix de la vue mémorisé, lien d'évitement pour le clavier.
+    admin = index[index.index('<details class="admin"'):index.index("</details>")]
+    assert "Scan immédiat" in admin and "ne protège rien" in admin and index.count("Scan immédiat") == 1
+    assert 'data-press="all"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
+    assert 'localStorage.getItem("veilletls.vue")' in index
     ics = (out / "echeances.ics").read_text(encoding="utf-8")
     assert "DTSTART;VALUE=DATE:20270401" in ics and ics.count("BEGIN:VEVENT") == 1   # l'ancienne date non vérifiée n'y est pas
     assert public[0]["echeance"]["precision"] == "a_verifier"

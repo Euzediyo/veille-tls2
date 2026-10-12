@@ -46,7 +46,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 <title>{escape(title)}</title>
 <meta name="description" content="{escape(description or site['sous_titre'])}">
 <meta name="theme-color" content="#070c14">
-<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}}catch(e){{}}</script>
+<script>try{{var d=document.documentElement;d.dataset.theme=localStorage.getItem("veilletls.theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.density=localStorage.getItem("veilletls.vue")||"detaillee"}}catch(e){{}}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -76,44 +76,55 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     }
     return head(site["titre"], site) + f"""
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="bar home">
-  <div class="bar-in">
-    <a class="scan-btn" href="{REPO_ACTIONS}" target="_blank" rel="noopener" title="Lancer une collecte immédiate (réservé à l'administrateur, compte GitHub requis)">Scan immédiat</a>
+  <div class="mast-row">
+    <details class="admin" id="admin">
+      <summary><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="adm-t">Administration</span></summary>
+      <div class="admin-p">
+        <a href="{REPO_ACTIONS}" target="_blank" rel="noopener">Scan immédiat<small>Ouvre GitHub pour lancer une collecte</small></a>
+        <p>Ce menu range simplement les outils de l'administrateur : il ne protège rien. C'est GitHub qui vérifie l'accès (compte autorisé requis).</p>
+      </div>
+    </details>
+    <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p><span class="mast-s">{escape(site['sous_titre'])}</span><span class="mast-d"><span id="mast-d"></span> · Dernière collecte : <span id="last">--</span></span></p></div>
     <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button>
   </div>
-  <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p>{escape(site['sous_titre'])}</p><p class="mast-d"><span id="mast-d"></span> · Dernière collecte : <span id="last">--</span></p></div>
 </header>
 
-<nav class="tabs" role="tablist" aria-label="Vues">
-  <button type="button" class="tab" role="tab" data-view="journal"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg><span>Journal</span> <em id="t-journal-n" title="non lus">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="semaine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><span class="d-only">La </span>Semaine</span></button>
-  <button type="button" class="tab" role="tab" data-view="favoris"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg><span>Favoris</span> <em id="t-favoris-n">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="echeances"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span>Échéances</span> <em id="t-echeances-n" title="à venir">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="fond"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H11v17H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 4.5A1.5 1.5 0 0 0 18.5 3H13v17h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg><span><span class="d-only">Ressources de fond</span><span class="m-only">Ressources</span></span> <em id="t-fond-n" title="non lus">0</em></button>
-  <button type="button" class="tab" role="tab" data-view="archives"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><span>Archives</span></button>
+<nav class="tabs" aria-label="Vues">
+  <button type="button" class="tab" data-view="journal"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg><span>Journal</span> <em id="t-journal-n" title="Articles non lus, au total">0</em></button>
+  <button type="button" class="tab" data-view="semaine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><span class="d-only">La </span>Semaine</span></button>
+  <button type="button" class="tab" data-view="favoris"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg><span>Favoris</span> <em id="t-favoris-n" title="Favoris enregistrés">0</em></button>
+  <button type="button" class="tab" data-view="echeances"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span>Échéances</span> <em id="t-echeances-n" title="Échéances à venir">0</em></button>
+  <button type="button" class="tab" data-view="fond"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H11v17H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 4.5A1.5 1.5 0 0 0 18.5 3H13v17h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg><span><span class="d-only">Ressources de fond</span><span class="m-only">Ressources</span></span> <em id="t-fond-n" title="Ressources non lues">0</em></button>
+  <button type="button" class="tab" data-view="archives"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><span>Archives</span></button>
 </nav>
 
 <div class="shell">
-  <main class="main">
+  <main class="main" id="contenu" tabindex="-1">
+    <section class="ess" id="ess" aria-labelledby="ess-h" hidden></section>
     <nav class="rail" id="rail" aria-label="Catégories"></nav>
     <div class="tools" id="tools">
       <select id="cat-sel" class="m-only" aria-label="Canal"></select>
-      <button type="button" class="btn m-only" id="filt-btn" aria-expanded="false" aria-controls="tools">Filtres</button>
+      <button type="button" class="btn m-only" id="filt-btn" aria-expanded="false" aria-controls="tools">Filtres<em id="filt-n" hidden></em></button>
       <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
         <input id="q" type="search" placeholder="Rechercher : R31, levée de doute, convention collective…" aria-label="Rechercher" autocomplete="off"></label>
-      <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Tout</option></select>
+      <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
       <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
-      <div class="seg" id="readf" role="group" aria-label="Afficher"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
-      <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
-      <button type="button" class="btn ghost" id="unmask" hidden></button>
-      <span class="daychip" id="daychip" hidden><span id="daychip-t"></span><button type="button" id="daychip-x" aria-label="Revenir à toutes les éditions">✕</button></span>
+      <div class="row2">
+        <div class="seg" id="press" role="group" aria-label="Presse"><span class="seg-l" aria-hidden="true">Presse</span><button type="button" data-press="fr" aria-pressed="true">France <em id="pr-fr">0</em></button><button type="button" data-press="intl" aria-pressed="false">International <em id="pr-intl">0</em></button><button type="button" data-press="all" aria-pressed="false">Tous <em id="pr-all">0</em></button></div>
+        <div class="seg" id="readf" role="group" aria-label="Lecture"><button type="button" data-rf="unread" aria-pressed="true">Non lus <em id="rf-unread">0</em></button><button type="button" data-rf="read" aria-pressed="false">Lus <em id="rf-read">0</em></button><button type="button" data-rf="all" aria-pressed="false">Tous</button></div>
+        <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div>
+        <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
+        <button type="button" class="btn ghost" id="unmask" hidden></button>
+      </div>
     </div>
-    <div class="feed" id="v-journal"><div class="press" id="press" role="group" aria-label="Presse">
-      <button type="button" data-press="fr" aria-pressed="true"><span>Presse française</span><em id="pr-fr">0</em></button>
-      <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
+    <div class="active" id="active" hidden></div>
+    <div class="feed" id="v-journal">
       <div class="level" id="level" role="group" aria-label="Niveau de veille">
       <button type="button" data-level="essentielle" aria-pressed="true"><span>Veille essentielle <em id="lv-essentielle">0</em></span><small>Impact direct, forte pertinence métier</small></button>
       <button type="button" data-level="elargie" aria-pressed="false"><span>Veille élargie <em id="lv-elargie">0</em></span><small>Avec les informations indirectes et la culture du secteur</small></button></div>
+      <p class="count" id="count" role="status"></p>
       <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>
     <div class="feed" id="v-echeances" hidden></div>
