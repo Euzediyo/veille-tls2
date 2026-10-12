@@ -27,6 +27,8 @@ EPISODES = ROOT / "data" / "podcast.json"
 KEEP_DAYS = 14
 MAX_SUJETS = 6
 BITRATE = 48_000  # débit des fichiers produits par la voix de synthèse (bits par seconde)
+RETRIES = 4
+RETRY_WAIT = 5  # secondes, multipliées par le numéro de la tentative
 JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 
 
@@ -139,12 +141,25 @@ def synthesize(text: str, path: Path, voices: dict) -> None:
     Chaque réplique est lue par la voix de son animateur, puis les morceaux sont mis bout à bout."""
     import edge_tts
 
+    async def say(line: str, voice: str) -> bytes:
+        # Le service refuse parfois une connexion (WSServerHandshakeError) : on réessaie avant d'abandonner.
+        for attempt in range(RETRIES):
+            try:
+                audio = bytearray()
+                async for chunk in edge_tts.Communicate(line, voice).stream():
+                    if chunk["type"] == "audio":
+                        audio += chunk["data"]
+                return bytes(audio)
+            except Exception:
+                if attempt == RETRIES - 1:
+                    raise
+                await asyncio.sleep(RETRY_WAIT * (attempt + 1))
+        return b""
+
     async def run() -> bytes:
         audio = bytearray()
         for host, line in parse_dialogue(text):
-            async for chunk in edge_tts.Communicate(line, voices[host]).stream():
-                if chunk["type"] == "audio":
-                    audio += chunk["data"]
+            audio += await say(line, voices[host])
         return bytes(audio)
 
     data = asyncio.run(run())
@@ -157,6 +172,10 @@ def load_episodes() -> list[dict]:
     if EPISODES.exists():
         return json.loads(EPISODES.read_text(encoding="utf-8"))
     return []
+
+
+def has_episode(day: date) -> bool:
+    return any(e["date"] == day.isoformat() for e in load_episodes())
 
 
 def save_episodes(episodes: list[dict]) -> None:

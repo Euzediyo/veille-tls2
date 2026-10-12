@@ -65,18 +65,24 @@ def _fetch_feed(url: str):
     return feedparser.parse(resp.content)
 
 
-def google_news_url(query: str) -> str:
+def google_news_url(query: str, edition: str = "FR:fr") -> str:
+    """Adresse du flux Google News. L'édition s'écrit « PAYS:langue » (FR:fr, US:en, GB:en, BE:fr...)."""
     q = urllib.parse.quote(query)
-    return f"https://news.google.com/rss/search?q={q}&hl=fr&gl=FR&ceid=FR:fr"
+    country, _, lang = edition.partition(":")
+    hl = "fr" if edition == "FR:fr" else f"{lang}-{country}"
+    return f"https://news.google.com/rss/search?q={q}&hl={hl}&gl={country}&ceid={country}:{lang}"
 
 
-def collect_google_news(queries: list[str], report: list[str]) -> list[dict]:
+def collect_google_news(queries: list, report: list[str], international: bool = False) -> list[dict]:
+    """Une requête est soit un texte (édition France), soit {requete, edition} pour une autre édition."""
     items = []
-    for query in queries:
+    for entry_cfg in queries:
+        query, edition = (entry_cfg, "FR:fr") if isinstance(entry_cfg, str) else (entry_cfg["requete"], entry_cfg.get("edition", "FR:fr"))
+        label = query if edition == "FR:fr" else f"{query} [{edition}]"
         try:
-            feed = _fetch_feed(google_news_url(query))
+            feed = _fetch_feed(google_news_url(query, edition))
         except requests.RequestException as exc:
-            report.append(f"Google News « {query} » : échec ({exc.__class__.__name__})")
+            report.append(f"Google News « {label} » : échec ({exc.__class__.__name__})")
             continue
         for entry in feed.entries:
             title = entry.get("title", "")
@@ -93,12 +99,13 @@ def collect_google_news(queries: list[str], report: list[str]) -> list[dict]:
                 "extrait": clean_text(entry.get("summary", "")),
                 "origine": "google_news",
                 "filtre": "aucun",
+                **({"international": True} if international else {}),
             })
-        report.append(f"Google News « {query} » : {len(feed.entries)} résultats")
+        report.append(f"Google News « {label} » : {len(feed.entries)} résultats")
     return items
 
 
-def collect_rss(feeds: list[dict], report: list[str]) -> list[dict]:
+def collect_rss(feeds: list[dict], report: list[str], international: bool = False) -> list[dict]:
     items = []
     for feed_cfg in feeds:
         url, name = feed_cfg["url"], feed_cfg["nom"]
@@ -121,6 +128,7 @@ def collect_rss(feeds: list[dict], report: list[str]) -> list[dict]:
                 "extrait": clean_text(entry.get("summary", "")),
                 "origine": "rss",
                 "filtre": feed_cfg.get("filtre", "aucun"),
+                **({"international": True} if international else {}),
             }
             # Certains flux donnent le début du texte : il sert à l'analyse, sans être enregistré.
             content = clean_text((entry.get("content") or [{}])[0].get("value", ""), 2500)

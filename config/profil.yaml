@@ -26,7 +26,8 @@ categories:
     mots_cles: [CNAPS, "sécurité privée", "sécurité intérieure", "carte professionnelle",
       agrément, autorisation d'exercer, décret, arrêté, "projet de loi", "proposition de loi",
       jurisprudence, sanction, vidéoprotection, "vidéosurveillance algorithmique", RGPD, CNIL,
-      "activités privées de sécurité", "livre VI"]
+      "activités privées de sécurité", "livre VI",
+      "private security", "security industry", "Security Industry Authority", licensing, regulation]
   apsad:
     nom: "APSAD / CNPP"
     priorite: "très haute"
@@ -37,7 +38,8 @@ categories:
       techniques. Une évolution d'un référentiel existant compte autant qu'une
       nouvelle norme, souvent plus.
     mots_cles: [APSAD, CNPP, R31, R30, N30, N31, R81, R82, référentiel, certification,
-      "règle APSAD", norme, "EN 50518", "EN 50136", "NF EN", intrusion, transmission, maintenance]
+      "règle APSAD", norme, "EN 50518", "EN 50136", "NF EN", intrusion, transmission, maintenance,
+      Euralarm, "UL 827", "monitoring standard"]
   social:
     nom: "Social / RH"
     priorite: "haute"
@@ -63,7 +65,10 @@ categories:
       logiciels de télésurveillance et de sécurité.
     mots_cles: [télésurveillance, téléopérateur, "centre de télésurveillance", "levée de doute",
       alarme, PTI, DATI, "travailleur isolé", téléassistance, vidéosurveillance, "analyse vidéo",
-      supervision, "sécurité électronique", hypervision, "fausses alarmes", détecteur]
+      supervision, "sécurité électronique", hypervision, "fausses alarmes", détecteur,
+      "alarm monitoring", "monitoring center", "monitoring centre", "alarm receiving", "remote monitoring",
+      "video monitoring", "remote video", "video verification", "false alarms", "false alarm",
+      "remote guarding", "lone worker", PERS, "video analytics", "central station", "monitoring company"]
   marche:
     nom: "Secteur / Marché"
     priorite: "moyenne"
@@ -73,7 +78,8 @@ categories:
       nouveaux produits et équipements, stratégies des grands groupes du secteur.
     mots_cles: [rachat, acquisition, fusion, "levée de fonds", "chiffre d'affaires", marché,
       Verisure, Securitas, Seris, Prosegur, Onet, Nexecur, EPS, Scutum, Ajax, Hikvision,
-      Axis, Genetec, Milestone, start-up, lancement, innovation]
+      Axis, Genetec, Milestone, start-up, lancement, innovation,
+      ADT, "Allied Universal", G4S, "Brinks Home", acquires, merger, launches]
   management:
     nom: "Management / Exploitation"
     priorite: "moyenne"
@@ -84,7 +90,8 @@ categories:
       IA appliquée au management, formation des téléopérateurs, bonnes pratiques.
     mots_cles: [management, recrutement, fidélisation, absentéisme, "qualité de service", KPI,
       productivité, formation, "relation client", "centre d'appels", "expérience client",
-      turnover, "bonnes pratiques", "pénurie"]
+      turnover, "bonnes pratiques", "pénurie",
+      operators, staffing, workforce, "operator training", retention]
 
 # Mots qui signalent presque toujours un article hors sujet.
 exclusions: ["horoscope", "recette", "football", "ligue 1", "people", "météo"]

@@ -26,7 +26,7 @@ MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août
 
 LEVELS = [(90, "Critique"), (70, "Important"), (50, "Intéressant"), (30, "Veille")]
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
-                 "resume", "pourquoi", "action", "echeance", "payant")
+                 "resume", "pourquoi", "action", "echeance", "payant", "international")
 FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
          "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600"
          "&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap")

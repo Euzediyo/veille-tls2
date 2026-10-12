@@ -304,3 +304,42 @@ def test_weekly_summary(tmp_path, monkeypatch):
     weeks = semaine.load()
     assert [x["lundi"] for x in weeks] == ["2026-10-05", "2026-10-12"] and not weeks[0]["en_cours"]
     assert semaine.label(date(2026, 9, 28)) == "Semaine du 28 septembre au 4 octobre 2026"
+
+
+def test_international_sources_and_prompt():
+    from veille import collect
+    assert collect.google_news_url("a b") == "https://news.google.com/rss/search?q=a%20b&hl=fr&gl=FR&ceid=FR:fr"
+    assert collect.google_news_url("x", "US:en").endswith("&hl=en-US&gl=US&ceid=US:en")
+    assert collect.google_news_url("x", "BE:fr").endswith("&hl=fr-BE&gl=BE&ceid=BE:fr")
+    sources = yaml.safe_load((CONFIG / "sources.yaml").read_text(encoding="utf-8"))
+    assert all(q["requete"] and ":" in q["edition"] for q in sources["international"]["google_news"])
+    block = analyze._article_block({**SAMPLE[0], "international": True})
+    assert "Portée : internationale" in block and "Portée" not in analyze._article_block(SAMPLE[0])
+    assert "Presse internationale" in analyze.build_system_prompt(PROFILE)
+
+
+def test_podcast_voice_retry(tmp_path, monkeypatch):
+    import asyncio
+    import sys
+    from veille import podcast
+    calls = {"n": 0}
+
+    class Flaky:
+        def __init__(self, text, voice):
+            pass
+
+        async def stream(self):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise ConnectionError("handshake")
+            yield {"type": "audio", "data": b"son"}
+
+    monkeypatch.setitem(sys.modules, "edge_tts", types.SimpleNamespace(Communicate=Flaky))
+    monkeypatch.setattr(podcast, "RETRY_WAIT", 0)
+    out = tmp_path / "ep.mp3"
+    podcast.synthesize("CLAIRE : Bonjour.\nTHOMAS : Salut.", out, podcast.DEFAULT_VOICES)
+    assert out.read_bytes() == b"sonson" and calls["n"] == 3
+    monkeypatch.setattr(podcast, "EPISODES", tmp_path / "podcast.json")
+    assert not podcast.has_episode(date(2026, 10, 12))
+    podcast.save_episodes([{"date": "2026-10-12"}])
+    assert podcast.has_episode(date(2026, 10, 12))
