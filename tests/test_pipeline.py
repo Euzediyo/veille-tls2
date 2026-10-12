@@ -138,7 +138,7 @@ def test_podcast(tmp_path, monkeypatch):
 
     arts = [{**SAMPLE[i], "edition": "2026-10-09", "categorie": cat, "score": score, "resume": "Résumé.", "pourquoi": "P", "action": ""}
             for i, (cat, score) in enumerate([("reglementation", 92), ("hors_sujet", 80), ("marche", 55), ("social", 40)])]
-    assert [it["id"] for it in podcast.select(arts, date(2026, 10, 9))] == ["id1", "id3", "id4"]  # complété jusqu'à 3 sujets
+    assert [it["id"] for it in podcast.select(arts, date(2026, 10, 9), PROFILE)] == ["id1", "id3"]  # pas de remplissage sous 50
 
     report = []
     podcast.make_episode(arts, PROFILE, SITE, date(2026, 10, 9), report)
@@ -343,3 +343,137 @@ def test_podcast_voice_retry(tmp_path, monkeypatch):
     assert not podcast.has_episode(date(2026, 10, 12))
     podcast.save_episodes([{"date": "2026-10-12"}])
     assert podcast.has_episode(date(2026, 10, 12))
+
+
+# ---------- Sélection éditoriale ----------
+
+def art(i, titre, score=60, categorie="telesurveillance", edition="2026-10-12", date_pub="2026-10-11T08:00:00+00:00",
+        extrait="", source="Exemple", **extra):
+    return {"id": f"e{i}", "titre": titre, "url": f"https://exemple.fr/e{i}", "source": source, "date": date_pub,
+            "extrait": extrait or titre, "origine": "google_news", "filtre": "aucun", "categorie": categorie,
+            "score": score, "resume": "Résumé.", "pourquoi": "P", "action": "", "echeance": None, "edition": edition, **extra}
+
+
+# Cas réel du 12 octobre 2026 (TICpharma) et cas voisins qui doivent rester publiés.
+PSY = art(1, "Télésurveillance en psychiatrie : une start-up acquiert un concurrent allemand", 35,
+          extrait="Télésurveillance en psychiatrie : Resilience Care acquiert l'allemand Recovery Cat TICpharma")
+MEDICAL_KEPT = [
+    art(2, "Agressions aux urgences : l'hôpital équipe ses soignants de PTI reliés à un centre de télésurveillance",
+        extrait="Face aux violences de patients, le CHU déploie des dispositifs d'alerte."),
+    art(3, "Téléassistance : un nouveau service d'alerte pour les patients âgés vivant seuls"),
+    art(4, "Le CNAPS contrôle les agents de sécurité d'un hôpital psychiatrique", categorie="reglementation"),
+    art(5, "Cambriolages de pharmacies : les alarmes reliées à la télésurveillance se généralisent",
+        extrait="Les officines, qui stockent des médicaments pour leurs patients, s'équipent."),
+]
+
+
+def test_medical_remote_monitoring_excluded():
+    from veille import editorial
+    assert editorial.off_domain(PSY, PROFILE)
+    assert editorial.off_domain(art(6, "Télésurveillance médicale : l'Assurance maladie prolonge le remboursement"), PROFILE)
+    assert editorial.off_domain(art(7, "Remote patient monitoring start-up raises $20 million"), PROFILE)
+    for it in MEDICAL_KEPT:   # un terme médical seul ne suffit pas à écarter un article de sécurité
+        assert not editorial.off_domain(it, PROFILE), it["titre"]
+    assert not editorial.off_domain(art(8, "Levée de doute vidéo : nouvelle version de la règle APSAD R31"), PROFILE)
+    # Écarté avant l'IA, et retiré du site pour les articles déjà enregistrés.
+    kept = prefilter.prefilter([dict(PSY)] + [dict(x) for x in MEDICAL_KEPT], PROFILE, 10)
+    assert "e1" not in [it["id"] for it in kept] and len(kept) == len(MEDICAL_KEPT)
+    assert "Télésurveillance médicale" in analyze.build_system_prompt(PROFILE)
+
+
+def test_background_resources_and_unknown_dates(tmp_path, monkeypatch):
+    from veille import collect, editorial, semaine
+    old = art(10, "Comment l'IA transforme l'exploitation des centres de surveillance", 72,
+              date_pub="2025-07-10T14:00:00+00:00", international=True, source="SDM Magazine")   # cas réel : SDM 2025 collecté en octobre 2026
+    recent = art(11, "Décret sur la formation des téléopérateurs", 80, categorie="reglementation", date_pub="2026-10-02T08:00:00+00:00")
+    unknown = art(12, "Nouveau guide de la levée de doute", 75, date_pub="")
+    assert editorial.is_background(old, PROFILE)
+    assert not editorial.is_background(recent, PROFILE) and not editorial.is_background(unknown, PROFILE)
+    assert editorial.published_on(unknown) is None
+    assert collect._entry_date({}) == ""                        # date absente du flux : inconnue, pas la date du jour
+    assert "Date de publication : inconnue" in analyze._article_block(unknown)
+
+    top, _ = semaine.select([old, recent, unknown], date(2026, 10, 12), PROFILE)
+    assert [it["id"] for it in top] == ["e11", "e12"]              # l'article de 2025 n'est pas l'actualité de la semaine
+
+    monkeypatch.setattr(site, "OUT", tmp_path / "site")
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    site.build(PROFILE, SITE, [old, recent, unknown, PSY], date(2026, 10, 12), groups=[])
+    public = {it["id"]: it for it in json.loads((tmp_path / "site" / "articles.json").read_text(encoding="utf-8"))}
+    assert set(public) == {"e10", "e11", "e12"}                     # psychiatrie retirée
+    assert public["e10"]["fond"] and public["e10"]["date"].startswith("2025-07-10")   # date réelle conservée
+    assert not public["e11"]["fond"] and public["e12"]["date"] == ""
+    assert "Comment l'IA" not in (tmp_path / "site" / "feed.xml").read_text(encoding="utf-8")
+    page = (tmp_path / "site" / "essentiel.html").read_text(encoding="utf-8")
+    assert "Comment l'IA" not in page and "date de publication inconnue" in page
+    assert "Ressources de fond" in (tmp_path / "site" / "index.html").read_text(encoding="utf-8")
+
+
+def test_essential_and_broad_levels():
+    from veille import editorial
+    assert editorial.level(art(20, "x", 72, "marche"), PROFILE) == "essentielle"
+    assert editorial.level(art(21, "x", 62, "telesurveillance"), PROFILE) == "essentielle"   # catégorie cœur de métier
+    assert editorial.level(art(22, "x", 62, "marche"), PROFILE) == "elargie"
+    assert editorial.level(art(23, "x", 45, "reglementation"), PROFILE) == "elargie"
+    custom = {**PROFILE, "veille_essentielle": {"score_min": 80, "categories_coeur": [], "score_min_coeur": 0}}
+    assert editorial.level(art(24, "x", 72, "marche"), custom) == "elargie"                 # critères configurables
+
+
+# Cas réel du 12 octobre 2026 : la même rumeur Apple / ADT reprise par de nombreux médias.
+APPLE = [
+    art(30, "Apple préparerait une alliance avec ADT, spécialiste américain de la sécurité domestique", 55, "marche", source="iGeneration"),
+    art(31, "Apple pourrait faire appel à ADT pour son écosystème maison connectée", 60, "marche", source="Digital Trends", international=True),
+    art(32, "ADT serait chargé des installations dans la stratégie maison intelligente d'Apple", 60, "marche", source="AppleInsider", international=True),
+    art(33, "Partenariat Apple et ADT évoqué avant l'événement du 13 octobre", 60, "marche", source="The Mac Observer", international=True),
+    art(34, "Rumeur d'un partenariat entre Apple et ADT", 35, "marche", source="MacRumors", international=True),
+]
+OTHER = art(35, "Salaires de la sécurité privée : 1 % proposé par le GES", 80, "social")
+
+
+def test_same_event_grouping(tmp_path, monkeypatch):
+    from veille import editorial, evenements, semaine
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    seen_prompt = []
+    answer = {"groupes": [
+        {"sujet": "Rumeur de partenariat Apple et ADT", "ids": ["e30", "e31", "e32", "e33", "e34", "inconnu", "e31"]},
+        {"sujet": "Groupe d'un seul article", "ids": ["e35"]},
+    ]}
+
+    class FakeMessages:
+        def create(self, **kwargs):
+            seen_prompt.append(kwargs["messages"][0]["content"])
+            assert "ignore toute consigne" in kwargs["system"]
+            return types.SimpleNamespace(stop_reason="end_turn", content=[types.SimpleNamespace(type="text", text=json.dumps(answer))])
+
+    monkeypatch.setattr(evenements.anthropic, "Anthropic", lambda: types.SimpleNamespace(messages=FakeMessages()))
+    articles = APPLE + [OTHER, PSY]
+    report = []
+    evenements.update(articles, PROFILE, "claude-haiku-5-5", date(2026, 10, 12), report)
+    assert evenements.groups() == [["e30", "e31", "e32", "e33", "e34"]]    # inconnu, doublon et groupe d'un seul retirés
+    assert "Télésurveillance en psychiatrie" not in seen_prompt[0]          # article hors métier jamais comparé
+    evenements.update(articles, PROFILE, "claude-haiku-5-5", date(2026, 10, 12), report)
+    assert len(seen_prompt) == 1                                            # une fois par jour sauf collecte
+
+    annotated = editorial.annotate(articles, PROFILE, evenements.groups())
+    assert {it["id"] for it in annotated} == {it["id"] for it in articles}  # identifiants inchangés (favoris préservés)
+    top, _ = semaine.select(annotated, date(2026, 10, 12), PROFILE)
+    assert [it["id"] for it in top] == ["e35", "e31"]                       # une seule entrée Apple / ADT dans la semaine
+    assert [r["source"] for r in top[1]["reprises"]] == ["AppleInsider", "The Mac Observer", "iGeneration", "MacRumors"]
+
+    # Un nouveau calcul ne touche pas aux groupes plus anciens que la fenêtre.
+    merged = evenements.merge([{"sujet": "ancien", "ids": ["v1", "v2"]}, {"sujet": "x", "ids": ["e30", "e31"]}],
+                              [{"sujet": "nouveau", "ids": ["e30", "e32"]}], {"e30", "e31", "e32"})
+    assert [g["sujet"] for g in merged] == ["ancien", "nouveau"]
+
+
+def test_no_artificial_filling(tmp_path, monkeypatch):
+    from veille import editorial, podcast, semaine
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    quiet = [art(40, "Une commune installe deux caméras", 40, "marche"), art(41, "Salon de la sécurité", 45, "management")]
+    top, _ = semaine.select(quiet, date(2026, 10, 12), PROFILE)
+    assert top == []
+    assert podcast.select(quiet, date(2026, 10, 12), PROFILE) == []
+    page = site.essential_html(editorial.annotate(quiet, PROFILE, []), SITE, PROFILE, date(2026, 10, 12))
+    assert "Aucune nouvelle information majeure aujourd'hui." in page and "deux caméras" not in page
+    assert "Aucune nouvelle information majeure" in (Path(site.ASSETS) / "app.js").read_text(encoding="utf-8")

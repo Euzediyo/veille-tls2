@@ -12,7 +12,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
-from . import store
+from . import editorial, evenements, store
 from .icons import write_icons
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,7 +26,7 @@ MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août
 
 LEVELS = [(90, "Critique"), (70, "Important"), (50, "Intéressant"), (30, "Veille")]
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
-                 "resume", "pourquoi", "action", "echeance", "payant", "international")
+                 "resume", "pourquoi", "action", "echeance", "payant", "international", "fond", "niveau", "groupe")
 FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
          "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600"
          "&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap")
@@ -92,6 +92,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
   <button type="button" class="tab" role="tab" data-view="semaine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><span class="d-only">La </span>Semaine</span></button>
   <button type="button" class="tab" role="tab" data-view="favoris"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg><span>Favoris</span> <em id="t-favoris-n">0</em></button>
   <button type="button" class="tab" role="tab" data-view="echeances"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span>Échéances</span> <em id="t-echeances-n" title="à venir">0</em></button>
+  <button type="button" class="tab" role="tab" data-view="fond"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H11v17H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 4.5A1.5 1.5 0 0 0 18.5 3H13v17h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg><span><span class="d-only">Ressources de fond</span><span class="m-only">Ressources</span></span> <em id="t-fond-n" title="non lus">0</em></button>
   <button type="button" class="tab" role="tab" data-view="archives"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg><span>Archives</span></button>
 </nav>
 
@@ -113,6 +114,9 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     <div class="feed" id="v-journal"><div class="press" id="press" role="group" aria-label="Presse">
       <button type="button" data-press="fr" aria-pressed="true"><span>Presse française</span><em id="pr-fr">0</em></button>
       <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
+      <div class="level" id="level" role="group" aria-label="Niveau de veille">
+      <button type="button" data-level="essentielle" aria-pressed="true"><span>Veille essentielle <em id="lv-essentielle">0</em></span><small>Impact direct, forte pertinence métier</small></button>
+      <button type="button" data-level="elargie" aria-pressed="false"><span>Veille élargie <em id="lv-elargie">0</em></span><small>Avec les informations indirectes et la culture du secteur</small></button></div>
       <div class="feed" id="feed"></div></div>
     <div class="feed" id="v-semaine" hidden></div>
     <div class="feed" id="v-echeances" hidden></div>
@@ -150,6 +154,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un taux de pertinence de 0 à 100 % du point de vue d'un responsable de centre de télésurveillance, explique ce taux, propose une action pour les articles importants et repère les échéances. Les articles sous {profile.get('seuil_publication', 30)} % ou jugés hors sujet ne sont pas publiés.</p>
+<p>La <b>veille essentielle</b>, affichée par défaut, réunit les articles à impact direct ou à forte pertinence métier ; la <b>veille élargie</b> y ajoute les informations indirectes et la culture du secteur. Quand plusieurs médias reprennent la même information ou la même rumeur, une seule fiche est publiée, avec les autres sources consultables : ces reprises ne valent pas confirmations indépendantes. Un article publié plus de {profile.get('ressources_de_fond_jours', 30)} jours avant sa découverte est rangé dans les « Ressources de fond », avec sa date réelle, et n'est pas présenté comme une actualité. Le suivi médical à distance (télésurveillance de patients) n'est pas retenu, sauf lien avec la sécurité.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>
@@ -162,9 +167,10 @@ def legal_html(site: dict, profile: dict) -> str:
 
 def _essential_item(it: dict, profile: dict) -> str:
     cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
-    day = date.fromisoformat(it["edition"])
+    day = editorial.published_on(it)
+    when = f"publié le {day.day} {MOIS[day.month - 1]} {day.year}" if day else "date de publication inconnue"
     lines = [f"<h3>{escape(it['titre'])}</h3>",
-             f"<p><b>{escape(cat)}</b> · pertinence {it['score']} % ({label(it['score'])}) · {escape(it['source'])} · {day.day} {MOIS[day.month - 1]} {day.year}"
+             f"<p><b>{escape(cat)}</b> · pertinence {it['score']} % ({label(it['score'])}) · {escape(it['source'])} · {when}"
              + (" · réservé aux abonnés" if it.get("payant") else "") + "</p>"]
     if it.get("resume"):
         lines.append(f"<p>{escape(it['resume'])}</p>")
@@ -174,6 +180,9 @@ def _essential_item(it: dict, profile: dict) -> str:
     if it.get("echeance"):
         due = date.fromisoformat(it["echeance"]["date"])
         lines.append(f"<p>Échéance : {due.day} {MOIS[due.month - 1]} {due.year}, {escape(it['echeance']['libelle'])}</p>")
+    if it.get("reprises"):
+        names = ", ".join(escape(r["source"]) for r in it["reprises"])
+        lines.append(f"<p>Même information reprise par : {names} (reprises, pas des confirmations indépendantes).</p>")
     lines.append(f'<p>Source : <a href="{escape(it["url"])}">{escape(it["url"])}</a></p>')
     return "\n".join(lines)
 
@@ -182,22 +191,22 @@ def essential_html(items: list[dict], site: dict, profile: dict, today: date) ->
     """Page en texte simple des articles importants, à donner à un outil comme NotebookLM."""
     latest = max((it["edition"] for it in items), default=today.isoformat())
     week_start = (date.fromisoformat(latest) - timedelta(days=6)).isoformat()
-    day_items = sorted([it for it in items if it["edition"] == latest and it["score"] >= 50], key=lambda it: -it["score"])
-    week = sorted([it for it in items if it["edition"] >= week_start], key=lambda it: -it["score"])
-    week_items = [it for it in week if it["score"] >= 70] or week[:10]
-    if len(week_items) < 5:
-        week_items = [it for it in week if it["score"] >= 50][:15]
+    # Veille essentielle uniquement, hors ressources de fond, une fiche par événement, sans remplissage.
+    news = sorted([it for it in items if not it.get("fond") and it.get("niveau", editorial.level(it, profile)) == "essentielle"],
+                  key=lambda it: -it["score"])
+    day_items = editorial.collapse([it for it in news if it["edition"] == latest])
+    week_items = editorial.collapse([it for it in news if it["edition"] >= week_start])[:15]
     d = date.fromisoformat(latest)
-    def section(title: str, rows: list[dict]) -> str:
-        body = "\n".join(_essential_item(it, profile) for it in rows) or "<p>Aucun article important sur cette période.</p>"
+    def section(title: str, rows: list[dict], empty: str) -> str:
+        body = "\n".join(_essential_item(it, profile) for it in rows) or f"<p>{empty}</p>"
         return f"<h2>{title}</h2>\n{body}"
     return head(f"L'essentiel · {site['titre']}", site, "Les articles importants du jour et de la semaine, en texte simple") + f"""
 <body>
 <main class="prose">
 <h1>{escape(site['titre'])} : l'essentiel</h1>
 <p>Édition du {d.day} {MOIS[d.month - 1]} {d.year}. Sélection des articles les plus importants pour un centre de télésurveillance, résumés par une IA. Page prévue pour être lue par un outil comme NotebookLM ou imprimée.</p>
-{section("L'essentiel du jour", day_items)}
-{section("L'essentiel de la semaine", week_items)}
+{section("L'essentiel du jour", day_items, "Aucune nouvelle information majeure aujourd'hui.")}
+{section("L'essentiel de la semaine", week_items, "Aucune nouvelle information majeure cette semaine.")}
 </main>
 {footer(site)}
 </body>
@@ -206,14 +215,15 @@ def essential_html(items: list[dict], site: dict, profile: dict, today: date) ->
 
 
 def feed_xml(items: list[dict], site: dict, profile: dict) -> str:
-    entries = sorted([it for it in items if it["score"] >= 50], key=lambda it: it["edition"] + it["date"], reverse=True)[:100]
+    entries = sorted([it for it in items if it["score"] >= 50 and not it.get("fond")],
+                     key=lambda it: it["edition"] + (it.get("date") or ""), reverse=True)[:100]
     rows = []
     for it in entries:
         cat = profile["categories"].get(it["categorie"], {}).get("nom", "Autre")
         desc = f"[Pertinence {it['score']} % · {label(it['score'])} · {cat}] {it.get('resume', '')} Pourquoi : {it['pourquoi']}"
         if it.get("action"):
             desc += f" Action recommandée : {it['action']}"
-        pub = format_datetime(datetime.fromisoformat(it["date"]))
+        pub = format_datetime(datetime.fromisoformat(it.get("date") or it["edition"] + "T06:00:00+00:00"))
         rows.append(f"""<item><title>{xml_escape(it['titre'])}</title><link>{xml_escape(it['url'])}</link>
 <guid isPermaLink="false">{it['id']}</guid><pubDate>{pub}</pubDate><category>{xml_escape(cat)}</category>
 <source url="{xml_escape(it['url'])}">{xml_escape(it['source'])}</source><description>{xml_escape(desc)}</description></item>""")
@@ -277,7 +287,7 @@ def weeks_public(public: list[dict]) -> list[dict]:
             for w in sorted(weeks, key=lambda w: w["lundi"], reverse=True)]
 
 
-def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
+def build(profile: dict, site: dict, articles: list[dict], today: date, groups: list[list[str]] | None = None) -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
@@ -293,9 +303,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date) -> None:
     updated = f"{collected.day} {MOIS[collected.month - 1]} à {collected:%Hh%M}"
     ics_url = site["url"].rstrip("/") + "/echeances.ics"
 
-    seuil = profile.get("seuil_publication", 30)
-    public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles
-              if it["score"] >= seuil and it["categorie"] != "hors_sujet" and not it.get("non_pertinent")]
+    articles = editorial.annotate(articles, profile, evenements.groups() if groups is None else groups)
+    public = [{k: it.get(k) for k in PUBLIC_FIELDS} for it in articles if editorial.publishable(it, profile)]
     public.sort(key=lambda it: (it["edition"], it["score"]), reverse=True)
 
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")

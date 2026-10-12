@@ -10,8 +10,9 @@
   var JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   var PAGE = 40;
 
-  var data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date());
-  var st = { view: "journal", press: "fr", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
+  var byId = {}, data = [], episodes = [], weeks = [], weekIdx = 0, latest = "", today = isoLocal(new Date()), groups = {};
+  // Veille essentielle affichée par défaut à chaque visite ; la veille élargie ajoute les informations indirectes.
+  var st = { view: "journal", press: "fr", level: "essentielle", cat: "all", q: "", period: 7, min: 30, readFilter: "unread", day: "", limit: PAGE };
   var read = loadSet("veilletls.lus"), favs = loadSet("veilletls.favoris"), masked = loadSet("veilletls.masques");
   var toastTimer = 0;
 
@@ -29,6 +30,15 @@
   function tagHtml(it) { return '<span class="tag">' + esc(catName(it.categorie)) + "</span>"; }
   // Le journal sépare la presse française (affichée par défaut) et la presse internationale.
   function inPress(it, press) { return (press === "intl") === !!it.international; }
+  function inLevel(it, level) { return level === "elargie" || it.niveau !== "elargie"; }
+  // Articles qui relatent le même événement : une seule fiche, lue dès qu'un de ses articles est lu.
+  function members(it) { return groups[it.groupe || it.id] || [it]; }
+  function isRead(it) { return members(it).some(function (m) { return read.has(m.id); }); }
+  function collapse(list) {
+    var seen = {};
+    return list.filter(function (it) { var k = it.groupe || it.id; if (seen[k]) return false; seen[k] = 1; return true; });
+  }
+  function unreadCount(list) { return collapse(list.filter(function (it) { return !isRead(it); })).length; }
   function longDay(iso) { var d = new Date(iso + "T12:00:00"); return JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
   function dayLabel(iso) {
     var diff = days(today, iso), d = new Date(iso + "T12:00:00");
@@ -41,34 +51,51 @@
     var txt = d.getDate() + " " + MOIS[d.getMonth()] + (d.getFullYear() !== new Date().getFullYear() ? " " + d.getFullYear() : "");
     return d.getHours() || d.getMinutes() ? txt + " à " + hour(iso) : txt;
   }
+  // Date de publication donnée par la source ; certaines sources ne la donnent pas.
+  function published(it) {
+    var s = stamp(it.date);
+    var txt = s ? "publié le " + s : "date de publication inconnue";
+    return it.fond ? txt + " · repéré le " + shortDate(it.edition) : txt;
+  }
   function journal() { return document.documentElement.dataset.layout === "journal"; }
   function hour(iso) { var d = new Date(iso); return isNaN(d) ? "" : String(d.getHours()).padStart(2, "0") + "h" + String(d.getMinutes()).padStart(2, "0"); }
 
   // ---------- filtres ----------
-  function matches(it, ignoreCat, ignorePress) {
+  function matches(it, ignoreCat, ignorePress, ignoreLevel) {
     if (it.score < st.min) return false;
-    if (!ignorePress && st.view !== "favoris" && !inPress(it, st.press)) return false;
-    if (st.day) { if (it.edition !== st.day) return false; }
-    else if (days(latest, it.edition) >= st.period) return false;
+    if (st.view === "fond") { if (!it.fond) return false; }
+    else {
+      // Les ressources de fond (articles anciens) ne sont pas présentées comme des actualités.
+      if (it.fond) return false;
+      if (!ignorePress && !inPress(it, st.press)) return false;
+      if (!ignoreLevel && !inLevel(it, st.level)) return false;
+      if (st.day) { if (it.edition !== st.day) return false; }
+      else if (days(latest, it.edition) >= st.period) return false;
+    }
     if (!ignoreCat && !inCat(it, st.cat)) return false;
+    return searched(it);
+  }
+  function searched(it) {
     var terms = norm(st.q).split(/\s+/).filter(Boolean);
     if (!terms.length) return true;
     var hay = norm([it.titre, it.resume, it.pourquoi, it.action, it.source, catName(it.categorie), it.international ? "international" : ""].join(" "));
     return terms.every(function (t) { return hay.indexOf(t) !== -1; });
   }
   function shown(it) { return !masked.has(it.id); }
-  function byRead(it) { return st.readFilter === "all" || (st.readFilter === "read") === read.has(it.id); }
+  function byRead(it) { return st.readFilter === "all" || (st.readFilter === "read") === isRead(it); }
   function sortFeed(a, b) { return a.edition !== b.edition ? (a.edition < b.edition ? 1 : -1) : b.score - a.score; }
+  function sortPublished(a, b) { return (a.date || "") !== (b.date || "") ? ((a.date || "") < (b.date || "") ? 1 : -1) : b.score - a.score; }
 
   // ---------- rendu ----------
   function render() {
     renderTabs();
     renderChannels();
     $("tools").hidden = st.view === "archives" || st.view === "echeances" || st.view === "semaine";
+    $("period").parentNode.hidden = st.view === "fond";
     $("flash").hidden = st.view !== "journal" || !episodes.length;
     renderSide();
     renderPrefs();
-    $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris";
+    $("v-journal").hidden = st.view !== "journal" && st.view !== "favoris" && st.view !== "fond";
     $("v-echeances").hidden = st.view !== "echeances";
     $("v-semaine").hidden = st.view !== "semaine";
     $("v-archives").hidden = st.view !== "archives";
@@ -82,7 +109,7 @@
 
   // Colonne de droite : prochaines échéances et résumé de la semaine.
   function renderSide() {
-    var on = st.view === "journal" || st.view === "favoris";
+    var on = st.view === "journal" || st.view === "favoris" || st.view === "fond";
     var up = data.filter(function (it) { return it.echeance && it.echeance.date >= today; })
       .sort(function (a, b) { return a.echeance.date < b.echeance.date ? -1 : 1; });
     var seen = {}, due = up.filter(function (it) { var k = it.echeance.date + it.echeance.libelle; if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 4);
@@ -112,11 +139,12 @@
   }
 
   function renderTabs() {
-    var unread = data.filter(function (it) { return shown(it) && !read.has(it.id); }).length;
+    var unread = unreadCount(data.filter(function (it) { return shown(it) && !it.fond && inLevel(it, st.level); }));
     var upcoming = data.filter(function (it) { return it.echeance && it.echeance.date >= today; }).length;
     $("t-journal-n").textContent = unread;
     $("t-favoris-n").textContent = data.filter(function (it) { return favs.has(it.id); }).length;
     $("t-echeances-n").textContent = upcoming;
+    $("t-fond-n").textContent = data.filter(function (it) { return it.fond && shown(it) && !read.has(it.id); }).length;
     document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.view === st.view); });
   }
 
@@ -129,12 +157,12 @@
     $("rail").innerHTML = html;
     var opts = [["all", "Tous les canaux", pool]].concat(CATS.map(function (c) { return [c.key, c.nom, pool.filter(function (it) { return inCat(it, c.key); })]; }));
     $("cat-sel").innerHTML = opts.map(function (o) {
-      var n = o[2].filter(function (it) { return !read.has(it.id); }).length;
+      var n = st.view === "favoris" ? o[2].filter(function (it) { return !read.has(it.id); }).length : unreadCount(o[2]);
       return '<option value="' + o[0] + '"' + (st.cat === o[0] ? " selected" : "") + ">" + esc(o[1]) + " (" + n + ")</option>";
     }).join("");
   }
   function channel(key, name, sub, items) {
-    var unread = items.filter(function (it) { return !read.has(it.id); }).length;
+    var unread = st.view === "favoris" ? items.filter(function (it) { return !read.has(it.id); }).length : unreadCount(items);
     var color = key === "all" ? "var(--accent)" : "var(--c-" + key + ")";
     return '<button type="button" class="ch" data-cat="' + key + '" aria-pressed="' + (st.cat === key) + '" style="--cc:' + color + '"><i></i><span>' +
       esc(name) + (sub ? "<small>" + esc(sub) + "</small>" : "") + '</span><em class="' + (unread ? "hot" : "") + '" title="' + unread +
@@ -143,41 +171,62 @@
 
 
   function renderFeed() {
-    var fav = st.view === "favoris";
+    var fav = st.view === "favoris", fond = st.view === "fond";
     var pool = data.filter(function (it) {
-      if (fav) return favs.has(it.id) && inCat(it, st.cat) && (!st.q || matches(Object.assign({}, it, { edition: latest, score: 100 })));
+      if (fav) return favs.has(it.id) && inCat(it, st.cat) && searched(it);
       return shown(it) && matches(it);
     });
-    var items = (fav ? pool : pool.filter(byRead)).sort(sortFeed);
-    var nRead = pool.filter(function (it) { return read.has(it.id); }).length;
-    $("rf-unread").textContent = pool.length - nRead;
+    // Une seule fiche par événement (la mieux classée), les reprises sont consultables dessous.
+    var groupsPool = fav ? pool : collapse(pool.sort(fond ? sortPublished : sortFeed));
+    var items = fav ? pool.sort(sortFeed) : groupsPool.filter(byRead);
+    var nRead = groupsPool.filter(isRead).length;
+    $("rf-unread").textContent = groupsPool.length - nRead;
     $("rf-read").textContent = nRead;
     document.querySelectorAll("[data-rf]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.rf === st.readFilter); });
     $("readf").hidden = fav;
     $("unmask").hidden = fav || !masked.size;
     $("unmask").textContent = masked.size > 1 ? "Réafficher les " + masked.size + " articles masqués" : "Réafficher l'article masqué";
-    $("press").hidden = fav;
+    $("press").hidden = fav || fond;
+    $("level").hidden = fav || fond;
     ["fr", "intl"].forEach(function (k) {
-      var n = data.filter(function (it) { return inPress(it, k) && shown(it) && !read.has(it.id) && matches(it, false, true); }).length;
+      var n = unreadCount(data.filter(function (it) { return inPress(it, k) && shown(it) && matches(it, false, true); }));
       $("pr-" + k).textContent = n;
       $("pr-" + k).className = n ? "hot" : "";
       document.querySelector('[data-press="' + k + '"]').setAttribute("aria-pressed", st.press === k);
     });
-    var feed = $("feed");
+    ["essentielle", "elargie"].forEach(function (k) {
+      $("lv-" + k).textContent = unreadCount(data.filter(function (it) { return inLevel(it, k) && shown(it) && matches(it, false, false, true); }));
+      document.querySelector('[data-level="' + k + '"]').setAttribute("aria-pressed", st.level === k);
+    });
+    var feed = $("feed"), head = fond ? '<div class="intro">Articles anciens repérés tardivement, avec leur date de publication réelle. Utiles pour comprendre le contexte, ils ne sont pas présentés comme l\'actualité du jour ni repris dans la synthèse de la semaine.</div>' : calm();
     if (!items.length) {
-      feed.innerHTML = fav ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
-        st.readFilter === "unread" && !st.q ? allRead(pool) :
+      feed.innerHTML = head + (fav ? '<div class="empty">Aucun favori pour l\'instant. Utilisez l\'étoile d\'un article pour le retrouver ici.</div>' :
+        fond && !groupsPool.length && !st.q ? '<div class="empty">Aucune ressource de fond pour l\'instant.</div>' :
+        st.readFilter === "unread" && !st.q ? allRead(groupsPool) :
         st.readFilter === "read" ? '<div class="empty">Aucun article lu sur ce canal pour cette période.</div>' :
-        '<div class="empty">Aucun article ne correspond à ces critères.</div>';
+        '<div class="empty">Aucun article ne correspond à ces critères.</div>');
       return;
     }
     var html = "", day = "", n = 0;
     items.slice(0, st.limit).forEach(function (it) {
-      if (it.edition !== day) { day = it.edition; html += '<div class="day">' + esc(dayLabel(day)) + "</div>"; }
-      html += card(it, n++, n === 1 && journal() && !fav);
+      if (!fond && it.edition !== day) { day = it.edition; html += '<div class="day">' + esc(dayLabel(day)) + "</div>"; }
+      html += card(it, n++, n === 1 && journal() && !fav && !fond);
     });
     if (items.length > st.limit) html += '<button type="button" class="btn more" data-more>Afficher ' + Math.min(PAGE, items.length - st.limit) + " articles de plus</button>";
-    feed.innerHTML = journal() ? '<div class="paper">' + html + "</div>" : html;
+    feed.innerHTML = head + (journal() ? '<div class="paper">' + html + "</div>" : html);
+  }
+
+  // Journée calme : on le dit plutôt que de remplir l'édition avec des informations secondaires.
+  function calm() {
+    if (st.view !== "journal" || st.level !== "essentielle" || st.q || (st.day && st.day !== latest)) return "";
+    var base = data.filter(function (it) {
+      return shown(it) && !it.fond && it.edition === latest && inPress(it, st.press) && inCat(it, st.cat) && it.score >= st.min;
+    });
+    if (base.some(function (it) { return inLevel(it, "essentielle"); })) return "";
+    var others = collapse(base).length;
+    return '<div class="calm"><b>Aucune nouvelle information majeure ' + (latest === today ? "aujourd'hui" : "dans l'édition du " + esc(longDay(latest))) + ".</b>" +
+      (others ? '<span>La veille élargie contient ' + others + " information" + (others > 1 ? "s" : "") + ' indirecte' + (others > 1 ? "s" : "") +
+        ' ou de culture du secteur.</span><button type="button" class="btn" data-level="elargie">Voir la veille élargie</button>' : "") + "</div>";
   }
 
   // Plus rien à lire : on propose les favoris et les articles les plus importants de la période.
@@ -201,17 +250,29 @@
 
   // Affichage « Journal » : présentation de presse, le premier article en une, résumés complets.
   function paperCard(it, une) {
-    var p = prio(it.score), isRead = read.has(it.id), isFav = favs.has(it.id);
-    return '<article class="ev pa ' + p[0] + (une ? " une" : "") + (isRead ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ')" data-id="' + it.id + '">' +
+    var p = prio(it.score), done = isRead(it), isFav = favs.has(it.id);
+    return '<article class="ev pa ' + p[0] + (une ? " une" : "") + (done ? " read" : "") + '" style="--cc:var(--c-' + esc(it.categorie) + ");--pc:var(--" + p[0] + ')" data-id="' + it.id + '">' +
       '<div class="kick">' + tagHtml(it) + "<span>" + p[2] + " · Pertinence : " + it.score + "\u00a0%</span>" +
-      (isRead ? '<span class="state lu">Lu</span>' : "") +
+      (done ? '<span class="state lu">Lu</span>' : "") +
       (it.payant ? '<span class="state pay" title="Article payant : non consultable sans abonnement">🔒 Réservé aux abonnés</span>' : "") + "</div>" +
       '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener" data-open>' + esc(it.titre) + "</a></h3>" +
       (it.resume ? '<p class="lede">' + esc(it.resume) + "</p>" : "") +
       '<p class="why">' + esc(it.pourquoi) + "</p>" +
       (it.action ? '<p class="todo">' + esc(it.action) + "</p>" : "") +
       (it.echeance ? '<p class="due">Échéance : ' + esc(shortDate(it.echeance.date)) + " · " + esc(it.echeance.libelle) + "</p>" : "") +
-      '<p class="src">' + esc(it.source) + (stamp(it.date) ? " · publié le " + stamp(it.date) : "") + "</p>" + actions(isRead, isFav) + "</article>";
+      '<p class="src">' + esc(it.source) + " · " + published(it) + "</p>" + reprises(it) + actions(done, isFav) + "</article>";
+  }
+
+  // Autres médias qui relatent le même événement : consultables, mais comptés comme une seule information.
+  function reprises(it) {
+    var others = members(it).filter(function (m) { return m.id !== it.id; }).sort(sortPublished);
+    if (!others.length) return "";
+    var n = others.length, pl = n > 1 ? "s" : "";
+    return '<details class="rep"><summary>Même information reprise par ' + n + " autre" + pl + " source" + pl + "</summary>" +
+      '<p class="rep-n">Ce sont des reprises de la même information, pas des confirmations indépendantes.</p><ul>' +
+      others.map(function (m) {
+        return '<li><a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.source) + "</a> · " + esc(published(m)) + "<br>" + esc(m.titre) + "</li>";
+      }).join("") + "</ul></details>";
   }
 
   function card(it, n, une) {
@@ -254,8 +315,7 @@
   function renderWeek() {
     var box = $("v-semaine");
     if (!weeks.length) { box.innerHTML = '<div class="empty">Le premier résumé de la semaine sera publié lors du prochain passage du matin.</div>'; return; }
-    var w = weeks[weekIdx], byId = {};
-    data.forEach(function (it) { byId[it.id] = it; });
+    var w = weeks[weekIdx];
     var pick = weeks.length > 1 ? '<select id="week-pick" aria-label="Choisir une semaine">' + weeks.map(function (x, i) {
       return '<option value="' + i + '"' + (i === weekIdx ? " selected" : "") + ">" + esc(x.titre) + (x.en_cours ? " (en cours)" : "") + "</option>"; }).join("") + "</select>" : "";
     var html = '<section class="week"><div class="week-h"><span class="onair"><i></i>' + (w.en_cours ? "Semaine en cours" : "Bilan de la semaine") +
@@ -264,7 +324,7 @@
       (w.en_cours ? '<p class="week-n">Mis à jour chaque matin jusqu\'à dimanche. Dernière mise à jour : ' + esc(longDay(w.maj)) + ".</p>" : "") + "</section>";
     var items = w.articles.map(function (id) { return byId[id]; }).filter(Boolean);
     html += '<div class="day">Les ' + items.length + " articles à retenir</div>";
-    html += items.length ? wrap(items.map(function (it, n) { return card(it, n); }).join("")) : '<div class="empty">Aucun article important cette semaine.</div>';
+    html += items.length ? wrap(items.map(function (it, n) { return card(it, n); }).join("")) : '<div class="empty">Aucune nouvelle information majeure cette semaine.</div>';
     var due = w.echeances.map(function (id) { return byId[id]; }).filter(Boolean);
     if (due.length) html += '<div class="day">Échéances à venir</div>' + due.map(deadline).join("");
     box.innerHTML = html;
@@ -274,7 +334,7 @@
 
   function renderArchives() {
     var byDay = {};
-    data.forEach(function (it) { (byDay[it.edition] = byDay[it.edition] || []).push(it); });
+    data.forEach(function (it) { if (!it.fond) (byDay[it.edition] = byDay[it.edition] || []).push(it); });
     var keys = Object.keys(byDay).sort().reverse(), html = "", month = "";
     keys.forEach(function (k) {
       var m = k.slice(0, 7);
@@ -335,18 +395,22 @@
       return;
     }
     var pr = t.closest("[data-press]"); if (pr) { st.press = pr.dataset.press; st.limit = PAGE; return render(); }
+    var lv = t.closest("[data-level]"); if (lv) { st.level = lv.dataset.level; st.limit = PAGE; return render(); }
     var rf = t.closest("[data-rf]"); if (rf) { st.readFilter = rf.dataset.rf; st.limit = PAGE; return render(); }
-    if (t.closest("[data-undo]")) { masked.delete(t.closest("[data-undo]").dataset.undo); saveSet("veilletls.masques", masked); hideToast(); return render(); }
+    if (t.closest("[data-undo]")) { members(byId[t.closest("[data-undo]").dataset.undo] || { id: t.closest("[data-undo]").dataset.undo }).forEach(function (m) { masked.delete(m.id); }); saveSet("veilletls.masques", masked); hideToast(); return render(); }
     var ev = t.closest(".ev"); if (!ev) return;
     var id = ev.dataset.id;
+    var it0 = byId[id] || { id: id };
     if (t.closest("[data-read]")) {
-      if (read.has(id)) read.delete(id); else { read.add(id); ev.classList.add("flash"); }
+      // Une fiche regroupe parfois plusieurs articles : « non lu » les remet tous à lire.
+      var nowRead = !isRead(it0);
+      if (nowRead) { read.add(id); ev.classList.add("flash"); } else members(it0).forEach(function (m) { read.delete(m.id); });
       saveSet("veilletls.lus", read);
-      var leaves = st.view === "journal" && st.readFilter !== "all";
-      if (leaves) setTimeout(function () { ev.classList.add("gone"); }, read.has(id) ? 300 : 0);
-      setTimeout(render, leaves ? (read.has(id) ? 650 : 350) : 0);
+      var leaves = (st.view === "journal" || st.view === "fond") && st.readFilter !== "all";
+      if (leaves) setTimeout(function () { ev.classList.add("gone"); }, nowRead ? 300 : 0);
+      setTimeout(render, leaves ? (nowRead ? 650 : 350) : 0);
     } else if (t.closest("[data-np]")) {
-      masked.add(id); saveSet("veilletls.masques", masked);
+      members(it0).forEach(function (m) { masked.add(m.id); }); saveSet("veilletls.masques", masked);
       ev.classList.add("gone"); setTimeout(render, 350);
       showToast(data.filter(function (it) { return it.id === id; })[0]);
     } else if (t.closest("[data-fav]")) {
@@ -393,6 +457,8 @@
 
   function start(articles) {
     data = articles;
+    groups = {}; byId = {};
+    data.forEach(function (it) { byId[it.id] = it; if (it.groupe) (groups[it.groupe] = groups[it.groupe] || []).push(it); });
     latest = data.reduce(function (m, it) { return it.edition > m ? it.edition : m; }, "") || today;
     if (CFG.updated) $("last").textContent = CFG.updated;
     render();

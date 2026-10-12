@@ -7,8 +7,9 @@ Chaque matin, GitHub lance automatiquement un programme qui :
 1. **collecte** les publications récentes (Google Actualités, flux RSS, pages surveillées) ;
 2. **dédoublonne** et **préfiltre** par mots-clés, sans coût ;
 3. **analyse** chaque article avec une IA qui le classe, le résume, lui donne un score de pertinence de 0 à 100, explique ce score, propose une action pour les articles importants et repère les échéances ;
-4. **publie** le journal sur un site public, dans un style de journal de presse, en mode clair ou sombre au choix : canaux par catégorie, recherche, lu / non lu, favoris, **résumé de la semaine** (synthèse rédigée par l'IA, 10 articles à retenir, échéances à venir ; mis à jour chaque matin, bilan figé le lundi suivant), archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
-5. **envoie** un e-mail avec les articles notés 70 et plus (si configuré).
+4. **sélectionne** : écarte la télésurveillance médicale sans lien avec la sécurité, regroupe en une seule fiche les articles qui relatent le même événement (les reprises ne comptent pas comme des confirmations), range les articles anciens découverts tardivement dans « Ressources de fond » et sépare la **veille essentielle** (affichée par défaut) de la **veille élargie** ;
+5. **publie** le journal sur un site public, dans un style de journal de presse, en mode clair ou sombre au choix : canaux par catégorie, recherche, lu / non lu, favoris, **résumé de la semaine** (synthèse rédigée par l'IA, 10 articles à retenir, échéances à venir ; mis à jour chaque matin, bilan figé le lundi suivant), archives, calendrier des échéances (abonnable dans un agenda), flux RSS, installable sur téléphone ;
+6. **envoie** un e-mail avec les articles notés 70 et plus (si configuré).
 
 Le site est publié à l'adresse indiquée dans `config/site.yaml`.
 
@@ -18,7 +19,7 @@ Tout se règle dans le dossier `config/`, sans toucher au code :
 
 | Fichier | Contenu |
 |---|---|
-| `config/profil.yaml` | Le lecteur, les six catégories, leurs mots-clés, le barème des scores |
+| `config/profil.yaml` | Le lecteur, les six catégories, leurs mots-clés, le barème des scores, les critères de la veille essentielle, le délai des ressources de fond, les termes du filtre médical |
 | `config/sources.yaml` | Les recherches Google Actualités, les flux RSS et les pages surveillées |
 | `config/site.yaml` | Le titre du site, les mentions légales, le modèle d'IA, le plafond d'articles analysés |
 

@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import analyze, avis, collect, enrich, notify, podcast, prefilter, semaine, site, store
+from . import analyze, avis, collect, editorial, enrich, evenements, notify, podcast, prefilter, semaine, site, store
 
 CONFIG = Path(__file__).resolve().parent.parent / "config"
 
@@ -86,12 +86,20 @@ def main() -> int:
             report.append(f"E-mail : échec ({exc.__class__.__name__}: {exc})")
 
     articles = store.load_articles()
+    try:
+        # Après une collecte, les groupes sont recalculés ; une simple republication le fait au plus une fois par jour.
+        evenements.update(articles, profile, site_cfg["modele"], today, report, force=not args.site)
+    except Exception as exc:  # le regroupement ne doit pas bloquer la publication
+        report.append(f"Regroupement : échec ({exc.__class__.__name__}: {exc})")
+    groups = evenements.groups()
+    # Ressources de fond, niveau de veille et événement commun, calculés à chaque publication.
+    articles = editorial.annotate(articles, profile, groups)
     if not args.site or args.semaine:
         try:
             semaine.update(articles, profile, site_cfg["modele"], today, report)
         except Exception as exc:  # le résumé de la semaine ne doit pas bloquer la publication
             report.append(f"Semaine : échec ({exc.__class__.__name__}: {exc})")
-    site.build(profile, site_cfg, articles, today)
+    site.build(profile, site_cfg, articles, today, groups)
     report.append("Site : régénéré")
     try:
         # Un épisode manqué (voix de synthèse en panne) est refait à la publication suivante.

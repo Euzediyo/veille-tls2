@@ -32,8 +32,9 @@ def keyword_hits(item: dict, profile: dict) -> dict[str, int]:
 
 
 def is_excluded(item: dict, profile: dict) -> bool:
+    from .editorial import off_domain  # import ici : editorial utilise normalize() de ce module
     text = normalize(item["titre"])
-    return any(normalize(word).strip() in text for word in profile.get("exclusions", []))
+    return any(normalize(word).strip() in text for word in profile.get("exclusions", [])) or off_domain(item, profile)
 
 
 def deduplicate(items: list[dict], seen: dict) -> list[dict]:
