@@ -52,6 +52,9 @@ pages:
   - nom: "CNPP — Certification APSAD"
     url: "https://www.cnpp.com/tester-certifier/certifier-prestations-services-apsad"
     lien_contient: ""
+  - nom: "Scutum — Actualité et presse"
+    url: "https://www.scutum-group.com/fr/actualite-et-presse"
+    lien_contient: "/fr/publications/"
 
 # Médias dont les articles sont réservés aux abonnés (nom exact de la source, tel qu'affiché
 # sur le journal). Pour les autres sites, le programme le détecte en lisant la page quand il le peut.
