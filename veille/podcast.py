@@ -195,7 +195,7 @@ def make_episode(articles: list[dict], profile: dict, site_cfg: dict, today: dat
     try:
         synthesize(text, OUT / name, {**DEFAULT_VOICES, **(site_cfg.get("podcast_voix") or {})})
     except Exception as exc:  # service non officiel : une panne ne doit pas bloquer le journal
-        report.append(f"Podcast : voix de synthèse indisponible ({exc.__class__.__name__}), pas d'épisode")
+        report.append(f"Podcast : voix de synthèse indisponible ({exc.__class__.__name__}: {str(exc)[:200]}), pas d'épisode")
         return
     size = (OUT / name).stat().st_size
     episode = {"date": today.isoformat(), "titre": f"Flash du {spoken_date(today)}", "fichier": name,
