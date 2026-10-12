@@ -2,9 +2,9 @@
  {
   "lundi": "2026-10-05",
   "titre": "Semaine du 5 au 11 octobre 2026",
-  "en_cours": true,
-  "maj": "2026-10-11",
-  "synthese": "Cette semaine, deux sujets dominent. Le premier est la réglementation du démarchage téléphonique : selon GPMSE, depuis le 11 août 2026, il est interdit sans consentement préalable, en application de la loi du 30 juin 2025. Le second concerne les salaires de la branche : le GES maintient une proposition de 1 % sur la grille, tandis que les six syndicats réclament 10 %, sans accord à ce stade. Le rapport IGA-CGEFI du 23 juillet 2026, relayé par GPMSE et évoqué dans le discours d'ouverture du 7e congrès du GES, pointe aussi les fragilités économiques du secteur et la cohérence du cadre réglementaire, sans nouvelle obligation datée.\n\nPour un centre de télésurveillance, cela impose de revoir les campagnes d'appels sortants : consentement explicite et documenté, conservé trois ans au minimum, appels du lundi au vendredi de 10 h à 13 h et de 14 h à 20 h, et au plus quatre sollicitations sur 30 jours. L'écoute et l'enregistrement des appels concernent également les téléopérateurs. Il faut aussi contrôler la validité des cartes professionnelles, dont l'absence peut motiver un licenciement selon un cabinet juridique (Ogletree Deakins France).\n\nLes échéances à retenir sont le 11 août 2026, date d'entrée en vigueur de l'interdiction du démarchage, et le 15 août 2026 pour l'arrêté sur SecNumCloud 3.2, qui ne concerne directement que les données sensibles de l'État. La revalorisation salariale de 2027 n'est pas acquise : préparez dès maintenant une simulation du coût d'une hausse de 1 % et de 10 %.",
+  "en_cours": false,
+  "maj": "2026-10-12",
+  "synthese": "Cette semaine, la réglementation du démarchage est le sujet à traiter en priorité. Selon GPMSE, depuis le 11 août 2026, le démarchage téléphonique est interdit sans consentement préalable, en application de la loi du 30 juin 2025. Ce consentement doit être explicite, révocable et valable un an au maximum. Les appels sont autorisés du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h, sans plus de quatre sollicitations sur 30 jours. Par ailleurs, le rapport IGA-CGefi du 23 juillet 2026, relayé par GPMSE, et le discours d'ouverture du 7e congrès national du GES confirment les fragilités du secteur, sans nouvelle obligation datée.\n\nCôté social, le GES propose 1 % d'augmentation sur la grille, tandis que les six syndicats réclament 10 % et menacent les accords de modulation du temps de travail. Pour les équipes, Ogletree Deakins France rappelle qu'un agent sans carte professionnelle valide peut être licencié pour ce seul motif.\n\nPour votre centre, il convient de vérifier que chaque campagne sortante dispose d'un consentement documenté et respecte les plages horaires. Préparez aussi une simulation du coût d'une hausse de 1 % et de 10 % sur vos coefficients, et contrôlez la validité des cartes professionnelles de vos téléopérateurs. Enfin, l'arrêté sur SecNumCloud 3.2 (août 2026) vise surtout les données sensibles de l'État ; vérifiez-en l'impact seulement si vos fournisseurs cloud sont concernés.",
   "articles": [
    "de5d9381df290bda",
    "366e547b68359e55",
@@ -16,6 +16,23 @@
    "a8164b9f830f74a5",
    "618cc8e4d07246f1",
    "8ef68db2522a1a5f"
+  ],
+  "echeances": [
+   "1886f2603693438f",
+   "6c8c03e35b6cabd7",
+   "bc9681db1c8113ca",
+   "43d837b2f0cb1266",
+   "54e666f6c5806a29"
+  ]
+ },
+ {
+  "lundi": "2026-10-12",
+  "titre": "Semaine du 12 au 18 octobre 2026",
+  "en_cours": true,
+  "maj": "2026-10-12",
+  "synthese": "Cette semaine, le marché et la réglementation dominent la veille. iGeneration rapporte qu'Apple envisagerait une alliance avec ADT, sans autre détail disponible. Zonebourse Suisse signale que Nordea abaisse son objectif de cours sur Verisure à 16 euros, tout en maintenant sa recommandation d'achat. Kohen Avocats détaille par ailleurs comment contester des caméras installées par un syndic dans les parties communes.\n\nPour un centre de télésurveillance, l'impact direct reste limité. Le point le plus sensible concerne la dépendance aux logiciels : à partir d'un cas de coupure d'accès, Kohen Avocats rappelle que le contrat fait foi pour la détention des codes administrateurs, la réversibilité et la résiliation, et que le client reste responsable de ses engagements envers ses propres clients.\n\nNous vous conseillons de vérifier qui détient les codes administrateurs de vos outils de supervision et de facturation, et de relire vos clauses de réversibilité. L'article cite une décision de la cour d'appel d'Aix-en-Provence du 11 juin 2026, sans en détailler les faits. Aucune échéance précise n'est signalée cette semaine.",
+  "articles": [
+   "5a4f6fa0cea31ac5"
   ],
   "echeances": [
    "1886f2603693438f",
