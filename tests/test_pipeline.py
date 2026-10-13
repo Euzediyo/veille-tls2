@@ -112,7 +112,7 @@ def test_site_build(tmp_path, monkeypatch):
     assert 'class="admin"' not in index and "Scan immédiat" not in index and "/actions/workflows" not in index
     readbox = index[index.index('id="readf"'):index.index('id="count"')]
     assert 'id="show-read"' in readbox and 'data-density="detaillee"' in readbox
-    assert 'data-press="fr" aria-pressed="true"' in index and 'data-press="intl"' in index and 'id="show-unread" checked' in index and 'id="show-read"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index
+    assert 'data-press="fr" aria-pressed="true"' in index and 'data-press="intl"' in index and 'id="show-unread" checked' in index and 'id="show-read"' in index and 'data-density="compacte"' in index and 'href="#contenu"' in index and 'id="daynav"' in index and 'id="day-pick"' in index and "veille élargie" not in index
     assert 'localStorage.getItem("veilletls.vue")' in index
     # Présentation « Rubriques » : rubriques sous le titre, recherche et filtres rangés derrière un bouton.
     assert 'class="rub"' in index and 'id="rail"' in index and 'id="cat-sel"' not in index
@@ -509,7 +509,8 @@ def test_no_artificial_filling(tmp_path, monkeypatch):
     assert podcast.select(quiet, date(2026, 10, 12), PROFILE) == []
     page = site.essential_html(editorial.annotate(quiet, PROFILE, []), SITE, PROFILE, date(2026, 10, 12))
     assert "Aucune nouvelle information majeure aujourd'hui." in page and "deux caméras" not in page
-    assert "Aucune nouvelle information majeure" in (Path(site.ASSETS) / "app.js").read_text(encoding="utf-8")
+    js = (Path(site.ASSETS) / "app.js").read_text(encoding="utf-8")
+    assert "Aucune édition le" in js and "Veille élargie" not in js            # journal au jour le jour, sans sections
 
 
 # ---------- Dimensions de l'analyse et échéances ----------
