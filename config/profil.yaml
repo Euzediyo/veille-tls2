@@ -62,13 +62,21 @@ categories:
       des alarmes, levée de doute (vidéo, audio), appels entrants et sortants,
       procédures, intrusion, incendie, PTI/DATI, vidéoprotection, transmission,
       détection, technologies, IA, automatisation, analyse vidéo, supervision,
-      logiciels de télésurveillance et de sécurité.
+      logiciels de télésurveillance et de sécurité. Alarmes techniques reçues
+      par les centres (défauts froid, GTB, chaufferies, ascenseurs) : une panne,
+      un piratage ou une cyberattaque touchant ces équipements ou leurs
+      mainteneurs (ex. régulation du froid des supermarchés) provoque des
+      alarmes en masse chez les télésurveilleurs et compte comme pertinent,
+      même si l'article ne cite pas la télésurveillance.
     mots_cles: [télésurveillance, téléopérateur, "centre de télésurveillance", "levée de doute",
       alarme, PTI, DATI, "travailleur isolé", téléassistance, vidéosurveillance, "analyse vidéo",
       supervision, "sécurité électronique", hypervision, "fausses alarmes", détecteur,
       "alarm monitoring", "monitoring center", "monitoring centre", "alarm receiving", "remote monitoring",
       "video monitoring", "remote video", "video verification", "false alarms", "false alarm",
-      "remote guarding", "lone worker", PERS, "video analytics", "central station", "monitoring company"]
+      "remote guarding", "lone worker", PERS, "video analytics", "central station", "monitoring company",
+      cyberattaque, cyberattaques, piratage, rançongiciel, ransomware, cyberattack,
+      "alarme technique", "alarmes techniques", "défaut froid", "défauts froid", "chaîne du froid",
+      "régulation du froid", "froid commercial", GTB, "gestion technique du bâtiment"]
   marche:
     nom: "Secteur / Marché"
     priorite: "moyenne"
