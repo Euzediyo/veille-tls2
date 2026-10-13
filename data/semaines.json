@@ -29,13 +29,14 @@
   "lundi": "2026-10-12",
   "titre": "Semaine du 12 au 18 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-12",
-  "synthese": "Cette semaine, le sujet principal concerne ADT et Apple : Digital Trends indique qu'Apple pourrait s'appuyer sur ADT pour son écosystème de maison connectée. Il s'agit d'une seule information, reprise par plusieurs médias sans confirmation indépendante, et son périmètre comme ses modalités restent inconnus. Simply Wall Street n'a fourni que le titre de son article sur le sujet, donc les détails manquent. Les autres articles concernent la vidéo : ARSA présente un boîtier d'analyse vidéo par IA installable sur des systèmes existants, et DMP lance VK VMS, une solution vidéo cloud avec analyses AlarmVision en deux abonnements, Plus et Pro.\n\nPour un centre de télésurveillance, ces évolutions peuvent à terme toucher les flux d'alarmes, la concurrence sur la maison connectée et les outils de levée de doute vidéo. Le brevet américain de Cozaint, qui protège l'architecture MARCIA, décrit un archivage multi-niveaux sur bandes LTO avec restitution directe depuis la timeline du VMS. Il intéresse la conservation des preuves vidéo, mais il ne modifie aucune pratique à ce stade.\n\nAucune échéance ni obligation réglementaire n'est signalée cette semaine, et aucune action immédiate n'est requise. Il reste utile de suivre une éventuelle confirmation du partenariat Apple-ADT et de comparer les nouvelles offres vidéo à vos besoins.",
+  "maj": "2026-10-13",
+  "synthese": "Cette semaine, plusieurs articles portent sur le tri des alertes par l'IA. SDM Magazine défend une IA qui aide l'opérateur sans décider à sa place, en joignant heure, lieu et historique aux alertes. ARSA Technology présente un boîtier d'analyse vidéo en périphérie, installable sur un parc de caméras existant, sans performances ni tarifs annoncés. DMP lance VK VMS, avec une recherche vidéo en langage naturel dans la version Pro de son offre AlarmVision.\n\nPour un centre, ces outils visent surtout la levée de doute et le tri des alarmes, mais leurs performances restent à vérifier. Digital Trends rapporte qu'Apple pourrait s'appuyer sur ADT pour son écosystème maison connectée. L'information n'est pas confirmée, et ses reprises par d'autres médias ne la confirment pas davantage. Cozaint annonce par ailleurs un brevet sur son architecture MARCIA, qui restitue automatiquement une vidéo archivée sur bandes LTO depuis le logiciel habituel.\n\nCôté réglementation, BFM titre que la préfecture de Haute-Garonne autoriserait la vidéoprotection par drones dans 22 communes. Seul le titre a été lu : la base juridique, la durée et les conditions restent inconnues, et il faut consulter l'arrêté avant toute conclusion. Aucune obligation directe pour les centres n'est identifiée, et aucune échéance n'est signalée cette semaine.",
   "articles": [
+   "c852cdfbd5e74c26",
    "bdf5424e4e7d0872",
    "1eb56f7d55014325",
-   "89172241c1b56615",
    "8596a8bc112f9f40",
+   "b2b275106156aea4",
    "4690562610ea108f"
   ],
   "echeances": [
