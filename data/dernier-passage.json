@@ -2,6 +2,6 @@
  "date": "2026-10-13",
  "journal": [
   "Site : régénéré",
-  "Podcast : voix de synthèse indisponible (WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=25f067479e0349), pas d'épisode"
+  "Podcast : voix de synthèse indisponible (WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&ConnectionId=5a476dd304a640), pas d'épisode"
  ]
 }
