@@ -113,6 +113,13 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
     <div class="active" id="active" hidden></div>
     <div class="feed" id="v-journal">
       <h2 class="rub-h" id="rub-h" hidden></h2>
+      <div class="daynav" id="daynav" role="group" aria-label="Jour affiché">
+        <button type="button" class="dn" id="day-prev" data-to="" aria-label="Jour précédent">‹<span class="d-only"> Jour précédent</span></button>
+        <div class="dn-c"><h2 id="day-t"></h2>
+          <label class="dn-pick">Choisir une date <input type="date" id="day-pick"></label>
+          <button type="button" class="lnk" id="day-today" hidden>Revenir à aujourd'hui</button></div>
+        <button type="button" class="dn" id="day-next" data-to="" aria-label="Jour suivant"><span class="d-only">Jour suivant </span>›</button></div>
+      <p class="day-note" id="day-note" hidden></p>
       <div class="press" id="press" role="group" aria-label="Presse">
         <button type="button" data-press="fr" aria-pressed="true"><span>Presse française</span><em id="pr-fr">0</em></button>
         <button type="button" data-press="intl" aria-pressed="false"><span>Presse internationale</span><em id="pr-intl">0</em></button></div>
@@ -158,7 +165,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Un éditeur qui souhaite le retrait d'un résumé peut écrire à l'adresse de contact ci-dessus : il sera retiré rapidement.</p>
 <h2>Comment ce journal est fait</h2>
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un taux de pertinence de 0 à 100 % du point de vue d'un responsable de centre de télésurveillance, explique ce taux, propose une action pour les articles importants et repère les échéances. Les articles sous {profile.get('seuil_publication', 30)} % ou jugés hors sujet ne sont pas publiés.</p>
-<p>La <b>veille essentielle</b>, affichée par défaut, réunit les articles à impact direct ou à forte pertinence métier ; la <b>veille élargie</b> y ajoute les informations indirectes et la culture du secteur. Quand plusieurs médias reprennent la même information ou la même rumeur, une seule fiche est publiée, avec les autres sources consultables : ces reprises ne valent pas confirmations indépendantes. Un article publié plus de {profile.get('ressources_de_fond_jours', 30)} jours avant sa découverte est rangé dans les « Ressources de fond », avec sa date réelle, et n'est pas présenté comme une actualité. Le suivi médical à distance (télésurveillance de patients) n'est pas retenu, sauf lien avec la sécurité.</p>
+<p>Le journal se lit au jour le jour : chaque édition présente tous les articles retenus ce jour-là, du plus pertinent au moins pertinent, et les jours précédents restent consultables. Quand plusieurs médias reprennent la même information ou la même rumeur, une seule fiche est publiée, avec les autres sources consultables : ces reprises ne valent pas confirmations indépendantes. Un article publié plus de {profile.get('ressources_de_fond_jours', 30)} jours avant sa découverte est rangé dans les « Ressources de fond », avec sa date réelle, et n'est pas présenté comme une actualité. Le suivi médical à distance (télésurveillance de patients) n'est pas retenu, sauf lien avec la sécurité.</p>
 <p>Le taux de pertinence ne dit pas l'urgence : chaque article est aussi qualifié séparément par sa pertinence métier (directe, indirecte, faible), son urgence (action immédiate, à anticiper, information), son statut (texte publié, proposition, négociation, annonce, rumeur) et son périmètre (France, Union européenne, autre pays). Le contenu réellement lu (début de l'article, extrait ou titre seul) est constaté par le programme, pas estimé par l'IA. Une échéance n'est jamais affichée plus précise que sa source : un mois seul reste « date à confirmer », et seules les dates exactes vont au calendrier.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>

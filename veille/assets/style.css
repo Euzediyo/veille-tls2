@@ -542,25 +542,30 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .readbox input{width:18px;height:18px;accent-color:var(--accent);margin:0}
 .readbox em{font-style:normal;font-weight:700;color:var(--muted)}
 /* Veille essentielle / veille élargie : deux sections repliables, ouvertes par défaut. */
-.sec{border-top:3px double var(--fg);margin-bottom:18px}
-.sec > summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 0 12px 26px;position:relative}
-.sec > summary::-webkit-details-marker{display:none}
-.sec > summary::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-right:2px solid var(--fg);border-bottom:2px solid var(--fg);transform:rotate(-45deg);transition:transform .15s}
-.sec[open] > summary::before{transform:rotate(45deg);top:16px}
-.sec-t{font:700 1.35rem/1.2 var(--display)}
-.sec-d{color:var(--muted);font-size:.9rem}
-.sec > summary em{margin-left:auto;font-style:normal;font-size:.85rem;color:var(--muted)}
-.sec > summary:hover .sec-t{text-decoration:underline;text-underline-offset:4px}
-.sec-b{padding-bottom:6px}
-.sec .ess{margin-bottom:22px}
-.sec .ess.front{border-bottom:1px solid var(--line)}
 @media (max-width:700px){
   .press{gap:8px}.press button{flex-direction:column;gap:6px;padding:12px 8px;font-size:.88rem}
   .readbox{flex-direction:column;gap:0}
-  .sec-t{font-size:1.15rem}.sec-d{flex-basis:100%;font-size:.82rem}
-  .sec > summary em{margin-left:0}
 }
 /* Vue compacte / détaillée, sur la même ligne que les cases lus / non lus. */
 .readbox{align-items:center}
 .readbox #density{margin-left:auto}
 @media (max-width:700px){.readbox{align-items:flex-start}.readbox #density{margin:6px 0 0;display:inline-flex}.readbox #density .seg-l{display:inline-flex}}
+/* Journal au jour le jour : jour précédent / suivant, ou une date précise. */
+.daynav{display:flex;align-items:center;gap:12px;margin:2px 0 12px;padding:10px 0;border-top:3px double var(--fg);border-bottom:1px solid var(--line)}
+.daynav .dn{flex:0 0 auto;padding:10px 14px;border:1px solid var(--line);border-radius:4px;background:none;color:var(--fg);cursor:pointer;font:600 .95rem var(--body)}
+.daynav .dn:hover:not(:disabled){border-color:var(--fg)}
+.daynav .dn:disabled{opacity:.35;cursor:default}
+.dn-c{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}
+.dn-c h2{margin:0;font:700 1.45rem/1.2 var(--display)}
+.dn-pick{font-size:.85rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.dn-pick input{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:3px 6px}
+.day-note{margin:-4px 0 10px;font-size:.9rem;color:var(--muted);text-align:center}
+/* Badges lu / non lu : rouge tant que l'article n'est pas lu, noir ensuite. */
+.pa .state.nonlu,.pa .state.lu{font:700 11px/1.5 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid transparent}
+.pa .state.nonlu{background:#d10f1f;border-color:#d10f1f;color:#fff}
+.pa .state.lu{background:#111;border-color:#111;color:#fff}
+[data-theme="dark"] .pa .state.lu{border-color:#8a8f98}
+.ev.pa.read,.ev.pa.read:hover{opacity:1}
+.ev.pa.read > :not(.kick),.ev.pa.read .kick > :not(.lu){opacity:.6}
+.ev.pa.read:hover > :not(.kick),.ev.pa.read:hover .kick > :not(.lu){opacity:1}
+@media (max-width:700px){.daynav{gap:8px}.daynav .dn{padding:10px 12px;font-size:1.1rem}.dn-c h2{font-size:1.1rem}}
