@@ -30,17 +30,18 @@
   "titre": "Semaine du 12 au 18 octobre 2026",
   "en_cours": true,
   "maj": "2026-10-13",
-  "synthese": "Cette semaine, plusieurs articles portent sur le tri des alertes par l'IA. SDM Magazine défend une IA qui aide l'opérateur sans décider à sa place, en joignant heure, lieu et historique aux alertes. ARSA Technology présente un boîtier d'analyse vidéo en périphérie, installable sur un parc de caméras existant, sans performances ni tarifs annoncés. DMP lance VK VMS, avec une recherche vidéo en langage naturel dans la version Pro de son offre AlarmVision.\n\nPour un centre, ces outils visent surtout la levée de doute et le tri des alarmes, mais leurs performances restent à vérifier. Digital Trends rapporte qu'Apple pourrait s'appuyer sur ADT pour son écosystème maison connectée. L'information n'est pas confirmée, et ses reprises par d'autres médias ne la confirment pas davantage. Cozaint annonce par ailleurs un brevet sur son architecture MARCIA, qui restitue automatiquement une vidéo archivée sur bandes LTO depuis le logiciel habituel.\n\nCôté réglementation, BFM titre que la préfecture de Haute-Garonne autoriserait la vidéoprotection par drones dans 22 communes. Seul le titre a été lu : la base juridique, la durée et les conditions restent inconnues, et il faut consulter l'arrêté avant toute conclusion. Aucune obligation directe pour les centres n'est identifiée, et aucune échéance n'est signalée cette semaine.",
+  "synthese": "Le sujet majeur de la semaine est la cyberattaque qui, selon le seul titre lu, aurait déréglé le froid d'environ 300 supermarchés français, article signalé par RTL. Les détails sur le mode d'intrusion et les acteurs manquent. Largement reprise par la presse, elle reste une seule information : ces reprises ne sont pas des confirmations indépendantes.\n\nPour un centre de télésurveillance, des alarmes de température en masse ont pu arriver dans les supervisions de ces équipements, ce qui touche le traitement des alarmes et la levée de doute. Vérifiez d'abord la lecture complète de l'article, puis si vos clients utilisent des systèmes de froid pilotés à distance. Acoem annonce aussi, pour le quatrième trimestre 2026 (période approximative), des mises à jour réduisant les fausses alarmes acoustiques, à confirmer auprès du fabricant. DMP lance VK VMS, une gestion vidéo cloud à évaluer en compatibilité et en formation des opérateurs.\n\nLes autres contenus, sans urgence, sont à suivre : une tribune de SDM Magazine sur la contextualisation des alertes par l'IA, et un boîtier d'analyse vidéo de Security Info Watch, à évaluer avec fiche technique et compatibilité APSAD. Ces deux derniers ne sont lus qu'en partie. Aucune échéance réglementaire n'est signalée cette semaine.",
   "articles": [
+   "ca9ba40832ea88a5",
+   "4690562610ea108f",
+   "83053a6f1cf430c9",
    "c852cdfbd5e74c26",
-   "bdf5424e4e7d0872",
    "1eb56f7d55014325",
-   "8596a8bc112f9f40",
-   "b2b275106156aea4",
-   "4690562610ea108f"
+   "27734041dc0a8fbd"
   ],
   "echeances": [
-   "0def42ac1a1528ec",
+   "83053a6f1cf430c9",
+   "89172241c1b56615",
    "bc9681db1c8113ca",
    "54e666f6c5806a29"
   ]
