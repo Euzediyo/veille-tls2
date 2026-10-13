@@ -320,7 +320,14 @@
 
   // Plus rien à lire : on propose les favoris et les articles les plus importants de la période.
   function allRead(pool) {
-    var html = '<div class="empty ok"><b>✓ Tout est lu.</b> Plus aucun article à lire ici. La prochaine édition arrive demain matin.</div>', n = 0;
+    var byDay = st.view === "journal" && !st.q.trim();
+    var html = '<div class="empty ok"><b>✓ Tout est lu.</b> Plus aucun article à lire ici.' + (!byDay || curDay() === latest ? " La prochaine édition arrive demain matin." : "") + "</div>", n = 0;
+    // Au jour le jour : les 4 articles les plus pertinents de la journée, déjà lus, pour une relecture rapide.
+    if (byDay) {
+      var best = pool.slice().sort(byScore).slice(0, 4);
+      return html + '<h2 class="done-h">Relisez les plus importants<small>Les articles les mieux notés de la journée, au cas où un détail vous aurait échappé.</small></h2>' +
+        wrap(best.map(function (it) { return card(it, n++); }).join(""));
+    }
     var mine = data.filter(function (it) { return favs.has(it.id) && shown(it) && inCat(it, st.cat); }).sort(sortFeed).slice(0, 5);
     if (mine.length) html += '<h2 class="done-h">Vos favoris</h2>' + wrap(mine.map(function (it) { return card(it, n++); }).join(""));
     var top = pool.filter(function (it) { return it.score >= 70 && !favs.has(it.id); })

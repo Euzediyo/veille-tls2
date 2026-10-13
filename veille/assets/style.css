@@ -288,7 +288,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 [data-layout="journal"] .mast a{font:700 clamp(2rem,3.6vw,2.7rem)/1 var(--display);color:var(--fg);text-decoration:none;letter-spacing:-.01em}
 [data-layout="journal"] .mast p{margin:6px 0 0;color:var(--muted);font-size:.9rem;letter-spacing:.02em}
 [data-layout="journal"] .mast .mast-d{font-weight:600;color:var(--fg)}
-.mast-s::after{content:" · ";font-weight:400;color:var(--muted)}
+.mast-s,.mast-d{display:block}
 .skip{position:absolute;left:12px;top:-80px;z-index:60;background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:4px;font-weight:700;text-decoration:none}
 .skip:focus{top:10px}
 .main:focus{outline:none}
@@ -569,3 +569,4 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .ev.pa.read > :not(.kick),.ev.pa.read .kick > :not(.lu){opacity:.6}
 .ev.pa.read:hover > :not(.kick),.ev.pa.read:hover .kick > :not(.lu){opacity:1}
 @media (max-width:700px){.daynav{gap:8px}.daynav .dn{padding:10px 12px;font-size:1.1rem}.dn-c h2{font-size:1.1rem}}
+@media (max-width:1023px){.find-t,#theme-t{display:none}}
