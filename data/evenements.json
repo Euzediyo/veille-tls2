@@ -1,9 +1,60 @@
 {
- "maj": "2026-10-13",
+ "maj": "2026-10-14",
  "groupes": [
   {
-   "sujet": "Cyberattaque sur les systèmes frigorifiques de supermarchés français",
+   "sujet": "Cyberattaque contre les systèmes de réfrigération de supermarchés en France (octobre 2026)",
    "ids": [
+    "d61b64cbea1b6b79",
+    "a5386ddc6b13547a",
+    "e1e0def07846fb27",
+    "ff655817d2a52789",
+    "f6fc461daebfe47f",
+    "d04e0c3697f3970a",
+    "2d28a17643bf8043",
+    "b891d5e09e0f1333",
+    "008c2bdc1ec63b37",
+    "939a8ab16fb35c13",
+    "63845da6cfdb4f6b",
+    "b2be877748bc2308",
+    "5b64b3b908c7baeb",
+    "8d2e768a64ba9b25",
+    "941a30df6c5efb34",
+    "64a6bef834ba905f",
+    "5329b48c637a9bca",
+    "287ab18953983da6",
+    "701c296fc73af9a3",
+    "7d638ff4dbbc8825",
+    "1e6e579ad118d192",
+    "ba1545fccc4ab157",
+    "974010ddd07b2ef8",
+    "7c41781b82ccf4a7",
+    "2104a3cc7260f803",
+    "ca50d1fb57ffe3cc",
+    "48b8651e82772555",
+    "61b2bb57da837e2c",
+    "bcf8bac8c5431d86",
+    "3ef23e3107b85ce9",
+    "4ea468e593d3cf4f",
+    "9bfedcc86a6b7ae4",
+    "534314e0ccae7d75",
+    "bc51d5e6d252fda5",
+    "8e7bdba40478060e",
+    "aebb6ae8e8529131",
+    "05575059f9175e0d",
+    "53c9777f4a09b221",
+    "c6d248bbce089f7e",
+    "b8be2a5cefb4a7bb",
+    "44188f5682fd2785",
+    "459f117057c0a06d",
+    "e19d608ae85e0c4b",
+    "0d9a1b787b04616a",
+    "7ecc8123ea46387b",
+    "07a79c1f7be74386",
+    "8c3f2259c4a8cdff",
+    "d9524f936f2067d9",
+    "14295baa58d4134c",
+    "40d5c9e021fdbaf5",
+    "a87092a70daac7ae",
     "ca9ba40832ea88a5",
     "c1f53e7c4f956319",
     "80b31b7908da3ea0",
@@ -113,14 +164,14 @@
     "3e308d05b416dc75",
     "12d57a0a5b6819d1",
     "20cf4e593e7ea149",
-    "debfd4024d5c2549",
-    "b724e491816e40d6"
+    "debfd4024d5c2549"
    ]
   },
   {
    "sujet": "Rumeur de partenariat Apple et ADT",
    "ids": [
     "021b9bf47651cab8",
+    "2cea967b0f0ee8d0",
     "89172241c1b56615",
     "5a4f6fa0cea31ac5",
     "99d3b18f8d57a621",
@@ -131,7 +182,14 @@
     "7291256b57b54026",
     "31f10280bc03c230",
     "bba97fc235caa18d",
-    "2cea967b0f0ee8d0"
+    "ebcd8cc1f0558857"
+   ]
+  },
+  {
+   "sujet": "Article pandasecurity « Quand une cyberattaque rompt la chaîne du froid »",
+   "ids": [
+    "cdefd28f8361ea0d",
+    "282cf03da1bc24a4"
    ]
   }
  ]

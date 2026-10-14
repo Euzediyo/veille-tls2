@@ -29,21 +29,26 @@
   "lundi": "2026-10-12",
   "titre": "Semaine du 12 au 18 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-13",
-  "synthese": "Le sujet majeur de la semaine est la cyberattaque qui, selon le seul titre lu, aurait déréglé le froid d'environ 300 supermarchés français, article signalé par RTL. Les détails sur le mode d'intrusion et les acteurs manquent. Largement reprise par la presse, elle reste une seule information : ces reprises ne sont pas des confirmations indépendantes.\n\nPour un centre de télésurveillance, des alarmes de température en masse ont pu arriver dans les supervisions de ces équipements, ce qui touche le traitement des alarmes et la levée de doute. Vérifiez d'abord la lecture complète de l'article, puis si vos clients utilisent des systèmes de froid pilotés à distance. Acoem annonce aussi, pour le quatrième trimestre 2026 (période approximative), des mises à jour réduisant les fausses alarmes acoustiques, à confirmer auprès du fabricant. DMP lance VK VMS, une gestion vidéo cloud à évaluer en compatibilité et en formation des opérateurs.\n\nLes autres contenus, sans urgence, sont à suivre : une tribune de SDM Magazine sur la contextualisation des alertes par l'IA, et un boîtier d'analyse vidéo de Security Info Watch, à évaluer avec fiche technique et compatibilité APSAD. Ces deux derniers ne sont lus qu'en partie. Aucune échéance réglementaire n'est signalée cette semaine.",
+  "maj": "2026-10-14",
+  "synthese": "Cette semaine, l'information principale concerne une cyberattaque qui aurait dérégulé le froid d'environ 300 supermarchés en France. Elle n'est connue que par son titre, repris par RTL et de nombreux autres médias. Ce sont des reprises, non des confirmations indépendantes, et le mode d'intrusion comme les acteurs restent inconnus. Elle peut toutefois générer une vague d'alarmes de température dans les centres qui supervisent ces équipements. Le ministère de l'Intérieur lance aussi le Beauvau de la sécurité privée, une concertation sur le recrutement, la formation et l'attractivité des métiers, sans calendrier ni mesure à ce stade.\n\nConcrètement, vérifiez si des clients utilisent des systèmes de froid pilotés à distance, et préparez-vous à un afflux d'alarmes techniques, sans y voir une urgence immédiate. Le Beauvau ne crée aucune obligation pour l'instant. Ne modifiez ni la formation ni le recrutement avant la publication d'un compte rendu officiel, qui concernera les entreprises de sécurité privée et leurs agents.\n\nSDM Magazine annonce des mises à jour d'Acoem réduisant les fausses alarmes de détection de coups de feu, disponibles au quatrième trimestre 2026 pour les clients existants. Cette date est approximative et doit être confirmée auprès du fabricant. Les autres nouveautés, comme le boîtier vidéo IA ou l'intégration AURA aux États-Unis, sont à suivre sans action immédiate.",
   "articles": [
    "ca9ba40832ea88a5",
+   "4e323591dbf855a4",
+   "71594d632bf2b057",
+   "cdefd28f8361ea0d",
    "4690562610ea108f",
    "83053a6f1cf430c9",
    "c852cdfbd5e74c26",
    "1eb56f7d55014325",
-   "27734041dc0a8fbd"
+   "27734041dc0a8fbd",
+   "b06358cfe15e1d5d"
   ],
   "echeances": [
    "83053a6f1cf430c9",
    "89172241c1b56615",
    "bc9681db1c8113ca",
-   "54e666f6c5806a29"
+   "54e666f6c5806a29",
+   "fc4372938e3873d9"
   ]
  }
 ]
