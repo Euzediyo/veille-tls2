@@ -13,6 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 from bs4 import BeautifulSoup
 
+from . import original
 from .collect import USER_AGENT, allowed_by_robots
 
 TIMEOUT = 15
@@ -53,9 +54,10 @@ def read_page(html: str) -> tuple[str, bool | None]:
 
 def enrich_one(item: dict, paid_sources: set[str]) -> dict:
     """Lit le début de l'article. Les liens Google Actualités ne sont pas suivis : le robots.txt de
-    Google l'interdit aux robots. Pour eux, seule la liste des sources payantes s'applique."""
+    Google l'interdit aux robots. On lit alors l'article chez l'éditeur quand on l'y a retrouvé
+    (url_article) ; sinon, seule la liste des sources payantes s'applique."""
     known_paid = item.get("source", "").strip().lower() in paid_sources or None
-    url = item["url"]
+    url = item.get("url_article") or item["url"]
     if "news.google.com" in url or not allowed_by_robots(url):
         return {**item, "payant": known_paid}
     try:
@@ -76,9 +78,16 @@ def enrich(items: list[dict], paid_sources: list[str], report: list[str]) -> lis
     if not items:
         return items
     paid = {s.strip().lower() for s in paid_sources}
+    try:
+        found = original.resolve(items)
+    except Exception:  # retrouver l'article d'origine est un plus : jamais bloquant
+        found = {}
+    items = [{**it, "url_article": found[it["id"]]} if it["id"] in found else it for it in items]
     with ThreadPoolExecutor(max_workers=8) as pool:
         result = list(pool.map(lambda it: enrich_one(it, paid), items))
     read = sum(1 for it in result if it.get("texte"))
     locked = sum(1 for it in result if it.get("payant"))
-    report.append(f"Lecture : {read} articles lus sur {len(items)} ; {locked} réservés aux abonnés")
+    google = sum(1 for it in items if "news.google.com" in it.get("url", ""))
+    report.append(f"Lecture : {read} articles lus sur {len(items)} ; {locked} réservés aux abonnés ; "
+                  f"{len(found)} articles Google Actualités retrouvés chez l'éditeur sur {google}")
     return result

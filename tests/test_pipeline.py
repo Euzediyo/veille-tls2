@@ -487,6 +487,12 @@ def test_same_event_grouping(tmp_path, monkeypatch):
     assert "Télésurveillance en psychiatrie" not in seen_prompt[0]          # article hors métier jamais comparé
     evenements.update(articles, PROFILE, "claude-haiku-5-5", date(2026, 10, 12), report)
     assert len(seen_prompt) == 1                                            # une fois par jour sauf collecte
+    assert "groupe_actuel" not in seen_prompt[0]
+    evenements.update(articles, PROFILE, "claude-haiku-5-5", date(2026, 10, 12), report, force=True)
+    assert '"groupe_actuel": "Rumeur de partenariat Apple et ADT"' in seen_prompt[1]  # les groupes déjà faits sont repris
+    monkeypatch.setattr(evenements, "VERSION", evenements.VERSION + 1)
+    evenements.update(articles, PROFILE, "claude-haiku-5-5", date(2026, 10, 12), report)
+    assert len(seen_prompt) == 3                                            # nouvelles consignes : recalcul le jour même
 
     annotated = editorial.annotate(articles, PROFILE, evenements.groups())
     assert {it["id"] for it in annotated} == {it["id"] for it in articles}  # identifiants inchangés (favoris préservés)
@@ -627,3 +633,52 @@ def test_accounts_pages(tmp_path, monkeypatch):
     assert "Politique de confidentialité" in (out / "confidentialite.html").read_text(encoding="utf-8")
     site.build(PROFILE, {**cfg, "supabase_url": ""}, [], date(2026, 10, 9), groups=[])
     assert 'acct-btn' not in (out / "index.html").read_text(encoding="utf-8") and not (out / "confidentialite.html").exists()
+
+
+def test_google_news_article_found_at_publisher(monkeypatch):
+    from veille import collect, enrich, original
+    robots = "User-agent: *\nDisallow: /prive/\nSitemap: https://www.journal.fr/sitemap-index.xml\nSitemap: https://www.journal.fr/sitemap-news.xml\n"
+    news = ('<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">'
+            '<url><loc>https://www.journal.fr/eco/frigos-pirates-123.html</loc><news:news><news:title>Des frigos de supermarchés piratés '
+            'pour faire monter leur température</news:title></news:news></url>'
+            '<url><loc>https://www.journal.fr/prive/autre.html</loc><news:news><news:title>Un article réservé</news:title></news:news></url></urlset>')
+    page = "<html><body><article><p>" + "Les contrôleurs de froid exposés sur Internet ont été reprogrammés par les pirates. " * 3 + "</p></article></body></html>"
+    calls = []
+
+    class Res:
+        def __init__(self, body, status=200, ctype="text/html"):
+            self.status_code, self.text, self.headers = status, body, {"Content-Type": ctype}
+            self.raw = types.SimpleNamespace(read=lambda n, decode_content=True: body.encode())
+
+        def raise_for_status(self):
+            pass
+
+    def fake_get(url, **kw):
+        calls.append(url)
+        if "news.google.com" in url:
+            raise AssertionError("les liens Google Actualités ne doivent jamais être suivis")
+        if url.endswith("/robots.txt"):
+            return Res(robots)
+        if url.endswith("sitemap-news.xml"):
+            return Res(news, ctype="application/xml")
+        if url == "https://www.journal.fr/eco/frigos-pirates-123.html":
+            return Res(page)
+        return Res("", status=404)
+
+    monkeypatch.setattr(collect.requests, "get", fake_get)
+    monkeypatch.setattr(enrich.requests, "get", fake_get)
+    monkeypatch.setattr(original.requests, "get", fake_get)
+    collect._robots_cache.clear()
+    it = {"id": "g1", "titre": "Des frigos de supermarchés piratés pour faire monter leur température !",
+          "url": "https://news.google.com/rss/articles/CBMi123", "source": "Le Journal", "site": "https://www.journal.fr",
+          "extrait": "Des frigos de supermarchés piratés pour faire monter leur température Le Journal", "origine": "google_news"}
+    report = []
+    out = enrich.enrich([it], [], report)[0]
+    assert out["url_article"] == "https://www.journal.fr/eco/frigos-pirates-123.html"
+    assert "contrôleurs de froid" in out["texte"]
+    assert "1 articles Google Actualités retrouvés" in report[0]
+    assert not any("sitemap-index" in c for c in calls)  # seul le plan « actualités » est lu
+    # Titre trop différent : pas d'article retrouvé, le lien Google reste.
+    assert original.find(["Cyberattaque : le gouvernement réagit"], {original.normalize("Des frigos piratés"): "x"}) is None
+    collect._robots_cache.clear()

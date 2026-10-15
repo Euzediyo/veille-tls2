@@ -81,7 +81,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 
 def footer(site: dict) -> str:
     return f"""<footer class="foot">
-  <p>Résumés et taux de pertinence rédigés automatiquement par une IA à partir du titre et de l'extrait public de chaque article. Lisez toujours la source avant d'agir.</p>
+  <p>Résumés et taux de pertinence rédigés automatiquement par une IA à partir du titre, de l'extrait et, quand le site de l'éditeur le permet, du début de chaque article. Lisez toujours la source avant d'agir.</p>
   <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="essentiel.html">L'essentiel (texte)</a> · <a href="mentions-legales.html">Mentions légales et méthode</a>{' · <a href="confidentialite.html">Confidentialité</a>' if comptes(site) else ''}</p>
 </footer>"""
 
@@ -131,7 +131,6 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <div class="sel2"><select id="period" aria-label="Période"><option value="1">Dernière édition</option><option value="7" selected>7 jours</option><option value="30">30 jours</option><option value="100000">Toute la période</option></select>
       <select id="min" aria-label="Pertinence minimum"><option value="30">Pertinence ≥ 30 %</option><option value="50">Pertinence ≥ 50 %</option><option value="70">Pertinence ≥ 70 %</option><option value="90">Pertinence ≥ 90 %</option></select></div>
       <div class="row2">
-        <button type="button" class="btn" id="ack-all"><span class="d-only">Tout marquer comme lu</span><span class="m-only">✓ Tout lu</span></button>
         <button type="button" class="btn ghost" id="unmask" hidden></button>
       </div>
     </div>
@@ -151,6 +150,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
       <div class="readbox" id="readf" role="group" aria-label="Articles affichés">
         <label><input type="checkbox" id="show-unread" checked> Afficher les articles non lus <em id="rf-unread">0</em></label>
         <label><input type="checkbox" id="show-read"> Afficher les articles déjà lus <em id="rf-read">0</em></label>
+        <button type="button" class="btn ack" id="ack-all" hidden>✓ Tout marquer comme lu</button>
         <div class="seg" id="density" role="group" aria-label="Présentation des articles"><span class="seg-l" aria-hidden="true">Vue</span><button type="button" data-density="compacte" aria-pressed="false" aria-label="Vue compacte">Compacte</button><button type="button" data-density="detaillee" aria-pressed="true" aria-label="Vue détaillée">Détaillée</button></div></div>
       <p class="count" id="count" role="status"></p>
       <div class="feed" id="feed"></div></div>
@@ -192,7 +192,7 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Chaque matin, un programme collecte les publications récentes de Google Actualités, de flux RSS et de pages surveillées, sur six domaines : réglementation, APSAD / CNPP, social et RH, télésurveillance, secteur et marché, management et exploitation. Une IA (modèle {escape(site['modele'])}) attribue à chaque article un taux de pertinence de 0 à 100 % du point de vue d'un responsable de centre de télésurveillance, explique ce taux, propose une action pour les articles importants et repère les échéances. Les articles sous {profile.get('seuil_publication', 30)} % ou jugés hors sujet ne sont pas publiés.</p>
 <p>Le journal se lit au jour le jour : chaque édition présente tous les articles retenus ce jour-là, du plus pertinent au moins pertinent, et les jours précédents restent consultables. Quand plusieurs médias reprennent la même information ou la même rumeur, une seule fiche est publiée, avec les autres sources consultables : ces reprises ne valent pas confirmations indépendantes. Un article publié plus de {profile.get('ressources_de_fond_jours', 30)} jours avant sa découverte est rangé dans les « Ressources de fond », avec sa date réelle, et n'est pas présenté comme une actualité. Le suivi médical à distance (télésurveillance de patients) n'est pas retenu, sauf lien avec la sécurité.</p>
 <p>Le taux de pertinence ne dit pas l'urgence : chaque article est aussi qualifié séparément par sa pertinence métier (directe, indirecte, faible), son urgence (action immédiate, à anticiper, information), son statut (texte publié, proposition, négociation, annonce, rumeur) et son périmètre (France, Union européenne, autre pays). Le contenu réellement lu (début de l'article, extrait ou titre seul) est constaté par le programme, pas estimé par l'IA. Une échéance n'est jamais affichée plus précise que sa source : un mois seul reste « date à confirmer », et seules les dates exactes vont au calendrier.</p>
-<p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
+<p>L'IA ne lit que le titre, l'extrait et, quand le site de l'éditeur le permet, le début de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
 {'<p>Ce site ne dépose aucun cookie publicitaire et ne mesure pas son audience. Sans compte, les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur. Le compte lecteur est facultatif : voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>' if comptes(site) else '<p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>'}
 </main>
@@ -394,7 +394,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date, groups: 
 
     articles = editorial.annotate(articles, profile, evenements.groups() if groups is None else groups)
     # Échéances complétées : précision de la date (« a_verifier » pour une ancienne analyse), type, source.
-    public = [{**{k: it.get(k) for k in PUBLIC_FIELDS}, "echeance": editorial.deadline(it)}
+    # Le lien mène directement à l'article chez l'éditeur quand il a été retrouvé, sinon au lien Google Actualités.
+    public = [{**{k: it.get(k) for k in PUBLIC_FIELDS}, "url": it.get("url_article") or it["url"], "echeance": editorial.deadline(it)}
               for it in articles if editorial.publishable(it, profile)]
     public.sort(key=lambda it: (it["edition"], it["score"]), reverse=True)
 

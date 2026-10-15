@@ -319,7 +319,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .pa .kick .tag,.ess .kick .tag{color:var(--cc)}
 /* Barre de sélection : presse (France / International / Tous), lecture, présentation. */
 .row2{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
-.row2 #ack-all{margin-left:auto}
+.readbox .ack{border-color:var(--fg);color:var(--fg);font-weight:700;min-height:40px}
 .seg button{min-height:36px}
 .seg-l{display:inline-flex;align-items:center;padding:0 4px 0 10px;font:700 11px var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .seg button em{font-weight:700}
@@ -426,7 +426,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
   #t-journal-n{background:var(--accent);color:var(--on-accent)}
   .toast{bottom:calc(80px + env(safe-area-inset-bottom))}
   .tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
-  .tools .m-only,#ack-all .m-only,.tab .m-only{display:inline}
+  .tools .m-only,.tab .m-only{display:inline}
   .tools select.m-only,.tools button.m-only{display:block}
   #cat-sel{width:100%;min-width:0;grid-column:1/2}
   #filt-btn{padding-inline:16px}
@@ -442,8 +442,7 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
   .seg-l{display:none}
   .tools #density{grid-column:1/-1;grid-template-columns:1fr 1fr;display:none}
   .tools.open #density{display:grid}
-  .tools #press{order:1}.tools #readf{order:2}.row2 #ack-all{order:3}.tools #density{order:4}.tools #unmask{order:5}
-  .row2 #ack-all{margin:0;padding-inline:10px}
+  .tools #press{order:1}.tools #readf{order:2}.tools #density{order:4}.tools #unmask{order:5}
   .tools #unmask{grid-column:1/-1;justify-self:start}
   .mast-row{grid-template-columns:auto minmax(0,1fr) auto;padding:8px 16px 10px;gap:8px}
   [data-layout="journal"] .mast a{font-size:1.75rem}

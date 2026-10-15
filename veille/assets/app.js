@@ -210,6 +210,8 @@
     var nRead = groupsPool.filter(isRead).length;
     $("rf-unread").textContent = groupsPool.length - nRead;
     $("rf-read").textContent = nRead;
+    $("ack-all").hidden = fav || groupsPool.length === nRead;
+    $("ack-all").textContent = "✓ Tout marquer comme lu (" + (groupsPool.length - nRead) + ")";
     $("show-unread").checked = st.readFilter === "unread" || st.readFilter === "all";
     $("show-read").checked = st.readFilter === "read" || st.readFilter === "all";
     $("readf").hidden = fav;
@@ -411,8 +413,8 @@
     var others = members(it).filter(function (m) { return m.id !== it.id; }).sort(sortPublished);
     if (!others.length) return "";
     var n = others.length, pl = n > 1 ? "s" : "";
-    return '<details class="rep"><summary>Même information reprise par ' + n + " autre" + pl + " source" + pl + "</summary>" +
-      '<p class="rep-n">Ce sont des reprises de la même information, pas des confirmations indépendantes.</p><ul>' +
+    return '<details class="rep"><summary>' + n + " autre" + pl + " article" + pl + " sur le même sujet</summary>" +
+      '<p class="rep-n">Reprises et suites du même événement par d\'autres médias : à ne pas compter comme des confirmations indépendantes.</p><ul>' +
       others.map(function (m) {
         return '<li><a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.source) + "</a> · " + esc(published(m)) + "<br>" + esc(m.titre) + "</li>";
       }).join("") + "</ul></details>";
@@ -544,6 +546,7 @@
       render();
       return focusAfter(document.querySelector('.ev[data-id="' + did + '"] [data-detail]'));
     }
+    if (t.closest("[data-unack]")) { lastAck.forEach(function (id) { read.delete(id); }); lastAck = []; saveSet("veilletls.lus", read); hideToast(); return render(); }
     if (t.closest("[data-undo]")) { members(byId[t.closest("[data-undo]").dataset.undo] || { id: t.closest("[data-undo]").dataset.undo }).forEach(function (m) { masked.delete(m.id); }); saveSet("veilletls.masques", masked); hideToast(); return render(); }
     var ev = t.closest(".ev"); if (!ev) return;
     var id = ev.dataset.id;
@@ -586,9 +589,15 @@
   $("unmask").addEventListener("click", function () { masked.clear(); saveSet("veilletls.masques", masked); render(); });
   // Après un nouveau rendu, le focus clavier revient sur un élément proche au lieu de se perdre.
   function focusAfter(el) { if (el && el.focus) el.focus({ preventScroll: true }); }
+  // « Tout marquer comme lu » : les fiches non lues de la page affichée (jour, presse et filtres en cours), avec « Annuler ».
+  var lastAck = [];
   $("ack-all").addEventListener("click", function () {
-    data.forEach(function (it) { if (st.view === "favoris" ? favs.has(it.id) : shown(it) && matches(it)) read.add(it.id); });
+    lastAck = [];
+    data.forEach(function (it) { if (shown(it) && matches(it) && !isRead(it)) { read.add(it.id); lastAck.push(it.id); } });
     saveSet("veilletls.lus", read); render();
+    var n = collapse(lastAck.map(function (id) { return byId[id]; })).length, el = $("toast");
+    el.innerHTML = "<span>" + n + (n > 1 ? " articles marqués comme lus." : " article marqué comme lu.") + '</span><button type="button" data-unack>Annuler</button>';
+    el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(hideToast, 15000);
   });
 
   // « Non pertinent » : l'article est masqué ici, et l'administrateur peut transmettre l'avis à l'IA
