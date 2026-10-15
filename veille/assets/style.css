@@ -1,3 +1,7 @@
+/* Polices hébergées sur le site (licence SIL Open Font License, voir fonts/). */
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:200 800;font-display:swap;src:url(fonts/newsreader.woff2) format("woff2")}
+@font-face{font-family:"Public Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/public-sans.woff2) format("woff2")}
+@font-face{font-family:"Public Sans";font-style:italic;font-weight:100 900;font-display:swap;src:url(fonts/public-sans-italic.woff2) format("woff2")}
 /* Veille TLS : deux affichages (« Supervision » et « Journal »), chacun en mode sombre ou clair, choisis par le lecteur. */
 :root{
   --bg:#070c14; --panel:#0e1622; --panel-2:#132033; --line:#1f3048; --fg:#dce7f3; --muted:#8197b0; --accent:#2fb8ff; --accent-2:#1667ff;
