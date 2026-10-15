@@ -18,12 +18,25 @@ import anthropic
 from . import editorial, store
 
 WINDOW_DAYS = 10
-MAX_ARTICLES = 250
+MAX_ARTICLES = 400
+# À changer quand les consignes de regroupement changent : les groupes sont alors recalculés au passage suivant.
+VERSION = 2
 
 SYSTEM = """Tu aides à mettre en page un journal de veille sur la télésurveillance et la sécurité privée.
 Tu reçois une liste d'articles déjà publiés. Regroupe ceux qui relatent le même événement précis :
 la même annonce, la même décision, le même texte, la même rumeur ou la même dépêche reprise par
 plusieurs médias, y compris quand l'un est en français et l'autre en anglais.
+
+Un incident ou une affaire d'ampleur suivi sur plusieurs jours forme UN SEUL groupe avec toutes
+ses suites : nouveaux bilans et chiffres, magasins ou sites touchés localement, réactions
+(gouvernement, entreprises, fabricants mis en cause), enquête, conséquences, conseils et analyses
+écrits à propos de cet incident. Exemple : la cyberattaque des systèmes de froid des supermarchés
+(frigos portés à 50 °C, 700 magasins touchés, Danfoss et Dixell mis en cause, un Leclerc ou un U
+local touché, qui paie les pertes) est un seul groupe, pas un groupe par angle ou par chiffre.
+
+Chaque article peut indiquer « groupe_actuel », le groupe où il est déjà rangé : garde ces groupes
+(complète-les avec les nouveaux articles du même événement) sauf erreur manifeste, et fusionne
+deux groupes qui relatent en fait le même événement.
 
 Ne regroupe pas des articles qui partagent seulement un thème, un acteur ou un mot. Exemples :
 - plusieurs articles sur la rumeur d'un partenariat entre Apple et ADT : un seul groupe, y compris
@@ -96,16 +109,19 @@ def merge(previous: list[dict], fresh: list[dict], compared: set[str]) -> list[d
     return kept + fresh
 
 
-def ask_ai(pool: list[dict], model: str) -> list[dict]:
+def ask_ai(pool: list[dict], model: str, current: list[dict] | None = None) -> list[dict]:
+    subject = {i: g["sujet"] for g in current or [] for i in g["ids"]}
     lines = []
     for it in pool:
         published = editorial.published_on(it)
-        lines.append(json.dumps({"id": it["id"], "date": published.isoformat() if published else "inconnue",
-                                 "source": it["source"], "titre": it["titre"],
-                                 "resume": (it.get("resume") or "")[:240]}, ensure_ascii=False))
+        line = {"id": it["id"], "date": published.isoformat() if published else "inconnue",
+                "source": it["source"], "titre": it["titre"], "resume": (it.get("resume") or "")[:160]}
+        if it["id"] in subject:
+            line["groupe_actuel"] = subject[it["id"]]
+        lines.append(json.dumps(line, ensure_ascii=False))
     response = anthropic.Anthropic().messages.create(
         model=model,
-        max_tokens=8000,
+        max_tokens=16000,
         system=SYSTEM,
         messages=[{"role": "user", "content": "Articles (un par ligne, au format JSON) :\n\n" + "\n".join(lines)}],
         output_config={"effort": "low", "format": {"type": "json_schema", "schema": SCHEMA}},
@@ -119,7 +135,7 @@ def ask_ai(pool: list[dict], model: str) -> list[dict]:
 def update(articles: list[dict], profile: dict, model: str, today: date, report: list[str], force: bool = False) -> None:
     """Recalcule les groupes des derniers jours (une fois par jour, sauf si force)."""
     state = load()
-    if not force and state.get("maj") == today.isoformat():
+    if not force and state.get("maj") == today.isoformat() and state.get("version", 1) == VERSION:
         return
     if not os.environ.get("ANTHROPIC_API_KEY"):
         report.append("Regroupement : IA non configurée, articles non regroupés")
@@ -127,10 +143,10 @@ def update(articles: list[dict], profile: dict, model: str, today: date, report:
     pool = window(articles, profile, today)
     compared = {it["id"] for it in pool}
     try:
-        fresh = clean(ask_ai(pool, model), compared) if len(pool) > 1 else []
+        fresh = clean(ask_ai(pool, model, state["groupes"]), compared) if len(pool) > 1 else []
     except (anthropic.APIError, ValueError, KeyError) as exc:
         report.append(f"Regroupement : échec ({exc.__class__.__name__}), groupes précédents conservés")
         return
-    store._write(_file(), {"maj": today.isoformat(), "groupes": merge(state["groupes"], fresh, compared)})
+    store._write(_file(), {"maj": today.isoformat(), "version": VERSION, "groupes": merge(state["groupes"], fresh, compared)})
     report.append(f"Regroupement : {len(fresh)} événements repris par plusieurs sources "
                   f"({sum(len(g['ids']) for g in fresh)} articles)")

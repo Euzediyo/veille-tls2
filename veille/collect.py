@@ -87,6 +87,7 @@ def collect_google_news(queries: list, report: list[str], international: bool = 
         for entry in feed.entries:
             title = entry.get("title", "")
             source = (entry.get("source") or {}).get("title", "")
+            site = (entry.get("source") or {}).get("href", "")
             # Google News ajoute « - Nom du site » à la fin du titre.
             if source and title.endswith(" - " + source):
                 title = title[: -len(source) - 3]
@@ -99,6 +100,7 @@ def collect_google_news(queries: list, report: list[str], international: bool = 
                 "extrait": clean_text(entry.get("summary", "")),
                 "origine": "google_news",
                 "filtre": "aucun",
+                **({"site": site} if site else {}),
                 **({"international": True} if international else {}),
             })
         report.append(f"Google News « {label} » : {len(feed.entries)} résultats")
