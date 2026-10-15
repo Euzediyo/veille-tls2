@@ -25,9 +25,6 @@ MOIS = editorial.MOIS
 PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie", "score",
                  "resume", "pourquoi", "action", "echeance", "payant", "international", "fond", "niveau", "groupe",
                  "pertinence", "urgence", "statut", "perimetre", "qui_concerne", "verifications", "contenu")
-FONTS = ("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700"
-         "&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600"
-         "&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap")
 
 
 def dims(it: dict) -> str:
@@ -52,8 +49,6 @@ def head(title: str, site: dict, description: str = "") -> str:
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{escape(site['titre'])}">
 <link rel="alternate" type="application/rss+xml" title="{escape(site['titre'])}" href="feed.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="{FONTS}">
 <link rel="stylesheet" href="style.css?v={v}">
 </head>"""
 
@@ -316,6 +311,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date, groups: 
     OUT.mkdir(parents=True)
     for name in ("style.css", "app.js"):
         shutil.copy(ASSETS / name, OUT / name)
+    # Polices servies par le site lui-même : aucune adresse IP de visiteur n'est envoyée à Google.
+    shutil.copytree(ASSETS / "fonts", OUT / "fonts")
     write_icons(OUT)
 
     now = datetime.now(ZoneInfo("Europe/Paris"))
