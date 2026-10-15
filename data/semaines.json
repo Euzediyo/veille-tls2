@@ -29,25 +29,30 @@
   "lundi": "2026-10-12",
   "titre": "Semaine du 12 au 18 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-14",
-  "synthese": "Cette semaine, l'information principale concerne une cyberattaque qui aurait dérégulé le froid d'environ 300 supermarchés en France. Elle n'est connue que par son titre, repris par RTL et de nombreux autres médias. Ce sont des reprises, non des confirmations indépendantes, et le mode d'intrusion comme les acteurs restent inconnus. Elle peut toutefois générer une vague d'alarmes de température dans les centres qui supervisent ces équipements. Le ministère de l'Intérieur lance aussi le Beauvau de la sécurité privée, une concertation sur le recrutement, la formation et l'attractivité des métiers, sans calendrier ni mesure à ce stade.\n\nConcrètement, vérifiez si des clients utilisent des systèmes de froid pilotés à distance, et préparez-vous à un afflux d'alarmes techniques, sans y voir une urgence immédiate. Le Beauvau ne crée aucune obligation pour l'instant. Ne modifiez ni la formation ni le recrutement avant la publication d'un compte rendu officiel, qui concernera les entreprises de sécurité privée et leurs agents.\n\nSDM Magazine annonce des mises à jour d'Acoem réduisant les fausses alarmes de détection de coups de feu, disponibles au quatrième trimestre 2026 pour les clients existants. Cette date est approximative et doit être confirmée auprès du fabricant. Les autres nouveautés, comme le boîtier vidéo IA ou l'intégration AURA aux États-Unis, sont à suivre sans action immédiate.",
+  "maj": "2026-10-15",
+  "synthese": "Cette semaine, plusieurs médias (RTL, TF1 Info, Libération, BFM, Le Monde) ont annoncé une cyberattaque contre les installations frigorifiques de supermarchés français, dont Intermarché et Coopérative U. Le nombre de magasins touchés varie : au moins 300 selon BFM, 700 selon un chiffre attribué au gouvernement français par ABC News, qui n'a pas été recoupé. Cyberattaque.org met en cause le fabricant Danfoss. Il s'agit d'une même information largement reprise, et non de confirmations indépendantes. Ces articles n'ont été lus qu'à travers leur titre, donc les détails manquent.\n\nPour un centre de télésurveillance, le risque est un afflux d'alarmes de température simultanées, qui peut saturer les opérateurs et compliquer la levée de doute. Vérifiez si vos clients utilisent des systèmes de froid pilotés à distance du même type, notamment ceux de ces fabricants ou mainteneurs.\n\nAucune échéance n'est donnée. Trois articles sont classés en action immédiate par la veille, mais ce classement repose sur le seul titre. Lisez d'abord les articles complets, puis préparez une procédure de traitement des alarmes de froid en masse, en attendant les consignes officielles.",
   "articles": [
    "ca9ba40832ea88a5",
-   "4e323591dbf855a4",
-   "71594d632bf2b057",
-   "cdefd28f8361ea0d",
-   "4690562610ea108f",
-   "83053a6f1cf430c9",
-   "c852cdfbd5e74c26",
-   "1eb56f7d55014325",
-   "27734041dc0a8fbd",
-   "b06358cfe15e1d5d"
+   "c1f53e7c4f956319",
+   "80b31b7908da3ea0",
+   "a8a071340cc6a84b",
+   "d61b64cbea1b6b79",
+   "a5386ddc6b13547a",
+   "e1e0def07846fb27",
+   "8140fb14a94d3d15",
+   "cf39174f326cf882",
+   "2809b21350832bd0"
   ],
   "echeances": [
    "83053a6f1cf430c9",
    "89172241c1b56615",
+   "2cea967b0f0ee8d0",
+   "31f10280bc03c230",
+   "8e552f0fa95a59cb",
+   "e2905e8e6714d2b4",
    "bc9681db1c8113ca",
    "54e666f6c5806a29",
+   "115c9dc2a89294bb",
    "fc4372938e3873d9"
   ]
  }
