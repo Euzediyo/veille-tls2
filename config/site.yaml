@@ -7,6 +7,10 @@ url: "https://euzediyo.github.io/veille-tls2/"
 # Mentions légales (obligatoires pour un site public en France).
 editeur: "Veille TLS"
 contact: "veilletls@gmail.com"
+# Comptes lecteurs (facultatifs) : adresse du projet Supabase et sa clé publique (« publishable »).
+# Cette clé est faite pour être publique ; la clé secrète (« secret » ou « service_role ») ne doit jamais figurer ici.
+supabase_url: "https://hcphgwwevtgtnmidnjxl.supabase.co"
+supabase_cle_publique: "sb_publishable_Q41BkskxmQoK51apyYaCCg_z2uCXu6Y"
 hebergeur: "GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis"
 
 # Modèle d'IA utilisé pour l'analyse.

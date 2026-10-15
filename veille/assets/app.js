@@ -23,7 +23,10 @@
   // ---------- utilitaires ----------
   function $(id) { return document.getElementById(id); }
   function loadSet(key) { try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); } catch (e) { return new Set(); } }
-  function saveSet(key, set) { try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch (e) {} }
+  function saveSet(key, set) {
+    try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch (e) {}
+    if (window.VeilleCompte) window.VeilleCompte.changed();
+  }
   function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
   function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
   function isoLocal(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
@@ -617,6 +620,12 @@
     if (CFG.updated) $("last").textContent = CFG.updated;
     render();
   }
+
+  // Comptes lecteurs : listes reçues d'un autre appareil (voir compte.js).
+  window.VeilleApp = { reload: function () {
+    read = loadSet("veilletls.lus"); favs = loadSet("veilletls.favoris"); masked = loadSet("veilletls.masques");
+    if (data.length) render();
+  } };
 
   if (window.VEILLE_ARTICLES) start(window.VEILLE_ARTICLES);
   else fetch("articles.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(start)

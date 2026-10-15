@@ -611,3 +611,19 @@ def test_every_module_imports():
     for name in ("main", "notify", "analyze", "avis", "collect", "editorial", "enrich", "evenements",
                  "podcast", "prefilter", "semaine", "site", "store"):
         importlib.import_module(f"veille.{name}")
+
+
+def test_accounts_pages(tmp_path, monkeypatch):
+    monkeypatch.setattr(site, "OUT", tmp_path / "site")
+    monkeypatch.setattr(store, "DATA", tmp_path)
+    cfg = {**SITE, "supabase_url": "https://abcd.supabase.co/rest/v1/", "supabase_cle_publique": "sb_publishable_x"}
+    site.build(PROFILE, cfg, [], date(2026, 10, 9), groups=[])
+    out = tmp_path / "site"
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert 'id="acct-btn"' in index and 'src="compte.js' in index
+    assert '"compte": {"url": "https://abcd.supabase.co", "cle": "sb_publishable_x", "sdk": "supabase-2.117.2.js"}' in index
+    assert (out / "compte.js").exists() and (out / "supabase-2.117.2.js").exists()
+    assert "Supprimer" not in index and "googleapis" not in index
+    assert "Politique de confidentialité" in (out / "confidentialite.html").read_text(encoding="utf-8")
+    site.build(PROFILE, {**cfg, "supabase_url": ""}, [], date(2026, 10, 9), groups=[])
+    assert 'acct-btn' not in (out / "index.html").read_text(encoding="utf-8") and not (out / "confidentialite.html").exists()

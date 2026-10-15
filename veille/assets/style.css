@@ -574,3 +574,29 @@ select{background:var(--panel);border:1px solid var(--line);border-radius:6px;pa
 .ev.pa.read:hover > :not(.kick),.ev.pa.read:hover .kick > :not(.lu){opacity:1}
 @media (max-width:700px){.daynav{gap:8px}.daynav .dn{padding:10px 12px;font-size:1.1rem}.dn-c h2{font-size:1.1rem}}
 @media (max-width:1023px){.find-t,#theme-t{display:none}}
+
+/* ---------- Compte lecteur ---------- */
+.btn.acct{display:inline-flex;align-items:center;gap:8px;min-height:36px;color:var(--fg);white-space:nowrap}
+.btn.acct.on{border-color:var(--accent)}
+dialog.acct{width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;border:1px solid var(--line);border-radius:8px;padding:24px;background:var(--bg);color:var(--fg);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+dialog.acct::backdrop{background:rgba(0,0,0,.45)}
+.acct h2{margin:0 0 8px;font:700 1.5rem/1.2 var(--display)}
+.acct p{margin:0 0 14px;color:var(--muted)}
+.acct form{display:grid;gap:12px;margin:0 0 14px}
+.acct label{display:grid;gap:6px;font-weight:600;color:var(--fg)}
+.acct label small{font-weight:400;color:var(--muted)}
+.acct input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg)}
+.acct input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:700;padding:10px 14px}
+.btn.primary:disabled{opacity:.6;cursor:wait}
+.btn.danger{color:var(--p1);border-color:var(--p1)}
+.acct-x{position:absolute;top:10px;right:10px;background:none;border:0;font-size:18px;color:var(--muted);cursor:pointer;padding:6px}
+.acct-links{font-size:.92rem}
+.acct-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.acct-del{margin-bottom:14px}
+.acct-del summary{cursor:pointer;color:var(--p1);font-weight:600;margin-bottom:8px}
+.acct-small{font-size:.85rem}
+.acct-msg{margin:0;font-weight:600}
+.acct-msg.ok{color:var(--ok)}
+.acct-msg.ko{color:var(--p1)}
+@media (max-width:700px){.btn.acct span{display:none}}

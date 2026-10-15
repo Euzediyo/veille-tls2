@@ -12,6 +12,8 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
+import requests
+
 from . import editorial, evenements, store
 from .icons import write_icons
 
@@ -30,6 +32,30 @@ PUBLIC_FIELDS = ("id", "titre", "url", "source", "date", "edition", "categorie",
 def dims(it: dict) -> str:
     """Dimensions de l'analyse (pertinence, urgence, statut, périmètre), séparées du score."""
     return " · ".join(editorial.LABELS[k][it[k]] for k in ("pertinence", "urgence", "statut", "perimetre") if it.get(k))
+
+
+# Comptes lecteurs (facultatifs), gérés par Supabase : actifs dès que config/site.yaml donne l'adresse du projet et sa clé publique.
+SUPABASE_SDK = "supabase-2.117.2.js"
+ACCOUNT_BUTTON = ('<button type="button" class="btn acct" id="acct-btn" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                  'stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Se connecter</span></button>')
+
+
+def comptes(site: dict) -> bool:
+    return bool(site.get("supabase_url") and site.get("supabase_cle_publique"))
+
+
+def supabase_url(site: dict) -> str:
+    """Adresse racine du projet, même si l'adresse de l'API (…/rest/v1/) a été collée."""
+    return site["supabase_url"].split(".supabase.co")[0] + ".supabase.co"
+
+
+def ping_comptes(site: dict) -> str:
+    """Un projet Supabase gratuit se met en pause après 7 jours sans activité : le passage quotidien le garde éveillé."""
+    try:
+        res = requests.get(supabase_url(site) + "/auth/v1/health", headers={"apikey": site["supabase_cle_publique"]}, timeout=20)
+        return f"Comptes : service joignable ({res.status_code})"
+    except requests.RequestException as exc:
+        return f"Comptes : service injoignable ({exc.__class__.__name__})"
 
 
 def head(title: str, site: dict, description: str = "") -> str:
@@ -56,7 +82,7 @@ def head(title: str, site: dict, description: str = "") -> str:
 def footer(site: dict) -> str:
     return f"""<footer class="foot">
   <p>Résumés et taux de pertinence rédigés automatiquement par une IA à partir du titre et de l'extrait public de chaque article. Lisez toujours la source avant d'agir.</p>
-  <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="essentiel.html">L'essentiel (texte)</a> · <a href="mentions-legales.html">Mentions légales et méthode</a></p>
+  <p><a href="index.html">Journal</a> · <a href="feed.xml">Flux RSS</a> · <a href="podcast.xml">Podcast</a> · <a href="essentiel.html">L'essentiel (texte)</a> · <a href="mentions-legales.html">Mentions légales et méthode</a>{' · <a href="confidentialite.html">Confidentialité</a>' if comptes(site) else ''}</p>
 </footer>"""
 
 
@@ -68,6 +94,10 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
         "podcast": site["url"].rstrip("/") + "/podcast.xml",
         "avis": REPO + "/issues/new",
     }
+    account_script = ""
+    if comptes(site):
+        account_script = f'\n<script src="compte.js?v={site.get("_version", "")}"></script>'
+        config["compte"] = {"url": supabase_url(site), "cle": site["supabase_cle_publique"], "sdk": SUPABASE_SDK}
     return head(site["titre"], site) + f"""
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -75,7 +105,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
   <div class="mast-row">
     <span class="mast-l" aria-hidden="true"></span>
     <div class="mast"><a href="index.html">{escape(site['titre'])}</a><p><span class="mast-s">{escape(site['sous_titre'])}</span><span class="mast-d"><span id="mast-d"></span> · Dernière collecte : <span id="last">--</span></span></p></div>
-    <div class="mast-r"><button type="button" class="btn find" id="filt-btn" aria-expanded="false" aria-controls="tools"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg><span class="find-t">Rechercher</span><em id="filt-n" hidden></em></button>
+    <div class="mast-r">{ACCOUNT_BUTTON if comptes(site) else ""}<button type="button" class="btn find" id="filt-btn" aria-expanded="false" aria-controls="tools"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="1.6"/></svg><span class="find-t">Rechercher</span><em id="filt-n" hidden></em></button>
     <button type="button" class="theme-btn" id="theme-btn" aria-label="Changer de mode"><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme-t">Mode clair</span></button></div>
   </div>
 </header>
@@ -137,7 +167,7 @@ def index_html(site: dict, profile: dict, updated: str, ics_url: str) -> str:
 <div class="toast" id="toast" role="status" hidden></div>
 {footer(site)}
 <script>window.VEILLE = {json.dumps(config, ensure_ascii=False)};</script>
-<script src="app.js?v={site.get('_version', '')}"></script>
+<script src="app.js?v={site.get('_version', '')}"></script>{account_script}
 </body>
 </html>
 """
@@ -164,7 +194,43 @@ def legal_html(site: dict, profile: dict) -> str:
 <p>Le taux de pertinence ne dit pas l'urgence : chaque article est aussi qualifié séparément par sa pertinence métier (directe, indirecte, faible), son urgence (action immédiate, à anticiper, information), son statut (texte publié, proposition, négociation, annonce, rumeur) et son périmètre (France, Union européenne, autre pays). Le contenu réellement lu (début de l'article, extrait ou titre seul) est constaté par le programme, pas estimé par l'IA. Une échéance n'est jamais affichée plus précise que sa source : un mois seul reste « date à confirmer », et seules les dates exactes vont au calendrier.</p>
 <p>L'IA ne lit que le titre et l'extrait public de chaque article : elle peut se tromper. Vérifiez toujours la source avant de prendre une décision.</p>
 <h2>Données personnelles</h2>
-<p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>
+{'<p>Ce site ne dépose aucun cookie publicitaire et ne mesure pas son audience. Sans compte, les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur. Le compte lecteur est facultatif : voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>' if comptes(site) else '<p>Ce site ne dépose aucun cookie et ne collecte aucune donnée sur ses lecteurs. Les articles lus, les favoris et les articles masqués sont mémorisés uniquement dans votre navigateur.</p>'}
+</main>
+{footer(site)}
+</body>
+</html>
+"""
+
+
+def privacy_html(site: dict) -> str:
+    return head(f"Confidentialité · {site['titre']}", site) + f"""
+<body>
+<header class="bar"><div class="bar-in"><a class="logo" href="index.html"><span class="logo-t">Veille TLS</span></a></div></header>
+<main class="prose">
+<h1>Politique de confidentialité</h1>
+<p>Le journal se lit sans compte. Le compte lecteur est facultatif : il sert uniquement à retrouver vos articles lus, vos favoris et vos articles masqués sur tous vos appareils.</p>
+<h2>Responsable du traitement</h2>
+<p>{escape(site['editeur'])}. Contact : {escape(site['contact'])}.</p>
+<h2>Données enregistrées</h2>
+<ul>
+<li>Votre adresse e-mail, la date de création du compte et celle de votre dernière connexion.</li>
+<li>Votre mot de passe, enregistré uniquement sous une forme chiffrée et irréversible : personne ne peut le lire, ni l'éditeur ni le prestataire.</li>
+<li>La liste des articles que vous avez lus, mis en favori ou masqués (leurs identifiants seulement).</li>
+<li>Les journaux techniques du prestataire (adresse IP, date des connexions), conservés par lui pour la sécurité du service.</li>
+</ul>
+<p>Aucune donnée n'est utilisée à des fins publicitaires, revendue ou croisée avec d'autres fichiers. Le site ne mesure pas son audience.</p>
+<h2>Pourquoi et sur quelle base</h2>
+<p>Ces données servent uniquement à fournir le service que vous demandez en créant un compte : la synchronisation de vos listes entre appareils (article 6.1.b du RGPD, exécution du service). Les e-mails envoyés se limitent à la confirmation de l'adresse et au changement de mot de passe.</p>
+<h2>Prestataires et lieu de stockage</h2>
+<p>Les comptes sont gérés par Supabase Inc., sur un serveur situé dans l'Union européenne. Le site est hébergé par GitHub Inc. (États-Unis), qui enregistre l'adresse IP des visiteurs pour la sécurité de ses serveurs. Ces prestataires sont liés par des clauses de protection des données conformes au RGPD.</p>
+<h2>Durée de conservation</h2>
+<p>Vos données sont conservées tant que votre compte existe. Un compte jamais confirmé est supprimé au bout de 7 jours ; un compte sans connexion pendant 3 ans est supprimé automatiquement.</p>
+<h2>Vos droits</h2>
+<p>Depuis « Mon compte », vous pouvez à tout moment télécharger vos données et supprimer définitivement votre compte. Pour toute autre demande (accès, rectification, opposition), écrivez à {escape(site['contact'])}. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
+<h2>Stockage dans votre navigateur</h2>
+<p>Le site garde dans votre navigateur vos choix d'affichage, vos listes et, si vous êtes connecté, votre session de connexion. Ces éléments sont nécessaires au service que vous utilisez : ils ne servent à aucun suivi et ne demandent pas de bandeau de consentement. Ils disparaissent si vous videz les données du site dans votre navigateur.</p>
+<h2>Sécurité</h2>
+<p>Les échanges sont chiffrés (HTTPS). Chaque compte n'a accès qu'à ses propres données, ce que vérifie le serveur lui-même et non le navigateur.</p>
 </main>
 {footer(site)}
 </body>
@@ -313,6 +379,9 @@ def build(profile: dict, site: dict, articles: list[dict], today: date, groups: 
         shutil.copy(ASSETS / name, OUT / name)
     # Polices servies par le site lui-même : aucune adresse IP de visiteur n'est envoyée à Google.
     shutil.copytree(ASSETS / "fonts", OUT / "fonts")
+    if comptes(site):
+        shutil.copy(ASSETS / "compte.js", OUT / "compte.js")
+        shutil.copy(ASSETS / "vendor" / SUPABASE_SDK, OUT / SUPABASE_SDK)
     write_icons(OUT)
 
     now = datetime.now(ZoneInfo("Europe/Paris"))
@@ -331,6 +400,8 @@ def build(profile: dict, site: dict, articles: list[dict], today: date, groups: 
 
     (OUT / "index.html").write_text(index_html(site, profile, updated, ics_url), encoding="utf-8")
     (OUT / "mentions-legales.html").write_text(legal_html(site, profile), encoding="utf-8")
+    if comptes(site):
+        (OUT / "confidentialite.html").write_text(privacy_html(site), encoding="utf-8")
     (OUT / "articles.json").write_text(json.dumps(public, ensure_ascii=False), encoding="utf-8")
     (OUT / "semaines.json").write_text(json.dumps(weeks_public(public), ensure_ascii=False), encoding="utf-8")
     (OUT / "feed.xml").write_text(feed_xml(public, site, profile), encoding="utf-8")

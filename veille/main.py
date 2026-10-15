@@ -120,6 +120,8 @@ def main() -> int:
         podcast.publish(site_cfg, today, report)
     except Exception as exc:  # le flash audio ne doit jamais bloquer la publication du journal
         report.append(f"Podcast : échec ({exc.__class__.__name__}: {exc})")
+    if site.comptes(site_cfg):
+        report.append(site.ping_comptes(site_cfg))
     store.save_report(report, today)
     print("\n".join(report))
     return 0
