@@ -2,11 +2,11 @@
 titre: "Veille TLS"
 sous_titre: "Le journal quotidien de la télésurveillance et de la sécurité privée"
 # Adresse publique du site (sert au flux RSS).
-url: "https://euzediyo.github.io/veille-tls2/"
+url: "https://veille-tls.fr/"
 
 # Mentions légales (obligatoires pour un site public en France).
 editeur: "Veille TLS"
-contact: "veilletls@gmail.com"
+contact: "contact@veille-tls.fr"
 # Comptes lecteurs (facultatifs) : adresse du projet Supabase et sa clé publique (« publishable »).
 # Cette clé est faite pour être publique ; la clé secrète (« secret » ou « service_role ») ne doit jamais figurer ici.
 supabase_url: "https://hcphgwwevtgtnmidnjxl.supabase.co"
