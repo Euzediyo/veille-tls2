@@ -224,3 +224,14 @@ def unique_deadlines(items: list[dict]) -> list[tuple[dict, dict]]:
         if due and due["cle"] not in best:
             best[due["cle"]] = (due, it)
     return sorted(best.values(), key=lambda pair: pair[0].get("date") or "9999")
+
+
+def reprises_line(it: dict) -> str:
+    """Les autres articles d'un même événement, en une ligne courte pour l'IA : le nombre et quelques
+    médias (une grande affaire peut en compter des centaines)."""
+    names = list(dict.fromkeys(r["source"] for r in it.get("reprises") or []))
+    if not names:
+        return ""
+    more = f" et {len(names) - 5} autres" if len(names) > 5 else ""
+    return (f"Même sujet repris ou suivi par {len(it['reprises'])} autres articles : {', '.join(names[:5])}{more}"
+            " (reprises et suites, pas des confirmations indépendantes)")
