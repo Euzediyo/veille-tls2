@@ -1,10 +1,34 @@
 {
- "maj": "2026-10-15",
+ "maj": "2026-10-16",
  "version": 2,
  "groupes": [
   {
-   "sujet": "Cyberattaque sur les systèmes de réfrigération des supermarchés français (suites, bilans, enseignes touchées, Danfoss et",
+   "sujet": "Cyberattaque sur les systèmes de réfrigération des supermarchés français",
    "ids": [
+    "7407644888b7b92c",
+    "6839e04107573fb4",
+    "d4b2c4dd0efdf990",
+    "26bbd5e2de5c6a2b",
+    "673f84b13fc7d3b6",
+    "517f41e2ae3fbc4c",
+    "b2e5607c3181f726",
+    "aefdddcea541c986",
+    "13382a54eb32af14",
+    "5c480f58dc315c5b",
+    "44f1ad2ffe83412f",
+    "195ad4d4b17f9250",
+    "80f84167691a94be",
+    "36aa5b5c023f0271",
+    "5e5775619e05c20c",
+    "020b9c29e2d508af",
+    "7549bd1a3487a8d0",
+    "dc291e6449f26dc4",
+    "58cf276fb53053fa",
+    "8d0cb03865290703",
+    "47acf19108953d77",
+    "2eb0662018309337",
+    "c7b05c86ed2f7396",
+    "30024e7cc2b73fde",
     "54515a82a091ce10",
     "0fe2c5ac141c2964",
     "a57a486ab81b38df",
@@ -45,16 +69,9 @@
     "ec51d7929391dd2e",
     "1282ad5d84d35ed6",
     "dc707ed4e6c32156",
-    "1bf36449900e771e",
-    "0ea1b77745050a95",
-    "45b4b94182bca475",
-    "8c3f2259c4a8cdff",
-    "8886762326f81573",
     "e1e0def07846fb27",
     "ff655817d2a52789",
     "f6fc461daebfe47f",
-    "1e6e579ad118d192",
-    "ba1545fccc4ab157",
     "d04e0c3697f3970a",
     "2d28a17643bf8043",
     "b891d5e09e0f1333",
@@ -70,6 +87,8 @@
     "287ab18953983da6",
     "701c296fc73af9a3",
     "7d638ff4dbbc8825",
+    "1e6e579ad118d192",
+    "ba1545fccc4ab157",
     "974010ddd07b2ef8",
     "7c41781b82ccf4a7",
     "2104a3cc7260f803",
@@ -96,13 +115,16 @@
     "0d9a1b787b04616a",
     "7ecc8123ea46387b",
     "07a79c1f7be74386",
+    "8c3f2259c4a8cdff",
     "d9524f936f2067d9",
     "14295baa58d4134c",
     "40d5c9e021fdbaf5",
     "a87092a70daac7ae",
     "282cf03da1bc24a4",
+    "6428effe025cf2ed",
+    "7841c2ed9581897a",
     "8fa6f65e1ec2b31c",
-    "b62e12a48af819e2",
+    "45b4b94182bca475",
     "ca9ba40832ea88a5",
     "c1f53e7c4f956319",
     "80b31b7908da3ea0",
@@ -198,6 +220,7 @@
     "167fe36887ed3560",
     "ee779608f807b6b5",
     "45ab2dce5ef64a4a",
+    "8886762326f81573",
     "053ec7f7d5b37c70",
     "66f9171e7fe64d4d",
     "dee608ebc7320135",
@@ -208,31 +231,32 @@
     "70c1c369d7819cf5",
     "43eab99b9ea8648a",
     "384c3f085e620483",
+    "debfd4024d5c2549",
     "3e308d05b416dc75",
     "12d57a0a5b6819d1",
+    "b62e12a48af819e2",
     "20cf4e593e7ea149",
-    "7841c2ed9581897a",
-    "debfd4024d5c2549",
-    "6428effe025cf2ed"
+    "1bf36449900e771e",
+    "0ea1b77745050a95"
    ]
   },
   {
    "sujet": "Rumeur et annonce d'un partenariat Apple et ADT (HomeView)",
    "ids": [
+    "20b226bfc204f363",
+    "ebcd8cc1f0558857",
     "021b9bf47651cab8",
     "89172241c1b56615",
     "5a4f6fa0cea31ac5",
-    "2bdc1179dfa9c1e9",
-    "0def42ac1a1528ec",
     "99d3b18f8d57a621",
     "bdf5424e4e7d0872",
     "8fba403efa3dfca3",
+    "2bdc1179dfa9c1e9",
+    "0def42ac1a1528ec",
+    "2cea967b0f0ee8d0",
     "7291256b57b54026",
     "31f10280bc03c230",
-    "bba97fc235caa18d",
-    "2cea967b0f0ee8d0",
-    "ebcd8cc1f0558857",
-    "20b226bfc204f363"
+    "bba97fc235caa18d"
    ]
   },
   {
@@ -240,6 +264,20 @@
    "ids": [
     "8e552f0fa95a59cb",
     "e2905e8e6714d2b4"
+   ]
+  },
+  {
+   "sujet": "Campagne d'hameçonnage exploitant les outils de gestion à distance",
+   "ids": [
+    "4455199341f19b80",
+    "bf9bb18c3c287c3e"
+   ]
+  },
+  {
+   "sujet": "Grève des agents de sécurité de l'aéroport de Nice (Brink's)",
+   "ids": [
+    "c6c16d90f9cd9ad7",
+    "1b4c3d3cab2cc1a1"
    ]
   },
   {
@@ -255,20 +293,6 @@
    "ids": [
     "647449ef3f48785d",
     "f18baaacfffab4d9"
-   ]
-  },
-  {
-   "sujet": "Grève des agents de sécurité de l'aéroport de Nice (Brink's)",
-   "ids": [
-    "c6c16d90f9cd9ad7",
-    "1b4c3d3cab2cc1a1"
-   ]
-  },
-  {
-   "sujet": "Campagne d'hameçonnage exploitant les outils de gestion à distance",
-   "ids": [
-    "4455199341f19b80",
-    "bf9bb18c3c287c3e"
    ]
   }
  ]
