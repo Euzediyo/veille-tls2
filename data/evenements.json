@@ -1,7 +1,22 @@
 {
- "maj": "2026-10-16",
+ "maj": "2026-10-17",
  "version": 2,
  "groupes": [
+  {
+   "sujet": "Négociations salariales dans la sécurité privée (GES)",
+   "ids": [
+    "366e547b68359e55",
+    "a8164b9f830f74a5",
+    "618cc8e4d07246f1"
+   ]
+  },
+  {
+   "sujet": "Discours du 7e congrès national de la sécurité privée (GES)",
+   "ids": [
+    "647449ef3f48785d",
+    "f18baaacfffab4d9"
+   ]
+  },
   {
    "sujet": "Cyberattaque sur les systèmes de réfrigération des supermarchés français",
    "ids": [
@@ -13,6 +28,8 @@
     "517f41e2ae3fbc4c",
     "b2e5607c3181f726",
     "aefdddcea541c986",
+    "c7b05c86ed2f7396",
+    "30024e7cc2b73fde",
     "13382a54eb32af14",
     "5c480f58dc315c5b",
     "44f1ad2ffe83412f",
@@ -27,8 +44,7 @@
     "8d0cb03865290703",
     "47acf19108953d77",
     "2eb0662018309337",
-    "c7b05c86ed2f7396",
-    "30024e7cc2b73fde",
+    "1f374b8ba6c0e479",
     "54515a82a091ce10",
     "0fe2c5ac141c2964",
     "a57a486ab81b38df",
@@ -69,6 +85,10 @@
     "ec51d7929391dd2e",
     "1282ad5d84d35ed6",
     "dc707ed4e6c32156",
+    "190f7fffbc701c2e",
+    "1bf36449900e771e",
+    "0ea1b77745050a95",
+    "45b4b94182bca475",
     "e1e0def07846fb27",
     "ff655817d2a52789",
     "f6fc461daebfe47f",
@@ -122,9 +142,26 @@
     "a87092a70daac7ae",
     "282cf03da1bc24a4",
     "6428effe025cf2ed",
-    "7841c2ed9581897a",
-    "8fa6f65e1ec2b31c",
-    "45b4b94182bca475",
+    "f9d2bb24fcfcd9b7",
+    "832429e5cb170718",
+    "ab2900e4ae42e2d6",
+    "91e98230cb1c6b9c",
+    "167fe36887ed3560",
+    "ee779608f807b6b5",
+    "45ab2dce5ef64a4a",
+    "8886762326f81573",
+    "053ec7f7d5b37c70",
+    "66f9171e7fe64d4d",
+    "dee608ebc7320135",
+    "53b4b13d6a3af944",
+    "bef2b48b7647dcc8",
+    "9fafa3a3a6051840",
+    "70c1c369d7819cf5",
+    "43eab99b9ea8648a",
+    "384c3f085e620483",
+    "debfd4024d5c2549",
+    "3e308d05b416dc75",
+    "12d57a0a5b6819d1",
     "ca9ba40832ea88a5",
     "c1f53e7c4f956319",
     "80b31b7908da3ea0",
@@ -213,36 +250,13 @@
     "ac5688e7edc11228",
     "1f45a0a9d0b2088c",
     "42bf9760c4dae65d",
-    "f9d2bb24fcfcd9b7",
-    "832429e5cb170718",
-    "ab2900e4ae42e2d6",
-    "91e98230cb1c6b9c",
-    "167fe36887ed3560",
-    "ee779608f807b6b5",
-    "45ab2dce5ef64a4a",
-    "8886762326f81573",
-    "053ec7f7d5b37c70",
-    "66f9171e7fe64d4d",
-    "dee608ebc7320135",
-    "53b4b13d6a3af944",
-    "bef2b48b7647dcc8",
-    "e7f23bc91e1c5e73",
-    "9fafa3a3a6051840",
-    "70c1c369d7819cf5",
-    "43eab99b9ea8648a",
-    "384c3f085e620483",
-    "debfd4024d5c2549",
-    "3e308d05b416dc75",
-    "12d57a0a5b6819d1",
-    "b62e12a48af819e2",
-    "20cf4e593e7ea149",
-    "1bf36449900e771e",
-    "0ea1b77745050a95"
+    "b2b275106156aea4"
    ]
   },
   {
    "sujet": "Rumeur et annonce d'un partenariat Apple et ADT (HomeView)",
    "ids": [
+    "846a6cd46cf7f212",
     "20b226bfc204f363",
     "ebcd8cc1f0558857",
     "021b9bf47651cab8",
@@ -260,17 +274,17 @@
    ]
   },
   {
-   "sujet": "Chiffres de la coopérative Securitas : publication du rapport intermédiaire",
+   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
    "ids": [
-    "8e552f0fa95a59cb",
-    "e2905e8e6714d2b4"
-   ]
-  },
-  {
-   "sujet": "Campagne d'hameçonnage exploitant les outils de gestion à distance",
-   "ids": [
-    "4455199341f19b80",
-    "bf9bb18c3c287c3e"
+    "7fee992d9d31da7e",
+    "d266f36dc0241b66",
+    "92bff0ceb756619e",
+    "0b023477970998b4",
+    "57179f32d1a9fb62",
+    "5485575c1d7ce120",
+    "907e1cf56993e6a3",
+    "1e59dc622bb61327",
+    "772ed89558aaaa24"
    ]
   },
   {
@@ -281,18 +295,17 @@
    ]
   },
   {
-   "sujet": "Négociations salariales dans la sécurité privée (GES)",
+   "sujet": "Campagne d'hameçonnage exploitant les outils de gestion à distance",
    "ids": [
-    "366e547b68359e55",
-    "a8164b9f830f74a5",
-    "618cc8e4d07246f1"
+    "4455199341f19b80",
+    "bf9bb18c3c287c3e"
    ]
   },
   {
-   "sujet": "Discours du 7e congrès national de la sécurité privée (GES)",
+   "sujet": "Chiffres de la coopérative Securitas : publication du rapport intermédiaire",
    "ids": [
-    "647449ef3f48785d",
-    "f18baaacfffab4d9"
+    "8e552f0fa95a59cb",
+    "e2905e8e6714d2b4"
    ]
   }
  ]
