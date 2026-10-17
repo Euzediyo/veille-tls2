@@ -87,8 +87,7 @@ def write_synthesis(items: list[dict], profile: dict, model: str, report: list[s
             if it.get(key):
                 lines.append(f"{name} : {it[key]}")
         if it.get("reprises"):
-            lines.append(f"Même information reprise par : {', '.join(r['source'] for r in it['reprises'])}"
-                         " (reprises, pas des confirmations indépendantes)")
+            lines.append(editorial.reprises_line(it))
         lines += editorial.describe(it)
         blocks.append("\n".join(lines))
     try:

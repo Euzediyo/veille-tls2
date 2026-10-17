@@ -89,7 +89,7 @@ def _topic_block(it: dict, cats: dict) -> str:
         if it.get(key):
             lines.append(f"{name} : {it[key]}")
     if it.get("reprises"):
-        lines.append(f"Même information reprise par : {', '.join(r['source'] for r in it['reprises'])}")
+        lines.append(editorial.reprises_line(it))
     lines += editorial.describe(it)
     return "\n".join(lines)
 
@@ -134,7 +134,7 @@ def write_script(items: list[dict], profile: dict, model: str, day: date, report
     try:
         response = anthropic.Anthropic().messages.create(
             model=model,
-            max_tokens=6000,
+            max_tokens=10000,
             system=SYSTEM.replace("{date}", spoken_date(day)),
             messages=[{"role": "user", "content": prompt}],
         )

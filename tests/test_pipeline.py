@@ -682,3 +682,12 @@ def test_google_news_article_found_at_publisher(monkeypatch):
     # Titre trop différent : pas d'article retrouvé, le lien Google reste.
     assert original.find(["Cyberattaque : le gouvernement réagit"], {original.normalize("Des frigos piratés"): "x"}) is None
     collect._robots_cache.clear()
+
+
+def test_big_event_stays_short_for_the_ai():
+    from veille import editorial
+    big = {"reprises": [{"source": f"Média {i % 40}"} for i in range(250)]}
+    line = editorial.reprises_line(big)
+    assert line.startswith("Même sujet repris ou suivi par 250 autres articles : Média 0, Média 1")
+    assert "et 35 autres" in line and len(line) < 200
+    assert editorial.reprises_line({"reprises": []}) == ""
