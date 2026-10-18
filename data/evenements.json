@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-17",
+ "maj": "2026-10-18",
  "version": 2,
  "groupes": [
   {
@@ -18,10 +18,54 @@
    ]
   },
   {
-   "sujet": "Cyberattaque sur les systèmes de réfrigération des supermarchés français",
+   "sujet": "Grève des agents de sécurité de l'aéroport de Nice (Brink's)",
    "ids": [
-    "7407644888b7b92c",
+    "c6c16d90f9cd9ad7",
+    "1b4c3d3cab2cc1a1"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
+   "ids": [
+    "d14bbb97c699a06f",
+    "4cc010118203d40f",
+    "9cdf723022ce91bb",
+    "1c3862a6e5df645d",
+    "31c631aa69dbfb99",
+    "3fe2424e6130ba3a",
+    "2d90a1245e0881dd",
+    "0df81ce18ab9f8e1",
+    "f9f886e1f273eb44",
+    "bd8921405cb62e5f",
+    "11d598ef6113c3b0",
+    "2559d0eba0ec30ed",
+    "6a80e2e98a57847b",
+    "82d659ad52c2b271",
+    "2ba38cacdf892a79",
+    "87c4bbd783d4c3e2",
+    "3820e973f053e0a6",
+    "c27d6237fe5ba6a3",
+    "4f8b19961c37fe02",
+    "8590144c66000a69",
+    "d9b841310837b9d8",
+    "7e0cb4675e54c19f",
+    "4b9834973c4b92a1",
+    "3e963528405f70f6",
+    "ed0874a7a584eabb",
+    "cde886d1bdfc3909",
+    "7971f4db37e73f6f",
+    "25e5632e52e63348",
+    "90641305c35444ea",
+    "0daac96d72a741ef",
+    "34b893c577309e61",
+    "959b150ca34265c0",
+    "b7b0065ea1214e40",
+    "1f374b8ba6c0e479",
+    "587ce27ea5785940",
+    "bc88f4c4d89d0303",
+    "29f98090700694e9",
     "6839e04107573fb4",
+    "7407644888b7b92c",
     "d4b2c4dd0efdf990",
     "26bbd5e2de5c6a2b",
     "673f84b13fc7d3b6",
@@ -44,7 +88,6 @@
     "8d0cb03865290703",
     "47acf19108953d77",
     "2eb0662018309337",
-    "1f374b8ba6c0e479",
     "54515a82a091ce10",
     "0fe2c5ac141c2964",
     "a57a486ab81b38df",
@@ -143,25 +186,13 @@
     "282cf03da1bc24a4",
     "6428effe025cf2ed",
     "f9d2bb24fcfcd9b7",
-    "832429e5cb170718",
-    "ab2900e4ae42e2d6",
-    "91e98230cb1c6b9c",
-    "167fe36887ed3560",
-    "ee779608f807b6b5",
-    "45ab2dce5ef64a4a",
-    "8886762326f81573",
-    "053ec7f7d5b37c70",
-    "66f9171e7fe64d4d",
-    "dee608ebc7320135",
-    "53b4b13d6a3af944",
-    "bef2b48b7647dcc8",
     "9fafa3a3a6051840",
     "70c1c369d7819cf5",
     "43eab99b9ea8648a",
     "384c3f085e620483",
-    "debfd4024d5c2549",
     "3e308d05b416dc75",
     "12d57a0a5b6819d1",
+    "b62e12a48af819e2",
     "ca9ba40832ea88a5",
     "c1f53e7c4f956319",
     "80b31b7908da3ea0",
@@ -250,27 +281,23 @@
     "ac5688e7edc11228",
     "1f45a0a9d0b2088c",
     "42bf9760c4dae65d",
-    "b2b275106156aea4"
-   ]
-  },
-  {
-   "sujet": "Rumeur et annonce d'un partenariat Apple et ADT (HomeView)",
-   "ids": [
-    "846a6cd46cf7f212",
-    "20b226bfc204f363",
-    "ebcd8cc1f0558857",
-    "021b9bf47651cab8",
-    "89172241c1b56615",
-    "5a4f6fa0cea31ac5",
-    "99d3b18f8d57a621",
-    "bdf5424e4e7d0872",
-    "8fba403efa3dfca3",
-    "2bdc1179dfa9c1e9",
-    "0def42ac1a1528ec",
-    "2cea967b0f0ee8d0",
-    "7291256b57b54026",
-    "31f10280bc03c230",
-    "bba97fc235caa18d"
+    "832429e5cb170718",
+    "ab2900e4ae42e2d6",
+    "91e98230cb1c6b9c",
+    "167fe36887ed3560",
+    "ee779608f807b6b5",
+    "45ab2dce5ef64a4a",
+    "8886762326f81573",
+    "053ec7f7d5b37c70",
+    "66f9171e7fe64d4d",
+    "dee608ebc7320135",
+    "53b4b13d6a3af944",
+    "bef2b48b7647dcc8",
+    "debfd4024d5c2549",
+    "d61b64cbea1b6b79",
+    "a5386ddc6b13547a",
+    "6f3eaa2b2615e73e",
+    "25d24b13edd75924"
    ]
   },
   {
@@ -282,23 +309,27 @@
     "0b023477970998b4",
     "57179f32d1a9fb62",
     "5485575c1d7ce120",
-    "907e1cf56993e6a3",
     "1e59dc622bb61327",
-    "772ed89558aaaa24"
+    "772ed89558aaaa24",
+    "907e1cf56993e6a3",
+    "dafd25916acc5da7",
+    "3be6218d6602aba6",
+    "2a0aa76b888510ab",
+    "836b81296544d53a",
+    "4cf60a46a1e2f3d1",
+    "e0ee95d94651f118",
+    "8b12925d1c24fef9",
+    "61b8280184f0b6a5"
    ]
   },
   {
-   "sujet": "Grève des agents de sécurité de l'aéroport de Nice (Brink's)",
+   "sujet": "Rumeur et annonce d'un partenariat Apple et ADT (HomeView)",
    "ids": [
-    "c6c16d90f9cd9ad7",
-    "1b4c3d3cab2cc1a1"
-   ]
-  },
-  {
-   "sujet": "Campagne d'hameçonnage exploitant les outils de gestion à distance",
-   "ids": [
-    "4455199341f19b80",
-    "bf9bb18c3c287c3e"
+    "846a6cd46cf7f212",
+    "20b226bfc204f363",
+    "ebcd8cc1f0558857",
+    "2cea967b0f0ee8d0",
+    "021b9bf47651cab8"
    ]
   },
   {
@@ -306,6 +337,13 @@
    "ids": [
     "8e552f0fa95a59cb",
     "e2905e8e6714d2b4"
+   ]
+  },
+  {
+   "sujet": "Objectif de cours d'ADT (Morgan Stanley)",
+   "ids": [
+    "60d0502db7821165",
+    "72da883361342cef"
    ]
   }
  ]
