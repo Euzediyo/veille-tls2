@@ -28,20 +28,20 @@
  {
   "lundi": "2026-10-12",
   "titre": "Semaine du 12 au 18 octobre 2026",
-  "en_cours": true,
-  "maj": "2026-10-18",
-  "synthese": "",
+  "en_cours": false,
+  "maj": "2026-10-19",
+  "synthese": "Une cyberattaque touche les systèmes de réfrigération de supermarchés français. Capital.fr, citant France 3, parle de centaines de réfrigérateurs dont la température a grimpé jusqu'à 50 °C, et l'ANSSI cite des superviseurs Copeland XWEB et Dixell XWEB parmi les systèmes touchés par des failles. Un fabricant Dixell serait concerné, mais cela reste à confirmer. Le chiffre de 700 magasins, relayé par ABC News, n'est pas recoupé, et beaucoup d'articles n'ont été lus que par leur titre. Ces informations viennent de la presse et ne constituent pas une confirmation indépendante. Pour votre centre, le risque est un afflux d'alarmes de défaut froid. Vérifiez auprès de vos clients et de leurs mainteneurs si des contrôleurs Danfoss ou Dixell/Copeland figurent dans votre portefeuille, et adaptez vos procédures de levée de doute et de priorisation.\n\nPar ailleurs, le site 83-629.fr signale que la plupart des stages MAC APS observés durent 27 heures, alors que l'arrêté du 27 février 2017 exige au moins 34 heures pour les stages commencés depuis le 1er mai 2023. La dispense n'est possible que si l'agent la demande lui-même et détient un SST valide ou un recyclage PSC de moins de deux ans. Cette analyse n'est pas un texte officiel : relisez l'arrêté en vigueur avant de valider une formation. Concernant le Beauvau de la sécurité privée annoncé par le ministère de l'Intérieur, il n'existe pour l'instant ni calendrier ni mesure. Il convient de suivre ce chantier sans rien modifier à ce stade.",
   "articles": [
    "7407644888b7b92c",
+   "d61b64cbea1b6b79",
+   "a5386ddc6b13547a",
+   "02f10b5f011230e7",
    "81edbe3e4e007b67",
    "4e323591dbf855a4",
-   "dafd25916acc5da7",
-   "4690562610ea108f",
-   "83053a6f1cf430c9",
-   "c852cdfbd5e74c26",
-   "e7f23bc91e1c5e73",
-   "fbade8f85c3c375f",
-   "088b7795ec3a677e"
+   "ee779608f807b6b5",
+   "45ab2dce5ef64a4a",
+   "8886762326f81573",
+   "053ec7f7d5b37c70"
   ],
   "echeances": [
    "83053a6f1cf430c9",
@@ -55,6 +55,28 @@
    "54e666f6c5806a29",
    "115c9dc2a89294bb",
    "fc4372938e3873d9"
+  ]
+ },
+ {
+  "lundi": "2026-10-19",
+  "titre": "Semaine du 19 au 25 octobre 2026",
+  "en_cours": true,
+  "maj": "2026-10-19",
+  "synthese": "Les contrôleurs Danfoss resteraient vulnérables après la cyberattaque ayant touché des supermarchés français, selon Global Sources. Plusieurs médias ont repris l'information, mais ces reprises ne constituent pas des confirmations indépendantes. Seul le titre a été lu : le nombre d'appareils concernés et la correction disponible restent inconnus. Par ailleurs, The Register signale, hors de France, que des cybercriminels visent désormais les systèmes techniques des bâtiments, au-delà du vol de données, mais le contenu détaillé n'a pas été consulté.\n\nVérifiez auprès de vos clients et de vos mainteneurs si des contrôleurs Danfoss sont concernés, puis adaptez la procédure de traitement des alarmes de froid en tenant compte d'alarmes techniques possiblement inhabituelles. Consultez l'avis de sécurité de Danfoss pour confirmer les équipements exposés. Les GTB, chaufferies et ascenseurs émettant aussi des alarmes vers les centres, ce risque vous concerne également.\n\nLumana et Convergint ont annoncé le 14 octobre un partenariat pour ajouter de l'analyse vidéo par IA à des caméras IP existantes. C'est une information à suivre pour vos choix techniques, sans urgence. Selon le Financial Times, cité par Asia Pacific Security Magazine, SoftBank envisagerait le rachat d'Allied Universal pour environ 30 milliards de dollars. Il ne s'agit toutefois que d'une rumeur, aucun accord n'ayant été annoncé. Aucune échéance n'est signalée cette semaine.",
+  "articles": [
+   "619988989bb54442",
+   "eb2d95ab3e115ffe",
+   "6151b839aa80a832",
+   "9ca4ef62264edaaa"
+  ],
+  "echeances": [
+   "83053a6f1cf430c9",
+   "8e552f0fa95a59cb",
+   "bc9681db1c8113ca",
+   "54e666f6c5806a29",
+   "115c9dc2a89294bb",
+   "fc4372938e3873d9",
+   "38b3e65f9b71defd"
   ]
  }
 ]
