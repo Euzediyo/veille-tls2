@@ -61,13 +61,19 @@
   "lundi": "2026-10-19",
   "titre": "Semaine du 19 au 25 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-19",
-  "synthese": "Les contrôleurs Danfoss resteraient vulnérables après la cyberattaque ayant touché des supermarchés français, selon Global Sources. Plusieurs médias ont repris l'information, mais ces reprises ne constituent pas des confirmations indépendantes. Seul le titre a été lu : le nombre d'appareils concernés et la correction disponible restent inconnus. Par ailleurs, The Register signale, hors de France, que des cybercriminels visent désormais les systèmes techniques des bâtiments, au-delà du vol de données, mais le contenu détaillé n'a pas été consulté.\n\nVérifiez auprès de vos clients et de vos mainteneurs si des contrôleurs Danfoss sont concernés, puis adaptez la procédure de traitement des alarmes de froid en tenant compte d'alarmes techniques possiblement inhabituelles. Consultez l'avis de sécurité de Danfoss pour confirmer les équipements exposés. Les GTB, chaufferies et ascenseurs émettant aussi des alarmes vers les centres, ce risque vous concerne également.\n\nLumana et Convergint ont annoncé le 14 octobre un partenariat pour ajouter de l'analyse vidéo par IA à des caméras IP existantes. C'est une information à suivre pour vos choix techniques, sans urgence. Selon le Financial Times, cité par Asia Pacific Security Magazine, SoftBank envisagerait le rachat d'Allied Universal pour environ 30 milliards de dollars. Il ne s'agit toutefois que d'une rumeur, aucun accord n'ayant été annoncé. Aucune échéance n'est signalée cette semaine.",
+  "maj": "2026-10-20",
+  "synthese": "La semaine est dominée par la sécurité des équipements techniques. Des contrôleurs Danfoss resteraient vulnérables après la cyberattaque contre des supermarchés français, selon un titre publié par Global Sources, seul élément lu. Les nombreuses reprises ne sont pas des confirmations indépendantes. Une enquête signale aussi des attaques contre des équipements de froid de supermarché, sans que le lien soit vérifié à ce stade. Il faut donc traiter ce sujet en priorité, sans en tirer de conclusions définitives.\n\nSur la vidéosurveillance algorithmique, la loi Ripost, selon Clubic, prolonge l'expérimentation jusqu'à fin 2030 et l'ouvre à des bâtiments et lieux ouverts au public particulièrement exposés. Un opérateur humain reste seul décisionnaire après une alerte. La liste des sites doit être fixée par un arrêté dont la date de publication n'est pas connue. Pour un centre, cela concerne le traitement des alertes vidéo et le périmètre des sites clients.\n\nVous devriez d'abord vérifier auprès de vos clients et de vos mainteneurs si des contrôleurs Danfoss sont concernés, en vous appuyant sur l'avis de sécurité du fabricant. Adaptez ensuite la procédure de traitement des alarmes de froid. Lisez la loi Ripost et guettez l'arrêté. Le rachat éventuel d'Allied Universal par SoftBank reste une rumeur à suivre.",
   "articles": [
    "619988989bb54442",
+   "c1220362e5a0b77d",
+   "265bfa612003e7c5",
    "eb2d95ab3e115ffe",
    "6151b839aa80a832",
-   "9ca4ef62264edaaa"
+   "4bb51dbdbc095bbf",
+   "9ca4ef62264edaaa",
+   "31252b925cfc13f9",
+   "a1fd7e62effdb731",
+   "9f65b66b22b85e0d"
   ],
   "echeances": [
    "83053a6f1cf430c9",
