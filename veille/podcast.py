@@ -134,7 +134,7 @@ def write_script(items: list[dict], profile: dict, model: str, day: date, report
     try:
         response = anthropic.Anthropic().messages.create(
             model=model,
-            max_tokens=6000,
+            max_tokens=16000,  # la réflexion de l'IA compte dans cette limite
             system=SYSTEM.replace("{date}", spoken_date(day)),
             messages=[{"role": "user", "content": prompt}],
         )
