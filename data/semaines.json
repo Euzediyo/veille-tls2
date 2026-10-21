@@ -61,26 +61,30 @@
   "lundi": "2026-10-19",
   "titre": "Semaine du 19 au 25 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-20",
-  "synthese": "La semaine est dominée par la sécurité des équipements techniques. Des contrôleurs Danfoss resteraient vulnérables après la cyberattaque contre des supermarchés français, selon un titre publié par Global Sources, seul élément lu. Les nombreuses reprises ne sont pas des confirmations indépendantes. Une enquête signale aussi des attaques contre des équipements de froid de supermarché, sans que le lien soit vérifié à ce stade. Il faut donc traiter ce sujet en priorité, sans en tirer de conclusions définitives.\n\nSur la vidéosurveillance algorithmique, la loi Ripost, selon Clubic, prolonge l'expérimentation jusqu'à fin 2030 et l'ouvre à des bâtiments et lieux ouverts au public particulièrement exposés. Un opérateur humain reste seul décisionnaire après une alerte. La liste des sites doit être fixée par un arrêté dont la date de publication n'est pas connue. Pour un centre, cela concerne le traitement des alertes vidéo et le périmètre des sites clients.\n\nVous devriez d'abord vérifier auprès de vos clients et de vos mainteneurs si des contrôleurs Danfoss sont concernés, en vous appuyant sur l'avis de sécurité du fabricant. Adaptez ensuite la procédure de traitement des alarmes de froid. Lisez la loi Ripost et guettez l'arrêté. Le rachat éventuel d'Allied Universal par SoftBank reste une rumeur à suivre.",
+  "maj": "2026-10-21",
+  "synthese": "Cette semaine, plusieurs sujets techniques touchent les équipements que vous supervisez. Des contrôleurs Danfoss resteraient vulnérables après la cyberattaque ayant visé des supermarchés français, selon Global Sources. Seul le titre a été lu, et ses reprises par d'autres médias ne sont pas des confirmations indépendantes. GreyNoise, de son côté, recense au moins 143 appareils (NAS, enregistreurs, caméras) détournés dans 34 pays, selon Clubic.\n\nConcrètement, vérifiez auprès de vos clients et mainteneurs si des contrôleurs Danfoss sont concernés, et adaptez la levée de doute sur les alarmes de froid. Contrôlez aussi l'exposition et les mises à jour des caméras Hikvision ou Dahua, sans supposer que tous les modèles sont touchés. La loi Ripost, datée du 18 août 2026 selon Clubic, prolonge jusqu'en 2030 la vidéosurveillance algorithmique pour les exploitants de bâtiments et lieux ouverts au public exposés. La décision après alerte reste humaine.\n\nUne coupure du réseau 2G d'Orange est annoncée le 20 octobre 2026 dans 43 départements, selon tech-insider.org. Seul le titre a été lu : confirmez auprès d'Orange la date, la liste et l'effectivité, puis repérez les transmetteurs encore en 2G. C'est une action immédiate. L'arrêté fixant la liste des sites en vidéosurveillance algorithmique n'a pas de date connue.",
   "articles": [
    "619988989bb54442",
    "c1220362e5a0b77d",
+   "baa192a57e4f82d3",
+   "fd6a0574d09ee706",
    "265bfa612003e7c5",
+   "6f4e9e4d481c2274",
    "eb2d95ab3e115ffe",
-   "6151b839aa80a832",
-   "4bb51dbdbc095bbf",
-   "9ca4ef62264edaaa",
-   "31252b925cfc13f9",
-   "a1fd7e62effdb731",
-   "9f65b66b22b85e0d"
+   "bc31e1ec7ee8d431",
+   "9b06f062d76b3471",
+   "b39c07d3a4c43b42"
   ],
   "echeances": [
    "83053a6f1cf430c9",
+   "6f4e9e4d481c2274",
    "8e552f0fa95a59cb",
+   "c5c3951e9df4f976",
    "bc9681db1c8113ca",
+   "b16d2b91a4de00b0",
    "54e666f6c5806a29",
    "115c9dc2a89294bb",
+   "7c74b957890e68e4",
    "fc4372938e3873d9",
    "38b3e65f9b71defd"
   ]

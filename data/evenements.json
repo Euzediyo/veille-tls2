@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-20",
+ "maj": "2026-10-21",
  "version": 2,
  "groupes": [
   {
@@ -27,6 +27,13 @@
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
    "ids": [
+    "9c96260503694604",
+    "87eb684969b2f59b",
+    "49ae457c1e2457e5",
+    "8af1deea5834f077",
+    "fc5e7c50ce377a80",
+    "ee9bf562cd0b65d6",
+    "f08b6a9837f33b5c",
     "a0ae6d90c347a9a3",
     "f6544b0c943cf758",
     "c23e09aa72b4f6af",
@@ -44,28 +51,37 @@
     "391f2f5c30026b76",
     "cd7ba4076bcfbb8d",
     "14438ec18978ea2c",
-    "a6a0b3729a4ad7c7",
-    "c93462cccef2536b",
     "29a62434881ca853",
-    "11d598ef6113c3b0",
-    "2d90a1245e0881dd",
-    "0df81ce18ab9f8e1",
-    "f9f886e1f273eb44",
-    "bd8921405cb62e5f",
-    "2559d0eba0ec30ed",
-    "6a80e2e98a57847b",
-    "82d659ad52c2b271",
-    "6f3eaa2b2615e73e",
-    "2ba38cacdf892a79",
-    "87c4bbd783d4c3e2",
-    "25d24b13edd75924",
+    "d14bbb97c699a06f",
     "4cc010118203d40f",
     "9cdf723022ce91bb",
     "1c3862a6e5df645d",
     "31c631aa69dbfb99",
     "3fe2424e6130ba3a",
-    "d14bbb97c699a06f",
+    "2d90a1245e0881dd",
+    "0df81ce18ab9f8e1",
+    "f9f886e1f273eb44",
+    "bd8921405cb62e5f",
+    "11d598ef6113c3b0",
+    "2559d0eba0ec30ed",
+    "6a80e2e98a57847b",
+    "82d659ad52c2b271",
+    "6f3eaa2b2615e73e",
     "34b893c577309e61",
+    "87c4bbd783d4c3e2",
+    "25d24b13edd75924",
+    "8590144c66000a69",
+    "d9b841310837b9d8",
+    "7e0cb4675e54c19f",
+    "4b9834973c4b92a1",
+    "3e963528405f70f6",
+    "ed0874a7a584eabb",
+    "cde886d1bdfc3909",
+    "7971f4db37e73f6f",
+    "25e5632e52e63348",
+    "90641305c35444ea",
+    "0daac96d72a741ef",
+    "7407644888b7b92c",
     "6839e04107573fb4",
     "d4b2c4dd0efdf990",
     "26bbd5e2de5c6a2b",
@@ -133,9 +149,8 @@
     "1bf36449900e771e",
     "0ea1b77745050a95",
     "45b4b94182bca475",
+    "9bfedcc86a6b7ae4",
     "e1e0def07846fb27",
-    "ff655817d2a52789",
-    "f6fc461daebfe47f",
     "d04e0c3697f3970a",
     "2d28a17643bf8043",
     "b891d5e09e0f1333",
@@ -162,13 +177,13 @@
     "bcf8bac8c5431d86",
     "3ef23e3107b85ce9",
     "4ea468e593d3cf4f",
-    "9bfedcc86a6b7ae4",
     "534314e0ccae7d75",
     "bc51d5e6d252fda5",
     "8e7bdba40478060e",
     "71594d632bf2b057",
     "aebb6ae8e8529131",
     "cdefd28f8361ea0d",
+    "282cf03da1bc24a4",
     "05575059f9175e0d",
     "53c9777f4a09b221",
     "c6d248bbce089f7e",
@@ -185,76 +200,31 @@
     "40d5c9e021fdbaf5",
     "a87092a70daac7ae",
     "6428effe025cf2ed",
-    "282cf03da1bc24a4",
     "ca9ba40832ea88a5",
     "c1f53e7c4f956319",
     "80b31b7908da3ea0",
     "a8a071340cc6a84b",
     "8140fb14a94d3d15",
-    "cf39174f326cf882",
-    "2809b21350832bd0",
-    "854affb2aad6d010",
-    "460938d964b85964",
-    "8c91edca423ab9c7",
-    "41b6e5bdd677cd79",
-    "5fa150e0d9615eff",
-    "44778236480a826e",
-    "e4d07bbb15e2c1bc",
-    "7ea1ff2dd7120921",
-    "9a03865ee611c20b",
-    "69d948a35a3d8156",
-    "60d58dd2f54f7642",
-    "53b1c5010324f709",
-    "0ac80c614ac13490",
-    "66db6492519aebe3",
-    "7a46040e947947d2",
-    "60733eef9b46d161",
-    "4a9f3ff55e61d61c",
-    "0e7fcfbf89744993",
-    "d29be457576c4b9b",
-    "83d5d40019d09092",
-    "428ea79a25a7a3fe",
-    "26bfdd71d7bb7955",
-    "db239a4fda7423e4",
-    "36cc823f007253ea",
-    "1b908cb7bf65c50e",
-    "421830bee26cebd5",
-    "1125c3b51837560a",
-    "307248dc6594f544",
-    "3f3d67f1747983ad",
-    "65a8e9f35e24c910",
-    "852e539fc2ba238e",
-    "77ccc567c028ae8e",
-    "1893666a843bccc4",
-    "9ab82e21ebf3b4f2",
-    "ceb5e71be77b8975",
-    "cf641302838ad422",
-    "836d45f35fc164b5",
-    "fe9c86faf47e3960",
-    "89deeba726c5467f",
-    "3820e973f053e0a6",
-    "c27d6237fe5ba6a3",
-    "4f8b19961c37fe02",
-    "8590144c66000a69",
-    "d9b841310837b9d8",
-    "7e0cb4675e54c19f",
-    "4b9834973c4b92a1",
-    "3e963528405f70f6",
-    "ed0874a7a584eabb",
-    "cde886d1bdfc3909",
-    "7971f4db37e73f6f",
-    "25e5632e52e63348",
-    "90641305c35444ea",
-    "0daac96d72a741ef",
-    "587ce27ea5785940",
-    "29f98090700694e9",
-    "bc88f4c4d89d0303",
-    "7407644888b7b92c"
+    "d61b64cbea1b6b79",
+    "a5386ddc6b13547a",
+    "f6fc461daebfe47f",
+    "ff655817d2a52789",
+    "bc88f4c4d89d0303"
    ]
   },
   {
    "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
    "ids": [
+    "03e1a86d01552a2b",
+    "a9ea4df2a784126d",
+    "6daa703ca6231b05",
+    "fba8eda83229e2cc",
+    "09255b887f68638c",
+    "8fb1760da20f1b61",
+    "29e2c74a4c9e2bea",
+    "ee47eeb9b8fd8793",
+    "7de5df145777c7e6",
+    "4ccb758b96bf3541",
     "9ca4ef62264edaaa",
     "a24725f2274f4b05",
     "243e3dce3a605d29",
@@ -262,53 +232,40 @@
     "ef72cf04b7d3015d",
     "5525fb672b63f9a6",
     "36a1c960eeca22a8",
-    "836b81296544d53a",
-    "4cf60a46a1e2f3d1",
-    "e0ee95d94651f118",
-    "8b12925d1c24fef9",
-    "61b8280184f0b6a5",
-    "2a0aa76b888510ab",
-    "5485575c1d7ce120",
+    "97c34bb984a6fb2e",
+    "7fee992d9d31da7e",
+    "d266f36dc0241b66",
     "92bff0ceb756619e",
     "0b023477970998b4",
     "57179f32d1a9fb62",
+    "5485575c1d7ce120",
     "907e1cf56993e6a3",
-    "772ed89558aaaa24",
     "1e59dc622bb61327",
-    "dafd25916acc5da7",
-    "7fee992d9d31da7e",
-    "d266f36dc0241b66",
+    "772ed89558aaaa24",
     "3be6218d6602aba6",
-    "6daa703ca6231b05",
-    "fba8eda83229e2cc",
-    "09255b887f68638c",
-    "8fb1760da20f1b61",
-    "29e2c74a4c9e2bea",
-    "97c34bb984a6fb2e",
-    "7de5df145777c7e6",
-    "4ccb758b96bf3541",
-    "ee47eeb9b8fd8793"
+    "2a0aa76b888510ab",
+    "dafd25916acc5da7",
+    "61b8280184f0b6a5",
+    "e0ee95d94651f118",
+    "8b12925d1c24fef9",
+    "4cf60a46a1e2f3d1",
+    "836b81296544d53a"
    ]
   },
   {
-   "sujet": "Hannaford hors ligne après la cyberattaque",
+   "sujet": "Partenariat Allianz et Movistar Prosegur Alarmas",
    "ids": [
-    "004d2615c734baa3",
-    "1dd4d408799e29d0",
-    "7c865185e1f9ad51"
+    "907fd1e3c9aa3d57",
+    "199d451e5172b700",
+    "7cb4ab2743af96bf",
+    "0370425c731f39ca"
    ]
   },
   {
-   "sujet": "Vidéosurveillance algorithmique et loi Ripost (Toulouse)",
+   "sujet": "Securitas : 20 000 infractions à la loi sur le travail en Suisse",
    "ids": [
-    "c1220362e5a0b77d",
-    "7b1e5ac4bf4588eb",
-    "ab8fa4b728167993"
-   ]
-  },
-  {
-   "sujet": "Securitas : infractions à la loi sur le travail en Suisse",
-   "ids": [
+    "4df0b7b3a921974e",
+    "98c886e8e5bb0989",
     "8a825b0d88b8cc99",
     "08cff25a9c9b04a3"
    ]
@@ -321,21 +278,7 @@
    ]
   },
   {
-   "sujet": "Fuite de données de la Fédération française de tir",
-   "ids": [
-    "ed874274892fe5dd",
-    "c66a81e74afcfcea"
-   ]
-  },
-  {
-   "sujet": "Vol au Louvre : failles de sécurité un an après",
-   "ids": [
-    "bcf834f45ab09206",
-    "4e064348c433c9c9"
-   ]
-  },
-  {
-   "sujet": "Apple et ADT : partenariat HomeView",
+   "sujet": "Apple HomeView et ADT",
    "ids": [
     "846a6cd46cf7f212",
     "20b226bfc204f363",
@@ -350,7 +293,15 @@
    ]
   },
   {
-   "sujet": "Piratage d'sites par agents d'IA",
+   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "ids": [
+    "c1220362e5a0b77d",
+    "7b1e5ac4bf4588eb",
+    "ab8fa4b728167993"
+   ]
+  },
+  {
+   "sujet": "Piratage de sites par agents d'IA",
    "ids": [
     "a1fd7e62effdb731",
     "574d209fa5f0d262",
@@ -358,10 +309,68 @@
    ]
   },
   {
+   "sujet": "Vol au Louvre : failles de sécurité un an après",
+   "ids": [
+    "bcf834f45ab09206",
+    "4e064348c433c9c9"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque contre Hannaford",
+   "ids": [
+    "004d2615c734baa3",
+    "1dd4d408799e29d0",
+    "7c865185e1f9ad51"
+   ]
+  },
+  {
+   "sujet": "Fuite de données de la Fédération française de tir",
+   "ids": [
+    "ed874274892fe5dd",
+    "c66a81e74afcfcea"
+   ]
+  },
+  {
    "sujet": "Intellivix et introduction au KOSDAQ",
    "ids": [
     "13e217d44d63b62e",
     "0afeab4b3c2d8485"
+   ]
+  },
+  {
+   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
+   "ids": [
+    "24f6972c74203cec",
+    "861f9273849f61f8",
+    "93a6539e15af6b7f",
+    "c5c3951e9df4f976",
+    "9476e5b25a5ebf08",
+    "778685e0f3fddc1d",
+    "1efd26801f774ed7",
+    "2dcff63505681192",
+    "b7e0c603a5c478f6",
+    "9f65b66b22b85e0d"
+   ]
+  },
+  {
+   "sujet": "Appel à projets FIPD 2027 vidéoprotection",
+   "ids": [
+    "bc31e1ec7ee8d431",
+    "d614bef8793a842d"
+   ]
+  },
+  {
+   "sujet": "Renouvellement des caméras du RER B",
+   "ids": [
+    "0b667ef3df53ccb8",
+    "9c9680b9aa513dfa"
+   ]
+  },
+  {
+   "sujet": "Knightscope et son logiciel Signals",
+   "ids": [
+    "5a64aa3c9bfef1c5",
+    "db006fed741c85ff"
    ]
   }
  ]
