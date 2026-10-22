@@ -61,19 +61,19 @@
   "lundi": "2026-10-19",
   "titre": "Semaine du 19 au 25 octobre 2026",
   "en_cours": true,
-  "maj": "2026-10-21",
-  "synthese": "Cette semaine, plusieurs sujets techniques touchent les équipements que vous supervisez. Des contrôleurs Danfoss resteraient vulnérables après la cyberattaque ayant visé des supermarchés français, selon Global Sources. Seul le titre a été lu, et ses reprises par d'autres médias ne sont pas des confirmations indépendantes. GreyNoise, de son côté, recense au moins 143 appareils (NAS, enregistreurs, caméras) détournés dans 34 pays, selon Clubic.\n\nConcrètement, vérifiez auprès de vos clients et mainteneurs si des contrôleurs Danfoss sont concernés, et adaptez la levée de doute sur les alarmes de froid. Contrôlez aussi l'exposition et les mises à jour des caméras Hikvision ou Dahua, sans supposer que tous les modèles sont touchés. La loi Ripost, datée du 18 août 2026 selon Clubic, prolonge jusqu'en 2030 la vidéosurveillance algorithmique pour les exploitants de bâtiments et lieux ouverts au public exposés. La décision après alerte reste humaine.\n\nUne coupure du réseau 2G d'Orange est annoncée le 20 octobre 2026 dans 43 départements, selon tech-insider.org. Seul le titre a été lu : confirmez auprès d'Orange la date, la liste et l'effectivité, puis repérez les transmetteurs encore en 2G. C'est une action immédiate. L'arrêté fixant la liste des sites en vidéosurveillance algorithmique n'a pas de date connue.",
+  "maj": "2026-10-22",
+  "synthese": "Deux sujets techniques dominent la semaine. Selon le seul titre, repris par de nombreux médias, des contrôleurs Danfoss resteraient vulnérables après la cyberattaque ayant touché des supermarchés français. The Register signale de son côté une cyberattaque ayant mis hors ligne les systèmes d'Ahold Delhaize aux États-Unis et en Europe. Ces reprises ne sont pas des confirmations indépendantes, et les détails manquent.\n\nPour votre centre, l'enjeu est de vérifier si des contrôleurs de froid Danfoss ou des installations de supermarchés clients sont concernés, et d'adapter le traitement des alarmes techniques. Les caméras sont aussi visées : GreyNoise recense au moins 143 appareils détournés en relais Internet, dont des NAS D-Link et des enregistreurs Ubiquiti, ainsi que des tentatives contre Hikvision et Dahua, sans vulnérabilité précisée. Selon Clubic, la loi Ripost du 18 août 2026 prolonge jusqu'en 2030 la vidéosurveillance algorithmique et l'étend à des lieux exposés, un opérateur humain restant seul décideur.\n\nPour les échéances, Orange annoncerait une coupure de son réseau 2G dans 43 départements le 20 octobre 2026. Seul le titre est disponible : confirmez l'information auprès d'Orange avant de contrôler les transmetteurs GSM de vos clients. L'arrêté fixant la liste des sites en vidéosurveillance algorithmique n'a pas de date connue. L'appel à projets FIPD 2027 pour la vidéoprotection, annoncé par les services de l'État dans la Vienne, ne précise pas ses dates.",
   "articles": [
    "619988989bb54442",
    "c1220362e5a0b77d",
    "baa192a57e4f82d3",
    "fd6a0574d09ee706",
+   "e5f549dad9c55217",
    "265bfa612003e7c5",
+   "a93d9c7b2246b135",
    "6f4e9e4d481c2274",
    "eb2d95ab3e115ffe",
-   "bc31e1ec7ee8d431",
-   "9b06f062d76b3471",
-   "b39c07d3a4c43b42"
+   "bc31e1ec7ee8d431"
   ],
   "echeances": [
    "83053a6f1cf430c9",
@@ -82,6 +82,8 @@
    "c5c3951e9df4f976",
    "bc9681db1c8113ca",
    "b16d2b91a4de00b0",
+   "886766d72e7e9ca7",
+   "bf6be3e75bef5165",
    "54e666f6c5806a29",
    "115c9dc2a89294bb",
    "7c74b957890e68e4",
