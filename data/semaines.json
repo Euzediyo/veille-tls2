@@ -60,20 +60,20 @@
  {
   "lundi": "2026-10-19",
   "titre": "Semaine du 19 au 25 octobre 2026",
-  "en_cours": true,
-  "maj": "2026-10-25",
-  "synthese": "Cette semaine, deux sujets se détachent : la sécurité des équipements connectés et le cadre de la sécurité privée. Selon BlogNT, qui reprend une analyse d'IPinfo, une cyberattaque aurait perturbé dans la nuit du 11 octobre les systèmes frigorifiques de supermarchés français, plus de 1 300 tableaux de bord Danfoss étant accessibles sur Internet. Ces détails restent à confirmer auprès du parquet, de Danfoss ou d'IPinfo. Clubic signale aussi une campagne de proxyjacking visant caméras et enregistreurs vidéo, sans que toutes les vulnérabilités soient précisées.\n\nPour un centre, cela signifie qu'une vague d'alarmes techniques liées au froid est possible : il faut vérifier si des clients utilisent des équipements exposés et prévoir une procédure de traitement de masse. Pour les manifestations du 24 octobre, le préfet de police recommande aux commerçants de vérifier alarmes et vidéoprotection, ce qui pourrait accroître les levées de doute. FO rappelle qu'un agent ne peut être placé sur la voie publique sans autorisation préfectorale, sous peine de délit.\n\nLa loi Ripost du 18 août 2026, selon Clubic, prolonge la vidéosurveillance algorithmique jusqu'en 2030. La liste des sites concernés doit être fixée par un arrêté dont la date n'est pas connue. Vérifiez auprès de vos clients parisiens les sites concernés par les manifestations.",
+  "en_cours": false,
+  "maj": "2026-10-26",
+  "synthese": "La cyberattaque qui a perturbé des systèmes de réfrigération de supermarchés français dans la nuit du 11 octobre reste à confirmer dans ses détails. EU Today évoque environ 700 magasins touchés, tandis qu'une analyse d'IPinfo relevée par BlogNT fait état de plus de 1 300 équipements exposés. Ces reprises par de nombreux médias ne constituent pas des confirmations indépendantes. Une cyberattaque visant Ahold Delhaize mérite aussi un suivi, mais seul le titre a été lu.\n\nLe préfet de police recommande aux commerçants de renforcer leur sécurité avant les manifestations du 24 octobre (franceinfo). Selon la Fédération FO, un agent ne peut pas être placé sur la voie publique sans autorisation préfectorale, un point à confirmer auprès du CNAPS. La loi Ripost prolonge la vidéosurveillance algorithmique jusqu'en 2030, la décision restant humaine, mais la date de l'arrêté fixant les sites concernés n'est pas connue.\n\nVérifiez si des clients disposent d'équipements frigorifiques ou vidéo exposés sur Internet, et préparez une procédure pour les alarmes de masse. Avant toute mission sur la voie publique, contrôlez l'autorisation préfectorale et la consigne écrite de non-interposition. Le 24 octobre étant proche, prévoyez des renforts pour les sites parisiens concernés.",
   "articles": [
    "21d028394ed842aa",
    "6e850f9dcf867597",
    "c1220362e5a0b77d",
+   "a0ae6d90c347a9a3",
    "baa192a57e4f82d3",
    "fd6a0574d09ee706",
    "e5f549dad9c55217",
    "2f446f179a3750cc",
    "681531df5fc86ee9",
-   "265bfa612003e7c5",
-   "a93d9c7b2246b135"
+   "265bfa612003e7c5"
   ],
   "echeances": [
    "83053a6f1cf430c9",
@@ -87,6 +87,36 @@
    "c5c3951e9df4f976",
    "6586a1b377562f6e",
    "5ed9cc4681c107e1",
+   "3a7f7ad649209110",
+   "98cdd5a6a226161f",
+   "bc9681db1c8113ca",
+   "b16d2b91a4de00b0",
+   "e16743f771ed119a",
+   "bf6be3e75bef5165",
+   "54e666f6c5806a29",
+   "115c9dc2a89294bb",
+   "7c74b957890e68e4",
+   "fc4372938e3873d9",
+   "38b3e65f9b71defd"
+  ]
+ },
+ {
+  "lundi": "2026-10-26",
+  "titre": "Semaine du 26 octobre au 1 novembre 2026",
+  "en_cours": true,
+  "maj": "2026-10-26",
+  "synthese": "Cette semaine, plusieurs sujets touchent aux systèmes techniques et à la demande de sécurisation. Une cyberattaque contre une chaîne de supermarchés française soulève des inquiétudes sur la chaîne du froid, selon BusinessToday Malaysia. Seul le titre a été lu : les faits, les équipements touchés et l'ampleur restent à vérifier. The Straits Times a repris l'information, mais cela ne constitue pas une confirmation indépendante. Par ailleurs, selon HedgeCo.Net, le fonds CVC évaluerait une offre de retrait de Verisure de la bourse. Il s'agit d'une rumeur rapportée par Reuters et le Financial Times : aucune offre n'a été faite.\n\nPour un centre, une panne ou un piratage des régulations du froid peut générer un grand nombre d'alarmes de défaut, ce qui pèse sur le traitement et les levées de doute. Il est prudent de lire l'article complet avant de préparer une consigne aux opérateurs. L'article de Europe 1 sur la sécurisation des commerces, après les émeutes, laisse entrevoir des contrats de surveillance et de levée de doute, mais ses prix sont à vérifier auprès d'installateurs certifiés. À Villefranche-sur-Saône, Limas et Gleizé, un couvre-feu pour mineurs non accompagnés, de 20h à 6h, mobilise le centre de supervision urbain, selon Lyon Mag.\n\nL'échéance à retenir est la fin de ce couvre-feu, prévue le lundi 26 octobre 2026 selon l'article. Vérifiez auprès de la mairie s'il est prolongé. Pour Orasio, start-up française de vidéo algorithmique, seul le début de l'article a été lu et aucun impact immédiat n'est à prévoir.",
+  "articles": [
+   "c2ac121c3b106b8f",
+   "6f612a8311602438",
+   "19558a8db8f9f67d",
+   "4ba32d9a8d2a7d85",
+   "3a7f7ad649209110"
+  ],
+  "echeances": [
+   "83053a6f1cf430c9",
+   "3a7f7ad649209110",
+   "98cdd5a6a226161f",
    "bc9681db1c8113ca",
    "b16d2b91a4de00b0",
    "e16743f771ed119a",
