@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-26",
+ "maj": "2026-10-27",
  "version": 2,
  "groupes": [
   {
@@ -34,103 +34,85 @@
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
    "ids": [
+    "c64cb7c95d20f862",
+    "5755353ba814ccac",
     "c2ac121c3b106b8f",
     "e1e95b5f4ce79f2b",
-    "68341bd9648ebeff",
+    "f26cdc8e3e0ac694",
+    "21d028394ed842aa",
+    "c7f65aaeed94f742",
+    "f0d8f192a6c99906",
+    "a0ae6d90c347a9a3",
     "9a5e284e0d08d0b4",
     "85f13ff0a562d9c2",
     "78226274184a5c6c",
     "0de608cc4e274780",
-    "21d028394ed842aa",
     "58863e31675c74ca",
     "b7fa81a9360d4561",
     "db189f9f207fdb95",
-    "8af1deea5834f077",
     "87eb684969b2f59b",
+    "8af1deea5834f077",
+    "fc5e7c50ce377a80",
     "49ae457c1e2457e5",
-    "f08b6a9837f33b5c",
     "9c96260503694604",
-    "ee9bf562cd0b65d6",
-    "f6544b0c943cf758",
-    "616b4fe0fd317912",
-    "c23e09aa72b4f6af",
     "2940fde096d66e69",
-    "2ba38cacdf892a79",
-    "87c4bbd783d4c3e2",
-    "29a62434881ca853",
-    "9cdf723022ce91bb",
-    "959b150ca34265c0",
-    "b7b0065ea1214e40",
+    "f08b6a9837f33b5c",
+    "68341bd9648ebeff",
     "6f3eaa2b2615e73e",
     "25d24b13edd75924",
-    "f26cdc8e3e0ac694",
+    "0df81ce18ab9f8e1",
+    "f6544b0c943cf758",
+    "c23e09aa72b4f6af",
+    "616b4fe0fd317912",
+    "ee9bf562cd0b65d6",
+    "29a62434881ca853",
+    "2d90a1245e0881dd",
+    "31c631aa69dbfb99",
+    "11d598ef6113c3b0",
     "06d6b0a1e26c2d63",
-    "3820e973f053e0a6",
-    "c27d6237fe5ba6a3",
-    "4f8b19961c37fe02",
-    "8590144c66000a69",
-    "d9b841310837b9d8",
-    "7e0cb4675e54c19f",
-    "4b9834973c4b92a1",
-    "3e963528405f70f6",
-    "ed0874a7a584eabb",
-    "cde886d1bdfc3909",
+    "474a299ba753ba8e",
+    "2fb3e162d06c4ab0",
+    "aec60ccb22f88fbd",
+    "c537ffb09d664ba2",
+    "b22755d2a1edfb45",
+    "62e106b829013e8b",
+    "65a276631eeb5ad3",
+    "391f2f5c30026b76",
+    "cd7ba4076bcfbb8d",
+    "14438ec18978ea2c",
+    "1c3862a6e5df645d",
+    "619988989bb54442",
+    "4cc010118203d40f",
+    "9cdf723022ce91bb",
+    "c93462cccef2536b",
+    "3fe2424e6130ba3a",
+    "6a80e2e98a57847b",
     "7971f4db37e73f6f",
     "25e5632e52e63348",
     "90641305c35444ea",
     "0daac96d72a741ef",
-    "7407644888b7b92c",
-    "6839e04107573fb4",
-    "d4b2c4dd0efdf990",
-    "26bbd5e2de5c6a2b",
-    "673f84b13fc7d3b6",
-    "517f41e2ae3fbc4c",
-    "b2e5607c3181f726",
-    "aefdddcea541c986",
-    "c7b05c86ed2f7396",
-    "30024e7cc2b73fde",
-    "13382a54eb32af14",
-    "5c480f58dc315c5b",
-    "0df81ce18ab9f8e1",
+    "4b9834973c4b92a1",
+    "3e963528405f70f6",
+    "ed0874a7a584eabb",
+    "cde886d1bdfc3909",
+    "d9b841310837b9d8",
+    "7e0cb4675e54c19f",
+    "8590144c66000a69",
+    "4f8b19961c37fe02",
+    "c27d6237fe5ba6a3",
+    "3820e973f053e0a6",
+    "2ba38cacdf892a79",
+    "87c4bbd783d4c3e2",
+    "959b150ca34265c0",
+    "b7b0065ea1214e40",
+    "34b893c577309e61",
+    "587ce27ea5785940",
+    "a6a0b3729a4ad7c7",
+    "2559d0eba0ec30ed",
+    "82d659ad52c2b271",
     "f9f886e1f273eb44",
     "bd8921405cb62e5f",
-    "11d598ef6113c3b0",
-    "2559d0eba0ec30ed",
-    "6a80e2e98a57847b",
-    "82d659ad52c2b271",
-    "34b893c577309e61",
-    "3fe2424e6130ba3a",
-    "2d90a1245e0881dd",
-    "4cc010118203d40f",
-    "1c3862a6e5df645d",
-    "65a276631eeb5ad3",
-    "62e106b829013e8b",
-    "b22755d2a1edfb45",
-    "619988989bb54442",
-    "14438ec18978ea2c",
-    "c537ffb09d664ba2",
-    "391f2f5c30026b76",
-    "cd7ba4076bcfbb8d",
-    "31c631aa69dbfb99",
-    "2fb3e162d06c4ab0",
-    "474a299ba753ba8e",
-    "aec60ccb22f88fbd",
-    "c93462cccef2536b",
-    "a6a0b3729a4ad7c7",
-    "d14bbb97c699a06f",
-    "c7f65aaeed94f742",
-    "f0d8f192a6c99906"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque contre Ahold Delhaize et Hannaford",
-   "ids": [
-    "e5f549dad9c55217",
-    "8c83b4768c110e7c",
-    "17a029333a523df2",
-    "004d2615c734baa3",
-    "1dd4d408799e29d0",
-    "7c865185e1f9ad51"
+    "e0ee95d94651f118"
    ]
   },
   {
@@ -139,60 +121,35 @@
     "19558a8db8f9f67d",
     "4ba9d92d6aca4ff5",
     "fd11dfa899e9303f",
-    "055af19248884521",
     "39bc4d6e6265744d",
     "84806613bfec470f",
     "5559e3936b54a181",
-    "a0adf248b815713c",
-    "dd9d50dc26ca56f3",
     "34908485bc577d50",
     "8d679223bb4267db",
+    "dd9d50dc26ca56f3",
+    "a0adf248b815713c",
+    "fd0a66ab19d70b44",
     "ebfeceb10d0a1af4",
-    "fd0a66ab19d70b44"
+    "055af19248884521"
    ]
   },
   {
-   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
    "ids": [
-    "d5fd48c6e5b224d1",
-    "745d26a5e64bd94e",
-    "624b09fb15136e11",
-    "054528164be31635",
-    "03e1a86d01552a2b",
-    "a9ea4df2a784126d",
-    "6daa703ca6231b05",
-    "fba8eda83229e2cc",
-    "09255b887f68638c",
-    "8fb1760da20f1b61",
-    "29e2c74a4c9e2bea",
-    "ee47eeb9b8fd8793",
-    "7de5df145777c7e6",
-    "4ccb758b96bf3541",
-    "9ca4ef62264edaaa",
-    "a24725f2274f4b05",
-    "97c34bb984a6fb2e",
-    "243e3dce3a605d29",
-    "ef72cf04b7d3015d",
-    "0ab84c060f1a44b4",
-    "5525fb672b63f9a6",
-    "36a1c960eeca22a8",
-    "836b81296544d53a",
-    "4cf60a46a1e2f3d1",
-    "e0ee95d94651f118",
-    "8b12925d1c24fef9",
-    "61b8280184f0b6a5",
-    "2a0aa76b888510ab",
-    "3be6218d6602aba6",
-    "dafd25916acc5da7",
-    "7fee992d9d31da7e",
-    "d266f36dc0241b66",
-    "0b023477970998b4",
-    "57179f32d1a9fb62",
-    "5485575c1d7ce120",
-    "1e59dc622bb61327",
-    "772ed89558aaaa24",
-    "907e1cf56993e6a3",
-    "92bff0ceb756619e"
+    "2f446f179a3750cc",
+    "8874de4588c21fed",
+    "b29f7170c0fd6600",
+    "102d5e5c3cdf50dd",
+    "3bf85ba6ab5fd43d",
+    "1f1e0e5c0ef4a735",
+    "77661359cb9e6a91",
+    "ab2577cd6eb709d2",
+    "9ede75c446e79900",
+    "ed4cb1200c84dda4",
+    "13b8cf8fc4089bbe",
+    "e755077905d7c589",
+    "ffb61c86e2f64d36",
+    "8438018c8195a608"
    ]
   },
   {
@@ -203,53 +160,26 @@
     "ceb199de10af1552",
     "25d5395590be500f",
     "676620ed81b6e754",
-    "d09b3a4800f56dcb",
     "0d29a9fe64817d37",
     "b87167fa4bfac1fa",
     "0211a736e1cde0a0",
+    "d09b3a4800f56dcb",
     "f0212d1458e7d4ad"
    ]
   },
   {
-   "sujet": "Securitas : 20 000 infractions à la loi sur le travail en Suisse",
-   "ids": [
-    "4df0b7b3a921974e",
-    "98c886e8e5bb0989",
-    "08cff25a9c9b04a3",
-    "8a825b0d88b8cc99"
-   ]
-  },
-  {
-   "sujet": "Lyon : agents de sécurité privée pour les manifestations",
+   "sujet": "Agents de sécurité privée pour les manifestations à Lyon",
    "ids": [
     "31c52eacb04bf6a9",
     "cefd423567d8849f",
     "67ab9b5e81be389b",
     "c6eec8745c8fafcd",
-    "81fbc480d38c8682"
+    "81fbc480d38c8682",
+    "ed5c958928c6d33a"
    ]
   },
   {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
-   "ids": [
-    "102d5e5c3cdf50dd",
-    "3bf85ba6ab5fd43d",
-    "1f1e0e5c0ef4a735",
-    "77661359cb9e6a91",
-    "ab2577cd6eb709d2",
-    "2f446f179a3750cc",
-    "8874de4588c21fed",
-    "ed4cb1200c84dda4",
-    "9ede75c446e79900",
-    "13b8cf8fc4089bbe",
-    "8438018c8195a608",
-    "b29f7170c0fd6600",
-    "ffb61c86e2f64d36",
-    "e755077905d7c589"
-   ]
-  },
-  {
-   "sujet": "Angers : sécurité privée et policiers pour la manifestation du 24 octobre",
+   "sujet": "Sécurité privée et policiers pour la manifestation du 24 octobre à Angers",
    "ids": [
     "6586a1b377562f6e",
     "a22d363d88eefa7d",
@@ -264,8 +194,8 @@
     "c4b98f4772b706bd",
     "24f6972c74203cec",
     "861f9273849f61f8",
-    "c5c3951e9df4f976",
     "93a6539e15af6b7f",
+    "c5c3951e9df4f976",
     "9476e5b25a5ebf08",
     "b7e0c603a5c478f6",
     "778685e0f3fddc1d",
@@ -274,29 +204,41 @@
    ]
   },
   {
-   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
    "ids": [
-    "c1220362e5a0b77d",
-    "7b1e5ac4bf4588eb",
-    "ab8fa4b728167993"
-   ]
-  },
-  {
-   "sujet": "Renouvellement des caméras du RER B",
-   "ids": [
-    "7621c55b5d33a7cf",
-    "0b667ef3df53ccb8",
-    "9c9680b9aa513dfa"
-   ]
-  },
-  {
-   "sujet": "Interface Systems : baisse des fausses alarmes",
-   "ids": [
-    "7ab5334a204b0ea5",
-    "72e49cf15655edce",
-    "49841b2a7cc20249",
-    "bf9c9df3bca20e24",
-    "b39c07d3a4c43b42"
+    "4ccb758b96bf3541",
+    "0ab84c060f1a44b4",
+    "745d26a5e64bd94e",
+    "624b09fb15136e11",
+    "03e1a86d01552a2b",
+    "a9ea4df2a784126d",
+    "3be6218d6602aba6",
+    "2a0aa76b888510ab",
+    "8fb1760da20f1b61",
+    "29e2c74a4c9e2bea",
+    "7de5df145777c7e6",
+    "6daa703ca6231b05",
+    "97c34bb984a6fb2e",
+    "a24725f2274f4b05",
+    "243e3dce3a605d29",
+    "836b81296544d53a",
+    "4cf60a46a1e2f3d1",
+    "8b12925d1c24fef9",
+    "61b8280184f0b6a5",
+    "5485575c1d7ce120",
+    "92bff0ceb756619e",
+    "0b023477970998b4",
+    "57179f32d1a9fb62",
+    "907e1cf56993e6a3",
+    "dafd25916acc5da7",
+    "7fee992d9d31da7e",
+    "d266f36dc0241b66",
+    "fba8eda83229e2cc",
+    "09255b887f68638c",
+    "9ca4ef62264edaaa",
+    "ee47eeb9b8fd8793",
+    "d5fd48c6e5b224d1",
+    "054528164be31635"
    ]
   },
   {
@@ -309,10 +251,49 @@
    ]
   },
   {
+   "sujet": "Securitas accusée de 20 000 infractions à la loi sur le travail en Suisse",
+   "ids": [
+    "4df0b7b3a921974e",
+    "98c886e8e5bb0989",
+    "8a825b0d88b8cc99",
+    "08cff25a9c9b04a3"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque contre Ahold Delhaize et Hannaford",
+   "ids": [
+    "e5f549dad9c55217",
+    "8c83b4768c110e7c",
+    "17a029333a523df2",
+    "004d2615c734baa3",
+    "1dd4d408799e29d0",
+    "7c865185e1f9ad51"
+   ]
+  },
+  {
+   "sujet": "Piratage de sites par agents d'IA",
+   "ids": [
+    "b833153c918a58a4",
+    "a1fd7e62effdb731",
+    "574d209fa5f0d262",
+    "ee9207f5cb3ad059"
+   ]
+  },
+  {
    "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
    "ids": [
     "3787d8b23720ce6e",
     "6cbcf7d6a842c550"
+   ]
+  },
+  {
+   "sujet": "Interface Systems : baisse des fausses alarmes",
+   "ids": [
+    "7ab5334a204b0ea5",
+    "72e49cf15655edce",
+    "49841b2a7cc20249",
+    "b39c07d3a4c43b42",
+    "bf9c9df3bca20e24"
    ]
   },
   {
@@ -323,13 +304,6 @@
    ]
   },
   {
-   "sujet": "Intellivix et introduction au KOSDAQ",
-   "ids": [
-    "13e217d44d63b62e",
-    "0afeab4b3c2d8485"
-   ]
-  },
-  {
    "sujet": "Brigade de tranquillité résidentielle à Metz et Woippy",
    "ids": [
     "886766d72e7e9ca7",
@@ -337,10 +311,19 @@
    ]
   },
   {
-   "sujet": "Fuite de données de la Fédération française de tir",
+   "sujet": "Renouvellement des caméras du RER B",
    "ids": [
-    "ed874274892fe5dd",
-    "c66a81e74afcfcea"
+    "7621c55b5d33a7cf",
+    "0b667ef3df53ccb8",
+    "9c9680b9aa513dfa"
+   ]
+  },
+  {
+   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "ids": [
+    "c1220362e5a0b77d",
+    "7b1e5ac4bf4588eb",
+    "ab8fa4b728167993"
    ]
   },
   {
@@ -351,12 +334,24 @@
    ]
   },
   {
-   "sujet": "Piratage de sites par agents d'IA",
+   "sujet": "Fuite de données de la Fédération française de tir",
    "ids": [
-    "b833153c918a58a4",
-    "a1fd7e62effdb731",
-    "574d209fa5f0d262",
-    "ee9207f5cb3ad059"
+    "ed874274892fe5dd",
+    "c66a81e74afcfcea"
+   ]
+  },
+  {
+   "sujet": "Intellivix et introduction au KOSDAQ",
+   "ids": [
+    "13e217d44d63b62e",
+    "0afeab4b3c2d8485"
+   ]
+  },
+  {
+   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
+   "ids": [
+    "192c3feb6f7cbe17",
+    "0f3f7d087b29a95f"
    ]
   }
  ]
