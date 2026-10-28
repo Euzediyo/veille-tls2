@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-27",
+ "maj": "2026-10-28",
  "version": 2,
  "groupes": [
   {
@@ -34,6 +34,7 @@
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
    "ids": [
+    "b4437c14470c157b",
     "c64cb7c95d20f862",
     "5755353ba814ccac",
     "c2ac121c3b106b8f",
@@ -42,33 +43,26 @@
     "21d028394ed842aa",
     "c7f65aaeed94f742",
     "f0d8f192a6c99906",
-    "a0ae6d90c347a9a3",
     "9a5e284e0d08d0b4",
     "85f13ff0a562d9c2",
     "78226274184a5c6c",
     "0de608cc4e274780",
     "58863e31675c74ca",
     "b7fa81a9360d4561",
-    "db189f9f207fdb95",
-    "87eb684969b2f59b",
     "8af1deea5834f077",
     "fc5e7c50ce377a80",
+    "87eb684969b2f59b",
     "49ae457c1e2457e5",
-    "9c96260503694604",
+    "ee9bf562cd0b65d6",
+    "a0ae6d90c347a9a3",
+    "db189f9f207fdb95",
     "2940fde096d66e69",
     "f08b6a9837f33b5c",
     "68341bd9648ebeff",
+    "29a62434881ca853",
     "6f3eaa2b2615e73e",
     "25d24b13edd75924",
-    "0df81ce18ab9f8e1",
-    "f6544b0c943cf758",
-    "c23e09aa72b4f6af",
-    "616b4fe0fd317912",
-    "ee9bf562cd0b65d6",
-    "29a62434881ca853",
-    "2d90a1245e0881dd",
-    "31c631aa69dbfb99",
-    "11d598ef6113c3b0",
+    "619988989bb54442",
     "06d6b0a1e26c2d63",
     "474a299ba753ba8e",
     "2fb3e162d06c4ab0",
@@ -80,39 +74,31 @@
     "391f2f5c30026b76",
     "cd7ba4076bcfbb8d",
     "14438ec18978ea2c",
-    "1c3862a6e5df645d",
-    "619988989bb54442",
-    "4cc010118203d40f",
-    "9cdf723022ce91bb",
-    "c93462cccef2536b",
     "3fe2424e6130ba3a",
-    "6a80e2e98a57847b",
-    "7971f4db37e73f6f",
-    "25e5632e52e63348",
-    "90641305c35444ea",
-    "0daac96d72a741ef",
-    "4b9834973c4b92a1",
-    "3e963528405f70f6",
-    "ed0874a7a584eabb",
-    "cde886d1bdfc3909",
-    "d9b841310837b9d8",
-    "7e0cb4675e54c19f",
-    "8590144c66000a69",
-    "4f8b19961c37fe02",
-    "c27d6237fe5ba6a3",
-    "3820e973f053e0a6",
-    "2ba38cacdf892a79",
-    "87c4bbd783d4c3e2",
-    "959b150ca34265c0",
-    "b7b0065ea1214e40",
-    "34b893c577309e61",
-    "587ce27ea5785940",
-    "a6a0b3729a4ad7c7",
-    "2559d0eba0ec30ed",
-    "82d659ad52c2b271",
+    "2d90a1245e0881dd",
+    "0df81ce18ab9f8e1",
     "f9f886e1f273eb44",
     "bd8921405cb62e5f",
-    "e0ee95d94651f118"
+    "11d598ef6113c3b0",
+    "2559d0eba0ec30ed",
+    "6a80e2e98a57847b",
+    "82d659ad52c2b271",
+    "2ba38cacdf892a79",
+    "87c4bbd783d4c3e2",
+    "1c3862a6e5df645d",
+    "4cc010118203d40f",
+    "9cdf723022ce91bb",
+    "959b150ca34265c0",
+    "34b893c577309e61",
+    "c93462cccef2536b",
+    "a6a0b3729a4ad7c7",
+    "31c631aa69dbfb99",
+    "b7b0065ea1214e40",
+    "616b4fe0fd317912",
+    "c23e09aa72b4f6af",
+    "9c96260503694604",
+    "d14bbb97c699a06f",
+    "f6544b0c943cf758"
    ]
   },
   {
@@ -120,36 +106,52 @@
    "ids": [
     "19558a8db8f9f67d",
     "4ba9d92d6aca4ff5",
-    "fd11dfa899e9303f",
+    "dd9d50dc26ca56f3",
     "39bc4d6e6265744d",
     "84806613bfec470f",
     "5559e3936b54a181",
     "34908485bc577d50",
     "8d679223bb4267db",
-    "dd9d50dc26ca56f3",
     "a0adf248b815713c",
     "fd0a66ab19d70b44",
     "ebfeceb10d0a1af4",
-    "055af19248884521"
+    "055af19248884521",
+    "fd11dfa899e9303f"
    ]
   },
   {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
    "ids": [
-    "2f446f179a3750cc",
-    "8874de4588c21fed",
-    "b29f7170c0fd6600",
-    "102d5e5c3cdf50dd",
-    "3bf85ba6ab5fd43d",
-    "1f1e0e5c0ef4a735",
-    "77661359cb9e6a91",
-    "ab2577cd6eb709d2",
-    "9ede75c446e79900",
-    "ed4cb1200c84dda4",
-    "13b8cf8fc4089bbe",
-    "e755077905d7c589",
-    "ffb61c86e2f64d36",
-    "8438018c8195a608"
+    "745d26a5e64bd94e",
+    "624b09fb15136e11",
+    "054528164be31635",
+    "03e1a86d01552a2b",
+    "4ccb758b96bf3541",
+    "2a0aa76b888510ab",
+    "3be6218d6602aba6",
+    "61b8280184f0b6a5",
+    "243e3dce3a605d29",
+    "29e2c74a4c9e2bea",
+    "0ab84c060f1a44b4",
+    "5525fb672b63f9a6",
+    "36a1c960eeca22a8",
+    "8b12925d1c24fef9",
+    "4cf60a46a1e2f3d1",
+    "ef72cf04b7d3015d",
+    "836b81296544d53a",
+    "6daa703ca6231b05",
+    "fba8eda83229e2cc",
+    "09255b887f68638c",
+    "8fb1760da20f1b61",
+    "9ca4ef62264edaaa",
+    "97c34bb984a6fb2e",
+    "7de5df145777c7e6",
+    "ee47eeb9b8fd8793",
+    "a24725f2274f4b05",
+    "a9ea4df2a784126d",
+    "d5fd48c6e5b224d1",
+    "dafd25916acc5da7",
+    "e0ee95d94651f118"
    ]
   },
   {
@@ -160,94 +162,11 @@
     "ceb199de10af1552",
     "25d5395590be500f",
     "676620ed81b6e754",
+    "d09b3a4800f56dcb",
     "0d29a9fe64817d37",
     "b87167fa4bfac1fa",
     "0211a736e1cde0a0",
-    "d09b3a4800f56dcb",
     "f0212d1458e7d4ad"
-   ]
-  },
-  {
-   "sujet": "Agents de sécurité privée pour les manifestations à Lyon",
-   "ids": [
-    "31c52eacb04bf6a9",
-    "cefd423567d8849f",
-    "67ab9b5e81be389b",
-    "c6eec8745c8fafcd",
-    "81fbc480d38c8682",
-    "ed5c958928c6d33a"
-   ]
-  },
-  {
-   "sujet": "Sécurité privée et policiers pour la manifestation du 24 octobre à Angers",
-   "ids": [
-    "6586a1b377562f6e",
-    "a22d363d88eefa7d",
-    "36a035973ca59e67"
-   ]
-  },
-  {
-   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
-   "ids": [
-    "63a2f5defe182da4",
-    "555a9a319ca996d9",
-    "c4b98f4772b706bd",
-    "24f6972c74203cec",
-    "861f9273849f61f8",
-    "93a6539e15af6b7f",
-    "c5c3951e9df4f976",
-    "9476e5b25a5ebf08",
-    "b7e0c603a5c478f6",
-    "778685e0f3fddc1d",
-    "2dcff63505681192",
-    "1efd26801f774ed7"
-   ]
-  },
-  {
-   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
-   "ids": [
-    "4ccb758b96bf3541",
-    "0ab84c060f1a44b4",
-    "745d26a5e64bd94e",
-    "624b09fb15136e11",
-    "03e1a86d01552a2b",
-    "a9ea4df2a784126d",
-    "3be6218d6602aba6",
-    "2a0aa76b888510ab",
-    "8fb1760da20f1b61",
-    "29e2c74a4c9e2bea",
-    "7de5df145777c7e6",
-    "6daa703ca6231b05",
-    "97c34bb984a6fb2e",
-    "a24725f2274f4b05",
-    "243e3dce3a605d29",
-    "836b81296544d53a",
-    "4cf60a46a1e2f3d1",
-    "8b12925d1c24fef9",
-    "61b8280184f0b6a5",
-    "5485575c1d7ce120",
-    "92bff0ceb756619e",
-    "0b023477970998b4",
-    "57179f32d1a9fb62",
-    "907e1cf56993e6a3",
-    "dafd25916acc5da7",
-    "7fee992d9d31da7e",
-    "d266f36dc0241b66",
-    "fba8eda83229e2cc",
-    "09255b887f68638c",
-    "9ca4ef62264edaaa",
-    "ee47eeb9b8fd8793",
-    "d5fd48c6e5b224d1",
-    "054528164be31635"
-   ]
-  },
-  {
-   "sujet": "Partenariat Allianz et Movistar Prosegur Alarmas",
-   "ids": [
-    "907fd1e3c9aa3d57",
-    "199d451e5172b700",
-    "7cb4ab2743af96bf",
-    "0370425c731f39ca"
    ]
   },
   {
@@ -271,19 +190,72 @@
    ]
   },
   {
-   "sujet": "Piratage de sites par agents d'IA",
+   "sujet": "Agents de sécurité privée pour les manifestations à Lyon",
    "ids": [
-    "b833153c918a58a4",
-    "a1fd7e62effdb731",
-    "574d209fa5f0d262",
-    "ee9207f5cb3ad059"
+    "ed5c958928c6d33a",
+    "31c52eacb04bf6a9",
+    "cefd423567d8849f",
+    "67ab9b5e81be389b",
+    "c6eec8745c8fafcd",
+    "81fbc480d38c8682"
    ]
   },
   {
-   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
+   "sujet": "Sécurité privée et policiers pour la manifestation du 24 octobre à Angers",
    "ids": [
-    "3787d8b23720ce6e",
-    "6cbcf7d6a842c550"
+    "6586a1b377562f6e",
+    "a22d363d88eefa7d",
+    "36a035973ca59e67"
+   ]
+  },
+  {
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "ids": [
+    "2f446f179a3750cc",
+    "8874de4588c21fed",
+    "ed4cb1200c84dda4",
+    "9ede75c446e79900",
+    "102d5e5c3cdf50dd",
+    "3bf85ba6ab5fd43d",
+    "1f1e0e5c0ef4a735",
+    "77661359cb9e6a91",
+    "ab2577cd6eb709d2",
+    "b29f7170c0fd6600",
+    "8438018c8195a608",
+    "13b8cf8fc4089bbe",
+    "ffb61c86e2f64d36",
+    "e755077905d7c589"
+   ]
+  },
+  {
+   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
+   "ids": [
+    "63a2f5defe182da4",
+    "555a9a319ca996d9",
+    "c4b98f4772b706bd",
+    "861f9273849f61f8",
+    "24f6972c74203cec",
+    "93a6539e15af6b7f",
+    "c5c3951e9df4f976",
+    "9476e5b25a5ebf08",
+    "b7e0c603a5c478f6",
+    "778685e0f3fddc1d",
+    "2dcff63505681192",
+    "1efd26801f774ed7"
+   ]
+  },
+  {
+   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
+   "ids": [
+    "192c3feb6f7cbe17",
+    "0f3f7d087b29a95f"
+   ]
+  },
+  {
+   "sujet": "Knightscope et son logiciel Signals",
+   "ids": [
+    "5a64aa3c9bfef1c5",
+    "db006fed741c85ff"
    ]
   },
   {
@@ -297,33 +269,12 @@
    ]
   },
   {
-   "sujet": "Knightscope et son logiciel Signals",
+   "sujet": "Partenariat Allianz et Movistar Prosegur Alarmas",
    "ids": [
-    "5a64aa3c9bfef1c5",
-    "db006fed741c85ff"
-   ]
-  },
-  {
-   "sujet": "Brigade de tranquillité résidentielle à Metz et Woippy",
-   "ids": [
-    "886766d72e7e9ca7",
-    "b16d2b91a4de00b0"
-   ]
-  },
-  {
-   "sujet": "Renouvellement des caméras du RER B",
-   "ids": [
-    "7621c55b5d33a7cf",
-    "0b667ef3df53ccb8",
-    "9c9680b9aa513dfa"
-   ]
-  },
-  {
-   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
-   "ids": [
-    "c1220362e5a0b77d",
-    "7b1e5ac4bf4588eb",
-    "ab8fa4b728167993"
+    "907fd1e3c9aa3d57",
+    "199d451e5172b700",
+    "7cb4ab2743af96bf",
+    "0370425c731f39ca"
    ]
   },
   {
@@ -341,17 +292,90 @@
    ]
   },
   {
-   "sujet": "Intellivix et introduction au KOSDAQ",
+   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
    "ids": [
-    "13e217d44d63b62e",
-    "0afeab4b3c2d8485"
+    "3787d8b23720ce6e",
+    "6cbcf7d6a842c550"
    ]
   },
   {
-   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
+   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
    "ids": [
-    "192c3feb6f7cbe17",
-    "0f3f7d087b29a95f"
+    "c1220362e5a0b77d",
+    "7b1e5ac4bf4588eb",
+    "ab8fa4b728167993"
+   ]
+  },
+  {
+   "sujet": "Brigade de tranquillité résidentielle à Metz et Woippy",
+   "ids": [
+    "886766d72e7e9ca7",
+    "b16d2b91a4de00b0"
+   ]
+  },
+  {
+   "sujet": "Piratage de sites par agents d'IA",
+   "ids": [
+    "b833153c918a58a4",
+    "a1fd7e62effdb731",
+    "574d209fa5f0d262",
+    "ee9207f5cb3ad059"
+   ]
+  },
+  {
+   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "ids": [
+    "c9b6318307c5b574",
+    "fbe877e0c886f736"
+   ]
+  },
+  {
+   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
+   "ids": [
+    "a67f9db2cce7ec41",
+    "fefde10867a22887"
+   ]
+  },
+  {
+   "sujet": "Alerte conjointe sur le rançongiciel SafePay",
+   "ids": [
+    "c66b22eff25930c9",
+    "eb7a2b4d3cb3ed7e"
+   ]
+  },
+  {
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "ids": [
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
+   ]
+  },
+  {
+   "sujet": "Vidéoprotection dans le Pays de Gex",
+   "ids": [
+    "5bdda5c22a5245e2",
+    "e74aee4d7daeb154"
+   ]
+  },
+  {
+   "sujet": "Zedcor : expansion aux États-Unis",
+   "ids": [
+    "cee696c1392273a0",
+    "44e773e3ecc632b4"
+   ]
+  },
+  {
+   "sujet": "ADT et Oracle pour l'intelligence artificielle",
+   "ids": [
+    "567ee512c7b87c3c",
+    "f7db266448e6b35c"
+   ]
+  },
+  {
+   "sujet": "Lecture de plaques Flock",
+   "ids": [
+    "e479979a0c7d7400",
+    "3e45ee6334e7b078"
    ]
   }
  ]
