@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-28",
+ "maj": "2026-10-29",
  "version": 2,
  "groupes": [
   {
@@ -34,6 +34,7 @@
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
    "ids": [
+    "73c11db8ec4f5245",
     "b4437c14470c157b",
     "c64cb7c95d20f862",
     "5755353ba814ccac",
@@ -49,24 +50,21 @@
     "0de608cc4e274780",
     "58863e31675c74ca",
     "b7fa81a9360d4561",
-    "8af1deea5834f077",
-    "fc5e7c50ce377a80",
-    "87eb684969b2f59b",
-    "49ae457c1e2457e5",
-    "ee9bf562cd0b65d6",
-    "a0ae6d90c347a9a3",
     "db189f9f207fdb95",
-    "2940fde096d66e69",
+    "87eb684969b2f59b",
+    "fc5e7c50ce377a80",
+    "8af1deea5834f077",
+    "49ae457c1e2457e5",
     "f08b6a9837f33b5c",
+    "2940fde096d66e69",
     "68341bd9648ebeff",
-    "29a62434881ca853",
-    "6f3eaa2b2615e73e",
-    "25d24b13edd75924",
-    "619988989bb54442",
-    "06d6b0a1e26c2d63",
-    "474a299ba753ba8e",
+    "c23e09aa72b4f6af",
+    "616b4fe0fd317912",
+    "f6544b0c943cf758",
+    "9c96260503694604",
     "2fb3e162d06c4ab0",
     "aec60ccb22f88fbd",
+    "474a299ba753ba8e",
     "c537ffb09d664ba2",
     "b22755d2a1edfb45",
     "62e106b829013e8b",
@@ -74,108 +72,14 @@
     "391f2f5c30026b76",
     "cd7ba4076bcfbb8d",
     "14438ec18978ea2c",
-    "3fe2424e6130ba3a",
-    "2d90a1245e0881dd",
-    "0df81ce18ab9f8e1",
-    "f9f886e1f273eb44",
-    "bd8921405cb62e5f",
-    "11d598ef6113c3b0",
-    "2559d0eba0ec30ed",
-    "6a80e2e98a57847b",
-    "82d659ad52c2b271",
-    "2ba38cacdf892a79",
-    "87c4bbd783d4c3e2",
-    "1c3862a6e5df645d",
-    "4cc010118203d40f",
-    "9cdf723022ce91bb",
-    "959b150ca34265c0",
-    "34b893c577309e61",
     "c93462cccef2536b",
+    "06d6b0a1e26c2d63",
+    "619988989bb54442",
     "a6a0b3729a4ad7c7",
-    "31c631aa69dbfb99",
-    "b7b0065ea1214e40",
-    "616b4fe0fd317912",
-    "c23e09aa72b4f6af",
-    "9c96260503694604",
-    "d14bbb97c699a06f",
-    "f6544b0c943cf758"
-   ]
-  },
-  {
-   "sujet": "Rumeur de rachat de Verisure par CVC",
-   "ids": [
-    "19558a8db8f9f67d",
-    "4ba9d92d6aca4ff5",
-    "dd9d50dc26ca56f3",
-    "39bc4d6e6265744d",
-    "84806613bfec470f",
-    "5559e3936b54a181",
-    "34908485bc577d50",
-    "8d679223bb4267db",
-    "a0adf248b815713c",
-    "fd0a66ab19d70b44",
-    "ebfeceb10d0a1af4",
-    "055af19248884521",
-    "fd11dfa899e9303f"
-   ]
-  },
-  {
-   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
-   "ids": [
-    "745d26a5e64bd94e",
-    "624b09fb15136e11",
-    "054528164be31635",
-    "03e1a86d01552a2b",
-    "4ccb758b96bf3541",
-    "2a0aa76b888510ab",
-    "3be6218d6602aba6",
-    "61b8280184f0b6a5",
-    "243e3dce3a605d29",
-    "29e2c74a4c9e2bea",
-    "0ab84c060f1a44b4",
-    "5525fb672b63f9a6",
-    "36a1c960eeca22a8",
-    "8b12925d1c24fef9",
-    "4cf60a46a1e2f3d1",
-    "ef72cf04b7d3015d",
-    "836b81296544d53a",
-    "6daa703ca6231b05",
-    "fba8eda83229e2cc",
-    "09255b887f68638c",
-    "8fb1760da20f1b61",
-    "9ca4ef62264edaaa",
-    "97c34bb984a6fb2e",
-    "7de5df145777c7e6",
-    "ee47eeb9b8fd8793",
-    "a24725f2274f4b05",
-    "a9ea4df2a784126d",
-    "d5fd48c6e5b224d1",
-    "dafd25916acc5da7",
-    "e0ee95d94651f118"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 de Securitas",
-   "ids": [
-    "1b1de04322ec211b",
-    "5b03c3c70dead384",
-    "ceb199de10af1552",
-    "25d5395590be500f",
-    "676620ed81b6e754",
-    "d09b3a4800f56dcb",
-    "0d29a9fe64817d37",
-    "b87167fa4bfac1fa",
-    "0211a736e1cde0a0",
-    "f0212d1458e7d4ad"
-   ]
-  },
-  {
-   "sujet": "Securitas accusée de 20 000 infractions à la loi sur le travail en Suisse",
-   "ids": [
-    "4df0b7b3a921974e",
-    "98c886e8e5bb0989",
-    "8a825b0d88b8cc99",
-    "08cff25a9c9b04a3"
+    "29a62434881ca853",
+    "ee9bf562cd0b65d6",
+    "a0ae6d90c347a9a3",
+    "eeeb6d0a63a0347b"
    ]
   },
   {
@@ -187,6 +91,152 @@
     "004d2615c734baa3",
     "1dd4d408799e29d0",
     "7c865185e1f9ad51"
+   ]
+  },
+  {
+   "sujet": "Rumeur de rachat de Verisure par CVC",
+   "ids": [
+    "19558a8db8f9f67d",
+    "4ba9d92d6aca4ff5",
+    "dd9d50dc26ca56f3",
+    "fd11dfa899e9303f",
+    "055af19248884521",
+    "39bc4d6e6265744d",
+    "84806613bfec470f",
+    "5559e3936b54a181",
+    "fd0a66ab19d70b44",
+    "34908485bc577d50",
+    "8d679223bb4267db",
+    "ebfeceb10d0a1af4",
+    "a0adf248b815713c"
+   ]
+  },
+  {
+   "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
+   "ids": [
+    "6daa703ca6231b05",
+    "745d26a5e64bd94e",
+    "624b09fb15136e11",
+    "d5fd48c6e5b224d1",
+    "054528164be31635",
+    "03e1a86d01552a2b",
+    "a9ea4df2a784126d",
+    "7de5df145777c7e6",
+    "4ccb758b96bf3541",
+    "8fb1760da20f1b61",
+    "29e2c74a4c9e2bea",
+    "9ca4ef62264edaaa",
+    "a24725f2274f4b05",
+    "243e3dce3a605d29",
+    "ef72cf04b7d3015d",
+    "5525fb672b63f9a6",
+    "36a1c960eeca22a8",
+    "97c34bb984a6fb2e",
+    "0ab84c060f1a44b4",
+    "fba8eda83229e2cc",
+    "09255b887f68638c",
+    "ee47eeb9b8fd8793"
+   ]
+  },
+  {
+   "sujet": "Centre de supervision ADT à Irving (Texas)",
+   "ids": [
+    "da7cb07bf0a0d744",
+    "b10eb268ca920089",
+    "8f135cfc3dc66129",
+    "33eecfbe2ec66724",
+    "85df4563bb683ced"
+   ]
+  },
+  {
+   "sujet": "ADT et Oracle pour l'intelligence artificielle",
+   "ids": [
+    "567ee512c7b87c3c",
+    "f7db266448e6b35c",
+    "cdd95b6d120495c1"
+   ]
+  },
+  {
+   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
+   "ids": [
+    "4123b14dd2506df7",
+    "06a9e899c2518723",
+    "723f017bfaac7357"
+   ]
+  },
+  {
+   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "ids": [
+    "886bcae0b3a42497",
+    "c9b6318307c5b574",
+    "fbe877e0c886f736"
+   ]
+  },
+  {
+   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
+   "ids": [
+    "a67f9db2cce7ec41",
+    "fefde10867a22887"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 de Securitas",
+   "ids": [
+    "1b1de04322ec211b",
+    "5b03c3c70dead384",
+    "ceb199de10af1552",
+    "f0212d1458e7d4ad",
+    "676620ed81b6e754",
+    "d09b3a4800f56dcb",
+    "25d5395590be500f",
+    "0d29a9fe64817d37",
+    "b87167fa4bfac1fa",
+    "0211a736e1cde0a0"
+   ]
+  },
+  {
+   "sujet": "Securitas accusée de 20 000 infractions au droit du travail en Suisse",
+   "ids": [
+    "4df0b7b3a921974e",
+    "98c886e8e5bb0989",
+    "08cff25a9c9b04a3",
+    "8a825b0d88b8cc99"
+   ]
+  },
+  {
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "ids": [
+    "2f446f179a3750cc",
+    "8874de4588c21fed",
+    "ed4cb1200c84dda4",
+    "9ede75c446e79900",
+    "102d5e5c3cdf50dd",
+    "1f1e0e5c0ef4a735",
+    "3bf85ba6ab5fd43d",
+    "77661359cb9e6a91",
+    "ab2577cd6eb709d2",
+    "b29f7170c0fd6600",
+    "ffb61c86e2f64d36",
+    "e755077905d7c589",
+    "8438018c8195a608",
+    "13b8cf8fc4089bbe"
+   ]
+  },
+  {
+   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
+   "ids": [
+    "63a2f5defe182da4",
+    "555a9a319ca996d9",
+    "24f6972c74203cec",
+    "c4b98f4772b706bd",
+    "861f9273849f61f8",
+    "c5c3951e9df4f976",
+    "93a6539e15af6b7f",
+    "9476e5b25a5ebf08",
+    "b7e0c603a5c478f6",
+    "1efd26801f774ed7",
+    "778685e0f3fddc1d",
+    "2dcff63505681192"
    ]
   },
   {
@@ -209,42 +259,6 @@
    ]
   },
   {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
-   "ids": [
-    "2f446f179a3750cc",
-    "8874de4588c21fed",
-    "ed4cb1200c84dda4",
-    "9ede75c446e79900",
-    "102d5e5c3cdf50dd",
-    "3bf85ba6ab5fd43d",
-    "1f1e0e5c0ef4a735",
-    "77661359cb9e6a91",
-    "ab2577cd6eb709d2",
-    "b29f7170c0fd6600",
-    "8438018c8195a608",
-    "13b8cf8fc4089bbe",
-    "ffb61c86e2f64d36",
-    "e755077905d7c589"
-   ]
-  },
-  {
-   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
-   "ids": [
-    "63a2f5defe182da4",
-    "555a9a319ca996d9",
-    "c4b98f4772b706bd",
-    "861f9273849f61f8",
-    "24f6972c74203cec",
-    "93a6539e15af6b7f",
-    "c5c3951e9df4f976",
-    "9476e5b25a5ebf08",
-    "b7e0c603a5c478f6",
-    "778685e0f3fddc1d",
-    "2dcff63505681192",
-    "1efd26801f774ed7"
-   ]
-  },
-  {
    "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
    "ids": [
     "192c3feb6f7cbe17",
@@ -252,10 +266,24 @@
    ]
   },
   {
-   "sujet": "Knightscope et son logiciel Signals",
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
    "ids": [
-    "5a64aa3c9bfef1c5",
-    "db006fed741c85ff"
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
+   ]
+  },
+  {
+   "sujet": "Zedcor : expansion aux États-Unis",
+   "ids": [
+    "cee696c1392273a0",
+    "44e773e3ecc632b4"
+   ]
+  },
+  {
+   "sujet": "Lecture de plaques Flock",
+   "ids": [
+    "e479979a0c7d7400",
+    "3e45ee6334e7b078"
    ]
   },
   {
@@ -264,8 +292,8 @@
     "7ab5334a204b0ea5",
     "72e49cf15655edce",
     "49841b2a7cc20249",
-    "b39c07d3a4c43b42",
-    "bf9c9df3bca20e24"
+    "bf9c9df3bca20e24",
+    "b39c07d3a4c43b42"
    ]
   },
   {
@@ -275,35 +303,6 @@
     "199d451e5172b700",
     "7cb4ab2743af96bf",
     "0370425c731f39ca"
-   ]
-  },
-  {
-   "sujet": "Vol au Louvre : failles de sécurité un an après",
-   "ids": [
-    "bcf834f45ab09206",
-    "4e064348c433c9c9"
-   ]
-  },
-  {
-   "sujet": "Fuite de données de la Fédération française de tir",
-   "ids": [
-    "ed874274892fe5dd",
-    "c66a81e74afcfcea"
-   ]
-  },
-  {
-   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
-   "ids": [
-    "3787d8b23720ce6e",
-    "6cbcf7d6a842c550"
-   ]
-  },
-  {
-   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
-   "ids": [
-    "c1220362e5a0b77d",
-    "7b1e5ac4bf4588eb",
-    "ab8fa4b728167993"
    ]
   },
   {
@@ -323,17 +322,10 @@
    ]
   },
   {
-   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
    "ids": [
-    "c9b6318307c5b574",
-    "fbe877e0c886f736"
-   ]
-  },
-  {
-   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
-   "ids": [
-    "a67f9db2cce7ec41",
-    "fefde10867a22887"
+    "3787d8b23720ce6e",
+    "6cbcf7d6a842c550"
    ]
   },
   {
@@ -344,10 +336,32 @@
    ]
   },
   {
-   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "sujet": "Knightscope et son logiciel Signals",
    "ids": [
-    "ed209b3967efb8ef",
-    "71ee38b44ccd3aaa"
+    "5a64aa3c9bfef1c5",
+    "db006fed741c85ff"
+   ]
+  },
+  {
+   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "ids": [
+    "c1220362e5a0b77d",
+    "7b1e5ac4bf4588eb",
+    "ab8fa4b728167993"
+   ]
+  },
+  {
+   "sujet": "Vol au Louvre : failles de sécurité un an après",
+   "ids": [
+    "bcf834f45ab09206",
+    "4e064348c433c9c9"
+   ]
+  },
+  {
+   "sujet": "Fuite de données de la Fédération française de tir",
+   "ids": [
+    "ed874274892fe5dd",
+    "c66a81e74afcfcea"
    ]
   },
   {
@@ -358,24 +372,10 @@
    ]
   },
   {
-   "sujet": "Zedcor : expansion aux États-Unis",
+   "sujet": "Labastide-Monréjeau : consultation sur la vidéoprotection",
    "ids": [
-    "cee696c1392273a0",
-    "44e773e3ecc632b4"
-   ]
-  },
-  {
-   "sujet": "ADT et Oracle pour l'intelligence artificielle",
-   "ids": [
-    "567ee512c7b87c3c",
-    "f7db266448e6b35c"
-   ]
-  },
-  {
-   "sujet": "Lecture de plaques Flock",
-   "ids": [
-    "e479979a0c7d7400",
-    "3e45ee6334e7b078"
+    "b7b3fdf7beb45c3b",
+    "62b217f2a62d3e4b"
    ]
   }
  ]
