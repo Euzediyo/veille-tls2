@@ -104,8 +104,8 @@
   "lundi": "2026-10-26",
   "titre": "Semaine du 26 octobre au 1 novembre 2026",
   "en_cours": true,
-  "maj": "2026-10-30",
-  "synthese": "Cette semaine, plusieurs sujets convergent autour des équipements connectés et de leur supervision. Une cyberattaque visant des systèmes de froid de supermarchés français aurait fait grimper les températures jusqu'à 50 °C ; selon Reuters, au moins 350 magasins seraient touchés, et l'ANSSI enquête. Des cas proches sont évoqués aux États-Unis, sur des congélateurs militaires, sans auteur identifié, et le CERT-UA signale des caméras Dahua compromises via le service P2P Easy4IP. Ces informations, largement reprises, restent à confirmer auprès des sources officielles.\n\nPour un centre, il s'agit de vérifier si des alarmes de défaut froid ont été reçues en masse et de revoir la levée de doute, de contrôler le P2P et les comptes des caméras Dahua, et de vérifier les firmwares des contrôleurs AK-SM 800A. Le rapport CISA/FBI sur le rançongiciel SafePay invite aussi à contrôler l'authentification multifacteur et les accès VPN des logiciels de supervision.\n\nL'échéance à ne pas manquer est l'instruction interministérielle sur les drones, publiée au Journal officiel, qui entre en vigueur le 1er novembre 2026 pour les sites surveillés par des entreprises de sécurité privée. Le compte rendu d'un survol non autorisé doit parvenir au point national du ministère de l'Intérieur dans un délai de 6 heures, selon un modèle en 10 rubriques. Le projet casseurs-payeurs, adopté par le Sénat, reste en cours d'examen et n'est pas encore une obligation.",
+  "maj": "2026-10-31",
+  "synthese": "",
   "articles": [
    "73c11db8ec4f5245",
    "192c3feb6f7cbe17",

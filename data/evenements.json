@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-30",
+ "maj": "2026-10-31",
  "version": 2,
  "groupes": [
   {
@@ -32,66 +32,83 @@
    ]
   },
   {
+   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "ids": [
+    "c1220362e5a0b77d",
+    "7b1e5ac4bf4588eb",
+    "ab8fa4b728167993"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
    "ids": [
-    "73c11db8ec4f5245",
-    "b4437c14470c157b",
-    "c64cb7c95d20f862",
-    "c2ac121c3b106b8f",
-    "e1e95b5f4ce79f2b",
-    "a0ae6d90c347a9a3",
-    "616b4fe0fd317912",
-    "c23e09aa72b4f6af",
-    "9c96260503694604",
-    "49ae457c1e2457e5",
-    "f6544b0c943cf758",
-    "f08b6a9837f33b5c",
-    "2940fde096d66e69",
-    "68341bd9648ebeff",
-    "ee9bf562cd0b65d6",
-    "f0d8f192a6c99906",
-    "78226274184a5c6c",
     "1bea8ff47d286e0c",
     "b111dd99246dff86",
-    "9a5e284e0d08d0b4",
-    "85f13ff0a562d9c2",
-    "0de608cc4e274780",
-    "8af1deea5834f077",
-    "fc5e7c50ce377a80",
-    "87eb684969b2f59b",
+    "73c11db8ec4f5245",
     "5755353ba814ccac",
+    "e1e95b5f4ce79f2b",
+    "c2ac121c3b106b8f",
+    "5a66eb064a8d7af4",
+    "4226a7d6fbb19c6a",
+    "b4437c14470c157b",
+    "c64cb7c95d20f862",
+    "eeeb6d0a63a0347b",
     "21d028394ed842aa",
     "c7f65aaeed94f742",
+    "f0d8f192a6c99906",
     "58863e31675c74ca",
+    "9a5e284e0d08d0b4",
+    "85f13ff0a562d9c2",
+    "78226274184a5c6c",
+    "0de608cc4e274780",
+    "9c96260503694604",
+    "87eb684969b2f59b",
+    "49ae457c1e2457e5",
+    "8af1deea5834f077",
+    "fc5e7c50ce377a80",
+    "f08b6a9837f33b5c",
+    "ee9bf562cd0b65d6",
+    "68341bd9648ebeff",
     "b7fa81a9360d4561",
-    "db189f9f207fdb95",
-    "eeeb6d0a63a0347b"
+    "db189f9f207fdb95"
    ]
   },
   {
    "sujet": "Pannes de congélateurs militaires américains suspectées d'être une cyberattaque",
    "ids": [
+    "7b4cd7003323b4e0",
+    "c8d1c2babdad5023",
+    "a1367c702d0a8456",
+    "956a4f8482dc32c9",
+    "aed9921a77df9d8a",
+    "85064ee720500bbe",
+    "54598757550aaf1e",
     "53a351d00ffed9d3",
     "7de41b3e5aafde72",
     "f3d77c0596f55e20",
     "2e4775d354cc577c",
     "d373ca201f41b185",
     "f42fc3c692ec907c",
-    "22bfe82be067aa93",
     "8fe9c6364c7cb0b2",
     "03d1e335c21fcd66",
     "a4281e2bded33cff",
     "29562a90b1df5e60",
-    "b7ec74596a58286b",
-    "4513a7bfe94321f3",
     "47a854821fd70043",
     "0ff1020195eec8ef",
+    "b7ec74596a58286b",
+    "4513a7bfe94321f3",
+    "22bfe82be067aa93",
     "f26cdc8e3e0ac694"
    ]
   },
   {
    "sujet": "Rachat d'ADT par Thrive Holdings",
    "ids": [
+    "cff1383578e15758",
+    "14574a4971fefc3d",
+    "a6afb7ffb247ba69",
+    "58ac3ef44ff1dcbe",
+    "2126cac5fdb68667",
     "d1cb9c484da1b4f4",
     "b79631f512e1b9a4",
     "38c29fa51af71af8",
@@ -111,7 +128,8 @@
     "e9cd9c800618368a",
     "c5954ba5386c70e0",
     "a5507cca53f1d553",
-    "f9d4a3bc9b395eb1"
+    "f9d4a3bc9b395eb1",
+    "7524608e8dc985df"
    ]
   },
   {
@@ -135,6 +153,24 @@
    ]
   },
   {
+   "sujet": "Rumeur de rachat de Verisure par CVC",
+   "ids": [
+    "19558a8db8f9f67d",
+    "4ba9d92d6aca4ff5",
+    "fd11dfa899e9303f",
+    "055af19248884521",
+    "39bc4d6e6265744d",
+    "84806613bfec470f",
+    "5559e3936b54a181",
+    "dd9d50dc26ca56f3",
+    "34908485bc577d50",
+    "8d679223bb4267db",
+    "fd0a66ab19d70b44",
+    "ebfeceb10d0a1af4",
+    "a0adf248b815713c"
+   ]
+  },
+  {
    "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
    "ids": [
     "4123b14dd2506df7",
@@ -143,25 +179,19 @@
    ]
   },
   {
-   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
    "ids": [
-    "886bcae0b3a42497",
-    "c9b6318307c5b574",
-    "fbe877e0c886f736"
-   ]
-  },
-  {
-   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
-   "ids": [
-    "a67f9db2cce7ec41",
-    "fefde10867a22887"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection dans le Pays de Gex",
-   "ids": [
-    "5bdda5c22a5245e2",
-    "e74aee4d7daeb154"
+    "2f446f179a3750cc",
+    "ed4cb1200c84dda4",
+    "9ede75c446e79900",
+    "b29f7170c0fd6600",
+    "8874de4588c21fed",
+    "77661359cb9e6a91",
+    "102d5e5c3cdf50dd",
+    "ab2577cd6eb709d2",
+    "1f1e0e5c0ef4a735",
+    "3bf85ba6ab5fd43d",
+    "ffb61c86e2f64d36"
    ]
   },
   {
@@ -176,19 +206,19 @@
    ]
   },
   {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
    "ids": [
-    "102d5e5c3cdf50dd",
-    "3bf85ba6ab5fd43d",
-    "1f1e0e5c0ef4a735",
-    "ffb61c86e2f64d36",
-    "77661359cb9e6a91",
-    "2f446f179a3750cc",
-    "8874de4588c21fed",
-    "b29f7170c0fd6600",
-    "ed4cb1200c84dda4",
-    "9ede75c446e79900",
-    "ab2577cd6eb709d2"
+    "63a2f5defe182da4",
+    "555a9a319ca996d9",
+    "c4b98f4772b706bd",
+    "24f6972c74203cec",
+    "861f9273849f61f8",
+    "c5c3951e9df4f976",
+    "93a6539e15af6b7f",
+    "8bafdba14166a495",
+    "838a26afa3c579a1",
+    "8438018c8195a608",
+    "e755077905d7c589"
    ]
   },
   {
@@ -206,69 +236,67 @@
     "5b03c3c70dead384",
     "ceb199de10af1552",
     "676620ed81b6e754",
+    "d09b3a4800f56dcb",
     "25d5395590be500f",
     "0d29a9fe64817d37",
     "b87167fa4bfac1fa",
     "0211a736e1cde0a0",
-    "f0212d1458e7d4ad",
-    "d09b3a4800f56dcb"
+    "f0212d1458e7d4ad"
    ]
   },
   {
    "sujet": "Securitas accusée de 20 000 infractions au droit du travail en Suisse",
    "ids": [
     "4df0b7b3a921974e",
-    "98c886e8e5bb0989",
-    "8a825b0d88b8cc99",
-    "08cff25a9c9b04a3"
-   ]
-  },
-  {
-   "sujet": "Rumeur de rachat de Verisure par CVC",
-   "ids": [
-    "19558a8db8f9f67d",
-    "4ba9d92d6aca4ff5",
-    "fd11dfa899e9303f",
-    "055af19248884521",
-    "39bc4d6e6265744d",
-    "84806613bfec470f",
-    "5559e3936b54a181",
-    "dd9d50dc26ca56f3",
-    "fd0a66ab19d70b44",
-    "34908485bc577d50",
-    "8d679223bb4267db",
-    "a0adf248b815713c",
-    "ebfeceb10d0a1af4"
+    "98c886e8e5bb0989"
    ]
   },
   {
    "sujet": "Rachat envisagé d'Allied Universal par SoftBank",
    "ids": [
-    "745d26a5e64bd94e",
     "d5fd48c6e5b224d1",
+    "745d26a5e64bd94e",
     "624b09fb15136e11",
-    "054528164be31635",
     "03e1a86d01552a2b",
     "a9ea4df2a784126d",
-    "6daa703ca6231b05",
-    "7de5df145777c7e6",
-    "4ccb758b96bf3541",
-    "8fb1760da20f1b61",
-    "29e2c74a4c9e2bea",
-    "09255b887f68638c",
-    "fba8eda83229e2cc",
-    "97c34bb984a6fb2e",
-    "ee47eeb9b8fd8793"
+    "054528164be31635"
    ]
   },
   {
-   "sujet": "Cyberattaque contre Ahold Delhaize et Hannaford",
+   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
    "ids": [
-    "e5f549dad9c55217",
-    "8c83b4768c110e7c",
-    "17a029333a523df2",
-    "004d2615c734baa3",
-    "1dd4d408799e29d0"
+    "a67f9db2cce7ec41",
+    "fefde10867a22887"
+   ]
+  },
+  {
+   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "ids": [
+    "c9b6318307c5b574",
+    "fbe877e0c886f736",
+    "886bcae0b3a42497"
+   ]
+  },
+  {
+   "sujet": "Partenariat Allianz et Movistar Prosegur Alarmas",
+   "ids": [
+    "907fd1e3c9aa3d57",
+    "199d451e5172b700",
+    "7cb4ab2743af96bf"
+   ]
+  },
+  {
+   "sujet": "Amthal lance le service de réponse AURA",
+   "ids": [
+    "a0578e310500b2b1",
+    "b94d856e02ba6594"
+   ]
+  },
+  {
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "ids": [
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
    ]
   },
   {
@@ -282,78 +310,18 @@
    ]
   },
   {
-   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
+   "sujet": "Aide de la Métropole de Lyon aux commerçants",
    "ids": [
-    "3787d8b23720ce6e",
-    "6cbcf7d6a842c550"
+    "435b0c927a80cceb",
+    "a44fb587302eec41",
+    "d7ae9cb597d7048d"
    ]
   },
   {
-   "sujet": "Vidéosurveillance algorithmique à Toulouse et loi Ripost",
+   "sujet": "Vidéoprotection dans le Pays de Gex",
    "ids": [
-    "c1220362e5a0b77d",
-    "7b1e5ac4bf4588eb",
-    "ab8fa4b728167993"
-   ]
-  },
-  {
-   "sujet": "Lecture de plaques Flock",
-   "ids": [
-    "e479979a0c7d7400",
-    "3e45ee6334e7b078"
-   ]
-  },
-  {
-   "sujet": "Brigade de tranquillité résidentielle à Metz et Woippy",
-   "ids": [
-    "886766d72e7e9ca7",
-    "b16d2b91a4de00b0"
-   ]
-  },
-  {
-   "sujet": "Partenariat Allianz et Movistar Prosegur Alarmas",
-   "ids": [
-    "907fd1e3c9aa3d57",
-    "199d451e5172b700",
-    "7cb4ab2743af96bf",
-    "0370425c731f39ca"
-   ]
-  },
-  {
-   "sujet": "Piratage de sites par agents d'IA",
-   "ids": [
-    "b833153c918a58a4",
-    "a1fd7e62effdb731",
-    "574d209fa5f0d262",
-    "ee9207f5cb3ad059"
-   ]
-  },
-  {
-   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
-   "ids": [
-    "ed209b3967efb8ef",
-    "71ee38b44ccd3aaa"
-   ]
-  },
-  {
-   "sujet": "Zedcor : expansion aux États-Unis",
-   "ids": [
-    "cee696c1392273a0",
-    "44e773e3ecc632b4"
-   ]
-  },
-  {
-   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
-   "ids": [
-    "192c3feb6f7cbe17",
-    "0f3f7d087b29a95f"
-   ]
-  },
-  {
-   "sujet": "Alerte conjointe sur le rançongiciel SafePay",
-   "ids": [
-    "c66b22eff25930c9",
-    "eb7a2b4d3cb3ed7e"
+    "5bdda5c22a5245e2",
+    "e74aee4d7daeb154"
    ]
   },
   {
@@ -371,22 +339,31 @@
    ]
   },
   {
-   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
+   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
    "ids": [
-    "63a2f5defe182da4",
-    "555a9a319ca996d9",
-    "c4b98f4772b706bd",
-    "24f6972c74203cec",
-    "861f9273849f61f8",
-    "c5c3951e9df4f976",
-    "93a6539e15af6b7f"
+    "192c3feb6f7cbe17",
+    "0f3f7d087b29a95f"
    ]
   },
   {
-   "sujet": "Aide de la Métropole de Lyon aux commerçants",
+   "sujet": "Lecture de plaques Flock",
    "ids": [
-    "435b0c927a80cceb",
-    "a44fb587302eec41"
+    "e479979a0c7d7400",
+    "3e45ee6334e7b078"
+   ]
+  },
+  {
+   "sujet": "Programme ECHOTRIBBLE de l'armée américaine",
+   "ids": [
+    "3787d8b23720ce6e",
+    "6cbcf7d6a842c550"
+   ]
+  },
+  {
+   "sujet": "Brigade de tranquillité résidentielle à Metz et Woippy",
+   "ids": [
+    "886766d72e7e9ca7",
+    "b16d2b91a4de00b0"
    ]
   },
   {
@@ -394,6 +371,28 @@
    "ids": [
     "d820e3eca9d98d70",
     "14b2508015a8f24c"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque contre Ahold Delhaize et Hannaford",
+   "ids": [
+    "e5f549dad9c55217",
+    "8c83b4768c110e7c",
+    "17a029333a523df2"
+   ]
+  },
+  {
+   "sujet": "Alerte conjointe sur le rançongiciel SafePay",
+   "ids": [
+    "c66b22eff25930c9",
+    "eb7a2b4d3cb3ed7e"
+   ]
+  },
+  {
+   "sujet": "Montluçon : nouvelles caméras de vidéoprotection",
+   "ids": [
+    "c6a0151def2ddec0",
+    "37f7b4d9e0f82880"
    ]
   }
  ]
