@@ -103,9 +103,9 @@
  {
   "lundi": "2026-10-26",
   "titre": "Semaine du 26 octobre au 1 novembre 2026",
-  "en_cours": true,
-  "maj": "2026-11-01",
-  "synthese": "",
+  "en_cours": false,
+  "maj": "2026-11-02",
+  "synthese": "Cette semaine, la sécurité des équipements connectés domine l'actualité. Selon Reuters, une cyberattaque nocturne du 11 au 12 octobre aurait touché au moins 350 supermarchés français en manipulant leurs systèmes de régulation du froid, et l'ANSSI et le parquet cyber de Paris ont ouvert des enquêtes. Il s'agit d'une information reprise par de nombreux médias, sans confirmation officielle à ce stade. Des caméras Dahua compromises en Ukraine, signalées par le CERT-UA, vont dans le même sens.\n\nPour votre centre, le risque est une vague d'alarmes techniques de froid qui saturerait le traitement. Revoyez donc votre levée de doute pour les alarmes en masse. Vérifiez aussi si le service P2P Easy4IP est actif sur les appareils Dahua que vous supervisez, contrôlez les comptes ajoutés et demandez à vos mainteneurs si les firmwares sont à jour. L'alerte conjointe CISA/FBI sur le rançongiciel SafePay invite enfin à revérifier l'authentification multifacteur et les sauvegardes de vos logiciels de supervision.\n\nL'échéance à ne pas manquer concerne les drones : l'instruction interministérielle publiée au Journal officiel du 24 octobre entre en vigueur le 1er novembre 2026. Elle impose de transmettre les comptes rendus de survol non autorisé au point national du ministère de l'Intérieur au plus tard dans les 6 heures, selon un modèle de dix rubriques, pour les sites surveillés par la sécurité privée. Le projet de loi casseurs-payeurs, adopté par le Sénat, reste une proposition à suivre.",
   "articles": [
    "73c11db8ec4f5245",
    "192c3feb6f7cbe17",
@@ -129,6 +129,7 @@
    "aacb6f86d7463ae5",
    "b16d2b91a4de00b0",
    "886766d72e7e9ca7",
+   "f40c6c20db8f8372",
    "3e264841621e74e3",
    "e16743f771ed119a",
    "bf6be3e75bef5165",
@@ -136,9 +137,44 @@
    "54e666f6c5806a29",
    "5cb3ce280d4de01d",
    "115c9dc2a89294bb",
+   "8894dc724588891e",
    "7c74b957890e68e4",
    "fc4372938e3873d9",
    "38b3e65f9b71defd"
+  ]
+ },
+ {
+  "lundi": "2026-11-02",
+  "titre": "Semaine du 2 au 8 novembre 2026",
+  "en_cours": true,
+  "maj": "2026-11-02",
+  "synthese": "Deux affaires d'attaques contre des systèmes techniques retiennent l'attention cette semaine. Le Pentagone enquête sur des pannes de réfrigération dans des commissariats militaires américains, possiblement liées à une cyberattaque. SSBCrack évoque aussi des pirates ayant compromis les commandes du froid de centaines de supermarchés en France, sans lien direct établi avec le cas américain. Ces informations, reprises par plusieurs médias qui ne constituent pas des confirmations indépendantes, restent à vérifier auprès du parquet ou de sources officielles.\n\nConcrètement, des alarmes techniques de froid peuvent arriver en masse et saturer vos opérateurs. Sensibilisez-les à ces alertes et vérifiez votre procédure pour le traitement d'alarmes simultanées sur plusieurs sites. Par ailleurs, selon Wowtale, Thrive Holdings, soutenue par OpenAI, annonce le rachat d'ADT, acteur de la sécurité résidentielle revendiquant plus de 6 millions de clients, pour environ 15,3 milliards de dollars.\n\nÀ anticiper : la clôture de cette opération est annoncée pour le premier trimestre 2027, date approximative et non confirmée, sous réserve des approbations des actionnaires et des autorités antitrust américaines. Lisez le communiqué officiel d'ADT et de Thrive Holdings, car l'article ne reprend que l'extrait d'un premier texte.",
+  "articles": [
+   "0520ecb31f94f19e",
+   "8b975802ea8f4e05"
+  ],
+  "echeances": [
+   "98cdd5a6a226161f",
+   "b16d2b91a4de00b0",
+   "886766d72e7e9ca7",
+   "f40c6c20db8f8372",
+   "3e264841621e74e3",
+   "e16743f771ed119a",
+   "bf6be3e75bef5165",
+   "35db5242b38a0802",
+   "54e666f6c5806a29",
+   "5cb3ce280d4de01d",
+   "115c9dc2a89294bb",
+   "8894dc724588891e",
+   "7c74b957890e68e4",
+   "fc4372938e3873d9",
+   "38b3e65f9b71defd",
+   "a67f9db2cce7ec41",
+   "8b975802ea8f4e05",
+   "0fd70402360d3729",
+   "6f5153a508cb30b2",
+   "c94c79c05c01666d",
+   "366e547b68359e55"
   ]
  }
 ]
