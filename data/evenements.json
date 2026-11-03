@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-02",
+ "maj": "2026-11-03",
  "version": 2,
  "groupes": [
   {
@@ -72,42 +72,71 @@
    ]
   },
   {
-   "sujet": "Rachat d'ADT par Thrive Holdings",
+   "sujet": "Cyberattaque des systèmes de froid de supermarchés en Europe (novembre 2026)",
    "ids": [
-    "8b975802ea8f4e05",
-    "8894dc724588891e",
-    "909240b9de5bc2a7",
-    "5ff8dbd00604d3fe",
-    "d3ff690d9089a443",
-    "78c6f11780c8ed9d",
-    "f43e7516eb6f341a",
-    "95973d05de156904",
-    "4fa8354df2dd883a",
-    "05169757df8ce59a",
-    "eaccc622f6146ed5",
-    "0448f44bca0fbebf",
-    "ce59b877264ae210",
-    "0cc785144b012da8",
-    "cff1383578e15758",
-    "14574a4971fefc3d",
-    "a6afb7ffb247ba69",
-    "2126cac5fdb68667",
-    "dfbc62970ddc7880",
-    "20c47e85ebd70dcd",
-    "84ae3c81eefbb90d",
-    "fe309cc0e93ee498",
-    "d38b8b69a8dc6c12",
-    "0b8bb5f59e28b71d",
-    "d1cb9c484da1b4f4",
-    "b79631f512e1b9a4"
+    "9ae5186d28685485",
+    "243b521dcd549fb3",
+    "207f1efe2a142c27",
+    "0beba6938f67546e",
+    "34ad391eb3c5a8c8",
+    "1b24f9760113e97e",
+    "fb8216a1a5125d3e",
+    "c82fdc8d22efd28f",
+    "d52001f94946459f",
+    "358af3f318b3ac1f",
+    "8d0ab6d54002f226",
+    "5374131e09c2ff78",
+    "f2c61813721e5318",
+    "662a3a8b3aaae221",
+    "b4aeea9959a75c83",
+    "2492c96c66202e8d",
+    "fc9c48ed8b7a1961",
+    "0f63358f40831a1c",
+    "0281fe9f69e206b0",
+    "9d4f6d9b4ceb5b12",
+    "6fdf65c10f98dfeb",
+    "58376951fafa384d",
+    "d98a8ea9b1479007",
+    "6f59c4a67392c25b",
+    "6649340bccd5506c",
+    "3d491f9a74c39962",
+    "22231ac157aed6f2",
+    "cc59837437ef6388",
+    "3f04c41dec1a1217",
+    "25d0dbab5e2f025e",
+    "7470f670be952938",
+    "01208c73a1238ed1",
+    "ab4ba4ae86cd51a2",
+    "3bb5a58f726704fc",
+    "89eb677fd7b41df8",
+    "ff374662b668c2c1",
+    "9f365746e5c2d41b"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français (octobre 2026)",
+   "ids": [
+    "73c11db8ec4f5245",
+    "5a66eb064a8d7af4",
+    "4226a7d6fbb19c6a",
+    "1bea8ff47d286e0c",
+    "b111dd99246dff86",
+    "c64cb7c95d20f862",
+    "5755353ba814ccac",
+    "c2ac121c3b106b8f",
+    "e1e95b5f4ce79f2b",
+    "b4437c14470c157b",
+    "bad6470e63a98b94",
+    "7647eeabe10e6c42"
    ]
   },
   {
    "sujet": "Pannes de congélateurs militaires américains suspectées d'être une cyberattaque",
    "ids": [
     "0520ecb31f94f19e",
-    "d4dbda509cfbafc7",
     "323a5d5704c4f318",
+    "d4dbda509cfbafc7",
+    "f83d06f352da502c",
     "2515ef265adbeede",
     "752e24adde3546ca",
     "f147c7abea7f9e0b",
@@ -133,34 +162,80 @@
     "4513a7bfe94321f3",
     "47a854821fd70043",
     "0ff1020195eec8ef",
-    "f26cdc8e3e0ac694",
-    "f83d06f352da502c"
+    "f26cdc8e3e0ac694"
    ]
   },
   {
-   "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français",
+   "sujet": "Rachat d'ADT par Thrive Holdings",
    "ids": [
-    "5a66eb064a8d7af4",
-    "4226a7d6fbb19c6a",
-    "1bea8ff47d286e0c",
-    "b111dd99246dff86",
-    "c64cb7c95d20f862",
-    "5755353ba814ccac",
-    "21d028394ed842aa",
-    "c7f65aaeed94f742",
-    "f0d8f192a6c99906",
-    "68341bd9648ebeff",
-    "c2ac121c3b106b8f",
-    "e1e95b5f4ce79f2b",
-    "b4437c14470c157b",
-    "73c11db8ec4f5245"
+    "d5c6a23a1314371d",
+    "5ae63ce709cddaee",
+    "a792df70d0d25e04",
+    "8b975802ea8f4e05",
+    "8894dc724588891e",
+    "909240b9de5bc2a7",
+    "b8e43a8495a26a8f",
+    "5ff8dbd00604d3fe",
+    "d3ff690d9089a443",
+    "78c6f11780c8ed9d",
+    "f43e7516eb6f341a",
+    "95973d05de156904",
+    "4fa8354df2dd883a",
+    "05169757df8ce59a",
+    "eaccc622f6146ed5",
+    "0448f44bca0fbebf",
+    "ce59b877264ae210",
+    "0cc785144b012da8",
+    "cff1383578e15758",
+    "14574a4971fefc3d",
+    "a6afb7ffb247ba69",
+    "2126cac5fdb68667",
+    "58ac3ef44ff1dcbe",
+    "d1cb9c484da1b4f4",
+    "b79631f512e1b9a4",
+    "38c29fa51af71af8",
+    "9ba93ab06c82bfa1",
+    "3c7705fd6648c574",
+    "0b8bb5f59e28b71d",
+    "0fd70402360d3729",
+    "9adfbe96ecf330f6",
+    "e90c5c6776e2f638",
+    "c0465588f1a97795",
+    "dfbc62970ddc7880",
+    "20c47e85ebd70dcd",
+    "84ae3c81eefbb90d",
+    "fe309cc0e93ee498",
+    "d38b8b69a8dc6c12",
+    "34a06ecc997f74e9",
+    "f643acbf29bce603",
+    "e9cd9c800618368a",
+    "c5954ba5386c70e0",
+    "a5507cca53f1d553",
+    "7524608e8dc985df",
+    "a8d0e14d075b8065",
+    "afd3001a3bcb65d4"
    ]
   },
   {
-   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
+   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
    "ids": [
-    "4123b14dd2506df7",
-    "723f017bfaac7357"
+    "9b8518095d522770",
+    "f40c6c20db8f8372"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 de Securitas",
+   "ids": [
+    "1b1de04322ec211b",
+    "5b03c3c70dead384",
+    "ceb199de10af1552",
+    "25d5395590be500f",
+    "f0212d1458e7d4ad",
+    "b87167fa4bfac1fa",
+    "0211a736e1cde0a0",
+    "0d29a9fe64817d37",
+    "d09b3a4800f56dcb",
+    "676620ed81b6e754"
    ]
   },
   {
@@ -168,37 +243,29 @@
    "ids": [
     "19558a8db8f9f67d",
     "4ba9d92d6aca4ff5",
-    "dd9d50dc26ca56f3",
-    "fd11dfa899e9303f",
-    "055af19248884521",
-    "39bc4d6e6265744d"
-   ]
-  },
-  {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
-   "ids": [
-    "102d5e5c3cdf50dd",
-    "1f1e0e5c0ef4a735",
-    "2f446f179a3750cc",
-    "8874de4588c21fed",
-    "b29f7170c0fd6600",
-    "ed4cb1200c84dda4",
-    "9ede75c446e79900",
-    "77661359cb9e6a91",
-    "3bf85ba6ab5fd43d",
-    "ffb61c86e2f64d36",
-    "ab2577cd6eb709d2"
+    "fd11dfa899e9303f"
    ]
   },
   {
    "sujet": "Agents de sécurité privée pour les manifestations à Lyon",
    "ids": [
     "ed5c958928c6d33a",
-    "31c52eacb04bf6a9",
-    "cefd423567d8849f",
     "67ab9b5e81be389b",
     "c6eec8745c8fafcd",
+    "cefd423567d8849f",
+    "31c52eacb04bf6a9",
     "81fbc480d38c8682"
+   ]
+  },
+  {
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "ids": [
+    "102d5e5c3cdf50dd",
+    "3bf85ba6ab5fd43d",
+    "1f1e0e5c0ef4a735",
+    "77661359cb9e6a91",
+    "ab2577cd6eb709d2",
+    "ffb61c86e2f64d36"
    ]
   },
   {
@@ -210,21 +277,7 @@
    ]
   },
   {
-   "sujet": "Pillages et violences du 17 octobre : suites et sécurité privée",
-   "ids": [
-    "8bafdba14166a495",
-    "63a2f5defe182da4",
-    "e755077905d7c589",
-    "555a9a319ca996d9",
-    "c4b98f4772b706bd",
-    "8438018c8195a608",
-    "13b8cf8fc4089bbe",
-    "838a26afa3c579a1",
-    "b4a4187cf6d98f7f"
-   ]
-  },
-  {
-   "sujet": "Aide de la Métropole de Lyon aux commerçants",
+   "sujet": "Aide de la Métropole de Lyon aux commerçants conditionnée à la vidéoprotection",
    "ids": [
     "d7ae9cb597d7048d",
     "435b0c927a80cceb",
@@ -239,21 +292,18 @@
    ]
   },
   {
-   "sujet": "RER B : caméras renouvelées et complétées",
+   "sujet": "Vidéoprotection dans le Pays de Gex",
    "ids": [
-    "7621c55b5d33a7cf",
-    "c94c79c05c01666d"
+    "5bdda5c22a5245e2",
+    "e74aee4d7daeb154"
    ]
   },
   {
-   "sujet": "Centre de supervision ADT rénové à Irving (Texas)",
+   "sujet": "Amthal lance le service de réponse AURA",
    "ids": [
-    "e1a8298a03588c45",
-    "6b9a34439921a02a",
-    "b10eb268ca920089",
-    "8f135cfc3dc66129",
-    "33eecfbe2ec66724",
-    "85df4563bb683ced"
+    "a0578e310500b2b1",
+    "b94d856e02ba6594",
+    "f2218f13a67b5d52"
    ]
   },
   {
@@ -265,17 +315,23 @@
    ]
   },
   {
-   "sujet": "Amthal lance le service de réponse AURA",
+   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
    "ids": [
-    "a0578e310500b2b1",
-    "b94d856e02ba6594"
+    "4123b14dd2506df7",
+    "06a9e899c2518723",
+    "723f017bfaac7357"
    ]
   },
   {
-   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "sujet": "Centre de supervision ADT rénové à Irving (Texas)",
    "ids": [
-    "ed209b3967efb8ef",
-    "71ee38b44ccd3aaa"
+    "e1a8298a03588c45",
+    "6b9a34439921a02a",
+    "da7cb07bf0a0d744",
+    "b10eb268ca920089",
+    "8f135cfc3dc66129",
+    "33eecfbe2ec66724",
+    "85df4563bb683ced"
    ]
   },
   {
@@ -287,32 +343,17 @@
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 de Securitas",
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
    "ids": [
-    "1b1de04322ec211b",
-    "5b03c3c70dead384",
-    "25d5395590be500f",
-    "ceb199de10af1552",
-    "f0212d1458e7d4ad",
-    "676620ed81b6e754",
-    "d09b3a4800f56dcb",
-    "0d29a9fe64817d37",
-    "0211a736e1cde0a0",
-    "b87167fa4bfac1fa"
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
    ]
   },
   {
-   "sujet": "Alerte conjointe sur le rançongiciel SafePay",
+   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
    "ids": [
-    "c66b22eff25930c9",
-    "eb7a2b4d3cb3ed7e"
-   ]
-  },
-  {
-   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
-   "ids": [
-    "a67f9db2cce7ec41",
-    "fefde10867a22887"
+    "f1cc5b265b740851",
+    "ef66ea94b7d5ab1c"
    ]
   },
   {
@@ -323,24 +364,10 @@
    ]
   },
   {
-   "sujet": "Technologie vietnamienne de supervision des alarmes incendie",
+   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
    "ids": [
-    "d820e3eca9d98d70",
-    "14b2508015a8f24c"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection dans le Pays de Gex",
-   "ids": [
-    "5bdda5c22a5245e2",
-    "e74aee4d7daeb154"
-   ]
-  },
-  {
-   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
-   "ids": [
-    "f1cc5b265b740851",
-    "ef66ea94b7d5ab1c"
+    "a67f9db2cce7ec41",
+    "fefde10867a22887"
    ]
   }
  ]

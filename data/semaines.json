@@ -147,16 +147,25 @@
   "lundi": "2026-11-02",
   "titre": "Semaine du 2 au 8 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-02",
-  "synthese": "Deux affaires d'attaques contre des systèmes techniques retiennent l'attention cette semaine. Le Pentagone enquête sur des pannes de réfrigération dans des commissariats militaires américains, possiblement liées à une cyberattaque. SSBCrack évoque aussi des pirates ayant compromis les commandes du froid de centaines de supermarchés en France, sans lien direct établi avec le cas américain. Ces informations, reprises par plusieurs médias qui ne constituent pas des confirmations indépendantes, restent à vérifier auprès du parquet ou de sources officielles.\n\nConcrètement, des alarmes techniques de froid peuvent arriver en masse et saturer vos opérateurs. Sensibilisez-les à ces alertes et vérifiez votre procédure pour le traitement d'alarmes simultanées sur plusieurs sites. Par ailleurs, selon Wowtale, Thrive Holdings, soutenue par OpenAI, annonce le rachat d'ADT, acteur de la sécurité résidentielle revendiquant plus de 6 millions de clients, pour environ 15,3 milliards de dollars.\n\nÀ anticiper : la clôture de cette opération est annoncée pour le premier trimestre 2027, date approximative et non confirmée, sous réserve des approbations des actionnaires et des autorités antitrust américaines. Lisez le communiqué officiel d'ADT et de Thrive Holdings, car l'article ne reprend que l'extrait d'un premier texte.",
+  "maj": "2026-11-03",
+  "synthese": "Cette semaine, les attaques contre les systèmes de froid dominent l'actualité. UNITED24 Media fait état de perturbations recensées le 2 novembre dans au moins sept pays de l'Union européenne, et JDN décrit une cyberattaque d'octobre ayant visé plusieurs centaines de supermarchés français via des régulateurs Danfoss. Ces informations sont largement reprises, mais il s'agit d'une même information, non de confirmations indépendantes. Les chiffres sont à vérifier auprès des sources citées, et aucun lien n'est établi à ce stade avec l'enquête du Pentagone signalée par SSBCrack.\n\nPour un centre, le risque est concret : des alarmes de température en masse, avec un retard de déclenchement, peuvent saturer le traitement. Il est utile de mettre à jour la procédure de levée de doute, avec un contrôle de cohérence, et d'identifier les clients équipés de Danfoss ou Dixell. Par ailleurs, 83-629.fr rapporte un licenciement pour faute grave après l'écoute d'enregistrements de téléopérateurs ; il faut vérifier que l'information écrite des opérateurs sur l'enregistrement des lignes est à jour. Le détail de la décision n'est pas connu à ce stade.\n\nUne échéance est à traiter en priorité : selon 83-629.fr, un décret du ministère du Travail modifiant les contrôles du CNAPS est entré en vigueur le 1er novembre 2026. Il concerne les entreprises de sécurité privée autorisées par le CNAPS. Il faut le lire au Journal officiel. Enfin, la clôture rachat d'ADT par Thrive, annoncée pour le premier trimestre 2027 (date approximative), reste soumise à approbations. Consultez le communiqué officiel.",
   "articles": [
+   "9ae5186d28685485",
+   "052a14c7cba19067",
    "0520ecb31f94f19e",
-   "8b975802ea8f4e05"
+   "7647eeabe10e6c42",
+   "8b975802ea8f4e05",
+   "617af58dab069747",
+   "c54e183699c8c441",
+   "8408aad29af51073",
+   "66de32285b8aef06",
+   "a5f052c3585bed55"
   ],
   "echeances": [
    "98cdd5a6a226161f",
    "b16d2b91a4de00b0",
    "886766d72e7e9ca7",
+   "cdbb01bac3fae7df",
    "f40c6c20db8f8372",
    "3e264841621e74e3",
    "e16743f771ed119a",
@@ -171,7 +180,6 @@
    "38b3e65f9b71defd",
    "a67f9db2cce7ec41",
    "8b975802ea8f4e05",
-   "0fd70402360d3729",
    "6f5153a508cb30b2",
    "c94c79c05c01666d",
    "366e547b68359e55"
