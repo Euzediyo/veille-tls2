@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-03",
+ "maj": "2026-11-04",
  "version": 2,
  "groupes": [
   {
@@ -72,8 +72,47 @@
    ]
   },
   {
+   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
+   "ids": [
+    "102d5e5c3cdf50dd",
+    "3bf85ba6ab5fd43d",
+    "1f1e0e5c0ef4a735",
+    "77661359cb9e6a91",
+    "ab2577cd6eb709d2",
+    "ffb61c86e2f64d36"
+   ]
+  },
+  {
+   "sujet": "Sécurité privée et policiers pour la manifestation du 24 octobre à Angers",
+   "ids": [
+    "6586a1b377562f6e",
+    "a22d363d88eefa7d",
+    "36a035973ca59e67"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés en Europe (novembre 2026)",
    "ids": [
+    "43d408a24d1dffe7",
+    "faffea5a2af37b96",
+    "82860d26a3b8bb33",
+    "2abb910ac838b775",
+    "75e12f37f8b28a33",
+    "147d7b28a11125e1",
+    "ae1cc42a04f8fdf9",
+    "e77c26b8a044375c",
+    "905a7d99cae18e4e",
+    "c5cd5d2cfd2d5bfe",
+    "8ba5e77f8bee04f7",
+    "0ec0b3e88e59c9fb",
+    "97c296d6a5f25161",
+    "477a07e4d8347746",
+    "a98a3d01064763c0",
+    "534639317ae70b20",
+    "61f84fa6271ffe3a",
+    "542a11f57c579610",
+    "9a144285137448de",
+    "1d828f70883269c2",
     "9ae5186d28685485",
     "243b521dcd549fb3",
     "207f1efe2a142c27",
@@ -110,32 +149,33 @@
     "3bb5a58f726704fc",
     "89eb677fd7b41df8",
     "ff374662b668c2c1",
-    "9f365746e5c2d41b"
+    "9f365746e5c2d41b",
+    "019381e1e9087f42"
    ]
   },
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français (octobre 2026)",
    "ids": [
-    "73c11db8ec4f5245",
+    "7647eeabe10e6c42",
+    "bad6470e63a98b94",
     "5a66eb064a8d7af4",
     "4226a7d6fbb19c6a",
-    "1bea8ff47d286e0c",
     "b111dd99246dff86",
-    "c64cb7c95d20f862",
+    "1bea8ff47d286e0c",
+    "b4437c14470c157b",
+    "73c11db8ec4f5245",
     "5755353ba814ccac",
     "c2ac121c3b106b8f",
     "e1e95b5f4ce79f2b",
-    "b4437c14470c157b",
-    "bad6470e63a98b94",
-    "7647eeabe10e6c42"
+    "c64cb7c95d20f862"
    ]
   },
   {
    "sujet": "Pannes de congélateurs militaires américains suspectées d'être une cyberattaque",
    "ids": [
     "0520ecb31f94f19e",
-    "323a5d5704c4f318",
     "d4dbda509cfbafc7",
+    "323a5d5704c4f318",
     "f83d06f352da502c",
     "2515ef265adbeede",
     "752e24adde3546ca",
@@ -172,9 +212,8 @@
     "5ae63ce709cddaee",
     "a792df70d0d25e04",
     "8b975802ea8f4e05",
-    "8894dc724588891e",
+    "9ba93ab06c82bfa1",
     "909240b9de5bc2a7",
-    "b8e43a8495a26a8f",
     "5ff8dbd00604d3fe",
     "d3ff690d9089a443",
     "78c6f11780c8ed9d",
@@ -186,33 +225,33 @@
     "0448f44bca0fbebf",
     "ce59b877264ae210",
     "0cc785144b012da8",
+    "58ac3ef44ff1dcbe",
+    "2126cac5fdb68667",
+    "3c7705fd6648c574",
     "cff1383578e15758",
     "14574a4971fefc3d",
     "a6afb7ffb247ba69",
-    "2126cac5fdb68667",
-    "58ac3ef44ff1dcbe",
-    "d1cb9c484da1b4f4",
-    "b79631f512e1b9a4",
-    "38c29fa51af71af8",
-    "9ba93ab06c82bfa1",
-    "3c7705fd6648c574",
-    "0b8bb5f59e28b71d",
-    "0fd70402360d3729",
+    "7524608e8dc985df",
+    "8894dc724588891e",
+    "a8d0e14d075b8065",
     "9adfbe96ecf330f6",
-    "e90c5c6776e2f638",
-    "c0465588f1a97795",
-    "dfbc62970ddc7880",
-    "20c47e85ebd70dcd",
-    "84ae3c81eefbb90d",
-    "fe309cc0e93ee498",
-    "d38b8b69a8dc6c12",
+    "0fd70402360d3729",
+    "0b8bb5f59e28b71d",
     "34a06ecc997f74e9",
-    "f643acbf29bce603",
-    "e9cd9c800618368a",
+    "c0465588f1a97795",
+    "e90c5c6776e2f638",
     "c5954ba5386c70e0",
     "a5507cca53f1d553",
-    "7524608e8dc985df",
-    "a8d0e14d075b8065",
+    "f643acbf29bce603",
+    "38c29fa51af71af8",
+    "d1cb9c484da1b4f4",
+    "b79631f512e1b9a4",
+    "fe309cc0e93ee498",
+    "d38b8b69a8dc6c12",
+    "20c47e85ebd70dcd",
+    "84ae3c81eefbb90d",
+    "dfbc62970ddc7880",
+    "e9cd9c800618368a",
     "afd3001a3bcb65d4"
    ]
   },
@@ -220,60 +259,50 @@
    "sujet": "Résultats du troisième trimestre 2026 d'ADT",
    "ids": [
     "9b8518095d522770",
-    "f40c6c20db8f8372"
+    "f40c6c20db8f8372",
+    "be340d8345a15214",
+    "2d1b4b5dcd4db785",
+    "ac733fe3a2bf79a2",
+    "89ae76c2093ba631",
+    "178df1c00cb40a4a",
+    "99e0d1613e18b9cb",
+    "ddef96dea0412f00",
+    "e65e612d6c62f392",
+    "16abe961d69ba8c5",
+    "377a0b76af855b01",
+    "a93cf96f1a26cf29",
+    "82836c54f337914a"
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 de Securitas",
+   "sujet": "Résultats du troisième trimestre 2026 de Verisure",
    "ids": [
-    "1b1de04322ec211b",
-    "5b03c3c70dead384",
-    "ceb199de10af1552",
-    "25d5395590be500f",
-    "f0212d1458e7d4ad",
-    "b87167fa4bfac1fa",
-    "0211a736e1cde0a0",
-    "0d29a9fe64817d37",
-    "d09b3a4800f56dcb",
-    "676620ed81b6e754"
+    "9fc537f16c2c16c2",
+    "f08f2e9d4683987c",
+    "f090081e77d454d4",
+    "8af9035d4322bf92",
+    "da9694e2abded3b7",
+    "2ab288acd3e272aa",
+    "2e979fd3e8c11212"
    ]
   },
   {
-   "sujet": "Rumeur de rachat de Verisure par CVC",
+   "sujet": "Centre de supervision ADT rénové à Irving (Texas)",
    "ids": [
-    "19558a8db8f9f67d",
-    "4ba9d92d6aca4ff5",
-    "fd11dfa899e9303f"
+    "e1a8298a03588c45",
+    "6b9a34439921a02a",
+    "da7cb07bf0a0d744",
+    "b10eb268ca920089",
+    "8f135cfc3dc66129",
+    "33eecfbe2ec66724",
+    "85df4563bb683ced"
    ]
   },
   {
-   "sujet": "Agents de sécurité privée pour les manifestations à Lyon",
+   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
    "ids": [
-    "ed5c958928c6d33a",
-    "67ab9b5e81be389b",
-    "c6eec8745c8fafcd",
-    "cefd423567d8849f",
-    "31c52eacb04bf6a9",
-    "81fbc480d38c8682"
-   ]
-  },
-  {
-   "sujet": "Recommandations du préfet de police de Paris aux commerçants",
-   "ids": [
-    "102d5e5c3cdf50dd",
-    "3bf85ba6ab5fd43d",
-    "1f1e0e5c0ef4a735",
-    "77661359cb9e6a91",
-    "ab2577cd6eb709d2",
-    "ffb61c86e2f64d36"
-   ]
-  },
-  {
-   "sujet": "Sécurité privée et policiers pour la manifestation du 24 octobre à Angers",
-   "ids": [
-    "6586a1b377562f6e",
-    "a22d363d88eefa7d",
-    "36a035973ca59e67"
+    "f1cc5b265b740851",
+    "ef66ea94b7d5ab1c"
    ]
   },
   {
@@ -282,6 +311,14 @@
     "d7ae9cb597d7048d",
     "435b0c927a80cceb",
     "a44fb587302eec41"
+   ]
+  },
+  {
+   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
+   "ids": [
+    "4123b14dd2506df7",
+    "06a9e899c2518723",
+    "723f017bfaac7357"
    ]
   },
   {
@@ -299,14 +336,6 @@
    ]
   },
   {
-   "sujet": "Amthal lance le service de réponse AURA",
-   "ids": [
-    "a0578e310500b2b1",
-    "b94d856e02ba6594",
-    "f2218f13a67b5d52"
-   ]
-  },
-  {
    "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
    "ids": [
     "886bcae0b3a42497",
@@ -315,23 +344,17 @@
    ]
   },
   {
-   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
+   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
    "ids": [
-    "4123b14dd2506df7",
-    "06a9e899c2518723",
-    "723f017bfaac7357"
+    "a67f9db2cce7ec41",
+    "fefde10867a22887"
    ]
   },
   {
-   "sujet": "Centre de supervision ADT rénové à Irving (Texas)",
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
    "ids": [
-    "e1a8298a03588c45",
-    "6b9a34439921a02a",
-    "da7cb07bf0a0d744",
-    "b10eb268ca920089",
-    "8f135cfc3dc66129",
-    "33eecfbe2ec66724",
-    "85df4563bb683ced"
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
    ]
   },
   {
@@ -343,31 +366,10 @@
    ]
   },
   {
-   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
-   "ids": [
-    "ed209b3967efb8ef",
-    "71ee38b44ccd3aaa"
-   ]
-  },
-  {
-   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
-   "ids": [
-    "f1cc5b265b740851",
-    "ef66ea94b7d5ab1c"
-   ]
-  },
-  {
    "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
    "ids": [
     "192c3feb6f7cbe17",
     "0f3f7d087b29a95f"
-   ]
-  },
-  {
-   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
-   "ids": [
-    "a67f9db2cce7ec41",
-    "fefde10867a22887"
    ]
   }
  ]

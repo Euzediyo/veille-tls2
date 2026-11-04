@@ -147,19 +147,19 @@
   "lundi": "2026-11-02",
   "titre": "Semaine du 2 au 8 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-03",
-  "synthese": "Cette semaine, les attaques contre les systèmes de froid dominent l'actualité. UNITED24 Media fait état de perturbations recensées le 2 novembre dans au moins sept pays de l'Union européenne, et JDN décrit une cyberattaque d'octobre ayant visé plusieurs centaines de supermarchés français via des régulateurs Danfoss. Ces informations sont largement reprises, mais il s'agit d'une même information, non de confirmations indépendantes. Les chiffres sont à vérifier auprès des sources citées, et aucun lien n'est établi à ce stade avec l'enquête du Pentagone signalée par SSBCrack.\n\nPour un centre, le risque est concret : des alarmes de température en masse, avec un retard de déclenchement, peuvent saturer le traitement. Il est utile de mettre à jour la procédure de levée de doute, avec un contrôle de cohérence, et d'identifier les clients équipés de Danfoss ou Dixell. Par ailleurs, 83-629.fr rapporte un licenciement pour faute grave après l'écoute d'enregistrements de téléopérateurs ; il faut vérifier que l'information écrite des opérateurs sur l'enregistrement des lignes est à jour. Le détail de la décision n'est pas connu à ce stade.\n\nUne échéance est à traiter en priorité : selon 83-629.fr, un décret du ministère du Travail modifiant les contrôles du CNAPS est entré en vigueur le 1er novembre 2026. Il concerne les entreprises de sécurité privée autorisées par le CNAPS. Il faut le lire au Journal officiel. Enfin, la clôture rachat d'ADT par Thrive, annoncée pour le premier trimestre 2027 (date approximative), reste soumise à approbations. Consultez le communiqué officiel.",
+  "maj": "2026-11-04",
+  "synthese": "",
   "articles": [
    "9ae5186d28685485",
    "052a14c7cba19067",
    "0520ecb31f94f19e",
    "7647eeabe10e6c42",
    "8b975802ea8f4e05",
+   "5b9852ab71771968",
+   "bca6d4fa81f45d73",
+   "c39f8fe225a65901",
    "617af58dab069747",
-   "c54e183699c8c441",
-   "8408aad29af51073",
-   "66de32285b8aef06",
-   "a5f052c3585bed55"
+   "c54e183699c8c441"
   ],
   "echeances": [
    "98cdd5a6a226161f",
@@ -180,6 +180,7 @@
    "38b3e65f9b71defd",
    "a67f9db2cce7ec41",
    "8b975802ea8f4e05",
+   "be340d8345a15214",
    "6f5153a508cb30b2",
    "c94c79c05c01666d",
    "366e547b68359e55"
