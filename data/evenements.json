@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-04",
+ "maj": "2026-11-05",
  "version": 2,
  "groupes": [
   {
@@ -91,28 +91,82 @@
    ]
   },
   {
+   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "ids": [
+    "ed209b3967efb8ef",
+    "71ee38b44ccd3aaa"
+   ]
+  },
+  {
+   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
+   "ids": [
+    "192c3feb6f7cbe17",
+    "0f3f7d087b29a95f"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque des chambres froides de l'Établissement français du sang (EFS)",
+   "ids": [
+    "4fc8835f03f7644b",
+    "702271f271672244",
+    "67df47ccabf14513",
+    "4c55ec5acc1d7f9b",
+    "2c125d72b900169b",
+    "182c68555414fed8",
+    "4aae01371115eb8d",
+    "940afc83f3c49bc3",
+    "9e527a31af16ce16",
+    "a1edd007cad00834",
+    "8b0b579addd5c4df",
+    "3a895e5721327b8b",
+    "a809429e468bc1d3",
+    "facae5d5fd5502b2",
+    "fe9d2be2f43e0ea6",
+    "4d02f793899b7841",
+    "f3087124fd28e3d0",
+    "d14a4b16eadb1a81",
+    "683e445e6893c360",
+    "bc27df98683bf058",
+    "2ddec0f8a36cad74",
+    "335153ec233e304e",
+    "da8ae1fe50f8835b",
+    "c20f151b394a8de5",
+    "0774825414e77df0",
+    "e17e17a6863b8dc0",
+    "efc0822fb611b70c",
+    "67a4bf7de8bd1279",
+    "2289663f2b16037f",
+    "7fc40d9684a67afd",
+    "1588cb9a506c9c17",
+    "7245950a006a3ecf",
+    "f9f0a6dae0116d9e",
+    "bf2c20540b739fb3",
+    "cda66043c83488f4",
+    "a31e6ea5baaec98b",
+    "794b0e534115d627",
+    "7aa41433b02bad92",
+    "910a82fa231fbb34",
+    "5b9852ab71771968",
+    "bca6d4fa81f45d73",
+    "2af126f7dc9dab4f",
+    "ce25cc71f54063f2",
+    "67f445b36258686c",
+    "9fab2bd9b483ca2d",
+    "6108bd0f3952ddf8",
+    "ea6e9ff35fc3219b",
+    "35c77c160aaa6ea5",
+    "16ecc78737e178e2",
+    "a93c7e662edf06c1"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés en Europe (novembre 2026)",
    "ids": [
-    "43d408a24d1dffe7",
-    "faffea5a2af37b96",
-    "82860d26a3b8bb33",
-    "2abb910ac838b775",
-    "75e12f37f8b28a33",
-    "147d7b28a11125e1",
-    "ae1cc42a04f8fdf9",
-    "e77c26b8a044375c",
-    "905a7d99cae18e4e",
-    "c5cd5d2cfd2d5bfe",
-    "8ba5e77f8bee04f7",
-    "0ec0b3e88e59c9fb",
-    "97c296d6a5f25161",
-    "477a07e4d8347746",
-    "a98a3d01064763c0",
-    "534639317ae70b20",
-    "61f84fa6271ffe3a",
-    "542a11f57c579610",
-    "9a144285137448de",
-    "1d828f70883269c2",
+    "599ad0269bae1891",
+    "05a52b694038b436",
+    "6ed55d909275ce6e",
+    "a8d3cab01cb06fe6",
+    "040a8b25b9727695",
     "9ae5186d28685485",
     "243b521dcd549fb3",
     "207f1efe2a142c27",
@@ -127,10 +181,6 @@
     "5374131e09c2ff78",
     "f2c61813721e5318",
     "662a3a8b3aaae221",
-    "b4aeea9959a75c83",
-    "2492c96c66202e8d",
-    "fc9c48ed8b7a1961",
-    "0f63358f40831a1c",
     "0281fe9f69e206b0",
     "9d4f6d9b4ceb5b12",
     "6fdf65c10f98dfeb",
@@ -150,24 +200,45 @@
     "89eb677fd7b41df8",
     "ff374662b668c2c1",
     "9f365746e5c2d41b",
-    "019381e1e9087f42"
+    "2492c96c66202e8d",
+    "fc9c48ed8b7a1961",
+    "0f63358f40831a1c",
+    "b4aeea9959a75c83",
+    "1d828f70883269c2",
+    "8ba5e77f8bee04f7",
+    "97c296d6a5f25161",
+    "477a07e4d8347746",
+    "a98a3d01064763c0",
+    "534639317ae70b20",
+    "61f84fa6271ffe3a",
+    "905a7d99cae18e4e",
+    "0ec0b3e88e59c9fb",
+    "147d7b28a11125e1",
+    "ae1cc42a04f8fdf9",
+    "e77c26b8a044375c",
+    "c5cd5d2cfd2d5bfe",
+    "43d408a24d1dffe7",
+    "faffea5a2af37b96",
+    "82860d26a3b8bb33",
+    "2abb910ac838b775",
+    "75e12f37f8b28a33",
+    "019381e1e9087f42",
+    "9a144285137448de",
+    "542a11f57c579610",
+    "674da17bd2a91a05"
    ]
   },
   {
    "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français (octobre 2026)",
    "ids": [
-    "7647eeabe10e6c42",
-    "bad6470e63a98b94",
-    "5a66eb064a8d7af4",
-    "4226a7d6fbb19c6a",
-    "b111dd99246dff86",
-    "1bea8ff47d286e0c",
-    "b4437c14470c157b",
     "73c11db8ec4f5245",
-    "5755353ba814ccac",
-    "c2ac121c3b106b8f",
-    "e1e95b5f4ce79f2b",
-    "c64cb7c95d20f862"
+    "5a66eb064a8d7af4",
+    "b111dd99246dff86",
+    "4226a7d6fbb19c6a",
+    "b4437c14470c157b",
+    "bad6470e63a98b94",
+    "7647eeabe10e6c42",
+    "1bea8ff47d286e0c"
    ]
   },
   {
@@ -180,7 +251,6 @@
     "2515ef265adbeede",
     "752e24adde3546ca",
     "f147c7abea7f9e0b",
-    "7b4cd7003323b4e0",
     "c8d1c2babdad5023",
     "a1367c702d0a8456",
     "956a4f8482dc32c9",
@@ -191,99 +261,106 @@
     "7de41b3e5aafde72",
     "f3d77c0596f55e20",
     "2e4775d354cc577c",
-    "d373ca201f41b185",
     "f42fc3c692ec907c",
+    "7b4cd7003323b4e0",
+    "b7ec74596a58286b",
+    "4513a7bfe94321f3",
+    "d373ca201f41b185",
     "22bfe82be067aa93",
     "8fe9c6364c7cb0b2",
     "03d1e335c21fcd66",
     "a4281e2bded33cff",
     "29562a90b1df5e60",
-    "b7ec74596a58286b",
-    "4513a7bfe94321f3",
     "47a854821fd70043",
-    "0ff1020195eec8ef",
-    "f26cdc8e3e0ac694"
+    "0ff1020195eec8ef"
    ]
   },
   {
    "sujet": "Rachat d'ADT par Thrive Holdings",
    "ids": [
-    "d5c6a23a1314371d",
-    "5ae63ce709cddaee",
-    "a792df70d0d25e04",
     "8b975802ea8f4e05",
-    "9ba93ab06c82bfa1",
-    "909240b9de5bc2a7",
-    "5ff8dbd00604d3fe",
     "d3ff690d9089a443",
     "78c6f11780c8ed9d",
     "f43e7516eb6f341a",
     "95973d05de156904",
     "4fa8354df2dd883a",
     "05169757df8ce59a",
+    "909240b9de5bc2a7",
+    "5ff8dbd00604d3fe",
+    "b8e43a8495a26a8f",
     "eaccc622f6146ed5",
-    "0448f44bca0fbebf",
     "ce59b877264ae210",
+    "0448f44bca0fbebf",
     "0cc785144b012da8",
     "58ac3ef44ff1dcbe",
     "2126cac5fdb68667",
-    "3c7705fd6648c574",
-    "cff1383578e15758",
-    "14574a4971fefc3d",
-    "a6afb7ffb247ba69",
-    "7524608e8dc985df",
+    "0b8bb5f59e28b71d",
+    "aeb02d29bd1ba4a3",
+    "c39f8fe225a65901",
+    "9ba93ab06c82bfa1",
+    "a792df70d0d25e04",
+    "d5c6a23a1314371d",
+    "5ae63ce709cddaee",
     "8894dc724588891e",
     "a8d0e14d075b8065",
-    "9adfbe96ecf330f6",
-    "0fd70402360d3729",
-    "0b8bb5f59e28b71d",
-    "34a06ecc997f74e9",
-    "c0465588f1a97795",
-    "e90c5c6776e2f638",
-    "c5954ba5386c70e0",
-    "a5507cca53f1d553",
-    "f643acbf29bce603",
+    "afd3001a3bcb65d4",
     "38c29fa51af71af8",
     "d1cb9c484da1b4f4",
     "b79631f512e1b9a4",
-    "fe309cc0e93ee498",
-    "d38b8b69a8dc6c12",
+    "e9cd9c800618368a",
     "20c47e85ebd70dcd",
     "84ae3c81eefbb90d",
+    "fe309cc0e93ee498",
+    "d38b8b69a8dc6c12",
+    "34a06ecc997f74e9",
+    "c0465588f1a97795",
+    "e90c5c6776e2f638",
+    "9adfbe96ecf330f6",
+    "0fd70402360d3729",
+    "3c7705fd6648c574",
+    "f643acbf29bce603",
+    "c5954ba5386c70e0",
+    "a5507cca53f1d553",
     "dfbc62970ddc7880",
-    "e9cd9c800618368a",
-    "afd3001a3bcb65d4"
+    "14574a4971fefc3d",
+    "a6afb7ffb247ba69",
+    "cff1383578e15758",
+    "7524608e8dc985df",
+    "ac733fe3a2bf79a2"
    ]
   },
   {
    "sujet": "Résultats du troisième trimestre 2026 d'ADT",
    "ids": [
-    "9b8518095d522770",
-    "f40c6c20db8f8372",
+    "be48e88d3324c879",
     "be340d8345a15214",
     "2d1b4b5dcd4db785",
-    "ac733fe3a2bf79a2",
     "89ae76c2093ba631",
     "178df1c00cb40a4a",
     "99e0d1613e18b9cb",
     "ddef96dea0412f00",
-    "e65e612d6c62f392",
-    "16abe961d69ba8c5",
     "377a0b76af855b01",
     "a93cf96f1a26cf29",
-    "82836c54f337914a"
+    "16abe961d69ba8c5",
+    "e65e612d6c62f392",
+    "f40c6c20db8f8372",
+    "9b8518095d522770",
+    "82836c54f337914a",
+    "0f9268a7c72978e5",
+    "191cb7a07acf97cd"
    ]
   },
   {
    "sujet": "Résultats du troisième trimestre 2026 de Verisure",
    "ids": [
     "9fc537f16c2c16c2",
+    "2ab288acd3e272aa",
     "f08f2e9d4683987c",
     "f090081e77d454d4",
     "8af9035d4322bf92",
     "da9694e2abded3b7",
-    "2ab288acd3e272aa",
-    "2e979fd3e8c11212"
+    "2e979fd3e8c11212",
+    "3fd5293466b692b5"
    ]
   },
   {
@@ -299,10 +376,11 @@
    ]
   },
   {
-   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
+   "sujet": "ADT et Oracle pour l'intelligence artificielle",
    "ids": [
-    "f1cc5b265b740851",
-    "ef66ea94b7d5ab1c"
+    "567ee512c7b87c3c",
+    "cdd95b6d120495c1",
+    "f7db266448e6b35c"
    ]
   },
   {
@@ -314,14 +392,6 @@
    ]
   },
   {
-   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
-   "ids": [
-    "4123b14dd2506df7",
-    "06a9e899c2518723",
-    "723f017bfaac7357"
-   ]
-  },
-  {
    "sujet": "Montluçon : nouvelles caméras de vidéoprotection",
    "ids": [
     "c6a0151def2ddec0",
@@ -329,10 +399,11 @@
    ]
   },
   {
-   "sujet": "Vidéoprotection dans le Pays de Gex",
+   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
    "ids": [
-    "5bdda5c22a5245e2",
-    "e74aee4d7daeb154"
+    "4123b14dd2506df7",
+    "06a9e899c2518723",
+    "723f017bfaac7357"
    ]
   },
   {
@@ -344,32 +415,31 @@
    ]
   },
   {
-   "sujet": "Johnson Controls cède son activité intrusion à Truelink Capital",
+   "sujet": "Documentaire sur Securitas et l'appareil répressif turc",
    "ids": [
-    "a67f9db2cce7ec41",
-    "fefde10867a22887"
+    "f1cc5b265b740851",
+    "ef66ea94b7d5ab1c"
    ]
   },
   {
-   "sujet": "Netgear lance une passerelle de sécurité cloud pour les PME",
+   "sujet": "Saint-Privat-des-Vieux : vidéoprotection",
    "ids": [
-    "ed209b3967efb8ef",
-    "71ee38b44ccd3aaa"
+    "d4343abbe237f6ea",
+    "0240a5c9b322ac90"
    ]
   },
   {
-   "sujet": "ADT et Oracle pour l'intelligence artificielle",
+   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
    "ids": [
-    "cdd95b6d120495c1",
-    "567ee512c7b87c3c",
-    "f7db266448e6b35c"
+    "b145274ce69e753c",
+    "ade6fc12fc334bcb"
    ]
   },
   {
-   "sujet": "Nouvelle instruction nationale sur la lutte contre les drones",
+   "sujet": "Résultats trimestriels de Prosegur",
    "ids": [
-    "192c3feb6f7cbe17",
-    "0f3f7d087b29a95f"
+    "d24b2be0730dcb90",
+    "816697d3a04b69ad"
    ]
   }
  ]
