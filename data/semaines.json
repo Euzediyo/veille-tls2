@@ -147,19 +147,19 @@
   "lundi": "2026-11-02",
   "titre": "Semaine du 2 au 8 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-05",
-  "synthese": "Cette semaine est dominée par les attaques contre les systèmes de réfrigération. UNITED24 Media rapporte des perturbations le 2 novembre dans au moins sept pays de l'Union européenne. Les autres médias reprennent la même information, qui n'est donc pas confirmée par des sources indépendantes. Le CERT-FR avait alerté dès le 12 octobre sur des contrôleurs de froid accessibles à distance. Une enquête du Pentagone reste une rumeur, sans lien établi avec ces attaques.\n\nPour un centre de télésurveillance, le risque est opérationnel : des alarmes de température en masse peuvent saturer le traitement, d'où la nécessité d'un contrôle de cohérence avant la levée de doute. Côté juridique, 83-629.fr évoque un licenciement pour faute grave après enregistrement de lignes, dont la décision finale n'est pas connue, ainsi que des sanctions du CNAPS pour treize griefs. Un jugement du tribunal administratif de Marseille, en première instance, annule un refus de carte professionnelle fondé sur une mention au TAJ.\n\nL'action à traiter immédiatement consiste à vérifier si des contrôleurs de froid de vos clients sont exposés sur Internet, en lisant l'alerte CERTFR-2026-ALE-012. Le reste est à anticiper, notamment l'information écrite des opérateurs sur les enregistrements. Aucune échéance ferme n'est fixée ; la clôture du rachat d'ADT, prévue au premier trimestre 2027, reste approximative. Les articles n'ayant été lus que dans leur début, consultez les textes complets avant toute décision.",
+  "maj": "2026-11-06",
+  "synthese": "",
   "articles": [
    "9ae5186d28685485",
    "4fc8835f03f7644b",
+   "2b4f3874e89d30ef",
    "052a14c7cba19067",
+   "d3a7b14f9c2464f4",
+   "e2764c7ab1402e86",
    "406b3d29d7669ba5",
-   "34bceb550774b994",
    "0520ecb31f94f19e",
    "7647eeabe10e6c42",
-   "acd0901114ea9235",
-   "8b975802ea8f4e05",
-   "de39edb22f44e29b"
+   "acd0901114ea9235"
   ],
   "echeances": [
    "98cdd5a6a226161f",
@@ -185,6 +185,7 @@
    "be340d8345a15214",
    "6f5153a508cb30b2",
    "c94c79c05c01666d",
+   "80886e0f1c925a27",
    "575b238abdb9b33c",
    "366e547b68359e55"
   ]

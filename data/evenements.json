@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-05",
+ "maj": "2026-11-06",
  "version": 2,
  "groupes": [
   {
@@ -105,8 +105,36 @@
    ]
   },
   {
+   "sujet": "ADT et Oracle pour l'intelligence artificielle",
+   "ids": [
+    "567ee512c7b87c3c",
+    "cdd95b6d120495c1",
+    "f7db266448e6b35c"
+   ]
+  },
+  {
+   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
+   "ids": [
+    "886bcae0b3a42497",
+    "c9b6318307c5b574",
+    "fbe877e0c886f736"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des chambres froides de l'Établissement français du sang (EFS)",
    "ids": [
+    "f6537cd7d4213d79",
+    "72e2e2e503dd0af6",
+    "bf1782bca26984bd",
+    "fb7860df431b51de",
+    "ff217546e7ebea52",
+    "3788ca58c4bf3b2c",
+    "77fabb4cef671333",
+    "b4efcad7153f8d91",
+    "136668569ae2a66f",
+    "dadfc4374c73c4d3",
+    "d5631e46bcfa4a62",
+    "50eab2bccca1e285",
     "4fc8835f03f7644b",
     "702271f271672244",
     "67df47ccabf14513",
@@ -134,6 +162,10 @@
     "0774825414e77df0",
     "e17e17a6863b8dc0",
     "efc0822fb611b70c",
+    "16ecc78737e178e2",
+    "a93c7e662edf06c1",
+    "35c77c160aaa6ea5",
+    "ce25cc71f54063f2",
     "67a4bf7de8bd1279",
     "2289663f2b16037f",
     "7fc40d9684a67afd",
@@ -146,27 +178,43 @@
     "794b0e534115d627",
     "7aa41433b02bad92",
     "910a82fa231fbb34",
+    "67f445b36258686c",
+    "6108bd0f3952ddf8",
     "5b9852ab71771968",
     "bca6d4fa81f45d73",
-    "2af126f7dc9dab4f",
-    "ce25cc71f54063f2",
-    "67f445b36258686c",
     "9fab2bd9b483ca2d",
-    "6108bd0f3952ddf8",
     "ea6e9ff35fc3219b",
-    "35c77c160aaa6ea5",
-    "16ecc78737e178e2",
-    "a93c7e662edf06c1"
+    "2af126f7dc9dab4f"
    ]
   },
   {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés en Europe (novembre 2026)",
    "ids": [
+    "a8d3cab01cb06fe6",
+    "6ed55d909275ce6e",
     "599ad0269bae1891",
     "05a52b694038b436",
-    "6ed55d909275ce6e",
-    "a8d3cab01cb06fe6",
+    "43d408a24d1dffe7",
+    "faffea5a2af37b96",
+    "82860d26a3b8bb33",
+    "2abb910ac838b775",
+    "75e12f37f8b28a33",
+    "147d7b28a11125e1",
+    "ae1cc42a04f8fdf9",
+    "e77c26b8a044375c",
+    "905a7d99cae18e4e",
+    "c5cd5d2cfd2d5bfe",
+    "8ba5e77f8bee04f7",
+    "0ec0b3e88e59c9fb",
+    "97c296d6a5f25161",
+    "477a07e4d8347746",
+    "a98a3d01064763c0",
+    "534639317ae70b20",
+    "61f84fa6271ffe3a",
     "040a8b25b9727695",
+    "9a144285137448de",
+    "1d828f70883269c2",
+    "674da17bd2a91a05",
     "9ae5186d28685485",
     "243b521dcd549fb3",
     "207f1efe2a142c27",
@@ -181,6 +229,10 @@
     "5374131e09c2ff78",
     "f2c61813721e5318",
     "662a3a8b3aaae221",
+    "b4aeea9959a75c83",
+    "2492c96c66202e8d",
+    "fc9c48ed8b7a1961",
+    "0f63358f40831a1c",
     "0281fe9f69e206b0",
     "9d4f6d9b4ceb5b12",
     "6fdf65c10f98dfeb",
@@ -200,44 +252,25 @@
     "89eb677fd7b41df8",
     "ff374662b668c2c1",
     "9f365746e5c2d41b",
-    "2492c96c66202e8d",
-    "fc9c48ed8b7a1961",
-    "0f63358f40831a1c",
-    "b4aeea9959a75c83",
-    "1d828f70883269c2",
-    "8ba5e77f8bee04f7",
-    "97c296d6a5f25161",
-    "477a07e4d8347746",
-    "a98a3d01064763c0",
-    "534639317ae70b20",
-    "61f84fa6271ffe3a",
-    "905a7d99cae18e4e",
-    "0ec0b3e88e59c9fb",
-    "147d7b28a11125e1",
-    "ae1cc42a04f8fdf9",
-    "e77c26b8a044375c",
-    "c5cd5d2cfd2d5bfe",
-    "43d408a24d1dffe7",
-    "faffea5a2af37b96",
-    "82860d26a3b8bb33",
-    "2abb910ac838b775",
-    "75e12f37f8b28a33",
     "019381e1e9087f42",
-    "9a144285137448de",
+    "646dfbd9e6e582fa",
+    "2194bca4fd2359b2",
     "542a11f57c579610",
-    "674da17bd2a91a05"
+    "859ec1f841012e18",
+    "34bceb550774b994",
+    "d3dac53428934193",
+    "6c5064a4e71a612c"
    ]
   },
   {
-   "sujet": "Cyberattaque des systèmes de réfrigération des supermarchés français (octobre 2026)",
+   "sujet": "Cyberattaque sur les supermarchés français (octobre 2026)",
    "ids": [
+    "7647eeabe10e6c42",
     "73c11db8ec4f5245",
     "5a66eb064a8d7af4",
-    "b111dd99246dff86",
     "4226a7d6fbb19c6a",
-    "b4437c14470c157b",
+    "b111dd99246dff86",
     "bad6470e63a98b94",
-    "7647eeabe10e6c42",
     "1bea8ff47d286e0c"
    ]
   },
@@ -245,12 +278,13 @@
    "sujet": "Pannes de congélateurs militaires américains suspectées d'être une cyberattaque",
    "ids": [
     "0520ecb31f94f19e",
-    "d4dbda509cfbafc7",
     "323a5d5704c4f318",
+    "d4dbda509cfbafc7",
     "f83d06f352da502c",
     "2515ef265adbeede",
     "752e24adde3546ca",
     "f147c7abea7f9e0b",
+    "7b4cd7003323b4e0",
     "c8d1c2babdad5023",
     "a1367c702d0a8456",
     "956a4f8482dc32c9",
@@ -261,18 +295,18 @@
     "7de41b3e5aafde72",
     "f3d77c0596f55e20",
     "2e4775d354cc577c",
+    "d373ca201f41b185",
     "f42fc3c692ec907c",
-    "7b4cd7003323b4e0",
     "b7ec74596a58286b",
     "4513a7bfe94321f3",
-    "d373ca201f41b185",
-    "22bfe82be067aa93",
     "8fe9c6364c7cb0b2",
     "03d1e335c21fcd66",
     "a4281e2bded33cff",
     "29562a90b1df5e60",
+    "22bfe82be067aa93",
     "47a854821fd70043",
-    "0ff1020195eec8ef"
+    "0ff1020195eec8ef",
+    "de39edb22f44e29b"
    ]
   },
   {
@@ -288,50 +322,50 @@
     "909240b9de5bc2a7",
     "5ff8dbd00604d3fe",
     "b8e43a8495a26a8f",
-    "eaccc622f6146ed5",
-    "ce59b877264ae210",
-    "0448f44bca0fbebf",
-    "0cc785144b012da8",
+    "cff1383578e15758",
+    "14574a4971fefc3d",
+    "a6afb7ffb247ba69",
     "58ac3ef44ff1dcbe",
     "2126cac5fdb68667",
-    "0b8bb5f59e28b71d",
-    "aeb02d29bd1ba4a3",
-    "c39f8fe225a65901",
-    "9ba93ab06c82bfa1",
-    "a792df70d0d25e04",
-    "d5c6a23a1314371d",
-    "5ae63ce709cddaee",
-    "8894dc724588891e",
-    "a8d0e14d075b8065",
-    "afd3001a3bcb65d4",
-    "38c29fa51af71af8",
-    "d1cb9c484da1b4f4",
-    "b79631f512e1b9a4",
-    "e9cd9c800618368a",
+    "0448f44bca0fbebf",
+    "ce59b877264ae210",
+    "0cc785144b012da8",
+    "dfbc62970ddc7880",
     "20c47e85ebd70dcd",
     "84ae3c81eefbb90d",
     "fe309cc0e93ee498",
     "d38b8b69a8dc6c12",
-    "34a06ecc997f74e9",
     "c0465588f1a97795",
-    "e90c5c6776e2f638",
     "9adfbe96ecf330f6",
     "0fd70402360d3729",
+    "e90c5c6776e2f638",
+    "34a06ecc997f74e9",
+    "e9cd9c800618368a",
+    "38c29fa51af71af8",
+    "eaccc622f6146ed5",
     "3c7705fd6648c574",
+    "0b8bb5f59e28b71d",
     "f643acbf29bce603",
     "c5954ba5386c70e0",
     "a5507cca53f1d553",
-    "dfbc62970ddc7880",
-    "14574a4971fefc3d",
-    "a6afb7ffb247ba69",
-    "cff1383578e15758",
+    "8894dc724588891e",
+    "d5c6a23a1314371d",
+    "5ae63ce709cddaee",
+    "a792df70d0d25e04",
+    "9ba93ab06c82bfa1",
+    "a8d0e14d075b8065",
+    "d1cb9c484da1b4f4",
+    "b79631f512e1b9a4",
     "7524608e8dc985df",
-    "ac733fe3a2bf79a2"
+    "ac733fe3a2bf79a2",
+    "c39f8fe225a65901"
    ]
   },
   {
    "sujet": "Résultats du troisième trimestre 2026 d'ADT",
    "ids": [
+    "0f9268a7c72978e5",
+    "191cb7a07acf97cd",
     "be48e88d3324c879",
     "be340d8345a15214",
     "2d1b4b5dcd4db785",
@@ -339,28 +373,42 @@
     "178df1c00cb40a4a",
     "99e0d1613e18b9cb",
     "ddef96dea0412f00",
+    "e65e612d6c62f392",
     "377a0b76af855b01",
     "a93cf96f1a26cf29",
     "16abe961d69ba8c5",
-    "e65e612d6c62f392",
-    "f40c6c20db8f8372",
-    "9b8518095d522770",
     "82836c54f337914a",
-    "0f9268a7c72978e5",
-    "191cb7a07acf97cd"
+    "f40c6c20db8f8372",
+    "9b8518095d522770"
    ]
   },
   {
    "sujet": "Résultats du troisième trimestre 2026 de Verisure",
    "ids": [
+    "3fd5293466b692b5",
     "9fc537f16c2c16c2",
     "2ab288acd3e272aa",
     "f08f2e9d4683987c",
     "f090081e77d454d4",
     "8af9035d4322bf92",
     "da9694e2abded3b7",
-    "2e979fd3e8c11212",
-    "3fd5293466b692b5"
+    "2e979fd3e8c11212"
+   ]
+  },
+  {
+   "sujet": "Résultats trimestriels de Prosegur",
+   "ids": [
+    "d24b2be0730dcb90",
+    "816697d3a04b69ad"
+   ]
+  },
+  {
+   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
+   "ids": [
+    "af60617710690f78",
+    "4b2d0ce9d926f365",
+    "b145274ce69e753c",
+    "ade6fc12fc334bcb"
    ]
   },
   {
@@ -369,49 +417,7 @@
     "e1a8298a03588c45",
     "6b9a34439921a02a",
     "da7cb07bf0a0d744",
-    "b10eb268ca920089",
-    "8f135cfc3dc66129",
-    "33eecfbe2ec66724",
-    "85df4563bb683ced"
-   ]
-  },
-  {
-   "sujet": "ADT et Oracle pour l'intelligence artificielle",
-   "ids": [
-    "567ee512c7b87c3c",
-    "cdd95b6d120495c1",
-    "f7db266448e6b35c"
-   ]
-  },
-  {
-   "sujet": "Aide de la Métropole de Lyon aux commerçants conditionnée à la vidéoprotection",
-   "ids": [
-    "d7ae9cb597d7048d",
-    "435b0c927a80cceb",
-    "a44fb587302eec41"
-   ]
-  },
-  {
-   "sujet": "Montluçon : nouvelles caméras de vidéoprotection",
-   "ids": [
-    "c6a0151def2ddec0",
-    "37f7b4d9e0f82880"
-   ]
-  },
-  {
-   "sujet": "Projet de loi casseurs-payeurs adopté par le Sénat",
-   "ids": [
-    "4123b14dd2506df7",
-    "06a9e899c2518723",
-    "723f017bfaac7357"
-   ]
-  },
-  {
-   "sujet": "Partenariat Totem et Milestone pour la télésurveillance vidéo",
-   "ids": [
-    "886bcae0b3a42497",
-    "c9b6318307c5b574",
-    "fbe877e0c886f736"
+    "b10eb268ca920089"
    ]
   },
   {
@@ -422,24 +428,39 @@
    ]
   },
   {
-   "sujet": "Saint-Privat-des-Vieux : vidéoprotection",
+   "sujet": "Aide de la Métropole de Lyon aux commerçants conditionnée à la vidéoprotection",
+   "ids": [
+    "d7ae9cb597d7048d",
+    "435b0c927a80cceb"
+   ]
+  },
+  {
+   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "ids": [
+    "8a6f6eb1c40361ee",
+    "59a41cd00e2f13a2"
+   ]
+  },
+  {
+   "sujet": "Vidéoprotection à Saint-Privat-des-Vieux",
    "ids": [
     "d4343abbe237f6ea",
     "0240a5c9b322ac90"
    ]
   },
   {
-   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
+   "sujet": "Nouvelles caméras de vidéoprotection à Montluçon",
    "ids": [
-    "b145274ce69e753c",
-    "ade6fc12fc334bcb"
+    "c6a0151def2ddec0",
+    "37f7b4d9e0f82880"
    ]
   },
   {
-   "sujet": "Résultats trimestriels de Prosegur",
+   "sujet": "Projets de vidéoprotection à Cayenne",
    "ids": [
-    "d24b2be0730dcb90",
-    "816697d3a04b69ad"
+    "d744ce793b56a9b5",
+    "1a6b34a849d37d58",
+    "bc8301413b92ba99"
    ]
   }
  ]
