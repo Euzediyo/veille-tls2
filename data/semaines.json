@@ -147,19 +147,19 @@
   "lundi": "2026-11-02",
   "titre": "Semaine du 2 au 8 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-07",
-  "synthese": "Cette semaine, plusieurs sources signalent des manipulations à distance d'équipements frigorifiques connectés, les 2 et 4 novembre. Selon UNITED24 Media, des pannes ont été recensées dans au moins sept pays de l'Union européenne, avec plus de cent magasins et entreprises concernés. En France, Aleteia et Fox Business rapportent que trois sites de l'Établissement français du sang ont été visés. Selon ces sources, aucune perte de produits n'est à déplorer. Une boucherie suisse a également été touchée, selon blue News. Ces reprises ne constituent pas des confirmations indépendantes. Les revendications de groupes prorusses ne sont pas établies.\n\nPour un centre de télésurveillance, le risque principal est un afflux d'alarmes de température et de défaut froid, pouvant saturer le traitement et compliquer la levée de doute. Plusieurs articles rappellent aussi que les accès distants passés par des prestataires sont une voie d'entrée. Pour Business Upturn et Yahoo, seul le titre a été lu, donc les détails manquent.\n\nIl n'existe pas d'échéance datée identifiée. Il est recommandé de mettre à jour la procédure de traitement des alarmes de température en masse, avec un contrôle de cohérence avant levée de doute, et de vérifier la sécurisation des accès distants (double authentification, isolement réseau, selon les recommandations de l'office fédéral suisse de cybersécurité). Enfin, un article de 83-629.fr sur un licenciement pour faute grave lié à des enregistrements de lignes invite à vérifier l'information écrite des opérateurs sur l'enregistrement. Consultez un juriste pour les règles applicables.",
+  "maj": "2026-11-08",
+  "synthese": "Cette semaine est dominée par une vague de cyberattaques contre des équipements frigorifiques connectés. Selon UNITED24 Media, des perturbations ont été recensées le 2 novembre dans au moins sept pays de l'Union européenne, dont plus de cent magasins et entreprises. Des articles relayés par Science et vie, Aleteia et Fox Business évoquent aussi trois sites régionaux de l'Établissement français du sang, touchés la même nuit. Il s'agit d'une même information largement reprise, et non de confirmations indépendantes. Le prestataire Coolworld reconnaît un incident limité impliquant son logiciel de supervision à distance. Le chiffre de 110 °C avancé par le Canard enchaîné n'est pas confirmé. L'alerte américaine (CISA, FBI) signale une menace toujours active, mais seul le titre d'un article coréen a été lu.\n\nPour un centre de télésurveillance, le risque principal est un afflux d'alarmes de température ou de défaut froid, pouvant saturer le traitement. Il faut vérifier si vos clients utilisent les équipements de froid ou le logiciel concernés, et mettre à jour la procédure de levée de doute avec un contrôle de cohérence. Les recommandations de l'office fédéral suisse, relayées par blue News, portent sur l'isolement réseau et la double authentification des accès distants.\n\nAucune échéance précise n'est fixée dans les articles. Pour l'article de 83-629.fr sur le licenciement d'un opérateur, les centres qui enregistrent les lignes de leurs opérateurs gagnent à vérifier que leur information écrite sur l'enregistrement est à jour, après avis de leur juriste.",
   "articles": [
    "9ae5186d28685485",
    "e69821e3582e9fa9",
+   "22d69215235a422a",
+   "db4abcc02f646ec0",
    "97972ab78fb53aa6",
-   "75e12f37f8b28a33",
    "2b4f3874e89d30ef",
+   "25e457452962b84b",
    "052a14c7cba19067",
-   "d3a7b14f9c2464f4",
    "72e2e2e503dd0af6",
-   "bf1782bca26984bd",
-   "e2764c7ab1402e86"
+   "bf1782bca26984bd"
   ],
   "echeances": [
    "98cdd5a6a226161f",
@@ -182,6 +182,7 @@
    "38b3e65f9b71defd",
    "a67f9db2cce7ec41",
    "8b975802ea8f4e05",
+   "d1cb9c484da1b4f4",
    "0fd70402360d3729",
    "be340d8345a15214",
    "6f5153a508cb30b2",
