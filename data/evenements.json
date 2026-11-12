@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-11",
+ "maj": "2026-11-12",
  "version": 2,
  "groupes": [
   {
@@ -121,8 +121,26 @@
    ]
   },
   {
-   "sujet": "Attribution à l'Iran de la cyberattaque des frigos de supermarchés",
+   "sujet": "Attribution à l'Iran de la cyberattaque des frigos de supermarchés en France",
    "ids": [
+    "5e2fc648558eff21",
+    "6a2f7455bf83ca9f",
+    "5e04a46e94a3c432",
+    "93addbda55da406d",
+    "869f2389c8d190ca",
+    "37258a97d60fafaa",
+    "a8f43cf76425d118",
+    "ef226ca31d78a595",
+    "c267c0eb06f76098",
+    "a296b74414ef9dff",
+    "adea99ad6b7cbcb1",
+    "443f75c825a87ea4",
+    "a8a036f8baa9cdb1",
+    "00e941ca28175892",
+    "9263432d44a58584",
+    "cc6ba6215e0f8dc7",
+    "16eaa795e9bdf379",
+    "04c8e61f3325d8e7",
     "4a6a79e06f3d2c85",
     "089875f5f2c8476b",
     "f0385b012a3374fe",
@@ -147,9 +165,9 @@
     "9987cd1b73179f18",
     "38bac61e60ade7de",
     "01ae3d9fb7408217",
-    "90458178e99fae0b",
     "9f20fbd6e779e5b2",
     "410b43ea23ad700e",
+    "90458178e99fae0b",
     "b255bdd4d93c5eb1",
     "7f7f5041fd4854d5",
     "bc83505105644121",
@@ -158,30 +176,21 @@
     "e0b0cd74ea2560ea",
     "e36f712a3f1f69a8",
     "de8a5bbea90cd2e9",
-    "a8f43cf76425d118",
-    "ef226ca31d78a595",
-    "c267c0eb06f76098",
-    "a296b74414ef9dff",
-    "adea99ad6b7cbcb1",
-    "443f75c825a87ea4",
-    "a8a036f8baa9cdb1",
-    "00e941ca28175892",
-    "9263432d44a58584",
-    "cc6ba6215e0f8dc7",
-    "16eaa795e9bdf379",
-    "04c8e61f3325d8e7",
-    "42e5c9ff38d928f0"
+    "8ff4155e2c6648cc"
    ]
   },
   {
-   "sujet": "Cyberattaque des chambres froides de l'EFS",
+   "sujet": "Cyberattaque des chambres froides de l'Établissement français du sang (EFS)",
    "ids": [
+    "6fb190d9fc528574",
+    "faa8503b89a76ced",
+    "7aea7a6d40ca9836",
     "6f171c5ec82d3272",
     "6a3ec3818cc2e386",
     "5cf64823a502d5fd",
     "79658d8791663410",
-    "d31de10164ea5473",
     "2ce4e8807e022899",
+    "d31de10164ea5473",
     "9d8a27d6e055a3ee",
     "22d69215235a422a",
     "e726dee0825ff2aa",
@@ -191,15 +200,12 @@
     "b2eb417c23da3cb4",
     "c2299fc66e6989d1",
     "603c94a4a7214dd0",
+    "e69821e3582e9fa9",
+    "d9e8fd640df3ec75",
     "1478929a156f9bd8",
     "17eedace00ffb327",
     "8ce676adf2bb0316",
-    "d9e8fd640df3ec75",
-    "e69821e3582e9fa9",
     "23087d9273d7c849",
-    "bca19a65912c9809",
-    "19e29a1b8a630464",
-    "b1280671dd79c85f",
     "4fc8835f03f7644b",
     "702271f271672244",
     "67df47ccabf14513",
@@ -218,127 +224,101 @@
     "4d02f793899b7841",
     "f3087124fd28e3d0",
     "d14a4b16eadb1a81",
-    "683e445e6893c360",
-    "bc27df98683bf058",
-    "2ddec0f8a36cad74",
-    "335153ec233e304e",
-    "da8ae1fe50f8835b",
-    "c20f151b394a8de5",
+    "16ecc78737e178e2",
+    "a93c7e662edf06c1",
+    "bca19a65912c9809",
+    "19e29a1b8a630464",
+    "b1280671dd79c85f",
+    "f481e911f56dfb12",
+    "6e989b3f89b12334",
+    "bae0dfa2b4abec7e",
+    "1b5b54cb73c78887",
+    "97580dba44bb093b",
+    "7b1bc3a2fbafccfb",
+    "180ac743b9f0c4d6",
+    "2fd4ffbd84594cf9",
+    "3788ca58c4bf3b2c",
+    "8057cf8ffd9851b0",
+    "37439704767ffb88",
+    "cda66043c83488f4",
+    "a31e6ea5baaec98b",
+    "7245950a006a3ecf",
+    "1588cb9a506c9c17",
+    "7fc40d9684a67afd",
+    "67a4bf7de8bd1279",
+    "910a82fa231fbb34",
+    "7aa41433b02bad92",
     "0774825414e77df0",
+    "ce25cc71f54063f2",
     "e17e17a6863b8dc0",
     "efc0822fb611b70c",
-    "7b1bc3a2fbafccfb",
-    "97580dba44bb093b",
-    "1b5b54cb73c78887",
-    "72e2e2e503dd0af6",
-    "bf1782bca26984bd",
+    "da8ae1fe50f8835b",
+    "35c77c160aaa6ea5",
+    "2af126f7dc9dab4f",
+    "ea6e9ff35fc3219b",
+    "136668569ae2a66f",
+    "dadfc4374c73c4d3",
+    "b4efcad7153f8d91",
+    "77fabb4cef671333",
+    "50eab2bccca1e285",
+    "d5631e46bcfa4a62",
+    "2ddec0f8a36cad74",
+    "6108bd0f3952ddf8",
+    "67f445b36258686c",
+    "bf2c20540b739fb3",
     "f6537cd7d4213d79",
     "fb7860df431b51de",
     "ff217546e7ebea52",
-    "3788ca58c4bf3b2c",
-    "77fabb4cef671333",
-    "b4efcad7153f8d91",
-    "136668569ae2a66f",
-    "dadfc4374c73c4d3",
-    "5b9852ab71771968",
-    "bca6d4fa81f45d73",
-    "9fab2bd9b483ca2d",
-    "8057cf8ffd9851b0",
-    "37439704767ffb88",
-    "1588cb9a506c9c17",
-    "7245950a006a3ecf",
-    "f9f0a6dae0116d9e",
-    "a31e6ea5baaec98b",
-    "cda66043c83488f4",
-    "7fc40d9684a67afd",
-    "2289663f2b16037f",
-    "67a4bf7de8bd1279",
-    "bae0dfa2b4abec7e",
-    "f481e911f56dfb12",
-    "7aa41433b02bad92",
-    "910a82fa231fbb34",
-    "2af126f7dc9dab4f",
-    "ea6e9ff35fc3219b",
-    "35c77c160aaa6ea5",
-    "6108bd0f3952ddf8",
-    "67f445b36258686c",
-    "180ac743b9f0c4d6",
-    "2fd4ffbd84594cf9",
-    "ce25cc71f54063f2",
-    "16ecc78737e178e2",
-    "a93c7e662edf06c1",
-    "50eab2bccca1e285",
-    "d5631e46bcfa4a62",
-    "bf2c20540b739fb3",
-    "6e989b3f89b12334"
+    "72e2e2e503dd0af6",
+    "bf1782bca26984bd",
+    "2289663f2b16037f"
    ]
   },
   {
    "sujet": "Cyberattaques sur les systèmes de froid de supermarchés en Europe (novembre 2026)",
    "ids": [
-    "b978ad6cf9d55fce",
-    "0be5aa5abf4cf63a",
-    "d535678b6d0aa0f9",
-    "de7040049062bd02",
     "8960446038024e82",
+    "d535678b6d0aa0f9",
+    "0be5aa5abf4cf63a",
+    "de7040049062bd02",
     "2bb3a98ec7ed7921",
-    "fe3d75a52e5a5da9",
-    "e2764c7ab1402e86",
-    "d3a7b14f9c2464f4",
     "97972ab78fb53aa6",
-    "1c07b439c22a22c3",
-    "040a8b25b9727695",
+    "6ed55d909275ce6e",
+    "2abb910ac838b775",
     "34bceb550774b994",
     "2194bca4fd2359b2",
-    "6ed55d909275ce6e",
-    "599ad0269bae1891",
-    "05a52b694038b436",
-    "019381e1e9087f42",
-    "0ec0b3e88e59c9fb",
-    "9a144285137448de",
-    "43d408a24d1dffe7",
-    "faffea5a2af37b96",
-    "82860d26a3b8bb33",
-    "2abb910ac838b775",
-    "75e12f37f8b28a33",
-    "147d7b28a11125e1",
-    "ae1cc42a04f8fdf9",
-    "e77c26b8a044375c",
-    "905a7d99cae18e4e",
-    "c5cd5d2cfd2d5bfe",
-    "8ba5e77f8bee04f7",
-    "97c296d6a5f25161",
-    "477a07e4d8347746",
-    "a98a3d01064763c0",
-    "534639317ae70b20",
-    "61f84fa6271ffe3a",
-    "1d828f70883269c2",
-    "542a11f57c579610",
-    "674da17bd2a91a05",
-    "a7f960ee052ef913",
-    "859ec1f841012e18",
+    "1c07b439c22a22c3",
+    "a8d3cab01cb06fe6",
+    "040a8b25b9727695",
+    "e2764c7ab1402e86",
+    "d3a7b14f9c2464f4",
     "6c5064a4e71a612c",
     "d3dac53428934193",
-    "c72407103e8a7608"
-   ]
-  },
-  {
-   "sujet": "Démenti de la Russie dans les cyberattaques contre les frigos",
-   "ids": [
-    "93ffe74db86e0c4e",
-    "13de1c1691fd7ee4",
-    "3927dd1a90539587",
-    "d8546d6570fad2cd",
-    "1ceb8626382d1938"
+    "c72407103e8a7608",
+    "147d7b28a11125e1",
+    "8ba5e77f8bee04f7",
+    "905a7d99cae18e4e",
+    "c5cd5d2cfd2d5bfe",
+    "75e12f37f8b28a33",
+    "ae1cc42a04f8fdf9",
+    "82860d26a3b8bb33",
+    "faffea5a2af37b96",
+    "43d408a24d1dffe7",
+    "e77c26b8a044375c",
+    "599ad0269bae1891",
+    "05a52b694038b436",
+    "b978ad6cf9d55fce",
+    "469a39bdbc6eea53",
+    "43666d9c21a706cc"
    ]
   },
   {
    "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
    "ids": [
     "385f5865a823c4e4",
+    "601b3bc6afae9357",
     "520f6c5fff4e44a7",
     "e79f61c60356d70a",
-    "601b3bc6afae9357",
     "db4abcc02f646ec0",
     "25e457452962b84b",
     "360ff3393dd238ce",
@@ -346,13 +326,14 @@
    ]
   },
   {
-   "sujet": "Cyberattaque N-able et plateforme N-central",
+   "sujet": "Démenti de la Russie dans les cyberattaques contre les frigos",
    "ids": [
-    "11f38fe3bddec57f",
-    "0694a43c0b37dcf8",
-    "a79951a7f125d419",
-    "04540338d6bc1540",
-    "c15e56d74cd1659f"
+    "93ffe74db86e0c4e",
+    "13de1c1691fd7ee4",
+    "1ceb8626382d1938",
+    "3927dd1a90539587",
+    "d8546d6570fad2cd",
+    "859ec1f841012e18"
    ]
   },
   {
@@ -365,36 +346,39 @@
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
+   "sujet": "Sanctions de la CNIL contre des collectivités",
    "ids": [
-    "c9e3cef283503847",
-    "f0367affcf49faf1",
-    "8a9e4b5236cf8e90",
-    "2406c78680bcf94a"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
-   "ids": [
-    "4f7b130928644560",
-    "0fdfa4af220e3445",
-    "8308043b67a3d189",
-    "191cb7a07acf97cd",
-    "0f9268a7c72978e5",
-    "be48e88d3324c879",
-    "be340d8345a15214",
-    "2d1b4b5dcd4db785",
-    "82836c54f337914a"
+    "b3c0ff49e9c1e4fd",
+    "cc53d9cac5fc0087",
+    "515cd32744795e44",
+    "ef120a70f60a0163"
    ]
   },
   {
    "sujet": "Rachat d'ADT par Thrive Holdings",
    "ids": [
     "fc0a7c4595f93aa9",
-    "aeb02d29bd1ba4a3",
-    "c39f8fe225a65901",
-    "ac733fe3a2bf79a2",
-    "db292b03e0037b87"
+    "db292b03e0037b87",
+    "aeb02d29bd1ba4a3"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
+   "ids": [
+    "4f7b130928644560",
+    "0f9268a7c72978e5",
+    "191cb7a07acf97cd",
+    "8308043b67a3d189",
+    "0fdfa4af220e3445"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
+   "ids": [
+    "c9e3cef283503847",
+    "f0367affcf49faf1",
+    "8a9e4b5236cf8e90",
+    "2406c78680bcf94a"
    ]
   },
   {
@@ -408,15 +392,6 @@
    ]
   },
   {
-   "sujet": "Sanctions de la CNIL contre des collectivités",
-   "ids": [
-    "b3c0ff49e9c1e4fd",
-    "cc53d9cac5fc0087",
-    "515cd32744795e44",
-    "ef120a70f60a0163"
-   ]
-  },
-  {
    "sujet": "Securitas Healthcare lance une nouvelle génération de RTLS",
    "ids": [
     "c83952e18384647f",
@@ -426,11 +401,34 @@
    ]
   },
   {
+   "sujet": "Cyberattaque N-able et plateforme N-central",
+   "ids": [
+    "3f9d267ae3c86813",
+    "5ea018432db59a80",
+    "d149f9d0c54f6886",
+    "a79951a7f125d419",
+    "04540338d6bc1540",
+    "c15e56d74cd1659f",
+    "11f38fe3bddec57f",
+    "0694a43c0b37dcf8"
+   ]
+  },
+  {
    "sujet": "Vidéoprotection financée par l'État en Martinique",
    "ids": [
     "dcbb28a49239a20f",
     "2c4ca0b249fa6d05",
-    "de2180357c71aec2"
+    "de2180357c71aec2",
+    "85cbdf79a1cbf778"
+   ]
+  },
+  {
+   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "ids": [
+    "a9b2b04216c95163",
+    "6a2b8d0a1b99be78",
+    "8a6f6eb1c40361ee",
+    "59a41cd00e2f13a2"
    ]
   },
   {
@@ -441,32 +439,12 @@
    ]
   },
   {
-   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
    "ids": [
-    "6a2b8d0a1b99be78",
-    "8a6f6eb1c40361ee",
-    "59a41cd00e2f13a2"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection à Saint-Privat-des-Vieux",
-   "ids": [
-    "cc6ba0fbe39771fa",
-    "d4343abbe237f6ea"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque contre Crédit Mutuel Arkéa",
-   "ids": [
-    "71a681a8fd994775",
-    "0ce6a60784fab923"
-   ]
-  },
-  {
-   "sujet": "Rachat de Deutsche Windtechnik pour alpha ventus",
-   "ids": [
-    "49e39b9a3f419fcb",
-    "80886e0f1c925a27"
+    "af60617710690f78",
+    "4b2d0ce9d926f365",
+    "b145274ce69e753c",
+    "ade6fc12fc334bcb"
    ]
   },
   {
@@ -477,19 +455,32 @@
    ]
   },
   {
-   "sujet": "Hausse du SMIC au 1er décembre 2026",
+   "sujet": "Vidéoprotection à Saint-Privat-des-Vieux",
    "ids": [
-    "981fed0cf985f929",
-    "46b52900707f3b78"
+    "cc6ba0fbe39771fa",
+    "d4343abbe237f6ea"
    ]
   },
   {
-   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
+   "sujet": "Rachat de Deutsche Windtechnik pour alpha ventus",
    "ids": [
-    "af60617710690f78",
-    "4b2d0ce9d926f365",
-    "b145274ce69e753c",
-    "ade6fc12fc334bcb"
+    "49e39b9a3f419fcb",
+    "80886e0f1c925a27"
+   ]
+  },
+  {
+   "sujet": "Piratage des chauffages après les frigos",
+   "ids": [
+    "b4616ce660a9dfe5",
+    "42e5c9ff38d928f0",
+    "7d62405354030591"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque contre Crédit Mutuel Arkéa",
+   "ids": [
+    "71a681a8fd994775",
+    "0ce6a60784fab923"
    ]
   }
  ]
