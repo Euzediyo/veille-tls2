@@ -198,19 +198,19 @@
   "lundi": "2026-11-09",
   "titre": "Semaine du 9 au 15 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-13",
+  "maj": "2026-11-14",
   "synthese": "",
   "articles": [
    "4a6a79e06f3d2c85",
    "981fed0cf985f929",
-   "b978ad6cf9d55fce",
    "2ce4e8807e022899",
-   "fc1d09981a6e25e8",
    "29fe2995ac8b6994",
    "462c5fae47b64535",
    "d235d1e439c39781",
    "11f38fe3bddec57f",
-   "b3c0ff49e9c1e4fd"
+   "b3c0ff49e9c1e4fd",
+   "b4616ce660a9dfe5",
+   "f15b95fa7ff5eab5"
   ],
   "echeances": [
    "9c713a71e6a44dc6",
@@ -221,6 +221,7 @@
    "5cb3ce280d4de01d",
    "59a41cd00e2f13a2",
    "71403b1561b5c93e",
+   "f15b95fa7ff5eab5",
    "115c9dc2a89294bb",
    "8894dc724588891e",
    "a9b2b04216c95163",
