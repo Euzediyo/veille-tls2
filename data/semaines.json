@@ -198,19 +198,19 @@
   "lundi": "2026-11-09",
   "titre": "Semaine du 9 au 15 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-14",
-  "synthese": "",
+  "maj": "2026-11-15",
+  "synthese": "La semaine est dominée par les cyberattaques contre les systèmes de régulation du froid. Selon le gouvernement français, relayé par la presse, des hausses de température commandées à distance ont touché des supermarchés en octobre, et l'Iran est désigné. Le parquet de Paris a ouvert une information judiciaire, mais il s'agit d'une annonce, non d'une conclusion d'enquête, et des pirates pro-russes ont revendiqué l'attaque. Infos-Israel.News rapporte aussi une attaque contre des chambres froides de l'EFS, avec des dates qui divergent selon les articles.\n\nPour un centre, le risque est un flot d'alarmes techniques en masse. La plateforme N-central de N-able a été mise hors ligne après la publication de 33 failles non validées par l'éditeur. Il faut vérifier si le centre ou ses sous-traitants l'utilisent. La CNIL a par ailleurs sanctionné dix collectivités pour accès distants et comptes partagés, des points proches de ceux d'un centre.\n\nLe plus urgent concerne la paie. La hausse du SMIC de 1,6 % au 1er décembre 2026 pourrait placer le coefficient 120 de la branche IDCC 1351 sous le minimum, selon des calculs non officiels publiés sur 83-629.fr. Attendez la publication au Journal officiel avant d'ajuster les salaires. Vérifiez aussi votre service de standard téléphonique, que la fiche CNAPS du 13 juin 2024 classe parmi les activités incompatibles avec le principe d'exclusivité. Le Beauvau de la sécurité privée reste à suivre.",
   "articles": [
    "4a6a79e06f3d2c85",
    "981fed0cf985f929",
    "2ce4e8807e022899",
+   "a8f43cf76425d118",
    "29fe2995ac8b6994",
    "462c5fae47b64535",
    "d235d1e439c39781",
    "11f38fe3bddec57f",
    "b3c0ff49e9c1e4fd",
-   "b4616ce660a9dfe5",
-   "f15b95fa7ff5eab5"
+   "b4616ce660a9dfe5"
   ],
   "echeances": [
    "9c713a71e6a44dc6",
@@ -238,6 +238,7 @@
    "cff1383578e15758",
    "0fd70402360d3729",
    "be340d8345a15214",
+   "b53f93978047de56",
    "6f5153a508cb30b2",
    "c94c79c05c01666d",
    "80886e0f1c925a27",

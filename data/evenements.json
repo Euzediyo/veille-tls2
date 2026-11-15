@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-14",
+ "maj": "2026-11-15",
  "version": 2,
  "groupes": [
   {
@@ -121,8 +121,16 @@
    ]
   },
   {
-   "sujet": "Cyberattaque des systèmes de froid de supermarchés en Europe et attribution à l'Iran",
+   "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
+    "07d7824d0d990f82",
+    "81f8ddb146f24127",
+    "e7bbc6a6ddcae160",
+    "818c03478428ff68",
+    "dc2c6a97ce33d790",
+    "2f38f8390c78738c",
+    "07ad0b4c634e21c5",
+    "09fc2d52e9faaaaa",
     "75a405e0f1677c68",
     "c30ff609ff282a11",
     "af46c840cd12f187",
@@ -139,22 +147,22 @@
     "73e1ddb5fa8e2151",
     "cccb87a46391b054",
     "638834abf8a69912",
-    "7674e48b09b7d72d",
+    "2cf06ccb728504c7",
     "fc1d09981a6e25e8",
     "7878799b08629c9e",
     "025bc1a2d340d0fe",
     "63b5aaa890bff42b",
-    "6a2f7455bf83ca9f",
+    "7674e48b09b7d72d",
+    "3df346cb019670e1",
     "5e2fc648558eff21",
+    "6a2f7455bf83ca9f",
     "5e04a46e94a3c432",
     "93addbda55da406d",
     "869f2389c8d190ca",
     "37258a97d60fafaa",
-    "a8f43cf76425d118",
-    "ef226ca31d78a595",
-    "c267c0eb06f76098",
-    "537dc8a1180cf341",
     "a296b74414ef9dff",
+    "8ff4155e2c6648cc",
+    "adea99ad6b7cbcb1",
     "443f75c825a87ea4",
     "a8a036f8baa9cdb1",
     "00e941ca28175892",
@@ -195,27 +203,27 @@
     "74b2beb55b31d18c",
     "e0b0cd74ea2560ea",
     "e36f712a3f1f69a8",
-    "adea99ad6b7cbcb1",
-    "04c8e61f3325d8e7",
-    "de8a5bbea90cd2e9",
-    "8ff4155e2c6648cc",
     "2db6da248a872490",
-    "8960446038024e82",
-    "469a39bdbc6eea53",
+    "de8a5bbea90cd2e9",
+    "c267c0eb06f76098",
+    "537dc8a1180cf341",
+    "04c8e61f3325d8e7",
+    "ef226ca31d78a595",
     "0be5aa5abf4cf63a",
-    "b978ad6cf9d55fce",
+    "d535678b6d0aa0f9",
     "de7040049062bd02",
+    "469a39bdbc6eea53",
     "43666d9c21a706cc",
-    "2bb3a98ec7ed7921",
-    "e2764c7ab1402e86",
+    "b978ad6cf9d55fce",
     "97972ab78fb53aa6",
-    "d3a7b14f9c2464f4",
-    "6c5064a4e71a612c",
+    "2bb3a98ec7ed7921",
+    "fe3d75a52e5a5da9",
+    "e2764c7ab1402e86",
     "d3dac53428934193",
     "c72407103e8a7608",
     "c4cb4ca48229d15a",
-    "fe3d75a52e5a5da9",
-    "d535678b6d0aa0f9"
+    "8960446038024e82",
+    "d3a7b14f9c2464f4"
    ]
   },
   {
@@ -225,12 +233,12 @@
     "ce6df24a849ee56f",
     "3c668457f40f6b32",
     "491c374821b85e28",
-    "6fb190d9fc528574",
     "7aea7a6d40ca9836",
     "faa8503b89a76ced",
-    "5cf64823a502d5fd",
+    "6fb190d9fc528574",
     "6f171c5ec82d3272",
     "6a3ec3818cc2e386",
+    "5cf64823a502d5fd",
     "79658d8791663410",
     "2ce4e8807e022899",
     "d31de10164ea5473",
@@ -244,50 +252,59 @@
     "b2eb417c23da3cb4",
     "c2299fc66e6989d1",
     "603c94a4a7214dd0",
+    "23087d9273d7c849",
+    "1478929a156f9bd8",
     "e69821e3582e9fa9",
     "d9e8fd640df3ec75",
-    "1478929a156f9bd8",
-    "8ce676adf2bb0316",
     "17eedace00ffb327",
-    "23087d9273d7c849",
+    "8ce676adf2bb0316",
+    "f6537cd7d4213d79",
+    "fb7860df431b51de",
+    "ff217546e7ebea52",
+    "8a65fef8a6613187",
+    "bae0dfa2b4abec7e",
     "1b5b54cb73c78887",
-    "3788ca58c4bf3b2c",
-    "f481e911f56dfb12",
-    "4fc8835f03f7644b",
-    "702271f271672244",
-    "67df47ccabf14513",
-    "4c55ec5acc1d7f9b",
-    "2c125d72b900169b",
-    "182c68555414fed8",
-    "4aae01371115eb8d",
-    "940afc83f3c49bc3",
-    "9e527a31af16ce16",
-    "a1edd007cad00834",
-    "8b0b579addd5c4df",
-    "3a895e5721327b8b",
-    "a809429e468bc1d3",
-    "facae5d5fd5502b2",
-    "fe9d2be2f43e0ea6",
-    "4d02f793899b7841",
-    "f3087124fd28e3d0",
-    "8057cf8ffd9851b0",
-    "37439704767ffb88",
     "97580dba44bb093b",
     "7b1bc3a2fbafccfb",
+    "f481e911f56dfb12",
+    "72e2e2e503dd0af6",
+    "bf1782bca26984bd",
     "180ac743b9f0c4d6",
     "2fd4ffbd84594cf9",
     "bca19a65912c9809",
     "19e29a1b8a630464",
     "b1280671dd79c85f",
-    "bae0dfa2b4abec7e",
-    "50eab2bccca1e285",
-    "d5631e46bcfa4a62",
+    "3788ca58c4bf3b2c",
     "136668569ae2a66f",
     "dadfc4374c73c4d3",
+    "d5631e46bcfa4a62",
+    "50eab2bccca1e285",
     "b4efcad7153f8d91",
     "77fabb4cef671333",
-    "ff217546e7ebea52",
-    "8a65fef8a6613187"
+    "8057cf8ffd9851b0",
+    "37439704767ffb88"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque sur des chambres froides à Köniz (Suisse)",
+   "ids": [
+    "1b124e07f733e540",
+    "fa13a982b26e1c41",
+    "2b4f3874e89d30ef",
+    "72874d43ccade218",
+    "6c5064a4e71a612c"
+   ]
+  },
+  {
+   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
+   "ids": [
+    "385f5865a823c4e4",
+    "601b3bc6afae9357",
+    "520f6c5fff4e44a7",
+    "e79f61c60356d70a",
+    "db4abcc02f646ec0",
+    "25e457452962b84b",
+    "360ff3393dd238ce"
    ]
   },
   {
@@ -295,35 +312,15 @@
    "ids": [
     "93ffe74db86e0c4e",
     "13de1c1691fd7ee4",
-    "1ceb8626382d1938",
     "3927dd1a90539587",
-    "d8546d6570fad2cd"
-   ]
-  },
-  {
-   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
-   "ids": [
-    "db4abcc02f646ec0",
-    "385f5865a823c4e4",
-    "601b3bc6afae9357",
-    "520f6c5fff4e44a7",
-    "e79f61c60356d70a",
-    "25e457452962b84b",
-    "360ff3393dd238ce"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque sur des chambres froides à Köniz (Suisse)",
-   "ids": [
-    "72874d43ccade218",
-    "1b124e07f733e540",
-    "fa13a982b26e1c41",
-    "2b4f3874e89d30ef"
+    "d8546d6570fad2cd",
+    "1ceb8626382d1938"
    ]
   },
   {
    "sujet": "Piratage des chauffages après les frigos",
    "ids": [
+    "370d03d372313d08",
     "b4616ce660a9dfe5",
     "42e5c9ff38d928f0",
     "7d62405354030591"
@@ -337,7 +334,7 @@
    ]
   },
   {
-   "sujet": "Cyberattaque N-able et plateforme N-central",
+   "sujet": "N-able et plateforme N-central (failles zero-day)",
    "ids": [
     "3f9d267ae3c86813",
     "5ea018432db59a80",
@@ -350,24 +347,105 @@
    ]
   },
   {
-   "sujet": "Aides régionales suspendues aux lycéens en Île-de-France",
+   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
    "ids": [
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219",
-    "d6f8a92485eae85d"
+    "c9e3cef283503847",
+    "f0367affcf49faf1",
+    "8a9e4b5236cf8e90",
+    "2406c78680bcf94a"
+   ]
+  },
+  {
+   "sujet": "Rachat d'ADT par Thrive Holdings",
+   "ids": [
+    "fc0a7c4595f93aa9",
+    "0fdfa4af220e3445",
+    "db292b03e0037b87"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
+   "ids": [
+    "a9ebb02db0a85ab9",
+    "4f7b130928644560",
+    "8308043b67a3d189"
+   ]
+  },
+  {
+   "sujet": "Résultats trimestriels de Prosegur",
+   "ids": [
+    "c2a4437ce4ca3701",
+    "c1bc2a9a95cdf5c1",
+    "8e9f1721de71306e"
+   ]
+  },
+  {
+   "sujet": "Honeywell EBI One",
+   "ids": [
+    "364c99c1313b8e76",
+    "b060d71218f75a75"
+   ]
+  },
+  {
+   "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
+   "ids": [
+    "7c40861472fb7676",
+    "c83952e18384647f",
+    "bd08a7f59f1556e3",
+    "2c8f5d0ab27cfc41",
+    "1eb4bd5b2dd99e9e"
+   ]
+  },
+  {
+   "sujet": "Rachat de LVSI par Security 101",
+   "ids": [
+    "89e6f6b012007b57",
+    "7e221a50538da24f"
    ]
   },
   {
    "sujet": "Licence de Defensor Security Services annulée au Telangana",
    "ids": [
-    "c6853ce37df690a1",
     "32379a5e4f7bd310",
+    "c6853ce37df690a1",
     "8383e6caa57aa8e4",
     "046d4799a87d569b",
     "e48a968a378973be",
     "b5bcb9f48b57cc08",
     "e89d914b76d63445"
+   ]
+  },
+  {
+   "sujet": "Aides régionales suspendues aux lycéens en Île-de-France",
+   "ids": [
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
+   ]
+  },
+  {
+   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
+   "ids": [
+    "0605695de586b0d4",
+    "596197a9be5f215f"
+   ]
+  },
+  {
+   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
+   "ids": [
+    "f15b95fa7ff5eab5",
+    "0209c3c50c13b9d8",
+    "9223503876477806"
+   ]
+  },
+  {
+   "sujet": "Sanctions de la CNIL contre des collectivités",
+   "ids": [
+    "b3c0ff49e9c1e4fd",
+    "cc53d9cac5fc0087",
+    "515cd32744795e44",
+    "ef120a70f60a0163"
    ]
   },
   {
@@ -390,7 +468,6 @@
    "sujet": "Référendum sur la vidéoprotection à Quimperlé",
    "ids": [
     "a9b2b04216c95163",
-    "8a6f6eb1c40361ee",
     "6a2b8d0a1b99be78"
    ]
   },
@@ -402,76 +479,10 @@
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
-   "ids": [
-    "c9e3cef283503847",
-    "f0367affcf49faf1",
-    "8a9e4b5236cf8e90",
-    "2406c78680bcf94a"
-   ]
-  },
-  {
-   "sujet": "Résultats trimestriels de Prosegur",
-   "ids": [
-    "c2a4437ce4ca3701",
-    "c1bc2a9a95cdf5c1",
-    "8e9f1721de71306e"
-   ]
-  },
-  {
-   "sujet": "Rachat d'ADT par Thrive Holdings",
-   "ids": [
-    "fc0a7c4595f93aa9",
-    "db292b03e0037b87",
-    "0fdfa4af220e3445"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
-   "ids": [
-    "8308043b67a3d189",
-    "4f7b130928644560"
-   ]
-  },
-  {
-   "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
-   "ids": [
-    "c83952e18384647f",
-    "bd08a7f59f1556e3",
-    "2c8f5d0ab27cfc41",
-    "1eb4bd5b2dd99e9e",
-    "7c40861472fb7676"
-   ]
-  },
-  {
    "sujet": "Rachat de Metrodial par Scutum Digital",
    "ids": [
     "07d57a97a731dfe0",
     "a598af5c17dc6958"
-   ]
-  },
-  {
-   "sujet": "Sanctions de la CNIL contre des collectivités",
-   "ids": [
-    "b3c0ff49e9c1e4fd",
-    "cc53d9cac5fc0087",
-    "ef120a70f60a0163",
-    "515cd32744795e44"
-   ]
-  },
-  {
-   "sujet": "Rachat de LVSI par Security 101",
-   "ids": [
-    "89e6f6b012007b57",
-    "7e221a50538da24f"
-   ]
-  },
-  {
-   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
-   "ids": [
-    "f15b95fa7ff5eab5",
-    "0209c3c50c13b9d8",
-    "9223503876477806"
    ]
   },
   {
@@ -482,17 +493,10 @@
    ]
   },
   {
-   "sujet": "Patrouilles de sécurité privée au centre de Dublin",
+   "sujet": "Vidéoprotection à Brou",
    "ids": [
-    "af60617710690f78",
-    "4b2d0ce9d926f365"
-   ]
-  },
-  {
-   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
-   "ids": [
-    "0605695de586b0d4",
-    "596197a9be5f215f"
+    "3af2e71446c374e7",
+    "a30c2da53a173656"
    ]
   },
   {
@@ -500,13 +504,6 @@
    "ids": [
     "c3810d05071b3b7f",
     "7dc772690466b1e5"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection à Brou",
-   "ids": [
-    "3af2e71446c374e7",
-    "a30c2da53a173656"
    ]
   }
  ]
