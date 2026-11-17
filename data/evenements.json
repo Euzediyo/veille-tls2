@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-16",
+ "maj": "2026-11-17",
  "version": 2,
  "groupes": [
   {
@@ -126,7 +126,6 @@
     "a2d6dbd09a32fe2d",
     "61cc048e4e4e6ad0",
     "cc67bed8f660ffcf",
-    "7862460f231855ac",
     "07d7824d0d990f82",
     "81f8ddb146f24127",
     "e7bbc6a6ddcae160",
@@ -136,13 +135,12 @@
     "07ad0b4c634e21c5",
     "09fc2d52e9faaaaa",
     "2cf06ccb728504c7",
-    "3df346cb019670e1",
+    "7862460f231855ac",
+    "decef0ea3c20a020",
     "75a405e0f1677c68",
     "c30ff609ff282a11",
     "af46c840cd12f187",
     "5136b79f823e149c",
-    "decef0ea3c20a020",
-    "aadbce09d6f77eaa",
     "e87b1371fbf31fe6",
     "8d0700ca7aea404d",
     "5ed13091ab493358",
@@ -162,38 +160,6 @@
     "93addbda55da406d",
     "869f2389c8d190ca",
     "37258a97d60fafaa",
-    "7f7f5041fd4854d5",
-    "4a6a79e06f3d2c85",
-    "089875f5f2c8476b",
-    "f0385b012a3374fe",
-    "07425ca4f9e1dbec",
-    "a8ac1de805b542e6",
-    "fbdc19b16fe44895",
-    "3607e44e1c04124d",
-    "d3d0ec35489f9497",
-    "8085b370beade4c5",
-    "d7f04149c51d8f9a",
-    "3872ea5f149411bb",
-    "af996c176aadbdbb",
-    "e0830b119be7b1bc",
-    "deea6da7b9768d92",
-    "9d78f9503ef85f72",
-    "dd0eca1c10e43007",
-    "40de9995a129e35e",
-    "c7b4a1498231d828",
-    "c05966ba423dc048",
-    "9987cd1b73179f18",
-    "38bac61e60ade7de",
-    "01ae3d9fb7408217",
-    "90458178e99fae0b",
-    "9f20fbd6e779e5b2",
-    "410b43ea23ad700e",
-    "b255bdd4d93c5eb1",
-    "bc83505105644121",
-    "51ba39d6a3eb3385",
-    "74b2beb55b31d18c",
-    "e0b0cd74ea2560ea",
-    "e36f712a3f1f69a8",
     "8ff4155e2c6648cc",
     "adea99ad6b7cbcb1",
     "443f75c825a87ea4",
@@ -203,102 +169,60 @@
     "cc6ba6215e0f8dc7",
     "16eaa795e9bdf379",
     "04c8e61f3325d8e7",
-    "a296b74414ef9dff",
+    "4a6a79e06f3d2c85",
+    "089875f5f2c8476b",
+    "f0385b012a3374fe",
+    "07425ca4f9e1dbec",
+    "a8ac1de805b542e6",
+    "fbdc19b16fe44895",
+    "3607e44e1c04124d",
+    "d11a0e7b97c80184",
+    "94f6d4e2ac37cd70",
+    "d3d0ec35489f9497",
+    "8085b370beade4c5",
+    "d7f04149c51d8f9a",
+    "3872ea5f149411bb",
+    "af996c176aadbdbb",
+    "e0830b119be7b1bc",
+    "deea6da7b9768d92",
+    "9d78f9503ef85f72",
+    "c05966ba423dc048",
+    "9987cd1b73179f18",
+    "38bac61e60ade7de",
+    "01ae3d9fb7408217",
+    "90458178e99fae0b",
+    "9f20fbd6e779e5b2",
+    "410b43ea23ad700e",
+    "b255bdd4d93c5eb1",
+    "7f7f5041fd4854d5",
+    "bc83505105644121",
+    "51ba39d6a3eb3385",
+    "74b2beb55b31d18c",
+    "e0b0cd74ea2560ea",
+    "e36f712a3f1f69a8",
+    "dd0eca1c10e43007",
+    "40de9995a129e35e",
+    "c7b4a1498231d828",
     "ef226ca31d78a595",
-    "2db6da248a872490",
-    "c4cb4ca48229d15a",
-    "d3dac53428934193",
-    "c72407103e8a7608",
     "6a2f7455bf83ca9f",
+    "2db6da248a872490",
+    "de8a5bbea90cd2e9",
+    "a296b74414ef9dff",
+    "c267c0eb06f76098",
+    "537dc8a1180cf341",
+    "a8f43cf76425d118",
+    "b978ad6cf9d55fce",
     "0be5aa5abf4cf63a",
     "d535678b6d0aa0f9",
     "de7040049062bd02",
-    "8960446038024e82",
-    "43666d9c21a706cc",
     "469a39bdbc6eea53",
+    "43666d9c21a706cc",
     "97972ab78fb53aa6",
     "fe3d75a52e5a5da9",
-    "e2764c7ab1402e86",
     "2bb3a98ec7ed7921",
-    "d3a7b14f9c2464f4",
-    "b978ad6cf9d55fce",
-    "de8a5bbea90cd2e9",
-    "537dc8a1180cf341"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque des chambres froides de l'Établissement français du sang (EFS)",
-   "ids": [
-    "dd55536bb7cfb9f7",
-    "ce6df24a849ee56f",
-    "491c374821b85e28",
-    "faa8503b89a76ced",
-    "79658d8791663410",
-    "d9e8fd640df3ec75",
-    "b2eb417c23da3cb4",
-    "1478929a156f9bd8",
-    "8ce676adf2bb0316",
-    "855cba828d4aa6ab",
-    "855055c0c5537385",
-    "85b4ec3321b200f2",
-    "23087d9273d7c849",
-    "e726dee0825ff2aa",
-    "f481e911f56dfb12",
-    "1b5b54cb73c78887",
-    "7b1bc3a2fbafccfb",
-    "97580dba44bb093b",
-    "6f171c5ec82d3272",
-    "6a3ec3818cc2e386",
-    "5cf64823a502d5fd",
-    "6fb190d9fc528574",
-    "7aea7a6d40ca9836",
-    "3c668457f40f6b32",
-    "9d8a27d6e055a3ee",
-    "22d69215235a422a",
-    "2ce4e8807e022899",
-    "d31de10164ea5473",
-    "54d02f76e2f270e6",
-    "603c94a4a7214dd0",
-    "8057cf8ffd9851b0",
-    "37439704767ffb88",
-    "c2299fc66e6989d1",
-    "8a65fef8a6613187",
-    "bae0dfa2b4abec7e",
-    "17eedace00ffb327",
-    "fb7860df431b51de",
-    "ff217546e7ebea52",
-    "f6537cd7d4213d79",
-    "2fd4ffbd84594cf9",
-    "180ac743b9f0c4d6",
-    "3788ca58c4bf3b2c",
-    "136668569ae2a66f",
-    "dadfc4374c73c4d3",
-    "b4efcad7153f8d91",
-    "77fabb4cef671333",
-    "e69821e3582e9fa9",
-    "27bca43e3454aae9",
-    "6c5064a4e71a612c"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque contre Maileva (La Poste)",
-   "ids": [
-    "464b2d442fc71cbf",
-    "74e7d66d7e98be59",
-    "40ce6d73e7059282",
-    "540b11f243134e64"
-   ]
-  },
-  {
-   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
-   "ids": [
-    "385f5865a823c4e4",
-    "601b3bc6afae9357",
-    "520f6c5fff4e44a7",
-    "e79f61c60356d70a",
-    "db4abcc02f646ec0",
-    "25e457452962b84b",
-    "360ff3393dd238ce"
+    "8960446038024e82",
+    "3df346cb019670e1",
+    "5e224b675bf1b352"
    ]
   },
   {
@@ -311,6 +235,83 @@
    ]
   },
   {
+   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
+   "ids": [
+    "385f5865a823c4e4",
+    "db4abcc02f646ec0",
+    "601b3bc6afae9357",
+    "520f6c5fff4e44a7",
+    "e79f61c60356d70a",
+    "25e457452962b84b",
+    "360ff3393dd238ce"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque des chambres froides de l'Établissement français du sang (EFS)",
+   "ids": [
+    "6f171c5ec82d3272",
+    "6a3ec3818cc2e386",
+    "79658d8791663410",
+    "5cf64823a502d5fd",
+    "faa8503b89a76ced",
+    "6fb190d9fc528574",
+    "dd55536bb7cfb9f7",
+    "3c668457f40f6b32",
+    "ce6df24a849ee56f",
+    "491c374821b85e28",
+    "7aea7a6d40ca9836",
+    "d31de10164ea5473",
+    "54d02f76e2f270e6",
+    "9d8a27d6e055a3ee",
+    "22d69215235a422a",
+    "e726dee0825ff2aa",
+    "85b4ec3321b200f2",
+    "855cba828d4aa6ab",
+    "855055c0c5537385",
+    "b2eb417c23da3cb4",
+    "c2299fc66e6989d1",
+    "27bca43e3454aae9",
+    "8057cf8ffd9851b0",
+    "1478929a156f9bd8",
+    "17eedace00ffb327",
+    "8ce676adf2bb0316",
+    "e69821e3582e9fa9",
+    "d9e8fd640df3ec75",
+    "7b1bc3a2fbafccfb",
+    "97580dba44bb093b",
+    "180ac743b9f0c4d6",
+    "2fd4ffbd84594cf9",
+    "bca19a65912c9809",
+    "19e29a1b8a630464",
+    "b1280671dd79c85f",
+    "f481e911f56dfb12",
+    "1b5b54cb73c78887",
+    "603c94a4a7214dd0",
+    "8a65fef8a6613187",
+    "37439704767ffb88",
+    "bae0dfa2b4abec7e",
+    "23087d9273d7c849",
+    "6a27a73b7176bedd"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque contre Maileva (La Poste)",
+   "ids": [
+    "464b2d442fc71cbf",
+    "74e7d66d7e98be59",
+    "40ce6d73e7059282",
+    "540b11f243134e64"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque sur des chambres froides à Köniz (Suisse)",
+   "ids": [
+    "1b124e07f733e540",
+    "fa13a982b26e1c41",
+    "72874d43ccade218"
+   ]
+  },
+  {
    "sujet": "Piratage des chauffages après les frigos",
    "ids": [
     "370d03d372313d08",
@@ -320,26 +321,13 @@
    ]
   },
   {
-   "sujet": "Menace de cyberattaques sur les appareils domestiques",
+   "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
    "ids": [
-    "6caebd351dd4c048",
-    "0000ba5f50be1b89"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque sur des chambres froides à Köniz (Suisse)",
-   "ids": [
-    "1b124e07f733e540",
-    "fa13a982b26e1c41",
-    "72874d43ccade218",
-    "2b4f3874e89d30ef"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque contre Crédit Mutuel Arkéa",
-   "ids": [
-    "71a681a8fd994775",
-    "0ce6a60784fab923"
+    "7c40861472fb7676",
+    "c83952e18384647f",
+    "bd08a7f59f1556e3",
+    "2c8f5d0ab27cfc41",
+    "1eb4bd5b2dd99e9e"
    ]
   },
   {
@@ -350,12 +338,18 @@
    ]
   },
   {
-   "sujet": "Aides régionales suspendues aux lycéens en Île-de-France",
+   "sujet": "Détection incendie par IA de KT à Incheon",
    "ids": [
-    "d6f8a92485eae85d",
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219"
+    "4c15b77d8f9fad07",
+    "ed7c79c65c78f375",
+    "40f5f0323f529b1d"
+   ]
+  },
+  {
+   "sujet": "Artex détourné et agents IA malveillants",
+   "ids": [
+    "5d023e1a31693670",
+    "e45369e168127322"
    ]
   },
   {
@@ -368,6 +362,59 @@
     "e48a968a378973be",
     "b5bcb9f48b57cc08",
     "e89d914b76d63445"
+   ]
+  },
+  {
+   "sujet": "Rachat de LVSI par Security 101",
+   "ids": [
+    "89e6f6b012007b57",
+    "7e221a50538da24f"
+   ]
+  },
+  {
+   "sujet": "Failles zero-day et mise hors ligne de N-central (N-able)",
+   "ids": [
+    "3f9d267ae3c86813",
+    "5ea018432db59a80",
+    "d149f9d0c54f6886",
+    "a79951a7f125d419",
+    "04540338d6bc1540",
+    "c15e56d74cd1659f",
+    "11f38fe3bddec57f",
+    "0694a43c0b37dcf8"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
+   "ids": [
+    "c9e3cef283503847",
+    "f0367affcf49faf1",
+    "8a9e4b5236cf8e90",
+    "2406c78680bcf94a"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
+   "ids": [
+    "0fdfa4af220e3445",
+    "4f7b130928644560",
+    "8308043b67a3d189",
+    "a9ebb02db0a85ab9"
+   ]
+  },
+  {
+   "sujet": "Rachat d'ADT par Thrive Holdings",
+   "ids": [
+    "fc0a7c4595f93aa9",
+    "db292b03e0037b87"
+   ]
+  },
+  {
+   "sujet": "Résultats trimestriels de Prosegur",
+   "ids": [
+    "c2a4437ce4ca3701",
+    "c1bc2a9a95cdf5c1",
+    "8e9f1721de71306e"
    ]
   },
   {
@@ -392,6 +439,15 @@
    ]
   },
   {
+   "sujet": "Aides régionales suspendues aux lycéens en Île-de-France",
+   "ids": [
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
+   ]
+  },
+  {
    "sujet": "Vidéoprotection financée par l'État en Martinique",
    "ids": [
     "85cbdf79a1cbf778",
@@ -408,15 +464,6 @@
    ]
   },
   {
-   "sujet": "Sanctions de la CNIL contre des collectivités",
-   "ids": [
-    "b3c0ff49e9c1e4fd",
-    "cc53d9cac5fc0087",
-    "515cd32744795e44",
-    "ef120a70f60a0163"
-   ]
-  },
-  {
    "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
    "ids": [
     "f15b95fa7ff5eab5",
@@ -425,60 +472,12 @@
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
+   "sujet": "Sanctions de la CNIL contre des collectivités",
    "ids": [
-    "a9ebb02db0a85ab9",
-    "4f7b130928644560",
-    "8308043b67a3d189"
-   ]
-  },
-  {
-   "sujet": "Rachat d'ADT par Thrive Holdings",
-   "ids": [
-    "fc0a7c4595f93aa9",
-    "0fdfa4af220e3445",
-    "db292b03e0037b87"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
-   "ids": [
-    "c9e3cef283503847",
-    "f0367affcf49faf1",
-    "8a9e4b5236cf8e90",
-    "2406c78680bcf94a"
-   ]
-  },
-  {
-   "sujet": "Résultats trimestriels de Prosegur",
-   "ids": [
-    "c2a4437ce4ca3701",
-    "c1bc2a9a95cdf5c1",
-    "8e9f1721de71306e"
-   ]
-  },
-  {
-   "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
-   "ids": [
-    "7c40861472fb7676",
-    "c83952e18384647f",
-    "bd08a7f59f1556e3",
-    "2c8f5d0ab27cfc41",
-    "1eb4bd5b2dd99e9e"
-   ]
-  },
-  {
-   "sujet": "Rachat de LVSI par Security 101",
-   "ids": [
-    "89e6f6b012007b57",
-    "7e221a50538da24f"
-   ]
-  },
-  {
-   "sujet": "Rachat de Metrodial par Scutum Digital",
-   "ids": [
-    "07d57a97a731dfe0",
-    "a598af5c17dc6958"
+    "b3c0ff49e9c1e4fd",
+    "cc53d9cac5fc0087",
+    "ef120a70f60a0163",
+    "515cd32744795e44"
    ]
   },
   {
@@ -489,16 +488,31 @@
    ]
   },
   {
-   "sujet": "N-able et plateforme N-central (failles zero-day)",
+   "sujet": "Cyberattaque contre Crédit Mutuel Arkéa",
    "ids": [
-    "3f9d267ae3c86813",
-    "5ea018432db59a80",
-    "d149f9d0c54f6886",
-    "a79951a7f125d419",
-    "04540338d6bc1540",
-    "c15e56d74cd1659f",
-    "11f38fe3bddec57f",
-    "0694a43c0b37dcf8"
+    "71a681a8fd994775",
+    "0ce6a60784fab923"
+   ]
+  },
+  {
+   "sujet": "Faux agents de Verisure et cambriolages dans la Somme",
+   "ids": [
+    "65876d09cb9c8fa0",
+    "c33e0762d5f274b3"
+   ]
+  },
+  {
+   "sujet": "Rachat de Metrodial par Scutum Digital",
+   "ids": [
+    "07d57a97a731dfe0",
+    "a598af5c17dc6958"
+   ]
+  },
+  {
+   "sujet": "Projets de caméras de vidéoprotection à Toulouse en 2027",
+   "ids": [
+    "07661f10e621da3e",
+    "bd9bf7d45c992658"
    ]
   }
  ]
