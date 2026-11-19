@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-18",
+ "maj": "2026-11-19",
  "version": 2,
  "groupes": [
   {
@@ -121,6 +121,13 @@
    ]
   },
   {
+   "sujet": "Concours de start-up de sécurité à ISC East",
+   "ids": [
+    "97e6610840748330",
+    "a4ca8f0c49d53339"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
     "00291a0999c74eac",
@@ -131,6 +138,10 @@
     "e99e57b18770daf2",
     "eb31940afc639ef0",
     "7dbc5038a46cdb0a",
+    "a2d6dbd09a32fe2d",
+    "61cc048e4e4e6ad0",
+    "cc67bed8f660ffcf",
+    "07d7824d0d990f82",
     "81f8ddb146f24127",
     "e7bbc6a6ddcae160",
     "818c03478428ff68",
@@ -138,17 +149,6 @@
     "2f38f8390c78738c",
     "07ad0b4c634e21c5",
     "09fc2d52e9faaaaa",
-    "a2d6dbd09a32fe2d",
-    "61cc048e4e4e6ad0",
-    "cc67bed8f660ffcf",
-    "07d7824d0d990f82",
-    "2cf06ccb728504c7",
-    "3df346cb019670e1",
-    "7862460f231855ac",
-    "75a405e0f1677c68",
-    "c30ff609ff282a11",
-    "af46c840cd12f187",
-    "5136b79f823e149c",
     "8d0700ca7aea404d",
     "5ed13091ab493358",
     "e8029b55424a87ac",
@@ -158,38 +158,34 @@
     "73e1ddb5fa8e2151",
     "cccb87a46391b054",
     "638834abf8a69912",
-    "adea99ad6b7cbcb1",
+    "2cf06ccb728504c7",
+    "3df346cb019670e1",
+    "75a405e0f1677c68",
+    "c30ff609ff282a11",
+    "af46c840cd12f187",
     "7878799b08629c9e",
     "025bc1a2d340d0fe",
     "63b5aaa890bff42b",
-    "6a2f7455bf83ca9f",
+    "7674e48b09b7d72d",
     "5e04a46e94a3c432",
     "93addbda55da406d",
     "869f2389c8d190ca",
     "37258a97d60fafaa",
-    "fc1d09981a6e25e8",
+    "3607e44e1c04124d",
     "a8f43cf76425d118",
-    "ef226ca31d78a595",
-    "7674e48b09b7d72d",
-    "c267c0eb06f76098",
-    "537dc8a1180cf341",
-    "a296b74414ef9dff",
-    "443f75c825a87ea4",
-    "a8a036f8baa9cdb1",
-    "00e941ca28175892",
-    "9263432d44a58584",
-    "cc6ba6215e0f8dc7",
-    "16eaa795e9bdf379",
-    "04c8e61f3325d8e7",
-    "5e2fc648558eff21",
-    "8960446038024e82",
-    "469a39bdbc6eea53",
-    "43666d9c21a706cc",
-    "9987cd1b73179f18",
-    "3872ea5f149411bb",
+    "6caebd351dd4c048",
+    "fc1d09981a6e25e8",
+    "4a6a79e06f3d2c85",
+    "089875f5f2c8476b",
+    "f0385b012a3374fe",
+    "07425ca4f9e1dbec",
+    "a8ac1de805b542e6",
+    "fbdc19b16fe44895",
+    "d11a0e7b97c80184",
     "d3d0ec35489f9497",
     "8085b370beade4c5",
     "d7f04149c51d8f9a",
+    "3872ea5f149411bb",
     "af996c176aadbdbb",
     "e0830b119be7b1bc",
     "deea6da7b9768d92",
@@ -198,76 +194,67 @@
     "40de9995a129e35e",
     "c7b4a1498231d828",
     "c05966ba423dc048",
+    "9987cd1b73179f18",
     "38bac61e60ade7de",
     "01ae3d9fb7408217",
     "90458178e99fae0b",
     "9f20fbd6e779e5b2",
     "410b43ea23ad700e",
+    "d40d60b6d1886dc3",
     "b255bdd4d93c5eb1",
     "7f7f5041fd4854d5",
+    "bc83505105644121",
     "51ba39d6a3eb3385",
     "74b2beb55b31d18c",
-    "bc83505105644121",
     "e0b0cd74ea2560ea",
     "e36f712a3f1f69a8",
+    "16eaa795e9bdf379",
+    "ef226ca31d78a595",
+    "5e2fc648558eff21",
+    "6a2f7455bf83ca9f",
+    "9263432d44a58584",
+    "a8a036f8baa9cdb1",
+    "443f75c825a87ea4",
+    "00e941ca28175892",
+    "a296b74414ef9dff",
+    "04c8e61f3325d8e7",
+    "537dc8a1180cf341",
+    "c267c0eb06f76098",
     "de8a5bbea90cd2e9",
+    "adea99ad6b7cbcb1",
     "2db6da248a872490",
-    "d535678b6d0aa0f9",
-    "de7040049062bd02",
+    "e0438ca496cfd976",
+    "8ff4155e2c6648cc",
+    "5136b79f823e149c",
+    "aadbce09d6f77eaa",
+    "decef0ea3c20a020",
+    "7862460f231855ac",
     "b978ad6cf9d55fce",
     "0be5aa5abf4cf63a",
-    "07425ca4f9e1dbec",
-    "a8ac1de805b542e6",
-    "fbdc19b16fe44895",
-    "3607e44e1c04124d",
-    "d11a0e7b97c80184",
-    "94f6d4e2ac37cd70",
-    "f0385b012a3374fe",
-    "089875f5f2c8476b",
-    "4a6a79e06f3d2c85",
-    "6caebd351dd4c048",
-    "8ff4155e2c6648cc",
-    "e0438ca496cfd976",
-    "d40d60b6d1886dc3"
+    "d535678b6d0aa0f9",
+    "de7040049062bd02",
+    "469a39bdbc6eea53",
+    "43666d9c21a706cc"
    ]
   },
   {
-   "sujet": "Cyberattaque contre les chambres froides de l'Établissement français du sang (EFS)",
+   "sujet": "Cyberattaque contre les chambres froides de l'EFS",
    "ids": [
     "dd55536bb7cfb9f7",
     "ce6df24a849ee56f",
-    "491c374821b85e28",
+    "6fb190d9fc528574",
     "3c668457f40f6b32",
+    "491c374821b85e28",
     "7aea7a6d40ca9836",
     "faa8503b89a76ced",
-    "6fb190d9fc528574",
-    "5cf64823a502d5fd",
+    "6f171c5ec82d3272",
     "6a3ec3818cc2e386",
     "79658d8791663410",
-    "6f171c5ec82d3272",
+    "5cf64823a502d5fd",
     "2ce4e8807e022899",
-    "d31de10164ea5473",
-    "54d02f76e2f270e6",
-    "603c94a4a7214dd0",
-    "855cba828d4aa6ab",
-    "855055c0c5537385",
-    "b2eb417c23da3cb4",
-    "85b4ec3321b200f2",
-    "e726dee0825ff2aa",
-    "22d69215235a422a",
     "9d8a27d6e055a3ee",
-    "c2299fc66e6989d1"
-   ]
-  },
-  {
-   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
-   "ids": [
-    "385f5865a823c4e4",
-    "601b3bc6afae9357",
-    "520f6c5fff4e44a7",
-    "e79f61c60356d70a",
-    "db4abcc02f646ec0",
-    "25e457452962b84b"
+    "d31de10164ea5473",
+    "54d02f76e2f270e6"
    ]
   },
   {
@@ -277,6 +264,56 @@
     "74e7d66d7e98be59",
     "40ce6d73e7059282",
     "540b11f243134e64"
+   ]
+  },
+  {
+   "sujet": "Artex détourné et agents IA malveillants",
+   "ids": [
+    "5d023e1a31693670",
+    "e45369e168127322"
+   ]
+  },
+  {
+   "sujet": "IA et cyberattaques autonomes détectées par Google",
+   "ids": [
+    "30303bace33a9cdc",
+    "eb522deeb5785f58",
+    "fe419d6829267508"
+   ]
+  },
+  {
+   "sujet": "Reconnaissance faciale par IA à Hong Kong",
+   "ids": [
+    "c52aa78a39470e81",
+    "e149e4eb969768eb"
+   ]
+  },
+  {
+   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
+   "ids": [
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
+   ]
+  },
+  {
+   "sujet": "Honeywell EBI One",
+   "ids": [
+    "364c99c1313b8e76",
+    "b060d71218f75a75"
+   ]
+  },
+  {
+   "sujet": "Licence de Defensor Security Services annulée au Telangana",
+   "ids": [
+    "32379a5e4f7bd310",
+    "c6853ce37df690a1",
+    "046d4799a87d569b",
+    "8383e6caa57aa8e4",
+    "e48a968a378973be",
+    "b5bcb9f48b57cc08",
+    "e89d914b76d63445"
    ]
   },
   {
@@ -310,94 +347,46 @@
    ]
   },
   {
-   "sujet": "Grève des agents de sécurité GLCE à l'hôpital de Martigues",
+   "sujet": "Vidéoprotection financée par l'État en Martinique",
    "ids": [
-    "4cc9b13440476de1",
-    "e0b2be1f46ca883d"
-   ]
-  },
-  {
-   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
-   "ids": [
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219",
-    "d6f8a92485eae85d"
-   ]
-  },
-  {
-   "sujet": "Artex détourné et agents IA malveillants",
-   "ids": [
-    "5d023e1a31693670",
-    "e45369e168127322"
+    "85cbdf79a1cbf778",
+    "dcbb28a49239a20f",
+    "2c4ca0b249fa6d05",
+    "de2180357c71aec2"
    ]
   },
   {
    "sujet": "Référendum sur la vidéoprotection à Quimperlé",
    "ids": [
-    "6604ea34b5a0d93e",
     "a9b2b04216c95163",
-    "6a2b8d0a1b99be78"
+    "6a2b8d0a1b99be78",
+    "6604ea34b5a0d93e"
    ]
   },
   {
-   "sujet": "Licence de Defensor Security Services annulée au Telangana",
+   "sujet": "Vidéoprotection à Bénodet",
    "ids": [
-    "c6853ce37df690a1",
-    "32379a5e4f7bd310",
-    "8383e6caa57aa8e4",
-    "046d4799a87d569b",
-    "e48a968a378973be",
-    "b5bcb9f48b57cc08",
-    "e89d914b76d63445"
-   ]
-  },
-  {
-   "sujet": "Rachat de LVSI par Security 101",
-   "ids": [
-    "89e6f6b012007b57",
-    "7e221a50538da24f"
-   ]
-  },
-  {
-   "sujet": "Détection incendie par IA de KT à Incheon",
-   "ids": [
-    "4c15b77d8f9fad07",
-    "ed7c79c65c78f375",
-    "40f5f0323f529b1d"
-   ]
-  },
-  {
-   "sujet": "Honeywell EBI One",
-   "ids": [
-    "364c99c1313b8e76",
-    "b060d71218f75a75"
+    "099d1de4791c535d",
+    "ed545a3637e234a7"
    ]
   },
   {
    "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
    "ids": [
-    "7c40861472fb7676",
     "c83952e18384647f",
     "bd08a7f59f1556e3",
     "2c8f5d0ab27cfc41",
-    "1eb4bd5b2dd99e9e"
+    "1eb4bd5b2dd99e9e",
+    "7c40861472fb7676"
    ]
   },
   {
-   "sujet": "Résultats du troisième trimestre 2026 d'Alarm.com",
+   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
    "ids": [
-    "c9e3cef283503847",
-    "f0367affcf49faf1",
-    "8a9e4b5236cf8e90",
-    "2406c78680bcf94a"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
-   "ids": [
-    "a9ebb02db0a85ab9",
-    "4f7b130928644560"
+    "7019fa4f2b89b5fd",
+    "f15b95fa7ff5eab5",
+    "0209c3c50c13b9d8",
+    "9223503876477806"
    ]
   },
   {
@@ -410,63 +399,10 @@
    ]
   },
   {
-   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
-   "ids": [
-    "f15b95fa7ff5eab5",
-    "0209c3c50c13b9d8",
-    "9223503876477806",
-    "7019fa4f2b89b5fd"
-   ]
-  },
-  {
-   "sujet": "Concours de start-up de sécurité à ISC East",
-   "ids": [
-    "97e6610840748330",
-    "a4ca8f0c49d53339"
-   ]
-  },
-  {
-   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
-   "ids": [
-    "0605695de586b0d4",
-    "596197a9be5f215f"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection financée par l'État en Martinique",
-   "ids": [
-    "85cbdf79a1cbf778",
-    "dcbb28a49239a20f",
-    "2c4ca0b249fa6d05",
-    "de2180357c71aec2"
-   ]
-  },
-  {
    "sujet": "Projets de caméras de vidéoprotection à Toulouse en 2027",
    "ids": [
     "07661f10e621da3e",
     "bd9bf7d45c992658"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection à Brou",
-   "ids": [
-    "3af2e71446c374e7",
-    "a30c2da53a173656"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection à Bénodet",
-   "ids": [
-    "099d1de4791c535d",
-    "ed545a3637e234a7"
-   ]
-  },
-  {
-   "sujet": "Rachat de Metrodial par Scutum Digital",
-   "ids": [
-    "07d57a97a731dfe0",
-    "a598af5c17dc6958"
    ]
   },
   {
@@ -477,18 +413,55 @@
    ]
   },
   {
-   "sujet": "IA et cyberattaques autonomes détectées par Google",
+   "sujet": "Rachat de Metrodial par Scutum Digital",
    "ids": [
-    "30303bace33a9cdc",
-    "eb522deeb5785f58",
-    "fe419d6829267508"
+    "07d57a97a731dfe0",
+    "a598af5c17dc6958"
    ]
   },
   {
-   "sujet": "Reconnaissance faciale par IA à Hong Kong",
+   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
    "ids": [
-    "c52aa78a39470e81",
-    "e149e4eb969768eb"
+    "0605695de586b0d4",
+    "596197a9be5f215f"
+   ]
+  },
+  {
+   "sujet": "Grève des agents de sécurité GLCE à l'hôpital de Martigues",
+   "ids": [
+    "4cc9b13440476de1",
+    "e0b2be1f46ca883d"
+   ]
+  },
+  {
+   "sujet": "Rachat de LVSI par Security 101",
+   "ids": [
+    "89e6f6b012007b57",
+    "7e221a50538da24f"
+   ]
+  },
+  {
+   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
+   "ids": [
+    "a9ebb02db0a85ab9",
+    "4f7b130928644560"
+   ]
+  },
+  {
+   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
+   "ids": [
+    "385f5865a823c4e4",
+    "601b3bc6afae9357",
+    "520f6c5fff4e44a7",
+    "e79f61c60356d70a"
+   ]
+  },
+  {
+   "sujet": "Détection incendie par IA de KT à Incheon",
+   "ids": [
+    "4c15b77d8f9fad07",
+    "ed7c79c65c78f375",
+    "40f5f0323f529b1d"
    ]
   }
  ]
