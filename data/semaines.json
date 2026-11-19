@@ -253,18 +253,18 @@
   "titre": "Semaine du 16 au 22 novembre 2026",
   "en_cours": true,
   "maj": "2026-11-19",
-  "synthese": "",
+  "synthese": "Cette semaine, plusieurs informations concernent les équipements de froid. Selon Linformatique.org, une cyberattaque nocturne du 11 au 12 octobre 2026 aurait fait basculer les contrôleurs de réfrigération de plus de 700 supermarchés français. Le gouvernement aurait imputé l'opération à l'Iran, ce que Téhéran conteste. Les nombreuses reprises de cette information ne la confirment pas davantage : il s'agit d'une seule information, et les chiffres restent à vérifier. D'autres signaux arrivent de l'étranger : quatorze vulnérabilités sur les contrôleurs Copeland XWEB EVO, dont deux seraient déjà exploitées selon Industrial Cyber, et une alerte de la NFU sur des rançongiciels visant les chambres froides. Pour ces derniers, seuls les titres ont été lus.\n\nPour un centre, le risque est l'arrivée d'alarmes techniques de froid en masse. Il est donc utile de revoir la procédure de traitement de ces alarmes et de prévoir un message d'information pour les opérateurs. Une action est par ailleurs immédiate : selon 83-629.fr, le Défenseur des droits a été saisi après qu'un agent de sécurité a photographié une pièce d'identité. Vérifiez la procédure de dépôt des pièces et rappelez aux agents qu'ils ne doivent pas photographier les documents. L'article étant en partie réservé aux abonnés, lisez aussi la décision du Défenseur des droits.\n\nCôté réglementation, les députés ont adopté un projet de loi sur la cybersécurité, mais son contenu n'est pas connu et il n'est pas encore applicable. La Gazette des Communes annonce une modification de la formation des agents de sécurité privée, sans date ni champ d'application précisés : anticipez-la en attendant le texte officiel. Enfin, la CNIL a prononcé 38 sanctions simplifiées, dont une douzaine pour des défauts de sécurité, et ce rappel ne crée pas d'obligation nouvelle.",
   "articles": [
    "00291a0999c74eac",
    "e02d62f6a697e209",
    "1cc98006c171eafc",
    "b1c3bf80991eff8d",
    "56f05663d6dd652e",
+   "1d76af906d2a47c5",
    "4fa16a173cedc7fc",
    "7019fa4f2b89b5fd",
    "e2580847c5db7d8a",
-   "1ad4a59c104b5291",
-   "ac98f35c735646e9"
+   "1ad4a59c104b5291"
   ],
   "echeances": [
    "9c713a71e6a44dc6",
@@ -279,7 +279,9 @@
    "a9b2b04216c95163",
    "701daf5d7d638d07",
    "f97591977cb53f2c",
+   "bfe5b885942e33e5",
    "b145274ce69e753c",
+   "c3a58f0f1a9a03db",
    "981fed0cf985f929",
    "7c74b957890e68e4",
    "fc4372938e3873d9",
