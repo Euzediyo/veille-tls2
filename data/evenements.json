@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-19",
+ "maj": "2026-11-20",
  "version": 2,
  "groupes": [
   {
@@ -128,20 +128,28 @@
    ]
   },
   {
+   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
+   "ids": [
+    "385f5865a823c4e4",
+    "601b3bc6afae9357",
+    "520f6c5fff4e44a7",
+    "e79f61c60356d70a"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
     "553da6c0dab73208",
-    "00291a0999c74eac",
-    "f97591977cb53f2c",
+    "7dbc5038a46cdb0a",
     "2aa0b2eb487a501f",
+    "f97591977cb53f2c",
+    "00291a0999c74eac",
     "9c4fca3ee536e961",
     "eb50f4290721ec12",
     "e99e57b18770daf2",
     "eb31940afc639ef0",
-    "7dbc5038a46cdb0a",
     "a2d6dbd09a32fe2d",
     "61cc048e4e4e6ad0",
-    "cc67bed8f660ffcf",
     "07d7824d0d990f82",
     "81f8ddb146f24127",
     "e7bbc6a6ddcae160",
@@ -168,6 +176,7 @@
     "73e1ddb5fa8e2151",
     "cccb87a46391b054",
     "638834abf8a69912",
+    "6caebd351dd4c048",
     "7878799b08629c9e",
     "025bc1a2d340d0fe",
     "63b5aaa890bff42b",
@@ -177,42 +186,38 @@
     "93addbda55da406d",
     "869f2389c8d190ca",
     "37258a97d60fafaa",
-    "6caebd351dd4c048",
     "a8f43cf76425d118",
+    "a296b74414ef9dff",
+    "ef226ca31d78a595",
+    "537dc8a1180cf341",
+    "c267c0eb06f76098",
+    "adea99ad6b7cbcb1",
+    "8ff4155e2c6648cc",
+    "443f75c825a87ea4",
+    "a8a036f8baa9cdb1",
+    "00e941ca28175892",
+    "9263432d44a58584",
+    "cc6ba6215e0f8dc7",
+    "16eaa795e9bdf379",
+    "6a2f7455bf83ca9f",
+    "5e2fc648558eff21",
+    "04c8e61f3325d8e7",
     "9987cd1b73179f18",
     "38bac61e60ade7de",
     "01ae3d9fb7408217",
-    "90458178e99fae0b",
     "9f20fbd6e779e5b2",
     "410b43ea23ad700e",
     "d40d60b6d1886dc3",
     "b255bdd4d93c5eb1",
     "7f7f5041fd4854d5",
-    "bc83505105644121",
-    "51ba39d6a3eb3385",
-    "74b2beb55b31d18c",
-    "e0b0cd74ea2560ea",
-    "e36f712a3f1f69a8",
-    "2db6da248a872490",
-    "e0438ca496cfd976",
-    "16eaa795e9bdf379",
-    "cc6ba6215e0f8dc7",
-    "9d78f9503ef85f72",
-    "d11a0e7b97c80184",
-    "9263432d44a58584",
-    "00e941ca28175892",
-    "a8a036f8baa9cdb1",
-    "ef226ca31d78a595",
-    "04c8e61f3325d8e7",
-    "de8a5bbea90cd2e9",
-    "3607e44e1c04124d",
-    "fbdc19b16fe44895",
-    "a296b74414ef9dff",
-    "adea99ad6b7cbcb1",
     "4a6a79e06f3d2c85",
-    "8ff4155e2c6648cc",
-    "07425ca4f9e1dbec",
     "089875f5f2c8476b",
+    "f0385b012a3374fe",
+    "07425ca4f9e1dbec",
+    "a8ac1de805b542e6",
+    "fbdc19b16fe44895",
+    "3607e44e1c04124d",
+    "d11a0e7b97c80184",
     "d3d0ec35489f9497",
     "8085b370beade4c5",
     "d7f04149c51d8f9a",
@@ -220,58 +225,50 @@
     "af996c176aadbdbb",
     "e0830b119be7b1bc",
     "deea6da7b9768d92",
+    "9d78f9503ef85f72",
+    "dd0eca1c10e43007",
     "40de9995a129e35e",
     "c7b4a1498231d828",
     "c05966ba423dc048",
     "94f6d4e2ac37cd70",
-    "dd0eca1c10e43007",
-    "f0385b012a3374fe",
-    "a8ac1de805b542e6",
-    "d535678b6d0aa0f9",
-    "de7040049062bd02",
-    "0be5aa5abf4cf63a",
-    "b978ad6cf9d55fce",
-    "43666d9c21a706cc",
-    "6a2f7455bf83ca9f",
-    "5e2fc648558eff21"
-   ]
-  },
-  {
-   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
-   "ids": [
-    "2e925c11dd30381e",
-    "6604ea34b5a0d93e",
-    "a9b2b04216c95163",
-    "6a2b8d0a1b99be78"
-   ]
-  },
-  {
-   "sujet": "Procès de Gims pour recours illégal à des policiers",
-   "ids": [
-    "7181ca5d0d666117",
-    "536061532777f06b",
-    "c3a58f0f1a9a03db",
-    "9e8dbbad0034428b"
+    "51ba39d6a3eb3385",
+    "74b2beb55b31d18c",
+    "bc83505105644121",
+    "90458178e99fae0b",
+    "e36f712a3f1f69a8",
+    "2db6da248a872490",
+    "e0b0cd74ea2560ea",
+    "0000ba5f50be1b89"
    ]
   },
   {
    "sujet": "Cyberattaque des chambres froides de l'EFS",
    "ids": [
+    "df7d7462c4f43de3",
+    "3778ef512c1add00",
     "dd55536bb7cfb9f7",
     "ce6df24a849ee56f",
     "491c374821b85e28",
     "3c668457f40f6b32",
-    "7aea7a6d40ca9836",
-    "faa8503b89a76ced",
-    "6f171c5ec82d3272",
-    "6a3ec3818cc2e386",
-    "5cf64823a502d5fd",
-    "6fb190d9fc528574",
     "2ce4e8807e022899",
-    "54d02f76e2f270e6",
     "d31de10164ea5473",
-    "9d8a27d6e055a3ee",
-    "79658d8791663410"
+    "54d02f76e2f270e6",
+    "6a3ec3818cc2e386",
+    "6f171c5ec82d3272",
+    "faa8503b89a76ced",
+    "7aea7a6d40ca9836",
+    "5cf64823a502d5fd",
+    "79658d8791663410",
+    "6fb190d9fc528574"
+   ]
+  },
+  {
+   "sujet": "Piratage possible des systèmes de chauffage après les frigos",
+   "ids": [
+    "370d03d372313d08",
+    "b4616ce660a9dfe5",
+    "42e5c9ff38d928f0",
+    "7d62405354030591"
    ]
   },
   {
@@ -284,11 +281,83 @@
    ]
   },
   {
-   "sujet": "Grève des agents de sécurité de l'hôpital de Martigues",
+   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
    "ids": [
-    "4cc9b13440476de1",
-    "e0b2be1f46ca883d",
-    "bd20951da02aab3d"
+    "b2f566ad2ef4b2c0",
+    "efdeb641359461c6",
+    "8afbdd8b88104474",
+    "4ffe1cb712d4e122",
+    "5d023e1a31693670",
+    "e45369e168127322"
+   ]
+  },
+  {
+   "sujet": "Cyberattaques par IA détectées par Google",
+   "ids": [
+    "1b33d6b5212fd0fb",
+    "30303bace33a9cdc",
+    "eb522deeb5785f58",
+    "fe419d6829267508",
+    "282d4648190c40d0"
+   ]
+  },
+  {
+   "sujet": "Reconnaissance faciale par IA à Hong Kong",
+   "ids": [
+    "c52aa78a39470e81",
+    "e149e4eb969768eb"
+   ]
+  },
+  {
+   "sujet": "Failles N-central (N-able) et mise hors ligne",
+   "ids": [
+    "93ef043e14421dc6",
+    "c94f30106527b048",
+    "3f9d267ae3c86813",
+    "5ea018432db59a80",
+    "d149f9d0c54f6886",
+    "a79951a7f125d419",
+    "04540338d6bc1540",
+    "c15e56d74cd1659f",
+    "11f38fe3bddec57f",
+    "0694a43c0b37dcf8"
+   ]
+  },
+  {
+   "sujet": "Resideo One et premier centre de télésurveillance intégré",
+   "ids": [
+    "54e0a8a9c26ed014",
+    "c794fe4ee359e6a1",
+    "9034ced75becfe9e"
+   ]
+  },
+  {
+   "sujet": "Procès de Gims pour recours illégal à des policiers",
+   "ids": [
+    "7181ca5d0d666117",
+    "536061532777f06b",
+    "9e8dbbad0034428b",
+    "c3a58f0f1a9a03db"
+   ]
+  },
+  {
+   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
+   "ids": [
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
+   ]
+  },
+  {
+   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "ids": [
+    "2e925c11dd30381e",
+    "6604ea34b5a0d93e",
+    "a9b2b04216c95163",
+    "6a2b8d0a1b99be78",
+    "8e21a3ca21092760",
+    "6415cb1fad671524"
    ]
   },
   {
@@ -304,91 +373,36 @@
    ]
   },
   {
-   "sujet": "Failles N-central (N-able) et mise hors ligne",
+   "sujet": "Vidéoprotection financée par l'État en Martinique",
    "ids": [
-    "c94f30106527b048",
-    "3f9d267ae3c86813",
-    "5ea018432db59a80",
-    "d149f9d0c54f6886",
-    "a79951a7f125d419",
-    "04540338d6bc1540",
-    "c15e56d74cd1659f",
-    "11f38fe3bddec57f",
-    "0694a43c0b37dcf8"
+    "85cbdf79a1cbf778",
+    "dcbb28a49239a20f",
+    "2c4ca0b249fa6d05",
+    "de2180357c71aec2"
    ]
   },
   {
-   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
+   "sujet": "Grève des agents de sécurité de l'hôpital de Martigues",
    "ids": [
-    "d6f8a92485eae85d",
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219"
-   ]
-  },
-  {
-   "sujet": "Annulation du bouclier de sécurité régional en Île-de-France",
-   "ids": [
-    "a7c6db75fd73016a",
-    "8827f072176c7506"
+    "bd20951da02aab3d",
+    "4cc9b13440476de1",
+    "e0b2be1f46ca883d"
    ]
   },
   {
    "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
    "ids": [
+    "d18935d08822f67a",
     "b1f3bc69b9fb616e",
     "0605695de586b0d4",
     "596197a9be5f215f"
    ]
   },
   {
-   "sujet": "Piratage possible des systèmes de chauffage après les frigos",
+   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
    "ids": [
-    "370d03d372313d08",
-    "b4616ce660a9dfe5",
-    "42e5c9ff38d928f0",
-    "7d62405354030591"
-   ]
-  },
-  {
-   "sujet": "Cyberattaques par IA détectées par Google",
-   "ids": [
-    "1b33d6b5212fd0fb",
-    "30303bace33a9cdc",
-    "eb522deeb5785f58",
-    "fe419d6829267508"
-   ]
-  },
-  {
-   "sujet": "Artex détourné et agents IA malveillants",
-   "ids": [
-    "5d023e1a31693670",
-    "e45369e168127322"
-   ]
-  },
-  {
-   "sujet": "Reconnaissance faciale par IA à Hong Kong",
-   "ids": [
-    "c52aa78a39470e81",
-    "e149e4eb969768eb"
-   ]
-  },
-  {
-   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
-   "ids": [
-    "7019fa4f2b89b5fd",
-    "f15b95fa7ff5eab5",
-    "0209c3c50c13b9d8",
-    "9223503876477806"
-   ]
-  },
-  {
-   "sujet": "Sanctions de la CNIL contre des collectivités",
-   "ids": [
-    "b3c0ff49e9c1e4fd",
-    "cc53d9cac5fc0087",
-    "515cd32744795e44",
-    "ef120a70f60a0163"
+    "384f007d499b4053",
+    "85066412129579d4"
    ]
   },
   {
@@ -399,12 +413,11 @@
    ]
   },
   {
-   "sujet": "Vidéoprotection financée par l'État en Martinique",
+   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
    "ids": [
-    "85cbdf79a1cbf778",
-    "dcbb28a49239a20f",
-    "2c4ca0b249fa6d05",
-    "de2180357c71aec2"
+    "7019fa4f2b89b5fd",
+    "f15b95fa7ff5eab5",
+    "0209c3c50c13b9d8"
    ]
   },
   {
@@ -415,6 +428,14 @@
    ]
   },
   {
+   "sujet": "Sanctions de la CNIL contre des collectivités",
+   "ids": [
+    "b3c0ff49e9c1e4fd",
+    "cc53d9cac5fc0087",
+    "515cd32744795e44"
+   ]
+  },
+  {
    "sujet": "Nouvelle génération de RTLS de Securitas Healthcare",
    "ids": [
     "7c40861472fb7676",
@@ -422,13 +443,6 @@
     "bd08a7f59f1556e3",
     "2c8f5d0ab27cfc41",
     "1eb4bd5b2dd99e9e"
-   ]
-  },
-  {
-   "sujet": "Rachat de Metrodial par Scutum Digital",
-   "ids": [
-    "07d57a97a731dfe0",
-    "a598af5c17dc6958"
    ]
   },
   {
@@ -446,12 +460,10 @@
    ]
   },
   {
-   "sujet": "Alerte américaine sur les cyberattaques de la réfrigération industrielle",
+   "sujet": "Brivo et son offre d'analyse vidéo par IA",
    "ids": [
-    "385f5865a823c4e4",
-    "601b3bc6afae9357",
-    "520f6c5fff4e44a7",
-    "e79f61c60356d70a"
+    "c4179b253cd17d08",
+    "4b6f5f2a06df7c81"
    ]
   },
   {
@@ -459,27 +471,6 @@
    "ids": [
     "56f05663d6dd652e",
     "1541256f7cc46853"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection à Bénodet",
-   "ids": [
-    "099d1de4791c535d",
-    "ed545a3637e234a7"
-   ]
-  },
-  {
-   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
-   "ids": [
-    "384f007d499b4053",
-    "85066412129579d4"
-   ]
-  },
-  {
-   "sujet": "Résultats du troisième trimestre 2026 d'ADT",
-   "ids": [
-    "a9ebb02db0a85ab9",
-    "4f7b130928644560"
    ]
   }
  ]
