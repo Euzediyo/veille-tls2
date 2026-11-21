@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-20",
+ "maj": "2026-11-21",
  "version": 2,
  "groupes": [
   {
@@ -137,17 +137,34 @@
    ]
   },
   {
+   "sujet": "Opération discrète au Royaume-Uni pour sécuriser des contrôleurs de froid RDM",
+   "ids": [
+    "a9d0cfd7a20fd0ff",
+    "2d0ced6d8aa3f92a",
+    "e2f808fbb7eff3b7",
+    "00fcb9b812a8bc59",
+    "ec47d54219984654",
+    "0ca8d4dd43122bc2",
+    "e672df5a451d04fd",
+    "0045439b713e95b5",
+    "0eccd6a3c70b1648",
+    "6eae36bfe0f1610c",
+    "656f7070ea8dcce4",
+    "4c533af660770df4"
+   ]
+  },
+  {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
     "553da6c0dab73208",
-    "7dbc5038a46cdb0a",
-    "2aa0b2eb487a501f",
-    "f97591977cb53f2c",
     "00291a0999c74eac",
+    "f97591977cb53f2c",
+    "2aa0b2eb487a501f",
     "9c4fca3ee536e961",
     "eb50f4290721ec12",
     "e99e57b18770daf2",
     "eb31940afc639ef0",
+    "7dbc5038a46cdb0a",
     "a2d6dbd09a32fe2d",
     "61cc048e4e4e6ad0",
     "07d7824d0d990f82",
@@ -158,14 +175,11 @@
     "2f38f8390c78738c",
     "07ad0b4c634e21c5",
     "09fc2d52e9faaaaa",
-    "2cf06ccb728504c7",
     "7862460f231855ac",
     "75a405e0f1677c68",
     "c30ff609ff282a11",
     "af46c840cd12f187",
     "5136b79f823e149c",
-    "decef0ea3c20a020",
-    "aadbce09d6f77eaa",
     "e87b1371fbf31fe6",
     "8d0700ca7aea404d",
     "5ed13091ab493358",
@@ -173,72 +187,41 @@
     "02d223c4e0b0b1d2",
     "eeca42383240f236",
     "564d87ffb9f577cd",
+    "638834abf8a69912",
     "73e1ddb5fa8e2151",
     "cccb87a46391b054",
-    "638834abf8a69912",
-    "6caebd351dd4c048",
+    "aadbce09d6f77eaa",
+    "fc1d09981a6e25e8",
+    "7674e48b09b7d72d",
+    "2cf06ccb728504c7",
+    "3df346cb019670e1",
     "7878799b08629c9e",
     "025bc1a2d340d0fe",
     "63b5aaa890bff42b",
-    "7674e48b09b7d72d",
-    "fc1d09981a6e25e8",
+    "37258a97d60fafaa",
     "5e04a46e94a3c432",
     "93addbda55da406d",
     "869f2389c8d190ca",
-    "37258a97d60fafaa",
-    "a8f43cf76425d118",
-    "a296b74414ef9dff",
-    "ef226ca31d78a595",
-    "537dc8a1180cf341",
     "c267c0eb06f76098",
-    "adea99ad6b7cbcb1",
-    "8ff4155e2c6648cc",
-    "443f75c825a87ea4",
-    "a8a036f8baa9cdb1",
-    "00e941ca28175892",
+    "537dc8a1180cf341",
+    "16eaa795e9bdf379",
     "9263432d44a58584",
     "cc6ba6215e0f8dc7",
-    "16eaa795e9bdf379",
-    "6a2f7455bf83ca9f",
-    "5e2fc648558eff21",
+    "00e941ca28175892",
+    "a8a036f8baa9cdb1",
+    "443f75c825a87ea4",
+    "a296b74414ef9dff",
     "04c8e61f3325d8e7",
-    "9987cd1b73179f18",
-    "38bac61e60ade7de",
-    "01ae3d9fb7408217",
-    "9f20fbd6e779e5b2",
-    "410b43ea23ad700e",
-    "d40d60b6d1886dc3",
-    "b255bdd4d93c5eb1",
-    "7f7f5041fd4854d5",
-    "4a6a79e06f3d2c85",
-    "089875f5f2c8476b",
-    "f0385b012a3374fe",
-    "07425ca4f9e1dbec",
-    "a8ac1de805b542e6",
-    "fbdc19b16fe44895",
-    "3607e44e1c04124d",
-    "d11a0e7b97c80184",
-    "d3d0ec35489f9497",
-    "8085b370beade4c5",
-    "d7f04149c51d8f9a",
-    "3872ea5f149411bb",
-    "af996c176aadbdbb",
-    "e0830b119be7b1bc",
-    "deea6da7b9768d92",
-    "9d78f9503ef85f72",
-    "dd0eca1c10e43007",
-    "40de9995a129e35e",
-    "c7b4a1498231d828",
-    "c05966ba423dc048",
-    "94f6d4e2ac37cd70",
-    "51ba39d6a3eb3385",
-    "74b2beb55b31d18c",
-    "bc83505105644121",
-    "90458178e99fae0b",
-    "e36f712a3f1f69a8",
-    "2db6da248a872490",
-    "e0b0cd74ea2560ea",
-    "0000ba5f50be1b89"
+    "5e2fc648558eff21",
+    "6a2f7455bf83ca9f",
+    "a8f43cf76425d118",
+    "ef226ca31d78a595",
+    "8ff4155e2c6648cc",
+    "adea99ad6b7cbcb1",
+    "6caebd351dd4c048",
+    "0000ba5f50be1b89",
+    "ebb40b4c0d06d7d8",
+    "a0056a735cffc41f"
    ]
   },
   {
@@ -247,28 +230,56 @@
     "df7d7462c4f43de3",
     "3778ef512c1add00",
     "dd55536bb7cfb9f7",
+    "3c668457f40f6b32",
     "ce6df24a849ee56f",
     "491c374821b85e28",
-    "3c668457f40f6b32",
-    "2ce4e8807e022899",
-    "d31de10164ea5473",
-    "54d02f76e2f270e6",
-    "6a3ec3818cc2e386",
-    "6f171c5ec82d3272",
+    "6fb190d9fc528574",
     "faa8503b89a76ced",
     "7aea7a6d40ca9836",
-    "5cf64823a502d5fd",
+    "6f171c5ec82d3272",
+    "6a3ec3818cc2e386",
     "79658d8791663410",
-    "6fb190d9fc528574"
+    "5cf64823a502d5fd"
    ]
   },
   {
-   "sujet": "Piratage possible des systèmes de chauffage après les frigos",
+   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
    "ids": [
-    "370d03d372313d08",
-    "b4616ce660a9dfe5",
-    "42e5c9ff38d928f0",
-    "7d62405354030591"
+    "b2f566ad2ef4b2c0",
+    "efdeb641359461c6",
+    "8afbdd8b88104474",
+    "4ffe1cb712d4e122",
+    "5d023e1a31693670",
+    "e45369e168127322",
+    "d02c5714c5f26ab1"
+   ]
+  },
+  {
+   "sujet": "Cyberattaques par IA détectées par Google",
+   "ids": [
+    "282d4648190c40d0",
+    "1b33d6b5212fd0fb",
+    "30303bace33a9cdc",
+    "eb522deeb5785f58",
+    "fe419d6829267508"
+   ]
+  },
+  {
+   "sujet": "Resideo One et premier centre de télésurveillance intégré",
+   "ids": [
+    "ffc0d7554093abfd",
+    "54e0a8a9c26ed014",
+    "c794fe4ee359e6a1",
+    "9034ced75becfe9e"
+   ]
+  },
+  {
+   "sujet": "Reprise privée d'ADT par Apollo",
+   "ids": [
+    "472cd25114e18a52",
+    "373e8d06366df8e1",
+    "b951018787962210",
+    "a9ebb02db0a85ab9"
    ]
   },
   {
@@ -281,95 +292,45 @@
    ]
   },
   {
-   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
-   "ids": [
-    "b2f566ad2ef4b2c0",
-    "efdeb641359461c6",
-    "8afbdd8b88104474",
-    "4ffe1cb712d4e122",
-    "5d023e1a31693670",
-    "e45369e168127322"
-   ]
-  },
-  {
-   "sujet": "Cyberattaques par IA détectées par Google",
-   "ids": [
-    "1b33d6b5212fd0fb",
-    "30303bace33a9cdc",
-    "eb522deeb5785f58",
-    "fe419d6829267508",
-    "282d4648190c40d0"
-   ]
-  },
-  {
-   "sujet": "Reconnaissance faciale par IA à Hong Kong",
-   "ids": [
-    "c52aa78a39470e81",
-    "e149e4eb969768eb"
-   ]
-  },
-  {
-   "sujet": "Failles N-central (N-able) et mise hors ligne",
-   "ids": [
-    "93ef043e14421dc6",
-    "c94f30106527b048",
-    "3f9d267ae3c86813",
-    "5ea018432db59a80",
-    "d149f9d0c54f6886",
-    "a79951a7f125d419",
-    "04540338d6bc1540",
-    "c15e56d74cd1659f",
-    "11f38fe3bddec57f",
-    "0694a43c0b37dcf8"
-   ]
-  },
-  {
-   "sujet": "Resideo One et premier centre de télésurveillance intégré",
-   "ids": [
-    "54e0a8a9c26ed014",
-    "c794fe4ee359e6a1",
-    "9034ced75becfe9e"
-   ]
-  },
-  {
    "sujet": "Procès de Gims pour recours illégal à des policiers",
    "ids": [
     "7181ca5d0d666117",
+    "c3a58f0f1a9a03db",
     "536061532777f06b",
-    "9e8dbbad0034428b",
-    "c3a58f0f1a9a03db"
-   ]
-  },
-  {
-   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
-   "ids": [
-    "d6f8a92485eae85d",
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219"
+    "9e8dbbad0034428b"
    ]
   },
   {
    "sujet": "Référendum sur la vidéoprotection à Quimperlé",
    "ids": [
     "2e925c11dd30381e",
+    "6415cb1fad671524",
+    "8e21a3ca21092760",
     "6604ea34b5a0d93e",
     "a9b2b04216c95163",
-    "6a2b8d0a1b99be78",
-    "8e21a3ca21092760",
-    "6415cb1fad671524"
+    "6a2b8d0a1b99be78"
    ]
   },
   {
-   "sujet": "Licence de Defensor Security Services annulée au Telangana",
+   "sujet": "Vidéoprotection de Besançon et braquages de joailleries",
    "ids": [
-    "c6853ce37df690a1",
-    "32379a5e4f7bd310",
-    "8383e6caa57aa8e4",
-    "046d4799a87d569b",
-    "e48a968a378973be",
-    "b5bcb9f48b57cc08",
-    "e89d914b76d63445"
+    "b404773c44fd5328",
+    "90ee5ac2a0d8b6f9"
+   ]
+  },
+  {
+   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
+   "ids": [
+    "d18935d08822f67a",
+    "b1f3bc69b9fb616e",
+    "0605695de586b0d4"
+   ]
+  },
+  {
+   "sujet": "Projets de caméras de vidéoprotection à Toulouse en 2027",
+   "ids": [
+    "07661f10e621da3e",
+    "bd9bf7d45c992658"
    ]
   },
   {
@@ -382,6 +343,27 @@
    ]
   },
   {
+   "sujet": "Licence de Defensor Security Services annulée au Telangana",
+   "ids": [
+    "c6853ce37df690a1",
+    "32379a5e4f7bd310",
+    "046d4799a87d569b",
+    "e48a968a378973be",
+    "b5bcb9f48b57cc08",
+    "8383e6caa57aa8e4",
+    "e89d914b76d63445"
+   ]
+  },
+  {
+   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
+   "ids": [
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
+   ]
+  },
+  {
    "sujet": "Grève des agents de sécurité de l'hôpital de Martigues",
    "ids": [
     "bd20951da02aab3d",
@@ -390,49 +372,10 @@
    ]
   },
   {
-   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
+   "sujet": "Honeywell EBI One",
    "ids": [
-    "d18935d08822f67a",
-    "b1f3bc69b9fb616e",
-    "0605695de586b0d4",
-    "596197a9be5f215f"
-   ]
-  },
-  {
-   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
-   "ids": [
-    "384f007d499b4053",
-    "85066412129579d4"
-   ]
-  },
-  {
-   "sujet": "Faux agents de Verisure et cambriolages dans la Somme",
-   "ids": [
-    "65876d09cb9c8fa0",
-    "c33e0762d5f274b3"
-   ]
-  },
-  {
-   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
-   "ids": [
-    "7019fa4f2b89b5fd",
-    "f15b95fa7ff5eab5",
-    "0209c3c50c13b9d8"
-   ]
-  },
-  {
-   "sujet": "Projets de caméras de vidéoprotection à Toulouse en 2027",
-   "ids": [
-    "07661f10e621da3e",
-    "bd9bf7d45c992658"
-   ]
-  },
-  {
-   "sujet": "Sanctions de la CNIL contre des collectivités",
-   "ids": [
-    "b3c0ff49e9c1e4fd",
-    "cc53d9cac5fc0087",
-    "515cd32744795e44"
+    "364c99c1313b8e76",
+    "b060d71218f75a75"
    ]
   },
   {
@@ -446,17 +389,32 @@
    ]
   },
   {
+   "sujet": "Failles N-central (N-able) et mise hors ligne",
+   "ids": [
+    "93ef043e14421dc6",
+    "c94f30106527b048",
+    "3f9d267ae3c86813",
+    "5ea018432db59a80",
+    "d149f9d0c54f6886",
+    "a79951a7f125d419",
+    "04540338d6bc1540",
+    "c15e56d74cd1659f"
+   ]
+  },
+  {
+   "sujet": "Piratage possible des systèmes de chauffage après les frigos",
+   "ids": [
+    "370d03d372313d08",
+    "b4616ce660a9dfe5",
+    "42e5c9ff38d928f0",
+    "7d62405354030591"
+   ]
+  },
+  {
    "sujet": "Rachat de LVSI par Security 101",
    "ids": [
     "89e6f6b012007b57",
     "7e221a50538da24f"
-   ]
-  },
-  {
-   "sujet": "Honeywell EBI One",
-   "ids": [
-    "364c99c1313b8e76",
-    "b060d71218f75a75"
    ]
   },
   {
@@ -467,10 +425,67 @@
    ]
   },
   {
-   "sujet": "Ransomware visant le NFU et les chambres froides agricoles",
+   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
+   "ids": [
+    "7019fa4f2b89b5fd",
+    "f15b95fa7ff5eab5"
+   ]
+  },
+  {
+   "sujet": "Cyberattaques contre les cultures et le NFU (rançongiciels)",
    "ids": [
     "56f05663d6dd652e",
     "1541256f7cc46853"
+   ]
+  },
+  {
+   "sujet": "Centre de surveillance intelligent au Pérou",
+   "ids": [
+    "bbe1d33a487ed91e",
+    "b3a0094966f1817d"
+   ]
+  },
+  {
+   "sujet": "Concarneau : armement de la police municipale",
+   "ids": [
+    "b6f8ceeb7c14e019",
+    "bf3b1571604006b0"
+   ]
+  },
+  {
+   "sujet": "Saint-James : projet de vidéoprotection",
+   "ids": [
+    "66f41483a5535dbd",
+    "c3810d05071b3b7f"
+   ]
+  },
+  {
+   "sujet": "Bénodet : vidéoprotection",
+   "ids": [
+    "099d1de4791c535d",
+    "ed545a3637e234a7"
+   ]
+  },
+  {
+   "sujet": "Reconnaissance faciale par IA à Hong Kong",
+   "ids": [
+    "c52aa78a39470e81",
+    "e149e4eb969768eb"
+   ]
+  },
+  {
+   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
+   "ids": [
+    "384f007d499b4053",
+    "85066412129579d4"
+   ]
+  },
+  {
+   "sujet": "Détecteurs d'incendie IA KT à Incheon",
+   "ids": [
+    "ed7c79c65c78f375",
+    "40f5f0323f529b1d",
+    "4c15b77d8f9fad07"
    ]
   }
  ]
