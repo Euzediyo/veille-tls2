@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-22",
+ "maj": "2026-11-23",
  "version": 2,
  "groupes": [
   {
@@ -137,8 +137,16 @@
    ]
   },
   {
+   "sujet": "Bénodet : vidéoprotection",
+   "ids": [
+    "099d1de4791c535d",
+    "ed545a3637e234a7"
+   ]
+  },
+  {
    "sujet": "Opération discrète au Royaume-Uni pour sécuriser des contrôleurs de froid RDM",
    "ids": [
+    "5be008df3bd44e09",
     "a9d0cfd7a20fd0ff",
     "2d0ced6d8aa3f92a",
     "e2f808fbb7eff3b7",
@@ -150,14 +158,36 @@
     "0eccd6a3c70b1648",
     "6eae36bfe0f1610c",
     "656f7070ea8dcce4",
-    "4c533af660770df4",
-    "5be008df3bd44e09"
+    "4c533af660770df4"
+   ]
+  },
+  {
+   "sujet": "Reprise privée d'ADT par Apollo",
+   "ids": [
+    "dabc9d4c44122fcf",
+    "04d9e07507764696",
+    "472cd25114e18a52",
+    "373e8d06366df8e1",
+    "a9ebb02db0a85ab9",
+    "b951018787962210",
+    "de9dec8db139318a"
+   ]
+  },
+  {
+   "sujet": "Tribunal administratif et bouclier sécurité de la région Île-de-France",
+   "ids": [
+    "a263a78e1a566c9d",
+    "a7c6db75fd73016a",
+    "8827f072176c7506"
    ]
   },
   {
    "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
     "ebb40b4c0d06d7d8",
+    "2e2c8c73b89d2602",
+    "5e5ebb02f44a9f17",
+    "faeb7bd2b5f25685",
     "553da6c0dab73208",
     "00291a0999c74eac",
     "f97591977cb53f2c",
@@ -167,8 +197,9 @@
     "e99e57b18770daf2",
     "eb31940afc639ef0",
     "7dbc5038a46cdb0a",
-    "61cc048e4e4e6ad0",
     "a2d6dbd09a32fe2d",
+    "61cc048e4e4e6ad0",
+    "cc67bed8f660ffcf",
     "07d7824d0d990f82",
     "81f8ddb146f24127",
     "e7bbc6a6ddcae160",
@@ -178,9 +209,12 @@
     "07ad0b4c634e21c5",
     "09fc2d52e9faaaaa",
     "7862460f231855ac",
+    "75a405e0f1677c68",
     "c30ff609ff282a11",
     "af46c840cd12f187",
     "5136b79f823e149c",
+    "decef0ea3c20a020",
+    "aadbce09d6f77eaa",
     "e87b1371fbf31fe6",
     "8d0700ca7aea404d",
     "5ed13091ab493358",
@@ -191,65 +225,34 @@
     "73e1ddb5fa8e2151",
     "cccb87a46391b054",
     "638834abf8a69912",
-    "aadbce09d6f77eaa",
-    "2cf06ccb728504c7",
-    "3df346cb019670e1",
-    "75a405e0f1677c68",
-    "6caebd351dd4c048",
+    "fc1d09981a6e25e8",
     "7878799b08629c9e",
     "025bc1a2d340d0fe",
     "63b5aaa890bff42b",
-    "5e04a46e94a3c432",
-    "93addbda55da406d",
-    "869f2389c8d190ca",
-    "37258a97d60fafaa",
     "7674e48b09b7d72d",
-    "6a2f7455bf83ca9f",
-    "0000ba5f50be1b89",
-    "5e2fc648558eff21",
-    "fc1d09981a6e25e8",
-    "decef0ea3c20a020",
-    "faeb7bd2b5f25685",
-    "5e5ebb02f44a9f17",
-    "2e2c8c73b89d2602",
-    "cc67bed8f660ffcf"
+    "6caebd351dd4c048",
+    "2cf06ccb728504c7",
+    "3df346cb019670e1"
    ]
   },
   {
-   "sujet": "Reprise privée d'ADT par Apollo",
+   "sujet": "Procès de Gims pour recours illégal à des policiers",
    "ids": [
-    "dabc9d4c44122fcf",
-    "04d9e07507764696",
-    "472cd25114e18a52",
-    "373e8d06366df8e1",
-    "b951018787962210",
-    "a9ebb02db0a85ab9"
+    "536061532777f06b",
+    "7181ca5d0d666117",
+    "9e8dbbad0034428b",
+    "c3a58f0f1a9a03db"
    ]
   },
   {
    "sujet": "Cyberattaque des chambres froides de l'EFS",
    "ids": [
-    "df7d7462c4f43de3",
     "3778ef512c1add00",
+    "df7d7462c4f43de3",
     "dd55536bb7cfb9f7",
     "ce6df24a849ee56f",
     "3c668457f40f6b32",
-    "491c374821b85e28",
-    "faa8503b89a76ced",
-    "7aea7a6d40ca9836",
-    "6fb190d9fc528574"
-   ]
-  },
-  {
-   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
-   "ids": [
-    "d02c5714c5f26ab1",
-    "b2f566ad2ef4b2c0",
-    "efdeb641359461c6",
-    "8afbdd8b88104474",
-    "4ffe1cb712d4e122",
-    "5d023e1a31693670",
-    "e45369e168127322"
+    "491c374821b85e28"
    ]
   },
   {
@@ -262,17 +265,19 @@
    ]
   },
   {
+   "sujet": "Cyberattaque contre Maileva (La Poste)",
+   "ids": [
+    "464b2d442fc71cbf",
+    "74e7d66d7e98be59",
+    "40ce6d73e7059282",
+    "540b11f243134e64"
+   ]
+  },
+  {
    "sujet": "Concarneau : armement de la police municipale",
    "ids": [
     "b6f8ceeb7c14e019",
     "bf3b1571604006b0"
-   ]
-  },
-  {
-   "sujet": "Centre de surveillance intelligent au Pérou",
-   "ids": [
-    "bbe1d33a487ed91e",
-    "b3a0094966f1817d"
    ]
   },
   {
@@ -283,87 +288,32 @@
    ]
   },
   {
-   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "sujet": "Centre de surveillance intelligent au Pérou",
    "ids": [
-    "2e925c11dd30381e",
-    "6604ea34b5a0d93e",
-    "8e21a3ca21092760",
-    "a9b2b04216c95163",
-    "6415cb1fad671524"
+    "bbe1d33a487ed91e",
+    "b3a0094966f1817d"
    ]
   },
   {
-   "sujet": "Procès de Gims pour recours illégal à des policiers",
+   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
    "ids": [
-    "c3a58f0f1a9a03db",
-    "7181ca5d0d666117",
-    "536061532777f06b",
-    "9e8dbbad0034428b"
+    "d02c5714c5f26ab1",
+    "b2f566ad2ef4b2c0",
+    "efdeb641359461c6",
+    "8afbdd8b88104474",
+    "4ffe1cb712d4e122",
+    "e45369e168127322",
+    "5d023e1a31693670"
    ]
   },
   {
    "sujet": "Cyberattaques par IA détectées par Google",
    "ids": [
+    "282d4648190c40d0",
     "1b33d6b5212fd0fb",
     "30303bace33a9cdc",
     "eb522deeb5785f58",
-    "fe419d6829267508",
-    "282d4648190c40d0"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque contre Maileva (La Poste)",
-   "ids": [
-    "464b2d442fc71cbf",
-    "74e7d66d7e98be59",
-    "40ce6d73e7059282",
-    "540b11f243134e64"
-   ]
-  },
-  {
-   "sujet": "Licence de Defensor Security Services annulée au Telangana",
-   "ids": [
-    "c6853ce37df690a1",
-    "32379a5e4f7bd310",
-    "8383e6caa57aa8e4",
-    "046d4799a87d569b",
-    "e48a968a378973be",
-    "b5bcb9f48b57cc08",
-    "e89d914b76d63445"
-   ]
-  },
-  {
-   "sujet": "Failles N-central (N-able) et correctifs d'urgence",
-   "ids": [
-    "93ef043e14421dc6",
-    "c94f30106527b048",
-    "3f9d267ae3c86813",
-    "5ea018432db59a80",
-    "d149f9d0c54f6886"
-   ]
-  },
-  {
-   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
-   "ids": [
-    "d18935d08822f67a",
-    "b1f3bc69b9fb616e",
-    "0605695de586b0d4"
-   ]
-  },
-  {
-   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
-   "ids": [
-    "d6f8a92485eae85d",
-    "9c713a71e6a44dc6",
-    "616844fa5d35aa23",
-    "faddfd3b5c81f219"
-   ]
-  },
-  {
-   "sujet": "Honeywell EBI One",
-   "ids": [
-    "364c99c1313b8e76",
-    "b060d71218f75a75"
+    "fe419d6829267508"
    ]
   },
   {
@@ -382,17 +332,15 @@
    ]
   },
   {
-   "sujet": "Rachat de LVSI par Security 101",
+   "sujet": "Licence de Defensor Security Services annulée au Telangana",
    "ids": [
-    "89e6f6b012007b57",
-    "7e221a50538da24f"
-   ]
-  },
-  {
-   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
-   "ids": [
-    "384f007d499b4053",
-    "85066412129579d4"
+    "32379a5e4f7bd310",
+    "c6853ce37df690a1",
+    "8383e6caa57aa8e4",
+    "046d4799a87d569b",
+    "e48a968a378973be",
+    "b5bcb9f48b57cc08",
+    "e89d914b76d63445"
    ]
   },
   {
@@ -404,18 +352,27 @@
    ]
   },
   {
-   "sujet": "Bénodet : vidéoprotection",
+   "sujet": "Suspension des aides régionales aux lycéens en Île-de-France",
    "ids": [
-    "099d1de4791c535d",
-    "ed545a3637e234a7"
+    "d6f8a92485eae85d",
+    "9c713a71e6a44dc6",
+    "616844fa5d35aa23",
+    "faddfd3b5c81f219"
    ]
   },
   {
-   "sujet": "Tribunal administratif et bouclier sécurité de la région Île-de-France",
+   "sujet": "Appel à projets FIPD 2027 pour la vidéoprotection",
    "ids": [
-    "a263a78e1a566c9d",
-    "a7c6db75fd73016a",
-    "8827f072176c7506"
+    "d18935d08822f67a",
+    "b1f3bc69b9fb616e",
+    "0605695de586b0d4"
+   ]
+  },
+  {
+   "sujet": "Rachat de LVSI par Security 101",
+   "ids": [
+    "89e6f6b012007b57",
+    "7e221a50538da24f"
    ]
   },
   {
@@ -426,10 +383,54 @@
    ]
   },
   {
+   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "ids": [
+    "2e925c11dd30381e",
+    "6604ea34b5a0d93e",
+    "8e21a3ca21092760",
+    "6415cb1fad671524"
+   ]
+  },
+  {
    "sujet": "Le NFU et les rançongiciels visant les chambres froides",
    "ids": [
     "56f05663d6dd652e",
     "1541256f7cc46853"
+   ]
+  },
+  {
+   "sujet": "Ploërmel : renforcement de la vidéoprotection et des patrouilles mixtes",
+   "ids": [
+    "01b0ed29f858a875",
+    "17da2bbb87f5afd6"
+   ]
+  },
+  {
+   "sujet": "Failles N-central (N-able) et correctifs d'urgence",
+   "ids": [
+    "93ef043e14421dc6",
+    "c94f30106527b048"
+   ]
+  },
+  {
+   "sujet": "Brivo : analyse vidéo par IA et version Q4",
+   "ids": [
+    "c4179b253cd17d08",
+    "4b6f5f2a06df7c81"
+   ]
+  },
+  {
+   "sujet": "Caméras dans les gares britanniques",
+   "ids": [
+    "7fbb9b2256de04dc",
+    "897ad2029c5c0eae"
+   ]
+  },
+  {
+   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
+   "ids": [
+    "384f007d499b4053",
+    "85066412129579d4"
    ]
   }
  ]
