@@ -313,11 +313,19 @@
   "lundi": "2026-11-23",
   "titre": "Semaine du 23 au 29 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-23",
-  "synthese": "Cette semaine, deux articles concernent la vidéosurveillance appliquée à la sécurité, sans lien direct avec une obligation réglementaire. Le premier, relayé par The Malaysian Reserve, annonce une version gratuite du logiciel VistaPro d'AIPro, qui détecte tôt les départs de feu à partir de caméras existantes. Seul le titre a été lu : les performances et les détails techniques manquent. Le second, publié par JournalArta, décrit l'installation de 4 421 caméras dans les gares des Midlands de l'Ouest, avec un centre de surveillance de Birmingham, une annonce sonore pour les personnes qui marchent sur les voies et 20 agents supplémentaires. Seul le début de l'article a été lu, et la BBC reprend la même information sans la confirmer indépendamment.\n\nPour un centre français, ces exemples n'imposent rien. Ils peuvent toutefois nourrir la réflexion sur la levée de doute vidéo, la détection incendie et la gestion des intrusions. Avant tout usage, il faudra vérifier les performances annoncées, les conditions de la version gratuite et la compatibilité avec vos VMS et vos caméras. Les chiffres de l'essai de Cannock, qui fait état de 128 intrusions en six mois et d'une moitié de personnes averties qui seraient revenues sur le quai, doivent être lus avec prudence.\n\nAucune échéance ni aucune action immédiate n'est signalée cette semaine. Pour des précisions, il faudra consulter les articles complets.",
+  "maj": "2026-11-24",
+  "synthese": "Cette semaine, deux sujets se détachent. Le premier concerne la cybersécurité : N-able a confirmé un incident touchant ses services de messagerie Mail Assure et SpamExperts, après la mise hors service de son outil de supervision N-central, touché par des vulnérabilités critiques (Able2Shell), selon MSSP Alert. Le second est une cybermenace visant la chaîne du froid en France, qui serait attribuée à l'Iran. Seul le titre a été lu, et l'information reste à vérifier. Le rachat d'ADT par le fonds Apollo, financé par treize prêteurs, est une annonce reprise par plusieurs médias, qui ne constituent pas des confirmations indépendantes.\n\nPour un centre de télésurveillance, cela signifie qu'il faut vérifier s'il utilise des outils N-able et contrôler ses accès et jetons associés. Si des équipements de froid ou de GTB étaient touchés, un volume d'alarmes techniques pourrait arriver, d'où l'intérêt de préparer dès maintenant une consigne de traitement. Par ailleurs, un article de 83-629.fr, lu partiellement et derrière un accès payant, rappelle que les exploitants de vidéoprotection et les personnes qui remettent des images aux forces de l'ordre doivent vérifier qui est habilité à le faire.\n\nAucune échéance réglementaire n'est signalée cette semaine. Il n'y a pas d'action immédiate à mener. À suivre : l'appel d'offres lancé à Mende pour 36 caméras, dont l'installation est annoncée d'ici 2027, date approximative et non confirmée.",
   "articles": [
+   "d50493249335beca",
+   "2382cd32abf2cf03",
    "4f1cae96415bda89",
-   "7fbb9b2256de04dc"
+   "b25282bae1d98924",
+   "7fbb9b2256de04dc",
+   "bcbe63e7a49e79a4",
+   "26bc737be5c29b73",
+   "afd30897e3723e46",
+   "4428be6742db56c4",
+   "b813a7634742668d"
   ],
   "echeances": [
    "9c713a71e6a44dc6",
