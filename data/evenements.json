@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-24",
+ "maj": "2026-11-25",
  "version": 2,
  "groupes": [
   {
@@ -166,27 +166,22 @@
    "sujet": "Cyberattaque des systèmes de froid de supermarchés et attribution à l'Iran",
    "ids": [
     "d50493249335beca",
+    "ebb40b4c0d06d7d8",
     "2e2c8c73b89d2602",
     "5e5ebb02f44a9f17",
     "faeb7bd2b5f25685",
-    "ebb40b4c0d06d7d8",
     "553da6c0dab73208",
-    "2cf06ccb728504c7",
-    "3df346cb019670e1",
-    "61cc048e4e4e6ad0",
+    "00291a0999c74eac",
+    "f97591977cb53f2c",
     "2aa0b2eb487a501f",
     "9c4fca3ee536e961",
     "eb50f4290721ec12",
     "e99e57b18770daf2",
     "7dbc5038a46cdb0a",
-    "00291a0999c74eac",
-    "f97591977cb53f2c",
     "eb31940afc639ef0",
+    "61cc048e4e4e6ad0",
     "a2d6dbd09a32fe2d",
-    "5136b79f823e149c",
-    "75a405e0f1677c68",
-    "c30ff609ff282a11",
-    "af46c840cd12f187",
+    "cc67bed8f660ffcf",
     "07d7824d0d990f82",
     "81f8ddb146f24127",
     "e7bbc6a6ddcae160",
@@ -195,26 +190,14 @@
     "2f38f8390c78738c",
     "07ad0b4c634e21c5",
     "09fc2d52e9faaaaa",
+    "2cf06ccb728504c7",
     "7862460f231855ac",
-    "8d0700ca7aea404d",
-    "5ed13091ab493358",
-    "e8029b55424a87ac",
-    "02d223c4e0b0b1d2",
-    "eeca42383240f236",
-    "564d87ffb9f577cd",
-    "aadbce09d6f77eaa",
-    "e87b1371fbf31fe6",
-    "decef0ea3c20a020",
-    "73e1ddb5fa8e2151",
-    "cccb87a46391b054",
-    "638834abf8a69912",
-    "cc67bed8f660ffcf"
+    "3df346cb019670e1"
    ]
   },
   {
    "sujet": "Opération discrète au Royaume-Uni pour sécuriser des contrôleurs de froid RDM",
    "ids": [
-    "5be008df3bd44e09",
     "a9d0cfd7a20fd0ff",
     "2d0ced6d8aa3f92a",
     "e2f808fbb7eff3b7",
@@ -226,101 +209,47 @@
     "0eccd6a3c70b1648",
     "6eae36bfe0f1610c",
     "656f7070ea8dcce4",
-    "4c533af660770df4"
-   ]
-  },
-  {
-   "sujet": "Outil ARTEX et cyberattaque contre la Commission européenne",
-   "ids": [
-    "d02c5714c5f26ab1",
-    "b2f566ad2ef4b2c0",
-    "efdeb641359461c6",
-    "8afbdd8b88104474",
-    "4ffe1cb712d4e122",
-    "5d023e1a31693670",
-    "e45369e168127322"
+    "4c533af660770df4",
+    "5be008df3bd44e09"
    ]
   },
   {
    "sujet": "Reprise privée d'ADT par Apollo et Thrive Holdings",
    "ids": [
     "26bc737be5c29b73",
-    "de9dec8db139318a",
-    "8925b06a5c707e36",
-    "472cd25114e18a52",
-    "04d9e07507764696",
-    "dabc9d4c44122fcf",
-    "b951018787962210",
     "1b908e5f3e81b12a",
-    "a9ebb02db0a85ab9",
+    "8925b06a5c707e36",
+    "8697030bf4f66dce",
+    "de9dec8db139318a",
+    "dabc9d4c44122fcf",
+    "04d9e07507764696",
     "373e8d06366df8e1",
-    "8697030bf4f66dce"
+    "472cd25114e18a52",
+    "b951018787962210",
+    "a9ebb02db0a85ab9"
    ]
   },
   {
-   "sujet": "Caméras dans les gares britanniques des West Midlands",
+   "sujet": "Cyberattaque contre la Commission européenne par l'outil ARTEX",
    "ids": [
-    "64cf3be7256da648",
-    "7fbb9b2256de04dc",
-    "897ad2029c5c0eae"
+    "d02c5714c5f26ab1",
+    "b2f566ad2ef4b2c0",
+    "efdeb641359461c6",
+    "8afbdd8b88104474",
+    "4ffe1cb712d4e122",
+    "e45369e168127322",
+    "5d023e1a31693670",
+    "f39f585a99e7e534"
    ]
   },
   {
-   "sujet": "Concarneau : armement de la police municipale",
+   "sujet": "Cyberattaques par IA détectées par Google",
    "ids": [
-    "b6f8ceeb7c14e019",
-    "bf3b1571604006b0",
-    "e3761c92c2aa16fd"
-   ]
-  },
-  {
-   "sujet": "Vidéoprotection de Besançon et braquages de joailleries",
-   "ids": [
-    "b404773c44fd5328",
-    "90ee5ac2a0d8b6f9"
-   ]
-  },
-  {
-   "sujet": "Resideo One et premier centre de télésurveillance intégré",
-   "ids": [
-    "ffc0d7554093abfd",
-    "54e0a8a9c26ed014",
-    "c794fe4ee359e6a1",
-    "9034ced75becfe9e"
-   ]
-  },
-  {
-   "sujet": "Tribunal administratif et bouclier sécurité de la région Île-de-France",
-   "ids": [
-    "a263a78e1a566c9d",
-    "a7c6db75fd73016a",
-    "8827f072176c7506"
-   ]
-  },
-  {
-   "sujet": "Procès de Gims pour recours illégal à des policiers",
-   "ids": [
-    "7181ca5d0d666117",
-    "536061532777f06b",
-    "9e8dbbad0034428b",
-    "c3a58f0f1a9a03db"
-   ]
-  },
-  {
-   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
-   "ids": [
-    "2e925c11dd30381e",
-    "6415cb1fad671524",
-    "8e21a3ca21092760",
-    "6604ea34b5a0d93e"
-   ]
-  },
-  {
-   "sujet": "Cyberattaque des chambres froides de l'EFS",
-   "ids": [
-    "df7d7462c4f43de3",
-    "3778ef512c1add00",
-    "dd55536bb7cfb9f7"
+    "1b33d6b5212fd0fb",
+    "30303bace33a9cdc",
+    "eb522deeb5785f58",
+    "fe419d6829267508",
+    "282d4648190c40d0"
    ]
   },
   {
@@ -333,19 +262,135 @@
    ]
   },
   {
-   "sujet": "Caméras de vidéoprotection dans les lycées d'Île-de-France",
+   "sujet": "Failles N-central (N-able) et correctifs",
    "ids": [
-    "4242e7055222482c",
-    "569197260ddf3236",
-    "d6f8a92485eae85d"
+    "b25282bae1d98924",
+    "93ef043e14421dc6",
+    "c94f30106527b048"
    ]
   },
   {
-   "sujet": "Grève des agents de sécurité de l'hôpital de Martigues",
+   "sujet": "Failles ScreenConnect exploitées",
    "ids": [
-    "bd20951da02aab3d",
-    "4cc9b13440476de1",
-    "e0b2be1f46ca883d"
+    "a0056a735cffc41f",
+    "96e5e8451bb05f3c"
+   ]
+  },
+  {
+   "sujet": "Cyberattaque des chambres froides de l'EFS",
+   "ids": [
+    "df7d7462c4f43de3",
+    "3778ef512c1add00"
+   ]
+  },
+  {
+   "sujet": "Le NFU et les rançongiciels visant les chambres froides",
+   "ids": [
+    "56f05663d6dd652e",
+    "1541256f7cc46853"
+   ]
+  },
+  {
+   "sujet": "Cloudastructure : lumières déclenchées par IA",
+   "ids": [
+    "1a575fec0676ba87",
+    "69f112a064d12749"
+   ]
+  },
+  {
+   "sujet": "Mende : extension du parc de vidéoprotection",
+   "ids": [
+    "b813a7634742668d",
+    "42f809140a39ca7e",
+    "e47b5944102c9419"
+   ]
+  },
+  {
+   "sujet": "Caméras de vidéoprotection aux urgences des HUG (Genève)",
+   "ids": [
+    "eacfb3e6ed595ad4",
+    "35c06bdb607b6447",
+    "1dc626c67c670791",
+    "64252f7aebb18db8",
+    "0b0cafb959498748"
+   ]
+  },
+  {
+   "sujet": "Vidéoprotection de Besançon et braquages de joailleries",
+   "ids": [
+    "b404773c44fd5328",
+    "90ee5ac2a0d8b6f9"
+   ]
+  },
+  {
+   "sujet": "Tribunal administratif et bouclier sécurité de la région Île-de-France",
+   "ids": [
+    "a263a78e1a566c9d",
+    "a7c6db75fd73016a",
+    "8827f072176c7506"
+   ]
+  },
+  {
+   "sujet": "Caméras de vidéoprotection dans les lycées d'Île-de-France",
+   "ids": [
+    "4242e7055222482c",
+    "569197260ddf3236"
+   ]
+  },
+  {
+   "sujet": "Concarneau : armement de la police municipale",
+   "ids": [
+    "e3761c92c2aa16fd",
+    "b6f8ceeb7c14e019",
+    "bf3b1571604006b0"
+   ]
+  },
+  {
+   "sujet": "Référendum sur la vidéoprotection à Quimperlé",
+   "ids": [
+    "2e925c11dd30381e",
+    "6415cb1fad671524",
+    "8e21a3ca21092760",
+    "6604ea34b5a0d93e"
+   ]
+  },
+  {
+   "sujet": "Procès de Gims pour recours illégal à des policiers",
+   "ids": [
+    "7181ca5d0d666117",
+    "9e8dbbad0034428b",
+    "536061532777f06b",
+    "c3a58f0f1a9a03db"
+   ]
+  },
+  {
+   "sujet": "Implantation des caméras de vidéoprotection à Granville",
+   "ids": [
+    "f2f747983f4a5749",
+    "7459c39013e156ac"
+   ]
+  },
+  {
+   "sujet": "Ploërmel : vidéoprotection et patrouilles mixtes",
+   "ids": [
+    "01b0ed29f858a875",
+    "17da2bbb87f5afd6"
+   ]
+  },
+  {
+   "sujet": "Centre de surveillance intelligent au Pérou",
+   "ids": [
+    "bbe1d33a487ed91e",
+    "b3a0094966f1817d"
+   ]
+  },
+  {
+   "sujet": "Resideo One et premier centre de télésurveillance intégré",
+   "ids": [
+    "ffc0d7554093abfd",
+    "54e0a8a9c26ed014",
+    "c794fe4ee359e6a1",
+    "9034ced75becfe9e"
    ]
   },
   {
@@ -356,28 +401,10 @@
    ]
   },
   {
-   "sujet": "Cyberattaques par IA détectées par Google",
+   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
    "ids": [
-    "1b33d6b5212fd0fb",
-    "282d4648190c40d0",
-    "30303bace33a9cdc",
-    "eb522deeb5785f58",
-    "fe419d6829267508"
-   ]
-  },
-  {
-   "sujet": "Brivo : analyse vidéo par IA et version Q4",
-   "ids": [
-    "c4179b253cd17d08",
-    "4b6f5f2a06df7c81"
-   ]
-  },
-  {
-   "sujet": "Failles N-central (N-able) et correctifs d'urgence",
-   "ids": [
-    "b25282bae1d98924",
-    "93ef043e14421dc6",
-    "c94f30106527b048"
+    "384f007d499b4053",
+    "85066412129579d4"
    ]
   },
   {
@@ -389,67 +416,62 @@
    ]
   },
   {
-   "sujet": "Projet de loi résilience et cybersécurité à l'Assemblée",
-   "ids": [
-    "7019fa4f2b89b5fd",
-    "f15b95fa7ff5eab5"
-   ]
-  },
-  {
-   "sujet": "Appel à projets FIPD pour la vidéoprotection",
-   "ids": [
-    "d18935d08822f67a",
-    "b1f3bc69b9fb616e",
-    "0605695de586b0d4"
-   ]
-  },
-  {
-   "sujet": "Centre de surveillance intelligent au Pérou",
-   "ids": [
-    "bbe1d33a487ed91e",
-    "b3a0094966f1817d"
-   ]
-  },
-  {
-   "sujet": "Braquage de la bijouterie Damjee à Gateway (Afrique du Sud)",
-   "ids": [
-    "384f007d499b4053",
-    "85066412129579d4"
-   ]
-  },
-  {
-   "sujet": "Le NFU et les rançongiciels visant les chambres froides",
-   "ids": [
-    "56f05663d6dd652e",
-    "1541256f7cc46853"
-   ]
-  },
-  {
-   "sujet": "Ploërmel : renforcement de la vidéoprotection et des patrouilles mixtes",
-   "ids": [
-    "01b0ed29f858a875",
-    "17da2bbb87f5afd6"
-   ]
-  },
-  {
-   "sujet": "Granville : implantation des caméras de vidéoprotection",
-   "ids": [
-    "f2f747983f4a5749",
-    "7459c39013e156ac"
-   ]
-  },
-  {
-   "sujet": "Mende : extension du parc de vidéoprotection",
-   "ids": [
-    "b813a7634742668d",
-    "42f809140a39ca7e"
-   ]
-  },
-  {
    "sujet": "Série YouTube Les Chroniques de la Sécurité de Verisure",
    "ids": [
     "4d9ab44a91443e1d",
     "4e59d88575c076cf"
+   ]
+  },
+  {
+   "sujet": "Caméras dans les gares britanniques des West Midlands",
+   "ids": [
+    "64cf3be7256da648",
+    "7fbb9b2256de04dc",
+    "897ad2029c5c0eae"
+   ]
+  },
+  {
+   "sujet": "Grève des agents de sécurité de l'hôpital de Martigues",
+   "ids": [
+    "bd20951da02aab3d",
+    "4cc9b13440476de1",
+    "e0b2be1f46ca883d"
+   ]
+  },
+  {
+   "sujet": "Appel à projets FIPD pour la vidéoprotection (Var)",
+   "ids": [
+    "d18935d08822f67a",
+    "b1f3bc69b9fb616e"
+   ]
+  },
+  {
+   "sujet": "Protocole de sécurité des JO d'hiver 2030",
+   "ids": [
+    "5356041b167d6053",
+    "04ae1b842d95495a",
+    "018e5e8e0a0309dd"
+   ]
+  },
+  {
+   "sujet": "Vanderbilt sanctionnée pour agents de sécurité non enregistrés",
+   "ids": [
+    "0fd687ed3111e024",
+    "be517b9dde137be5"
+   ]
+  },
+  {
+   "sujet": "Analyse vidéo IA et version Q4 de Brivo",
+   "ids": [
+    "c4179b253cd17d08",
+    "4b6f5f2a06df7c81"
+   ]
+  },
+  {
+   "sujet": "Milestone : sommet des développeurs à Copenhague",
+   "ids": [
+    "cd22156291843173",
+    "3cc29a2247eb6a0a"
    ]
   }
  ]
