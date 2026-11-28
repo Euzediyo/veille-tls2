@@ -313,21 +313,22 @@
   "lundi": "2026-11-23",
   "titre": "Semaine du 23 au 29 novembre 2026",
   "en_cours": true,
-  "maj": "2026-11-27",
-  "synthese": "",
+  "maj": "2026-11-28",
+  "synthese": "Cette semaine, les équipements connectés occupent une place centrale. L'ENISA signale des cyberattaques contre des systèmes de réfrigération commerciale dans plusieurs États membres de l'UE, avec une nouvelle vague les 1er et 2 novembre. Une usine slovène a vu une chambre réglée à 100 °C, selon les déclarations de son directeur relayées par la presse ; la cause et le préjudice ne sont pas confirmés. La CNIL a de son côté annoncé dix sanctions visant des collectivités, notamment pour des accès permanents de prestataires.\n\nPour un centre, des alarmes de température peuvent survenir sans signe visible. La levée de doute doit donc prévoir le cas d'une consigne modifiée à distance, et les accès des techniciens doivent être individuels et tracés. Le jugement Verisure, relevé sur 83-629.fr, rappelle qu'une panne connue et laissée sans traitement ni information peut dépasser le plafond contractuel : le préjudice est chiffré à 63 924,67 euros contre 15 000 euros de plafond. Il peut faire l'objet d'un appel, à vérifier.\n\nL'échéance immédiate concerne le Smic, revalorisé à 1 897,35 euros brut au 1er décembre 2026. Les minima de la branche prévention-sécurité (IDCC 1351) doivent rester au-dessus, ce qui impose de vérifier vos grilles dès maintenant. La CFDT appelle à se mobiliser le 1er décembre et cite le 15 décembre comme échéance, une information non confirmée. Plusieurs articles n'ont été lus que par leur titre, comme celui sur les stroboscopes : les détails manquent.",
   "articles": [
    "14d1f3c34a7aec23",
    "e8a8c07f986ce8af",
+   "470e2aad3c281259",
    "3387d60d670f9401",
+   "2ee3fb1ab7bae867",
    "9aebd324dbb66809",
    "2a2d2d4510784ca6",
-   "d50493249335beca",
    "f61f319ef4692c66",
    "721db7e8582842ae",
-   "d94206a359205081",
-   "7ccc3e1e62c2a930"
+   "d94206a359205081"
   ],
   "echeances": [
+   "7f9f6c5db2925819",
    "9c713a71e6a44dc6",
    "98cdd5a6a226161f",
    "8894dc724588891e",
